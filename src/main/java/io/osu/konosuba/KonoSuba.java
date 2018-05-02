@@ -1,6 +1,6 @@
 package io.osu.konosuba;
 
-public class Main {
+public class KonoSuba {
 	public static void main(String[] args) {
 		//
 	}
