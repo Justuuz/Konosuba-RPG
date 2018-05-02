@@ -9,6 +9,7 @@ import javax.security.auth.login.LoginException;
 import components.simplereader.SimpleReader;
 import components.simplereader.SimpleReader1L;
 import net.dv8tion.jda.bot.sharding.DefaultShardManagerBuilder;
+import net.dv8tion.jda.bot.sharding.ShardManager;
 
 public class KonoSuba  {
 	
