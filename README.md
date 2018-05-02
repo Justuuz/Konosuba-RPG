@@ -1,11 +1,11 @@
 
-###Konosuba Bot
+###Konosuba Bot###
 
-#What is this Konosuba Bot
+#What is this Konosuba Bot#
 
 Konosuba is an upcoming discord rpg bot that is based off the anime "Konosuba"
 
-#Features
+#Features#
 
 - Players able to equip different types of armor
 - Players fighting different types of monsters and dropping loot
@@ -13,7 +13,7 @@ Konosuba is an upcoming discord rpg bot that is based off the anime "Konosuba"
 - Dungeons
 - Players traveling and exploring on a map.	
 
-#Progress
+#Progress#
 
 - Framework of Bot - 0%
 - Commands
