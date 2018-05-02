@@ -9,7 +9,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 public class Stats extends Command {
 
 	//Replace each formal parameter
-	protected Example() {
+	protected Stats() {
 		super(embedColor, prefix, name, description, requiredPermission, requiredID);
 		// TODO Auto-generated constructor stub
 	}
