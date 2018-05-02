@@ -18,9 +18,9 @@ public class KonoSuba  {
 	
 	public static void main(String[] args) throws LoginException, IOException {
 		/*ShardManager SHARD_MANAGER = */new DefaultShardManagerBuilder()
-				.setToken()
+				.setToken(KOBOSUBA_TOKEN)
 				.setShardsTotal(1)
-				.addEventListeners(new Listener(KOBOSUBA_TOKEN))
+				.addEventListeners(new Listener())
 				
 				.setBulkDeleteSplittingEnabled(false)
 				
