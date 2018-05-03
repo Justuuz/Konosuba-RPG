@@ -17,8 +17,9 @@ public class Start extends Command {
 
 	@Override
 	protected void run(MessageReceivedEvent event, String[] args) {
-		if(!Konosuba.CLIENT_DATA_MANAGER.hasData(event.getChannel().getIdLong())) {
+
 		ClientData player = new ClientData(event.getChannel().getIdLong());
+		send(event.getGuild(), event.getChannel(), "embeded means getStartStatus = true (this is before first if statement" ,player.getStartStatus());
 		if(!player.getStartStatus()) {
 			if(args.length == 1) {
 					player.setStartStatus(true);
@@ -130,6 +131,6 @@ public class Start extends Command {
 		
 	}
 		
-	}
+	
 
 }
