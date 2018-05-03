@@ -1,0 +1,11 @@
+[ 
+	{
+		"class:":"example", 
+		"Strength":1.2, 
+		"Defense":1.0, 
+		"Dexterity":1.0,
+		"Magic":0.5,
+		"Luck":1.0
+		}
+		
+]
