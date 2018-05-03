@@ -2,6 +2,8 @@ package io.osu.konosuba.data;
 
 import java.util.ArrayList;
 
+import components.map.Map;
+
 @SuppressWarnings({"unused", "WeakerAccess"})
 public class ClientData {
 	private final long clientId;
@@ -35,7 +37,8 @@ public class ClientData {
 	private String helmet, chest, leggings, boots, classType, onHand, offHand, cape, necklace, ring;
 	private ArrayList<String> inventory;
 	private boolean battleStatus;
-	private int strength, physicalDefense, magicalDefense, dexterity, magic, luck, hitpoints;
+	private int strength, physicalDefense, magicalDefense, dexterity, magic, luck, hitpoints, durability;
+	private Map<String, Integer> items;
 	
 
 	public String getHelmet() {
@@ -96,6 +99,14 @@ public class ClientData {
 	
 	public void setOnHand(String onHand) {
 		this.onHand = onHand;
+	}
+	
+	public int getDurability() {
+		return durability;
+	}
+	
+	public void setDurability(int durability) {
+		this.durability = durability;
 	}
 
 	public String getOffHand() {
@@ -186,5 +197,12 @@ public class ClientData {
 		this.hitpoints = hitpoints;
 	}
 	
+	public Map<String, Integer> getItems(){
+		return items;
+	}
+	
+	public void setItems(Map<String, Integer> items) {
+		this.items = items;
+	}
 	
 }
