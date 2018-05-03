@@ -1,8 +1,7 @@
 [
 	{
-	"Name":"Bronze Sword",
+	"Name":"Bronze_Sword",
 	"Type":"onhand",
-	"Durability":10,
 	"Strength":5,
 	"Defense":0,
 	"Magic":0,

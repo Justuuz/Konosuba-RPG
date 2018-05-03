@@ -42,7 +42,18 @@ public class Start extends Command {
 		}
 		
 		if(args[1].equalsIgnoreCase("classes")) {
-			send(event.getGuild(), event.getChannel(), "||Classes||")
+			send(event.getGuild(), event.getChannel(), "||Classes||\nwizard\r\n" + 
+					"arch wizard (not crimson demon lol rip)\r\n" + 
+					"crusader \r\n" + 
+					"adventurer\r\n" + 
+					"Cleric\r\n" + 
+					"Mage\r\n" + 
+					"Thief\r\n" + 
+					"Priest\r\n" + 
+					"Warrior\r\n" + 
+					"Rogue\r\n" + 
+					"Merchant",true);
+			
 		}
 		
 		
