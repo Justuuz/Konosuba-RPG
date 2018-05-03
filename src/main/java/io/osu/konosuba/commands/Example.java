@@ -11,7 +11,7 @@ public class Example extends Command {
 
 	//Replace each formal parameter
 	public Example() {
-		super(Konosuba.COLOR, Konosuba.PREFIX, name, description, requiredPermission, requiredID);
+		super(Konosuba.COLOR, Konosuba.PREFIX, "name", "describe", null, 0);
 		// TODO Auto-generated constructor stub
 	}
 
