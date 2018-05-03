@@ -28,7 +28,7 @@ public class Remove extends Command {
 		 * removes an item
 		 * 
 		 * can't remove item if there isn't one
-		 * helmet, chest, leggings, boots, onHand, offHand, cape, necklace, ring;
+		 * helmet, chest, leggings, onHand, offHand, cape, necklace, ring, boots;
 		 */
 		if(Konosuba.CLIENT_DATA_MANAGER.hasData(event.getChannel().getIdLong())) {
 			ClientData player = new ClientData(event.getChannel().getIdLong());
@@ -142,6 +142,19 @@ public class Remove extends Command {
 				}
 				else {
 					player.setRing("None");
+				}
+				
+			}
+			if(args[1].equalsIgnoreCase("boots")) {
+				
+				if(!player.getBoots().equalsIgnoreCase("none")) {
+					String message = "No item to remove";
+	
+					send(event.getGuild(), event.getChannel(), message, true);
+					
+				}
+				else {
+					player.setBoots("None");
 				}
 				
 			}

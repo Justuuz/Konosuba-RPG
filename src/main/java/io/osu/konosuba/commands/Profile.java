@@ -18,6 +18,8 @@ public class Profile extends Command {
 	protected void run(MessageReceivedEvent event, String[] args) {
 		// TODO Auto-generated method stub
 		
+		
+		
 	}
 
 }

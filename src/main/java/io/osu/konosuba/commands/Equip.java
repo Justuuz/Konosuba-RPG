@@ -30,7 +30,7 @@ public class Equip extends Command {
 		 * equips an item
 		 * 
 		 * (important) cannot equip an item if there is already an item in that place
-		 * helmet, chest, leggings, boots, onHand, offHand, cape, necklace, ring;
+		 * helmet, chest, leggings, onHand, offHand, cape, necklace, ring, boots;
 		 */
 		if(Konosuba.CLIENT_DATA_MANAGER.hasData(event.getChannel().getIdLong())) {
 		ClientData player = new ClientData(event.getChannel().getIdLong());
@@ -49,7 +49,7 @@ public class Equip extends Command {
 					if(player.getInventory().get(0).contains(item)) {
 					
 						player.setHelmet(item);
-						String message = "Equipped" + item;
+						String message = "Equipped " + item;
 						send(event.getGuild(), event.getChannel(), message , true);
 					}
 					else {
@@ -73,7 +73,7 @@ public class Equip extends Command {
 					if(player.getInventory().get(1).contains(item)) {
 							
 						player.setChest(item);
-						String message = "Equipped" + item;
+						String message = "Equipped " + item;
 						send(event.getGuild(), event.getChannel(), message , true);
 					
 					}
@@ -98,7 +98,7 @@ public class Equip extends Command {
 					if(player.getInventory().get(2).contains(item)) {
 					
 						player.setLeggings(item);
-						String message = "Equipped" + item;
+						String message = "Equipped " + item;
 						send(event.getGuild(), event.getChannel(), message , true);
 					
 					}
@@ -126,7 +126,7 @@ public class Equip extends Command {
 						
 					
 						player.setOnHand(item);
-						String message = "Equipped" + item;
+						String message = "Equipped " + item;
 						send(event.getGuild(), event.getChannel(), message , true);
 					
 					}
@@ -152,7 +152,7 @@ public class Equip extends Command {
 					if(player.getInventory().get(4).contains(item)) {
 					
 						player.setOffHand(item);
-						String message = "Equipped" + item;
+						String message = "Equipped " + item;
 						send(event.getGuild(), event.getChannel(), message , true);
 					}
 					else {
@@ -178,7 +178,7 @@ public class Equip extends Command {
 						
 					
 						player.setCape(item);
-						String message = "Equipped" + item;
+						String message = "Equipped " + item;
 						send(event.getGuild(), event.getChannel(), message , true);
 					}
 					else {
@@ -202,7 +202,7 @@ public class Equip extends Command {
 					if(player.getInventory().get(6).contains(item)) {
 						
 						player.setNecklace(item);
-						String message = "Equipped" + item;
+						String message = "Equipped " + item;
 						send(event.getGuild(), event.getChannel(), message , true);
 					}
 					else {
@@ -226,7 +226,7 @@ public class Equip extends Command {
 					if(player.getInventory().get(7).contains(item)) {
 						
 						player.setRing(item);
-						String message = "Equipped" + item;
+						String message = "Equipped " + item;
 						send(event.getGuild(), event.getChannel(), message , true);
 					}
 					else {
@@ -250,7 +250,7 @@ public class Equip extends Command {
 					if(player.getInventory().get(8).contains(item)) {
 						
 						player.setRing(item);
-						String message = "Equipped" + item;
+						String message = "Equipped " + item;
 						send(event.getGuild(), event.getChannel(), message , true);
 					}
 					else {
