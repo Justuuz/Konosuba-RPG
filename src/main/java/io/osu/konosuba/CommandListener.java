@@ -3,9 +3,7 @@ package io.osu.konosuba;
 import java.io.IOException;
 
 
-import io.magiccraftmaster.util.Calculator;
-import io.osu.konosuba.commands.Battle;
-import io.osu.konosuba.commands.Example;
+import io.osu.konosuba.commands.*;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
@@ -13,7 +11,8 @@ public class CommandListener extends ListenerAdapter {
 	
 	private final Command[] commands = {
 		new Example(),
-		new Battle()
+		new Battle(),
+		new Shutdown()
 	};
 
 	CommandListener() throws IOException {
