@@ -22,6 +22,7 @@ public class Start extends Command {
 		if(!player.getStartStatus()) {
 			if(args.length == 1) {
 					player.setStartStatus(true);
+					player.setClassStatus(false);
 					player.setBoots("None");
 					player.setCape("None");
 					player.setChest("None");
@@ -51,7 +52,7 @@ public class Start extends Command {
 					return;
 				}
 		}else{
-			send(event.getGuild(), event.getChannel(), "You already have started! 69", true);
+			send(event.getGuild(), event.getChannel(), "You already have started!", true);
 			return;
 			
 		}
@@ -126,6 +127,7 @@ public class Start extends Command {
 		
 		
 	}
+		
 	}
 
 }
