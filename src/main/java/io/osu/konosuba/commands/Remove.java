@@ -30,7 +30,7 @@ public class Remove extends Command {
 		 * can't remove item if there isn't one
 		 * helmet, chest, leggings, boots, onHand, offHand, cape, necklace, ring;
 		 */
-		
+		if(Konosuba.CLIENT_DATA_MANAGER.hasData(event.getChannel().getIdLong())) {
 		ClientData player = new ClientData(event.getChannel().getIdLong());
 		EmbedBuilder help  = new EmbedBuilder();
 		
@@ -149,4 +149,5 @@ public class Remove extends Command {
 		Konosuba.CLIENT_DATA_MANAGER.trySave();
 		
 	}
+}
 }
