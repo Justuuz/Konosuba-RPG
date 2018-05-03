@@ -3,10 +3,10 @@
 		"Name:":"Example Monster",
 		"Hitpoints:":60,
 		"Strength":1.2,
-		"Moves"":[
-		"Example Move":50,
-		"Example Move2":40,
-		]
-		
+		"Defense":1.1,
+		"Magic":1.1,
+		"Dexterity":1.1,
+		"Luck":1.1,
+		"Move Damage":50
 	}
 ]
