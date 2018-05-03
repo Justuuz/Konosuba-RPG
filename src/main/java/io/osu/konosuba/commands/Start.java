@@ -41,16 +41,18 @@ public class Start extends Command {
 				/*
 				 * add "none" to all inventory types
 				 */
-				player.getInventory().get(0).add("None");
-				player.getInventory().get(1).add("None");
-				player.getInventory().get(2).add("None");
-				player.getInventory().get(3).add("None");
-				player.getInventory().get(4).add("None");
-				player.getInventory().get(5).add("None");
-				player.getInventory().get(6).add("None");
-				player.getInventory().get(7).add("None");
-				player.getInventory().get(8).add("None");
-				player.getInventory().get(9).add("None");
+				if(!player.getInventory().get(0).contains("None")) {
+					player.getInventory().get(0).add("None");
+					player.getInventory().get(1).add("None");
+					player.getInventory().get(2).add("None");
+					player.getInventory().get(3).add("None");
+					player.getInventory().get(4).add("None");
+					player.getInventory().get(5).add("None");
+					player.getInventory().get(6).add("None");
+					player.getInventory().get(7).add("None");
+					player.getInventory().get(8).add("None");
+					player.getInventory().get(9).add("None");
+				}
 				String name = (event.getMember() != null ? event.getMember().getEffectiveName() : event.getAuthor().getName());
 				send(event.getGuild(), event.getChannel(), "Welcome " + name +"! Today is the day you start your adventure! Before we can start, I must ask "
 						+ "traveler, what class are? Do *start choose Class Name to begin!",true);
@@ -86,16 +88,18 @@ public class Start extends Command {
 					/*
 					 * add "none" to all inventory types
 					 */
-					player.getInventory().get(0).add("None");
-					player.getInventory().get(1).add("None");
-					player.getInventory().get(2).add("None");
-					player.getInventory().get(3).add("None");
-					player.getInventory().get(4).add("None");
-					player.getInventory().get(5).add("None");
-					player.getInventory().get(6).add("None");
-					player.getInventory().get(7).add("None");
-					player.getInventory().get(8).add("None");
-					player.getInventory().get(9).add("None");
+					if(!player.getInventory().get(0).contains("None")) {
+						player.getInventory().get(0).add("None");
+						player.getInventory().get(1).add("None");
+						player.getInventory().get(2).add("None");
+						player.getInventory().get(3).add("None");
+						player.getInventory().get(4).add("None");
+						player.getInventory().get(5).add("None");
+						player.getInventory().get(6).add("None");
+						player.getInventory().get(7).add("None");
+						player.getInventory().get(8).add("None");
+						player.getInventory().get(9).add("None");
+					}
 					
 					String name = (event.getMember() != null ? event.getMember().getEffectiveName() : event.getAuthor().getName());
 					send(event.getGuild(), event.getChannel(), "Welcome " + name +"! Today is the day you start your adventure! Before we can start, I must ask "
