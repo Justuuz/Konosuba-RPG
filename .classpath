@@ -10,5 +10,6 @@
 	<classpathentry kind="lib" path="gradle/wrapper/gradle-wrapper.jar"/>
 	<classpathentry kind="lib" path="Outside Libraries/components.jar"/>
 	<classpathentry kind="lib" path="Outside Libraries/JDA-3.6.0_354-withDependencies.jar"/>
+	<classpathentry kind="lib" path="Outside Libraries/gson-2.8.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
