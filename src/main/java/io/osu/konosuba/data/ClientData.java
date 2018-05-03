@@ -35,7 +35,7 @@ public class ClientData {
 	private String helmet, chest, leggings, boots, classType, onHand, offHand, cape;
 	private ArrayList<String> inventory;
 	private boolean battleStatus;
-	private int strength, defense, dexterity, magic, luck, hitpoints;
+	private int strength, physicalDefense, magicalDefense, dexterity, magic, luck, hitpoints;
 	
 
 	public String getHelmet() {
@@ -130,12 +130,20 @@ public class ClientData {
 		this.strength = strength;
 	}
 	
-	public int getDefense() {
-		return defense;
+	public int getPhysicalDefense() {
+		return physicalDefense;
 	}
 
-	public void setDefense(int defense) {
-		this.defense = defense;
+	public void setPhysicalDefense(int physicalDefense) {
+		this.physicalDefense = physicalDefense;
+	}
+	
+	public int getMagicalDefense() {
+		return magicalDefense;
+	}
+
+	public void setMagicalDefense(int magicalDefense) {
+		this.magicalDefense = magicalDefense;
 	}
 	
 	public int getMagic() {
