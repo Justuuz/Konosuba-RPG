@@ -8,7 +8,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 public class Equip extends Command {
 	
 	public Equip() {
-		super(Konosuba.COLOR, Konosuba.PREFIX, "battle", "all related battle commands", null, 0);
+		super(Konosuba.COLOR, Konosuba.PREFIX, "equip", "all related equip commands", null, 0);
 		// TODO Auto-generated constructor stub
 	}
 	
