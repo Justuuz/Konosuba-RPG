@@ -43,7 +43,7 @@ public class Remove extends Command {
 				
 			}
 			else {
-				player.setHelmet("none");
+				player.setHelmet("None");
 			}
 			
 		}
