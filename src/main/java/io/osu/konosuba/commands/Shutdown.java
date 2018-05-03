@@ -23,6 +23,7 @@ public class Shutdown extends Command{
 			send(event.getGuild(), event.getChannel(), "**Shutting Down!**", true);
 			Konosuba.CLIENT_DATA_MANAGER.save();
 			event.getJDA().shutdown();
+			System.exit(0);
 		}
 		
 	}
