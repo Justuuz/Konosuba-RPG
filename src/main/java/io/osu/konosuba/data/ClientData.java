@@ -101,13 +101,14 @@ public class ClientData {
 		this.onHand = onHand;
 	}
 	
-	public int getDurability() {
-		return durability;
-	}
-	
-	public void setDurability(int durability) {
-		this.durability = durability;
-	}
+	//Removed For Now
+//	public int getDurability() {
+//		return durability;
+//	}
+//	
+//	public void setDurability(int durability) {
+//		this.durability = durability;
+//	}
 
 	public String getOffHand() {
 		return offHand;
