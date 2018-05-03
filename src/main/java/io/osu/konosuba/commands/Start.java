@@ -51,7 +51,7 @@ public class Start extends Command {
 					return;
 				}
 		}else{
-			send(event.getGuild(), event.getChannel(), "You already have started!", true);
+			send(event.getGuild(), event.getChannel(), "You already have started! 69", true);
 			return;
 			
 		}
@@ -119,7 +119,7 @@ public class Start extends Command {
 			}
 			
 		}else {
-			send(event.getGuild(), event.getChannel(), "You haven't started yet!", true);
+			send(event.getGuild(), event.getChannel(), "You haven't started yet! 3905720957320", true);
 			return;
 		}
 		
