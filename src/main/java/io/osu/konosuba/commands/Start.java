@@ -49,6 +49,7 @@ public class Start extends Command {
 							"Warrior\r\n" + 
 							"Rogue\r\n" + 
 							"Merchant",true);
+					Konosuba.CLIENT_DATA_MANAGER.trySave();
 					return;
 				}
 			}
@@ -103,7 +104,10 @@ public class Start extends Command {
 					send(event.getGuild(), event.getChannel(), "You choose to be a" + args[2]+ "! Good choice!You are now set to go on your first adventure!", true);
 					player.setClassType("merchant");
 				}
+				
+				Konosuba.CLIENT_DATA_MANAGER.trySave();
 			}
+			
 		}
 		
 		
