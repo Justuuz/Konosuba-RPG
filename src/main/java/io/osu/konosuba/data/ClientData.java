@@ -35,7 +35,7 @@ public class ClientData {
 	// RPG stuff
 
 	private String helmet, chest, leggings, boots, classType, onHand, offHand, cape, necklace, ring;
-	private ArrayList<String> inventory;
+	private ArrayList<ArrayList<String>> inventory;
 	private boolean battleStatus, startStatus, classStatus;
 	private int strength, physicalDefense, magicalDefense, dexterity, magic, luck, hitpoints, durability;
 	private Map<String, Integer> items;
@@ -73,16 +73,21 @@ public class ClientData {
 		this.boots = boots;
 	}
 
-	public ArrayList<String> getInventory() {
+	public ArrayList<ArrayList<String>> getInventory() {
 		return inventory;
 	}
 
-	public void addInventory(String item) {
-		this.inventory.add(item);	
-		}
+	public void addInventory(String item, int type) {
+		ArrayList<String> subInv = this.inventory.remove(type);
+		subInv.add(item);	
+		this.inventory.add(type, subInv);
+	}
 	
-	public void removeInventory(String item) {
-		this.inventory.remove(item);
+	public void removeInventory(String item, int type) {
+		ArrayList<String> subInv = this.inventory.remove(type);
+		subInv.remove(item);	
+		this.inventory.add(type, subInv);
+
 	}
 	
 	public String getClassType() {
