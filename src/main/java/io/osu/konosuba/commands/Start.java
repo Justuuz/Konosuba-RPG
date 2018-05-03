@@ -17,10 +17,16 @@ public class Start extends Command {
 
 	@Override
 	protected void run(MessageReceivedEvent event, String[] args) {
-		if(!Konosuba.CLIENT_DATA_MANAGER.hasData(event.getChannel().getIdLong())) {
+
 		ClientData player = new ClientData(event.getChannel().getIdLong());
-		if(!player.getStartSatus()) {
+
+		if(!player.getStartStatus()) {
+
+		send(event.getGuild(), event.getChannel(), "embeded means getStartStatus = true (this is before first if statement" ,player.getStartStatus());
+		if(!player.getStartStatus()) {
+
 			if(args.length == 1) {
+
 				player.setStartStatus(true);
 				player.setBoots("None");
 				player.setCape("None");
@@ -51,11 +57,46 @@ public class Start extends Command {
 				return;
 			}
 		}else {
+
+					player.setStartStatus(true);
+					player.setClassStatus(false);
+					player.setBoots("None");
+					player.setCape("None");
+					player.setChest("None");
+					player.setHelmet("None");
+					player.setLeggings("None");
+					player.setNecklace("None");
+					player.setOffHand("None");
+					player.setRing("None");
+					player.setBalance(0);
+					player.setOnHand("None");
+					String name = (event.getMember() != null ? event.getMember().getEffectiveName() : event.getAuthor().getName());
+					send(event.getGuild(), event.getChannel(), "Welcome " + name +"! Today is the day you start your adventure! Before we can start, I must ask "
+							+ "traveler, what class are? Do *start choose Class Name to begin!",true);
+					
+					send(event.getGuild(), event.getChannel(), "||Classes||\nwizard\r\n" + 
+							"arch_wizard \r\n" + 
+							"crusader \r\n" + 
+							"adventurer\r\n" + 
+							"Cleric\r\n" + 
+							"Mage\r\n" + 
+							"Thief\r\n" + 
+							"Priest\r\n" + 
+							"Warrior\r\n" + 
+							"Rogue\r\n" + 
+							"Merchant",true);
+
+					send(event.getGuild(), event.getChannel(), "embeded means getStartStatus = true" ,player.getStartStatus());
+					Konosuba.CLIENT_DATA_MANAGER.trySave();
+					return;
+				}
+		}else{
+
 			send(event.getGuild(), event.getChannel(), "You already have started!", true);
 			return;
 
 		}
-		if(player.getStartSatus()) {
+		if(player.getStartStatus()) {
 			if(args[1].equalsIgnoreCase("classes")) {
 				send(event.getGuild(), event.getChannel(), "||Classes||\nWizard\r\n" + 
 						"Arch_wizard\r\n" + 
@@ -109,13 +150,14 @@ public class Start extends Command {
 			}
 
 		}else {
-			send(event.getGuild(), event.getChannel(), "You haven't started yet!", true);
+			send(event.getGuild(), event.getChannel(), "You haven't started yet! 3905720957320", true);
 			return;
 		}
 
 
 
 	}
-	}
+		
+	
 
 }
