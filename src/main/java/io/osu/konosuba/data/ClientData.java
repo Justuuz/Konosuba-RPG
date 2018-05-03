@@ -36,7 +36,7 @@ public class ClientData {
 
 	private String helmet, chest, leggings, boots, classType, onHand, offHand, cape, necklace, ring;
 	private ArrayList<String> inventory;
-	private boolean battleStatus;
+	private boolean battleStatus, startStatus;
 	private int strength, physicalDefense, magicalDefense, dexterity, magic, luck, hitpoints, durability;
 	private Map<String, Integer> items;
 	
@@ -148,6 +148,14 @@ public class ClientData {
 	
 	public void setBattleStatus(boolean battleStatus) {
 		this.battleStatus = battleStatus;
+	}
+	
+	public boolean getStartSatus() {
+		return startStatus;
+	}
+	
+	public void setStartStatus(boolean startStatus) {
+		this.startStatus = startStatus;
 	}
 	
 	public int getStrength() {

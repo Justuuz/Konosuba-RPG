@@ -17,9 +17,10 @@ public class Start extends Command {
 
 	@Override
 	protected void run(MessageReceivedEvent event, String[] args) {
-		if(Konosuba.CLIENT_DATA_MANAGER.hasData(event.getChannel().getIdLong())) {
+		ClientData player = new ClientData(event.getChannel().getIdLong());
+		if(!player.getStartSatus()) {
 			if(args.length == 1) {
-					ClientData player = new ClientData(event.getChannel().getIdLong());
+					player.setStartStatus(true);
 					player.setBoots("None");
 					player.setCape("None");
 					player.setChest("None");
@@ -53,7 +54,7 @@ public class Start extends Command {
 			return;
 			
 		}
-		if(!Konosuba.CLIENT_DATA_MANAGER.hasData(event.getChannel().getIdLong())) {
+		if(player.getStartSatus()) {
 			if(args[1].equalsIgnoreCase("classes")) {
 				send(event.getGuild(), event.getChannel(), "||Classes||\nWizard\r\n" + 
 						"Arch_wizard\r\n" + 
@@ -71,7 +72,6 @@ public class Start extends Command {
 			}
 			
 			if(args[1].equalsIgnoreCase("choose")) {
-				ClientData player = new ClientData(event.getChannel().getIdLong());
 				if(args[2].equalsIgnoreCase("wizard")) {
 					send(event.getGuild(), event.getChannel(), "You choose to be a" + args[2]+ "! Good choice!You are now set to go on your first adventure!", true);
 					player.setClassType("wizard");
