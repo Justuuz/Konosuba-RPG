@@ -46,9 +46,15 @@ public class Equip extends Command {
 					
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					
-					player.setHelmet(item);
-					String message = "Equipped" + item;
-					send(event.getGuild(), event.getChannel(), message , true);
+					if(player.getInventory().get(0).contains(item)) {
+					
+						player.setHelmet(item);
+						String message = "Equipped" + item;
+						send(event.getGuild(), event.getChannel(), message , true);
+					}
+					else {
+						send(event.getGuild(), event.getChannel(), "not a valid item" , true);
+					}
 				}
 				
 			}
@@ -64,9 +70,16 @@ public class Equip extends Command {
 					
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					
-					player.setChest(item);
-					String message = "Equipped" + item;
-					send(event.getGuild(), event.getChannel(), message , true);
+					if(player.getInventory().get(1).contains(item)) {
+							
+						player.setChest(item);
+						String message = "Equipped" + item;
+						send(event.getGuild(), event.getChannel(), message , true);
+					
+					}
+					else {
+						send(event.getGuild(), event.getChannel(), "not a valid item" , true);
+					}
 				}
 				
 			}
@@ -82,9 +95,16 @@ public class Equip extends Command {
 					
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					
-					player.setLeggings(item);
-					String message = "Equipped" + item;
-					send(event.getGuild(), event.getChannel(), message , true);
+					if(player.getInventory().get(2).contains(item)) {
+					
+						player.setLeggings(item);
+						String message = "Equipped" + item;
+						send(event.getGuild(), event.getChannel(), message , true);
+					
+					}
+					else {
+						send(event.getGuild(), event.getChannel(), "not a valid item" , true);
+					}
 				}
 				
 			}
@@ -100,9 +120,19 @@ public class Equip extends Command {
 					
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					
-					player.setOnHand(item);
-					String message = "Equipped" + item;
-					send(event.getGuild(), event.getChannel(), message , true);
+					
+					if(player.getInventory().get(3).contains(item)) {
+						
+						
+					
+						player.setOnHand(item);
+						String message = "Equipped" + item;
+						send(event.getGuild(), event.getChannel(), message , true);
+					
+					}
+					else {
+						send(event.getGuild(), event.getChannel(), "not a valid item" , true);
+					}
 				}
 				
 			}
@@ -119,9 +149,15 @@ public class Equip extends Command {
 					
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					
-					player.setOffHand(item);
-					String message = "Equipped" + item;
-					send(event.getGuild(), event.getChannel(), message , true);
+					if(player.getInventory().get(4).contains(item)) {
+					
+						player.setOffHand(item);
+						String message = "Equipped" + item;
+						send(event.getGuild(), event.getChannel(), message , true);
+					}
+					else {
+						send(event.getGuild(), event.getChannel(), "not a valid item" , true);
+					}
 				}
 				
 			}
@@ -137,9 +173,17 @@ public class Equip extends Command {
 					
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					
-					player.setCape(item);
-					String message = "Equipped" + item;
-					send(event.getGuild(), event.getChannel(), message , true);
+					
+					if(player.getInventory().get(5).contains(item)) {
+						
+					
+						player.setCape(item);
+						String message = "Equipped" + item;
+						send(event.getGuild(), event.getChannel(), message , true);
+					}
+					else {
+						send(event.getGuild(), event.getChannel(), "not a valid item" , true);
+					}
 				}
 				
 			}
@@ -155,9 +199,15 @@ public class Equip extends Command {
 					
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					
-					player.setNecklace(item);
-					String message = "Equipped" + item;
-					send(event.getGuild(), event.getChannel(), message , true);
+					if(player.getInventory().get(6).contains(item)) {
+						
+						player.setNecklace(item);
+						String message = "Equipped" + item;
+						send(event.getGuild(), event.getChannel(), message , true);
+					}
+					else {
+						send(event.getGuild(), event.getChannel(), "not a valid item" , true);
+					}
 				}
 				
 			}
@@ -173,9 +223,39 @@ public class Equip extends Command {
 					
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					
-					player.setRing(item);
-					String message = "Equipped" + item;
-					send(event.getGuild(), event.getChannel(), message , true);
+					if(player.getInventory().get(7).contains(item)) {
+						
+						player.setRing(item);
+						String message = "Equipped" + item;
+						send(event.getGuild(), event.getChannel(), message , true);
+					}
+					else {
+						send(event.getGuild(), event.getChannel(), "not a valid item" , true);
+					}
+				}
+				
+			}
+			
+			if(args[1].equalsIgnoreCase("boots")) {
+				
+				if(!player.getRing().equalsIgnoreCase("none")) {
+					String message = "Please remove the current item first";
+	
+					send(event.getGuild(), event.getChannel(), message, true);
+				}
+				else {
+					
+					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
+					
+					if(player.getInventory().get(8).contains(item)) {
+						
+						player.setRing(item);
+						String message = "Equipped" + item;
+						send(event.getGuild(), event.getChannel(), message , true);
+					}
+					else {
+						send(event.getGuild(), event.getChannel(), "not a valid item" , true);
+					}
 				}
 				
 			}

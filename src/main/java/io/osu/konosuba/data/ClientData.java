@@ -75,6 +75,9 @@ public class ClientData {
 
 	public ArrayList<ArrayList<String>> getInventory() {
 		return inventory;
+		/*
+		 * notice that inventory returns a ArrayList<ArrayList<String>>
+		 */
 	}
 
 	public void addInventory(String item, int type) {
