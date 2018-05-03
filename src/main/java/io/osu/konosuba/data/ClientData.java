@@ -35,7 +35,7 @@ public class ClientData {
 	private String helmet, chest, leggings, boots, classType, onHand, offHand, cape;
 	private ArrayList<String> inventory;
 	private boolean battleStatus;
-	private int strength, defense, dexterity, magic, luck, experience, level;
+	private int strength, defense, dexterity, magic, luck, hitpoints;
 	
 
 	public String getHelmet() {
@@ -154,20 +154,13 @@ public class ClientData {
 		this.dexterity = dexterity;
 	}
 	
-	public int getExperience() {
-		return experience;
+	public int getHitpoints() {
+		return hitpoints;
 	}
 	
-	public void setExperience(int experience) {
-		this.experience = experience;
+	public void setHitpoints(int hitpoints) {
+		this.hitpoints = hitpoints;
 	}
 	
-	public int getLevel() {
-		return level;
-	}
-	
-	public void setLevel(int level) {
-		this.level = level;
-	}
 	
 }
