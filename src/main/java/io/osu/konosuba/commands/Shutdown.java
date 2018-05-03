@@ -8,7 +8,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 public class Shutdown extends Command{
 
 	public Shutdown() {
-		super(null, null, "shutdown", "Shutdowns the bot", null, 81911518148440064L);
+		super(null, "?", "shutdown", "Shutdowns the bot", null, 81911518148440064L);
 		// TODO Auto-generated constructor stub
 	}
 
