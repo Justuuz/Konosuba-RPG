@@ -3,18 +3,22 @@ package io.osu.konosuba.commands;
 import io.osu.konosuba.Command;
 import io.osu.konosuba.Konosuba;
 import io.osu.konosuba.data.ClientData;
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 public class Remove extends Command {
 	
 	public Remove() {
+
 		super(Konosuba.COLOR, Konosuba.PREFIX, "remove", "all related battle commands", null, 0);
+
 		// TODO Auto-generated constructor stub
 	}
 	
 	/*
 	 * framework
 	 */
+
 	
 	
 	@Override
@@ -27,7 +31,20 @@ public class Remove extends Command {
 		 * helmet, chest, leggings, boots, onHand, offHand, cape, necklace, ring;
 		 */
 		
+		ClientData player = new ClientData(event.getChannel().getIdLong());
+		EmbedBuilder help  = new EmbedBuilder();
+		
 		if(args[1].equalsIgnoreCase("helmet")) {
+			
+			if(!player.getHelmet().equalsIgnoreCase("none")) {
+				String message = "No item to remove";
+
+				send(event.getGuild(), event.getChannel(), message, true);
+				
+			}
+			else {
+				player.setHelmet("none");
+			}
 			
 		}
 		

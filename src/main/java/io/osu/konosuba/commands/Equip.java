@@ -8,13 +8,18 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 public class Equip extends Command {
 	
 	public Equip() {
+
 		super(Konosuba.COLOR, Konosuba.PREFIX, "equip", "all related battle commands", null, 0);
+
+		
+
 		// TODO Auto-generated constructor stub
 	}
 	
 	/*
 	 * framework
 	 */
+
 	
 	
 	@Override
@@ -27,7 +32,18 @@ public class Equip extends Command {
 		 * helmet, chest, leggings, boots, onHand, offHand, cape, necklace, ring;
 		 */
 		
+		ClientData player = new ClientData(event.getChannel().getIdLong());
+		
 		if(args[1].equalsIgnoreCase("helmet")) {
+			
+			if(!player.getHelmet().equalsIgnoreCase("none")) {
+				String message = "Please remove the" + "helmet" + "first";
+
+				send(event.getGuild(), event.getChannel(), message, true);
+			}
+			else {
+				player.setHelmet(helmet);
+			}
 			
 		}
 		
