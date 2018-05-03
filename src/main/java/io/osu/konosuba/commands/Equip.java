@@ -15,6 +15,7 @@ public class Equip extends Command {
 	/*
 	 * framework
 	 */
+
 	
 	
 	@Override
@@ -27,7 +28,18 @@ public class Equip extends Command {
 		 * helmet, chest, leggings, boots, onHand, offHand, cape, necklace, ring;
 		 */
 		
+		ClientData player = new ClientData(event.getChannel().getIdLong());
+		
 		if(args[1].equalsIgnoreCase("helmet")) {
+			
+			if(!player.getHelmet().equalsIgnoreCase("none")) {
+				String message = "Please remove the" + "helmet" + "first";
+
+				send(event.getGuild(), event.getChannel(), message, true);
+			}
+			else {
+				player.setHelmet(helmet);
+			}
 			
 		}
 		
