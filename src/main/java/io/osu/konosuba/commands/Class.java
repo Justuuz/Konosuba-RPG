@@ -3,9 +3,9 @@ package io.osu.konosuba.commands;
 import io.osu.konosuba.Command;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
-public class Battle extends Command {
+public class Class extends Command {
 	
-	public Battle() {
+	public Class() {
 		super(konosuba.COLOR, konosuba.PREFIX, name, description, requiredPermission, requiredID);
 		// TODO Auto-generated constructor stub
 	}
@@ -16,29 +16,15 @@ public class Battle extends Command {
 	@Override
 	public void run(MessageReceivedEvent event, String[] args) {
 		
-	/*
-	 * Show UI here
-	 */
-		
-		if(args[1].equalsIgnoreCase("attack")) {
+	
+		/*
+		 * Show UI here like class multipliers
+		 */
 			
-		}
-		
-		if(args[1].equalsIgnoreCase("magic")) {
-			
-		}
-		
-		if(args[1].equalsIgnoreCase("heal")) {
-			
-		}
-		
-		if(args[1].equalsIgnoreCase("item")) {
-			
-		}
-		
-		if(args[1].equalsIgnoreCase("run")) {
-			
-		}
+			if(args[1].equalsIgnoreCase("change")) {
+				//cahnge class
+			}
+			if(args[1].equalsIgnoreCase("info")) {
+				//class info
+			}
 	}
-
-}

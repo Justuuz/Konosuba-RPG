@@ -10,7 +10,7 @@ public class Example extends Command {
 
 	//Replace each formal parameter
 	protected Example() {
-		super(embedColor, prefix, name, description, requiredPermission, requiredID);
+		super(konosuba.COLOR, konosuba.PREFIX, name, description, requiredPermission, requiredID);
 		// TODO Auto-generated constructor stub
 	}
 
