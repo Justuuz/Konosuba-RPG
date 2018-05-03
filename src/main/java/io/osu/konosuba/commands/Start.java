@@ -17,6 +17,7 @@ public class Start extends Command {
 
 	@Override
 	protected void run(MessageReceivedEvent event, String[] args) {
+		if(!Konosuba.CLIENT_DATA_MANAGER.hasData(event.getChannel().getIdLong())) {
 		ClientData player = new ClientData(event.getChannel().getIdLong());
 		if(!player.getStartSatus()) {
 			if(args.length == 1) {
@@ -114,6 +115,7 @@ public class Start extends Command {
 
 
 
+	}
 	}
 
 }
