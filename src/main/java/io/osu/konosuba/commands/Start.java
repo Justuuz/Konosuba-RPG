@@ -48,6 +48,8 @@ public class Start extends Command {
 							"Warrior\r\n" + 
 							"Rogue\r\n" + 
 							"Merchant",true);
+
+					send(event.getGuild(), event.getChannel(), "embeded means getStartStatus = true" ,player.getStartStatus());
 					Konosuba.CLIENT_DATA_MANAGER.trySave();
 					return;
 				}
