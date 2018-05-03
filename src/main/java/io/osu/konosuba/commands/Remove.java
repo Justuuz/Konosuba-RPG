@@ -50,31 +50,103 @@ public class Remove extends Command {
 		
 		if(args[1].equalsIgnoreCase("chest")) {
 			
+			if(!player.getChest().equalsIgnoreCase("none")) {
+				String message = "No item to remove";
+
+				send(event.getGuild(), event.getChannel(), message, true);
+				
+			}
+			else {
+				player.setChest("None");
+			}
+			
 		}
 		
 		if(args[1].equalsIgnoreCase("leggings")) {
+			
+			if(!player.getLeggings().equalsIgnoreCase("none")) {
+				String message = "No item to remove";
+
+				send(event.getGuild(), event.getChannel(), message, true);
+				
+			}
+			else {
+				player.setLeggings("None");
+			}
 			
 		}
 		
 		if(args[1].equalsIgnoreCase("onhand")) {
 			
+			if(!player.getOnHand().equalsIgnoreCase("none")) {
+				String message = "No item to remove";
+
+				send(event.getGuild(), event.getChannel(), message, true);
+				
+			}
+			else {
+				player.setOnHand("None");
+			}
+			
 		}
 		
 		if(args[1].equalsIgnoreCase("offhand")) {
+			
+			if(!player.getOffHand().equalsIgnoreCase("none")) {
+				String message = "No item to remove";
+
+				send(event.getGuild(), event.getChannel(), message, true);
+				
+			}
+			else {
+				player.setOffHand("None");
+			}
 			
 		}
 		
 		if(args[1].equalsIgnoreCase("cape")) {
 			
+			if(!player.getCape().equalsIgnoreCase("none")) {
+				String message = "No item to remove";
+
+				send(event.getGuild(), event.getChannel(), message, true);
+				
+			}
+			else {
+				player.setCape("None");
+			}
+			
 		}
 		
 		if(args[1].equalsIgnoreCase("necklace")) {
+			
+			if(!player.getNecklace().equalsIgnoreCase("none")) {
+				String message = "No item to remove";
+
+				send(event.getGuild(), event.getChannel(), message, true);
+				
+			}
+			else {
+				player.setNecklace("None");
+			}
 			
 		}
 		
 		if(args[1].equalsIgnoreCase("ring")) {
 			
+			if(!player.getRing().equalsIgnoreCase("none")) {
+				String message = "No item to remove";
+
+				send(event.getGuild(), event.getChannel(), message, true);
+				
+			}
+			else {
+				player.setRing("None");
+			}
+			
 		}
+		//update JSON
+		Konosuba.CLIENT_DATA_MANAGER.trySave();
 		
 	}
 }

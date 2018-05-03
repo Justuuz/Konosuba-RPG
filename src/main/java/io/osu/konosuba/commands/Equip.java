@@ -180,5 +180,8 @@ public class Equip extends Command {
 			
 		}
 		
+		//update client data
+		Konosuba.CLIENT_DATA_MANAGER.trySave();
+		
 	}
 }
