@@ -17,44 +17,95 @@ public class Start extends Command {
 
 	@Override
 	protected void run(MessageReceivedEvent event, String[] args) {
-		
-		if(args.length == 1) {
-			if(Konosuba.CLIENT_DATA_MANAGER.hasData(event.getChannel().getIdLong())) {
-				send(event.getGuild(), event.getChannel(), "You already have started!", true);
+		if(!Konosuba.CLIENT_DATA_MANAGER.hasData(event.getChannel().getIdLong())) {
+			if(args.length == 1) {
+				if(Konosuba.CLIENT_DATA_MANAGER.hasData(event.getChannel().getIdLong())) {
+					send(event.getGuild(), event.getChannel(), "You already have started!", true);
+					return;
+				}else {
+					ClientData player = new ClientData(event.getChannel().getIdLong());
+					player.setBoots("None");
+					player.setCape("None");
+					player.setChest("None");
+					player.setHelmet("None");
+					player.setLeggings("None");
+					player.setNecklace("None");
+					player.setOffHand("None");
+					player.setRing("None");
+					player.setBalance(0);
+					player.setOnHand("None");
+					String name = (event.getMember() != null ? event.getMember().getEffectiveName() : event.getAuthor().getName());
+					send(event.getGuild(), event.getChannel(), "Welcome " + name +"! Today is the day you start your adventure! Before we can start, I must ask"
+							+ "traveller, what class are? Do !start choose Class Name to begin!",false);
+					
+					send(event.getGuild(), event.getChannel(), "||Classes||\nwizard\r\n" + 
+							"arch wizard (not crimson demon lol rip)\r\n" + 
+							"crusader \r\n" + 
+							"adventurer\r\n" + 
+							"Cleric\r\n" + 
+							"Mage\r\n" + 
+							"Thief\r\n" + 
+							"Priest\r\n" + 
+							"Warrior\r\n" + 
+							"Rogue\r\n" + 
+							"Merchant",true);
+					return;
+				}
+			}
+		}
+		if(!Konosuba.CLIENT_DATA_MANAGER.hasData(event.getChannel().getIdLong())) {
+			if(args[1].equalsIgnoreCase("classes")) {
+				send(event.getGuild(), event.getChannel(), "||Classes||\nWizard\r\n" + 
+						"Arch_wizard\r\n" + 
+						"Crusader r\n" + 
+						"Adventurer\r\n" + 
+						"Cleric\r\n" + 
+						"Mage\r\n" + 
+						"Thief\r\n" + 
+						"Priest\r\n" + 
+						"Warrior\r\n" + 
+						"Rogue\r\n" + 
+						"Merchant",true);
 				return;
-			}else {
+				
+			}
+			
+			if(args[1].equalsIgnoreCase("choose")) {
 				ClientData player = new ClientData(event.getChannel().getIdLong());
-				player.setBoots("None");
-				player.setCape("None");
-				player.setChest("None");
-				player.setHelmet("None");
-				player.setLeggings("None");
-				player.setNecklace("None");
-				player.setOffHand("None");
-				player.setRing("None");
-				player.setBalance(0);
-				player.setOnHand("None");
-				String name = (event.getMember() != null ? event.getMember().getEffectiveName() : event.getAuthor().getName());
-				send(event.getGuild(), event.getChannel(), "Welcome " + name +"! Today is the day you start your adventure! Before we can start, I must ask"
-						+ "traveller, what class are?",false);
-				return;
+				if(args[2].equalsIgnoreCase("wizard")) {
+					send(event.getGuild(), event.getChannel(), "You choose to be a" + args[2]+ "! Good choice!You are now set to go on your first adventure!", true);
+					player.setClassType("wizard");
+				}else if(args[2].equalsIgnoreCase("arch_wizard")) {
+					send(event.getGuild(), event.getChannel(), "You choose to be a" + args[2]+ "! Good choice!You are now set to go on your first adventure!", true);
+					player.setClassType("arch_wizard");
+				}else if(args[2].equalsIgnoreCase("crusader")) {
+					send(event.getGuild(), event.getChannel(), "You choose to be a" + args[2]+ "! Good choice!You are now set to go on your first adventure!", true);
+					player.setClassType("crusader");
+				}else if(args[2].equalsIgnoreCase("adventurer")) {
+					send(event.getGuild(), event.getChannel(), "You choose to be a" + args[2]+ "! Good choice!You are now set to go on your first adventure!", true);
+					player.setClassType("adventurer");
+				}else if(args[2].equalsIgnoreCase("cleric")) {
+					send(event.getGuild(), event.getChannel(), "You choose to be a" + args[2]+ "! Good choice!You are now set to go on your first adventure!", true);
+					player.setClassType("cleric");
+				}else if(args[2].equalsIgnoreCase("thief")) {
+					send(event.getGuild(), event.getChannel(), "You choose to be a" + args[2]+ "! Good choice!You are now set to go on your first adventure!", true);
+					player.setClassType("thief");
+				}else if(args[2].equalsIgnoreCase("priest")) {
+					send(event.getGuild(), event.getChannel(), "You choose to be a" + args[2]+ "! Good choice!You are now set to go on your first adventure!", true);
+					player.setClassType("priest");
+				}else if(args[2].equalsIgnoreCase("warrior")) {
+					send(event.getGuild(), event.getChannel(), "You choose to be a" + args[2]+ "! Good choice!You are now set to go on your first adventure!", true);
+					player.setClassType("warrior");
+				}else if(args[2].equalsIgnoreCase("rogue")) {
+					send(event.getGuild(), event.getChannel(), "You choose to be a" + args[2]+ "! Good choice!You are now set to go on your first adventure!", true);
+					player.setClassType("rogue");
+				}else if(args[2].equalsIgnoreCase("merchant")) {
+					send(event.getGuild(), event.getChannel(), "You choose to be a" + args[2]+ "! Good choice!You are now set to go on your first adventure!", true);
+					player.setClassType("merchant");
+				}
 			}
 		}
 		
-		if(args[1].equalsIgnoreCase("classes")) {
-			send(event.getGuild(), event.getChannel(), "||Classes||\nwizard\r\n" + 
-					"arch wizard (not crimson demon lol rip)\r\n" + 
-					"crusader \r\n" + 
-					"adventurer\r\n" + 
-					"Cleric\r\n" + 
-					"Mage\r\n" + 
-					"Thief\r\n" + 
-					"Priest\r\n" + 
-					"Warrior\r\n" + 
-					"Rogue\r\n" + 
-					"Merchant",true);
-			
-		}
 		
 		
 	}
