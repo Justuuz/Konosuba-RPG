@@ -19,10 +19,6 @@ public class Start extends Command {
 	protected void run(MessageReceivedEvent event, String[] args) {
 		if(!Konosuba.CLIENT_DATA_MANAGER.hasData(event.getChannel().getIdLong())) {
 			if(args.length == 1) {
-				if(Konosuba.CLIENT_DATA_MANAGER.hasData(event.getChannel().getIdLong())) {
-					send(event.getGuild(), event.getChannel(), "You already have started!", true);
-					return;
-				}else {
 					ClientData player = new ClientData(event.getChannel().getIdLong());
 					player.setBoots("None");
 					player.setCape("None");
@@ -36,7 +32,7 @@ public class Start extends Command {
 					player.setOnHand("None");
 					String name = (event.getMember() != null ? event.getMember().getEffectiveName() : event.getAuthor().getName());
 					send(event.getGuild(), event.getChannel(), "Welcome " + name +"! Today is the day you start your adventure! Before we can start, I must ask"
-							+ "traveller, what class are? Do !start choose Class Name to begin!",false);
+							+ "traveller, what class are? Do !start choose Class Name to begin!",true);
 					
 					send(event.getGuild(), event.getChannel(), "||Classes||\nwizard\r\n" + 
 							"arch wizard (not crimson demon lol rip)\r\n" + 
@@ -52,9 +48,12 @@ public class Start extends Command {
 					Konosuba.CLIENT_DATA_MANAGER.trySave();
 					return;
 				}
-			}
+		}else {
+			send(event.getGuild(), event.getChannel(), "You already have started!", true);
+			return;
+			
 		}
-		if(!Konosuba.CLIENT_DATA_MANAGER.hasData(event.getChannel().getIdLong())) {
+		if(Konosuba.CLIENT_DATA_MANAGER.hasData(event.getChannel().getIdLong())) {
 			if(args[1].equalsIgnoreCase("classes")) {
 				send(event.getGuild(), event.getChannel(), "||Classes||\nWizard\r\n" + 
 						"Arch_wizard\r\n" + 
@@ -108,6 +107,9 @@ public class Start extends Command {
 				Konosuba.CLIENT_DATA_MANAGER.trySave();
 			}
 			
+		}else {
+			send(event.getGuild(), event.getChannel(), "You haven't started yet!", true);
+			return;
 		}
 		
 		
