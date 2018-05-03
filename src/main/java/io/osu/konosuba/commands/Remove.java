@@ -110,7 +110,7 @@ public class Remove extends Command {
 					String message = "No item to remove";
 	
 					send(event.getGuild(), event.getChannel(), message, true);
-					
+					 
 				}
 				else {
 					player.setCape("None");

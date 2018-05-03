@@ -246,7 +246,7 @@ public class Equip extends Command {
 				else {
 					
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
-					
+					 
 					if(player.getInventory().get(8).contains(item)) {
 						
 						player.setRing(item);

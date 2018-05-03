@@ -89,7 +89,7 @@ public class ClientData {
 	public void removeInventory(String item, int type) {
 		ArrayList<String> subInv = this.inventory.remove(type);
 		subInv.remove(item);	
-		this.inventory.add(type, subInv);
+		this.inventory.add(type, subInv); 
 
 	}
 	
