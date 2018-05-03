@@ -14,7 +14,7 @@ import net.dv8tion.jda.bot.sharding.ShardManager;
 
 public class Konosuba  {
 	
-	static SimpleReader key = new SimpleReader1L((System.getProperty("user.home") + "/Desktop/Kobosuba/key.txt"));
+	static SimpleReader key = new SimpleReader1L((System.getProperty("user.home") + "/Desktop/Konosuba/key.txt"));
 	private static final String KOBOSUBA_TOKEN = key.nextLine();
 	
 	// This is now the default color for commands
