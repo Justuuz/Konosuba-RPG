@@ -10,7 +10,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 public class Start extends Command {
 
-	protected Start() {
+	public Start() {
 		super(Konosuba.COLOR, Konosuba.PREFIX, "start", "the journey begins", null, 0);
 		// TODO Auto-generated constructor stub
 	}

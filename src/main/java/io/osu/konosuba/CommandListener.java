@@ -12,7 +12,10 @@ public class CommandListener extends ListenerAdapter {
 	private final Command[] commands = {
 		new Example(),
 		new Battle(),
-		new Shutdown()
+		new Shutdown(),
+		new Start(),
+		new Equip()
+		
 	};
 
 	CommandListener() throws IOException {
