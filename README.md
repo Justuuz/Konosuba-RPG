@@ -1,7 +1,7 @@
 
 ### Konosuba Bot
 
-# What is this Konosuba Bot#
+# What is this Konosuba Bot
 
 Konosuba is an upcoming discord rpg bot that is based off the anime "Konosuba"
 
