@@ -1,13 +1,12 @@
 package io.osu.konosuba;
 
 import java.awt.Color;
+
 import java.io.File;
 import java.io.IOException;
 
 import javax.security.auth.login.LoginException;
-
-
-
+import io.osu.konosuba.data.*;
 import components.simplereader.SimpleReader;
 import components.simplereader.SimpleReader1L;
 import net.dv8tion.jda.bot.sharding.DefaultShardManagerBuilder;
@@ -23,6 +22,10 @@ public class Konosuba  {
 
 		// This is now the default prefix for commands
 		public static final String PREFIX = "*";
+		
+		//this is for pulling information
+		public static final ClientDataManager CLIENT_DATA_MANAGER = new ClientDataManager(new File(System.getProperty("user.home") + "/git\\KonosubaBot\\Data\\User.JSON"));
+
 	
 	
 	public static void main(String[] args) throws LoginException, IOException {
@@ -34,6 +37,7 @@ public class Konosuba  {
 				.setBulkDeleteSplittingEnabled(false)
 				
 				.build();
+		Konosuba.CLIENT_DATA_MANAGER.load();
 		key.close();
 		
 	}
