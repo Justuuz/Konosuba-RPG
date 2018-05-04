@@ -1,15 +1,1 @@
-[{
-	"magic": 0,
-	"clientId": 0,
-	"luck": 0,
-	"strength": 0,
-	"durability": 0,
-	"startStatus": false,
-	"classStatus": false,
-	"physicalDefense": 0,
-	"dexterity": 0,
-	"hitpoints": 0,
-	"battleStatus": false,
-	"balance": 0,
-	"magicalDefense": 0
-}]
+[]
