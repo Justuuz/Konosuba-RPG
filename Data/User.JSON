@@ -76,7 +76,10 @@
 		"inventory": [
 			[
 				"None",
-				"testHelm"
+				"testHelm",
+				"crown",
+				"pirate_hat",
+				"santa_hat"
 			],
 			["None"],
 			["None"],

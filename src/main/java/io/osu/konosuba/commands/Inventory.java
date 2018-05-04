@@ -60,7 +60,7 @@ public class Inventory extends Command {
 					items = items + item + "\n";
 				}
 				
-					send(event.getGuild(), event.getChannel(), "``` " + items + "'''", true);
+					send(event.getGuild(), event.getChannel(), "``` " + items + "```", true);
 				
 
 				
@@ -75,7 +75,7 @@ public class Inventory extends Command {
 					items = items + item + "\n";
 				}
 				
-					send(event.getGuild(), event.getChannel(), "``` " + items + "'''", true);
+					send(event.getGuild(), event.getChannel(), "``` " + items + "```", true);
 				
 
 				
@@ -89,7 +89,7 @@ public class Inventory extends Command {
 					items = items + item + "\n";
 				}
 				
-					send(event.getGuild(), event.getChannel(), "``` " + items + "'''", true);
+					send(event.getGuild(), event.getChannel(), "``` " + items + "```", true);
 
 				
 			}
@@ -102,7 +102,7 @@ public class Inventory extends Command {
 					items = items + item + "\n";
 				}
 				
-					send(event.getGuild(), event.getChannel(), "``` " + items + "'''", true);
+					send(event.getGuild(), event.getChannel(), "``` " + items + "```", true);
 				
 
 				
@@ -116,7 +116,7 @@ public class Inventory extends Command {
 					items = items + item + "\n";
 				}
 				
-					send(event.getGuild(), event.getChannel(), "``` " + items + "'''", true);
+					send(event.getGuild(), event.getChannel(), "``` " + items + "```", true);
 				
 
 				
@@ -130,7 +130,7 @@ public class Inventory extends Command {
 					items = items + item + "\n";
 				}
 				
-					send(event.getGuild(), event.getChannel(), "``` " + items + "'''", true);
+					send(event.getGuild(), event.getChannel(), "``` " + items + "```", true);
 				
 
 			}
@@ -143,7 +143,7 @@ public class Inventory extends Command {
 					items = items + item + "\n";
 				}
 				
-					send(event.getGuild(), event.getChannel(), "``` " + items + "'''", true);
+					send(event.getGuild(), event.getChannel(), "``` " + items + "```", true);
 				
 
 				
@@ -156,7 +156,7 @@ public class Inventory extends Command {
 					items = items + item + "\n";
 				}
 				
-					send(event.getGuild(), event.getChannel(), "``` " + items + "'''", true);
+					send(event.getGuild(), event.getChannel(), "``` " + items + "```", true);
 				
 
 				
@@ -169,7 +169,7 @@ public class Inventory extends Command {
 					items = items + item + "\n";
 				}
 				
-					send(event.getGuild(), event.getChannel(), "``` " + items + "'''", true);
+					send(event.getGuild(), event.getChannel(), "``` " + items + "```", true);
 				
 
 				
