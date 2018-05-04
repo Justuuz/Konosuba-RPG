@@ -13,7 +13,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 public class Inventory extends Command {
 
-	protected Inventory() {
+	public Inventory() {
 		super(Konosuba.COLOR, Konosuba.PREFIX, "inventory", "commands that deal with inventory", null, 0);
 		// TODO Auto-generated constructor stub
 	}
@@ -193,6 +193,9 @@ public class Inventory extends Command {
 			//update JSON
 			Konosuba.CLIENT_DATA_MANAGER.trySave();
 			
+		}else {
+			send(event.getGuild(), event.getChannel(), "You haven't started yet!", true);
+			return;
 		}
 		
 		

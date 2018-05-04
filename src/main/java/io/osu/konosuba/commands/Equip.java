@@ -286,6 +286,9 @@ public class Equip extends Command {
 			//update client data
 			Konosuba.CLIENT_DATA_MANAGER.trySave();
 			
+		}else {
+			send(event.getGuild(), event.getChannel(), "You haven't started yet!", true);
+			return;
 		}
 	}
 }

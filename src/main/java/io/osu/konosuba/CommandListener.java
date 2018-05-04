@@ -14,7 +14,9 @@ public class CommandListener extends ListenerAdapter {
 		new Battle(),
 		new Shutdown(),
 		new Start(),
-		new Equip()
+		new Equip(),
+		new Remove(),
+		new Inventory()
 		
 	};
 
