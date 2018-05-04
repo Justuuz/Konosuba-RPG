@@ -56,7 +56,7 @@ public class Inventory extends Command {
 				ArrayList<String> cheInv = inv.get(1);
 				String items = "";
 				
-				for (String item: helInv) {
+				for (String item: cheInv) {
 					items = items + item + "\n";
 				}
 				
@@ -71,7 +71,7 @@ public class Inventory extends Command {
 				ArrayList<String> legInv = inv.get(2);
 				String items = "";
 				
-				for (String item: helInv) {
+				for (String item: legInv) {
 					items = items + item + "\n";
 				}
 				
@@ -85,7 +85,7 @@ public class Inventory extends Command {
 				ArrayList<String> onInv = inv.get(3);
 				String items = "";
 				
-				for (String item: helInv) {
+				for (String item: onInv) {
 					items = items + item + "\n";
 				}
 				
@@ -98,7 +98,7 @@ public class Inventory extends Command {
 				ArrayList<String> offInv = inv.get(4);
 				String items = "";
 				
-				for (String item: helInv) {
+				for (String item: offInv) {
 					items = items + item + "\n";
 				}
 				
@@ -112,7 +112,7 @@ public class Inventory extends Command {
 				ArrayList<String> capInv = inv.get(5);
 				String items = "";
 				
-				for (String item: helInv) {
+				for (String item: capInv) {
 					items = items + item + "\n";
 				}
 				
@@ -126,7 +126,7 @@ public class Inventory extends Command {
 				ArrayList<String> necInv = inv.get(6);
 				String items = "";
 				
-				for (String item: helInv) {
+				for (String item: necInv) {
 					items = items + item + "\n";
 				}
 				
@@ -139,7 +139,7 @@ public class Inventory extends Command {
 				ArrayList<String> rinInv = inv.get(7);
 				String items = "";
 				
-				for (String item: helInv) {
+				for (String item: rinInv) {
 					items = items + item + "\n";
 				}
 				
@@ -152,7 +152,7 @@ public class Inventory extends Command {
 				ArrayList<String> booInv = inv.get(8);
 				String items = "";
 				
-				for (String item: helInv) {
+				for (String item: booInv) {
 					items = items + item + "\n";
 				}
 				
@@ -165,7 +165,7 @@ public class Inventory extends Command {
 				ArrayList<String> weaInv = inv.get(9);
 				String items = "";
 				
-				for (String item: helInv) {
+				for (String item: weaInv) {
 					items = items + item + "\n";
 				}
 				
