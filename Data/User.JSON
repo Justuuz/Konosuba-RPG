@@ -32,22 +32,43 @@
 		"boots": "None",
 		"cape": "None",
 		"leggings": "None",
-		"classType": "rogue",
+		"classType": "wizard",
 		"offHand": "None"
 	},
 	{
 		"magic": 0,
-		"clientId": 441036744956182529,
+		"chest": "None",
+		"clientId": 168545253991645185,
 		"luck": 0,
 		"strength": 0,
+		"ring": "None",
 		"durability": 0,
-		"startStatus": false,
+		"startStatus": true,
+		"necklace": "None",
 		"classStatus": false,
 		"physicalDefense": 0,
+		"inventory": [
+			["None"],
+			["None"],
+			["None"],
+			["None"],
+			["None"],
+			["None"],
+			["None"],
+			["None"],
+			["None"]
+		],
 		"dexterity": 0,
 		"hitpoints": 0,
 		"battleStatus": false,
 		"balance": 0,
-		"magicalDefense": 0
+		"onHand": "None",
+		"magicalDefense": 0,
+		"helmet": "None",
+		"boots": "None",
+		"cape": "None",
+		"leggings": "None",
+		"classType": "None",
+		"offHand": "None"
 	}
 ]
