@@ -91,7 +91,7 @@ public class Start extends Command {
 			}
 
 		}
-
+		
 		if(player.getStartStatus()) {
 			if(args[1].equalsIgnoreCase("classes")) {
 				send(event.getGuild(), event.getChannel(), "||Classes||\nWizard\r\n" + 

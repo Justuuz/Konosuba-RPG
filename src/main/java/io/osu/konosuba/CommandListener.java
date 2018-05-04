@@ -16,8 +16,7 @@ public class CommandListener extends ListenerAdapter {
 		new Start(),
 		new Equip(),
 		new Remove(),
-		new Inventory()
-		
+		new Inventory(),
 	};
 
 	CommandListener() throws IOException {
