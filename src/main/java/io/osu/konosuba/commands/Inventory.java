@@ -44,7 +44,7 @@ public class Inventory extends Command {
 				
 				ArrayList<String> helInv = inv.get(0);
 				String items = "Helmets:\n";
-				
+				 
 				for (String item: helInv) {
 					items = items + item + "\n";
 				}

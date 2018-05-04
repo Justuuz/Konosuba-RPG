@@ -37,7 +37,7 @@ public class Buy_admin extends Command {
 		
 		if(args[1].equalsIgnoreCase("admin_hat2")) {
 			player.addInventory("admin_hat2", 0);
-			
+			 
 		}
 		
 		if(args[1].equalsIgnoreCase("admin_hat3")) {

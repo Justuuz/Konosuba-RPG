@@ -51,7 +51,7 @@ public class Start extends Command {
 				player.getInventory().add(new ArrayList<String>());
 				player.getInventory().get(0).add("None");
 				player.getInventory().add(new ArrayList<String>());
-				player.getInventory().get(1).add("None");
+				player.getInventory().get(1).add("None"); 
 				player.getInventory().add(new ArrayList<String>());
 				player.getInventory().get(2).add("None");
 				player.getInventory().add(new ArrayList<String>());
