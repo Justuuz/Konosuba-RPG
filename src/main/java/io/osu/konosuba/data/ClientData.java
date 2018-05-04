@@ -79,6 +79,10 @@ public class ClientData {
 		 * notice that inventory returns a ArrayList<ArrayList<String>>
 		 */
 	}
+	
+	public void setInventory(ArrayList<ArrayList<String>> inventory) {
+		this.inventory = inventory;
+	}
 
 	public void addInventory(String item, int type) {
 		ArrayList<String> subInv = this.inventory.remove(type);
