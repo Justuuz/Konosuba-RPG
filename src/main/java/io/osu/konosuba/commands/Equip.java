@@ -33,7 +33,7 @@ public class Equip extends Command {
 		 * helmet, chest, leggings, onHand, offHand, cape, necklace, ring, boots;
 		 */
 		if(Konosuba.CLIENT_DATA_MANAGER.hasData(event.getChannel().getIdLong())) {
-		ClientData player = new ClientData(event.getChannel().getIdLong());
+		ClientData player = Konosuba.CLIENT_DATA_MANAGER.getData(event.getChannel().getIdLong());
 		
 		if(args[1].equalsIgnoreCase("helmet")) {
 				

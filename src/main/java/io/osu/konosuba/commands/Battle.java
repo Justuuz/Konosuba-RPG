@@ -21,7 +21,7 @@ public class Battle extends Command {
 	public void run(MessageReceivedEvent event, String[] args) {
 		
 		//Getting the players information from here.
-		ClientData user = new ClientData(event.getChannel().getIdLong());
+		ClientData user = Konosuba.CLIENT_DATA_MANAGER.getData(event.getChannel().getIdLong());
 	/*
 	 * Show UI here
 	 */

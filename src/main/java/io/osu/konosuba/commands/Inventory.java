@@ -24,7 +24,7 @@ public class Inventory extends Command {
 		
 		
 		if(Konosuba.CLIENT_DATA_MANAGER.hasData(event.getChannel().getIdLong())) {
-			ClientData player = new ClientData(event.getChannel().getIdLong());
+			ClientData player = Konosuba.CLIENT_DATA_MANAGER.getData(event.getChannel().getIdLong());
 			EmbedBuilder help  = new EmbedBuilder();
 			
 			if(args[1].equalsIgnoreCase("helmet")) {
