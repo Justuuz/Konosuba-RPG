@@ -26,25 +26,22 @@ public class Buy_admin extends Command {
 	 */
 		
 		if(args[1].equalsIgnoreCase("admin_hat")) {
-			player.getInventory().get(0).add("Admin_hat");
+			player.addInventory("admin_hat", 0);
 			
 		}
 		
 		if(args[1].equalsIgnoreCase("admin_plate")) {
-			player.getInventory().get(1).add("Admin_plate");
+			player.addInventory("admin_plate", 1);
 		}
 		
-		if(args[1].equalsIgnoreCase("admin_sword")) {
-			player.getInventory().get(3).add("Admin_sword");
-		}
 		
 		if(args[1].equalsIgnoreCase("admin_hat2")) {
-			player.getInventory().get(0).add("Admin_hat2");
+			player.addInventory("admin_hat2", 0);
 			
 		}
 		
 		if(args[1].equalsIgnoreCase("admin_hat3")) {
-			player.getInventory().get(0).add("Admin_hat3");
+			player.addInventory("admin_hat3", 0);
 			
 		}
 		Konosuba.CLIENT_DATA_MANAGER.trySave();
