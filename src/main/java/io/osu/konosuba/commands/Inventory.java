@@ -53,7 +53,7 @@ public class Inventory extends Command {
 			}
 			
 			if(args[1].equalsIgnoreCase("chest")) {
-				ArrayList<String> helInv = inv.get(1);
+				ArrayList<String> cheInv = inv.get(1);
 				String items = "";
 				
 				for (String item: helInv) {
@@ -68,7 +68,7 @@ public class Inventory extends Command {
 			
 			if(args[1].equalsIgnoreCase("leggings")) {
 				
-				ArrayList<String> helInv = inv.get(2);
+				ArrayList<String> legInv = inv.get(2);
 				String items = "";
 				
 				for (String item: helInv) {
@@ -82,7 +82,7 @@ public class Inventory extends Command {
 			}
 			
 			if(args[1].equalsIgnoreCase("onhand")) {
-				ArrayList<String> helInv = inv.get(3);
+				ArrayList<String> onInv = inv.get(3);
 				String items = "";
 				
 				for (String item: helInv) {
@@ -95,7 +95,7 @@ public class Inventory extends Command {
 			}
 			
 			if(args[1].equalsIgnoreCase("offhand")) {
-				ArrayList<String> helInv = inv.get(4);
+				ArrayList<String> offInv = inv.get(4);
 				String items = "";
 				
 				for (String item: helInv) {
@@ -109,7 +109,7 @@ public class Inventory extends Command {
 			}
 			
 			if(args[1].equalsIgnoreCase("cape")) {
-				ArrayList<String> helInv = inv.get(5);
+				ArrayList<String> capInv = inv.get(5);
 				String items = "";
 				
 				for (String item: helInv) {
@@ -123,7 +123,7 @@ public class Inventory extends Command {
 			}
 			
 			if(args[1].equalsIgnoreCase("necklace")) {
-				ArrayList<String> helInv = inv.get(6);
+				ArrayList<String> necInv = inv.get(6);
 				String items = "";
 				
 				for (String item: helInv) {
@@ -136,7 +136,7 @@ public class Inventory extends Command {
 			}
 			
 			if(args[1].equalsIgnoreCase("ring")) {
-				ArrayList<String> helInv = inv.get(7);
+				ArrayList<String> rinInv = inv.get(7);
 				String items = "";
 				
 				for (String item: helInv) {
@@ -149,7 +149,7 @@ public class Inventory extends Command {
 				
 			}
 			if(args[1].equalsIgnoreCase("boots")) {
-				ArrayList<String> helInv = inv.get(8);
+				ArrayList<String> booInv = inv.get(8);
 				String items = "";
 				
 				for (String item: helInv) {
@@ -162,7 +162,7 @@ public class Inventory extends Command {
 				
 			}
 			if(args[1].equalsIgnoreCase("weapons")) {
-				ArrayList<String> helInv = inv.get(9);
+				ArrayList<String> weaInv = inv.get(9);
 				String items = "";
 				
 				for (String item: helInv) {
