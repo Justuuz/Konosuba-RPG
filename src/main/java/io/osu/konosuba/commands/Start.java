@@ -45,6 +45,10 @@ public class Start extends Command {
 					//					/*
 					//					 * add "none" to all inventory types
 					//					 */
+					
+					player.setInventory(new ArrayList<ArrayList<String>>());
+					player.getInventory().add(new ArrayList<String>());
+					player.getInventory().get(0).add("None");
 					player.getInventory().add(new ArrayList<String>());
 					player.getInventory().get(1).add("None");
 					player.getInventory().add(new ArrayList<String>());
@@ -61,8 +65,6 @@ public class Start extends Command {
 					player.getInventory().get(7).add("None");
 					player.getInventory().add(new ArrayList<String>());
 					player.getInventory().get(8).add("None");
-					player.getInventory().add(new ArrayList<String>());
-					player.getInventory().get(9).add("None");
 
 					String name = (event.getMember() != null ? event.getMember().getEffectiveName() : event.getAuthor().getName());
 					send(event.getGuild(), event.getChannel(), "Welcome " + name +"! Today is the day you start your adventure! Before we can start, I must ask "
