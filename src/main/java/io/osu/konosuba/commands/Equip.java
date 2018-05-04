@@ -238,7 +238,7 @@ public class Equip extends Command {
 			
 			if(args[1].equalsIgnoreCase("boots")) {
 				
-				if(!player.getRing().equalsIgnoreCase("none")) {
+				if(!player.getBoots().equalsIgnoreCase("none")) {
 					String message = "Please remove the current item first";
 	
 					send(event.getGuild(), event.getChannel(), message, true);
@@ -249,7 +249,30 @@ public class Equip extends Command {
 					 
 					if(player.getInventory().get(8).contains(item)) {
 						
-						player.setRing(item);
+						player.setBoots(item);
+						String message = "Equipped " + item;
+						send(event.getGuild(), event.getChannel(), message , true);
+					}
+					else {
+						send(event.getGuild(), event.getChannel(), "not a valid item" , true);
+					}
+				}
+				
+			}
+			if(args[1].equalsIgnoreCase("weapons")) {
+				
+				if(!player.getWeapon().equalsIgnoreCase("none")) {
+					String message = "Please remove the current item first";
+	
+					send(event.getGuild(), event.getChannel(), message, true);
+				}
+				else {
+					
+					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
+					 
+					if(player.getInventory().get(9).contains(item)) {
+						
+						player.setWeapon(item);
 						String message = "Equipped " + item;
 						send(event.getGuild(), event.getChannel(), message , true);
 					}

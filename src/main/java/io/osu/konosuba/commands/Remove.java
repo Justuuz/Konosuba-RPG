@@ -158,6 +158,19 @@ public class Remove extends Command {
 				}
 				
 			}
+			if(args[1].equalsIgnoreCase("weapon")) {
+				
+				if(!player.getWeapon().equalsIgnoreCase("none")) {
+					String message = "No item to remove";
+	
+					send(event.getGuild(), event.getChannel(), message, true);
+					
+				}
+				else {
+					player.setWeapon("None");
+				}
+				
+			}
 			//update JSON
 			Konosuba.CLIENT_DATA_MANAGER.trySave();
 			

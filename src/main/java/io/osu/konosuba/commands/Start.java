@@ -146,34 +146,34 @@ public class Start extends Command {
 
 			if(args[1].equalsIgnoreCase("choose")) {
 				if(args[2].equalsIgnoreCase("wizard")) {
-					send(event.getGuild(), event.getChannel(), "You choose to be a" + args[2]+ "! Good choice!You are now set to go on your first adventure!", true);
+					send(event.getGuild(), event.getChannel(), "You choose to be a" + args[2]+ "! Good choice! You are now set to go on your first adventure!", true);
 					player.setClassType("wizard");
 				}else if(args[2].equalsIgnoreCase("arch_wizard")) {
-					send(event.getGuild(), event.getChannel(), "You choose to be a" + args[2]+ "! Good choice!You are now set to go on your first adventure!", true);
+					send(event.getGuild(), event.getChannel(), "You choose to be a" + args[2]+ "! Good choice! You are now set to go on your first adventure!", true);
 					player.setClassType("arch_wizard");
 				}else if(args[2].equalsIgnoreCase("crusader")) {
-					send(event.getGuild(), event.getChannel(), "You choose to be a" + args[2]+ "! Good choice!You are now set to go on your first adventure!", true);
+					send(event.getGuild(), event.getChannel(), "You choose to be a" + args[2]+ "! Good choice! You are now set to go on your first adventure!", true);
 					player.setClassType("crusader");
 				}else if(args[2].equalsIgnoreCase("adventurer")) {
-					send(event.getGuild(), event.getChannel(), "You choose to be a" + args[2]+ "! Good choice!You are now set to go on your first adventure!", true);
+					send(event.getGuild(), event.getChannel(), "You choose to be a" + args[2]+ "! Good choice! You are now set to go on your first adventure!", true);
 					player.setClassType("adventurer");
 				}else if(args[2].equalsIgnoreCase("cleric")) {
-					send(event.getGuild(), event.getChannel(), "You choose to be a" + args[2]+ "! Good choice!You are now set to go on your first adventure!", true);
+					send(event.getGuild(), event.getChannel(), "You choose to be a" + args[2]+ "! Good choice! You are now set to go on your first adventure!", true);
 					player.setClassType("cleric");
 				}else if(args[2].equalsIgnoreCase("thief")) {
-					send(event.getGuild(), event.getChannel(), "You choose to be a" + args[2]+ "! Good choice!You are now set to go on your first adventure!", true);
+					send(event.getGuild(), event.getChannel(), "You choose to be a" + args[2]+ "! Good choice! You are now set to go on your first adventure!", true);
 					player.setClassType("thief");
 				}else if(args[2].equalsIgnoreCase("priest")) {
-					send(event.getGuild(), event.getChannel(), "You choose to be a" + args[2]+ "! Good choice!You are now set to go on your first adventure!", true);
+					send(event.getGuild(), event.getChannel(), "You choose to be a" + args[2]+ "! Good choice! You are now set to go on your first adventure!", true);
 					player.setClassType("priest");
 				}else if(args[2].equalsIgnoreCase("warrior")) {
-					send(event.getGuild(), event.getChannel(), "You choose to be a" + args[2]+ "! Good choice!You are now set to go on your first adventure!", true);
+					send(event.getGuild(), event.getChannel(), "You choose to be a" + args[2]+ "! Good choice! You are now set to go on your first adventure!", true);
 					player.setClassType("warrior");
 				}else if(args[2].equalsIgnoreCase("rogue")) {
-					send(event.getGuild(), event.getChannel(), "You choose to be a" + args[2]+ "! Good choice!You are now set to go on your first adventure!", true);
+					send(event.getGuild(), event.getChannel(), "You choose to be a" + args[2]+ "! Good choice! You are now set to go on your first adventure!", true);
 					player.setClassType("rogue");
 				}else if(args[2].equalsIgnoreCase("merchant")) {
-					send(event.getGuild(), event.getChannel(), "You choose to be a" + args[2]+ "! Good choice!You are now set to go on your first adventure!", true);
+					send(event.getGuild(), event.getChannel(), "You choose to be a" + args[2]+ "! Good choice! You are now set to go on your first adventure!", true);
 					player.setClassType("merchant");
 				}
 

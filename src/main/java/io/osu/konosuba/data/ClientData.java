@@ -34,7 +34,7 @@ public class ClientData {
 
 	// RPG stuff
 
-	private String helmet, chest, leggings, boots, classType, onHand, offHand, cape, necklace, ring;
+	private String helmet, chest, leggings, boots, classType, onHand, offHand, cape, necklace, ring, weapon;
 	private ArrayList<ArrayList<String>> inventory;
 	private boolean battleStatus, startStatus, classStatus;
 	private int strength, physicalDefense, magicalDefense, dexterity, magic, luck, hitpoints, durability;
@@ -148,6 +148,14 @@ public class ClientData {
 	
 	public void setRing(String ring) {
 		this.ring = ring;
+	}
+	
+	public String getWeapon() {
+		return weapon;
+	}
+	
+	public void setWeapon(String weapon) {
+		this.weapon = weapon;
 	}
 	
 	public boolean getBattleStatus() {
