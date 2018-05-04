@@ -37,7 +37,7 @@ public class Remove extends Command {
 			
 			if(args[1].equalsIgnoreCase("helmet")) {
 				
-				if(player.getHelmet().equalsIgnoreCase("None")) {
+				if(player.getHelmet().equalsIgnoreCase("none")) {
 					String message = "No item to remove";
 	
 					send(event.getGuild(), event.getChannel(), message, true);

@@ -1,5 +1,7 @@
 package io.osu.konosuba.commands;
 
+import java.util.ArrayList;
+
 import io.magiccraftmaster.util.StringUtils;
 import io.osu.konosuba.Command;
 import io.osu.konosuba.Konosuba;
@@ -34,6 +36,25 @@ public class Equip extends Command {
 		 */
 		if(Konosuba.CLIENT_DATA_MANAGER.hasData(event.getChannel().getIdLong())) {
 		ClientData player = Konosuba.CLIENT_DATA_MANAGER.getData(event.getChannel().getIdLong());
+		player.setInventory(new ArrayList<ArrayList<String>>());
+		player.getInventory().add(new ArrayList<String>());
+		player.getInventory().get(0).add("None");
+		player.getInventory().add(new ArrayList<String>());
+		player.getInventory().get(1).add("None");
+		player.getInventory().add(new ArrayList<String>());
+		player.getInventory().get(2).add("None");
+		player.getInventory().add(new ArrayList<String>());
+		player.getInventory().get(3).add("None");
+		player.getInventory().add(new ArrayList<String>());
+		player.getInventory().get(4).add("None");
+		player.getInventory().add(new ArrayList<String>());
+		player.getInventory().get(5).add("None");
+		player.getInventory().add(new ArrayList<String>());
+		player.getInventory().get(6).add("None");
+		player.getInventory().add(new ArrayList<String>());
+		player.getInventory().get(7).add("None");
+		player.getInventory().add(new ArrayList<String>());
+		player.getInventory().get(8).add("None");
 		
 		if(args[1].equalsIgnoreCase("helmet")) {
 				
