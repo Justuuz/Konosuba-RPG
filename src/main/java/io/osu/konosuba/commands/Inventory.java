@@ -27,24 +27,7 @@ public class Inventory extends Command {
 			ClientData player = Konosuba.CLIENT_DATA_MANAGER.getData(event.getChannel().getIdLong());
 			
 			
-			player.setInventory(new ArrayList<ArrayList<String>>());
-
-			player.getInventory().add(new ArrayList<String>());
-			player.getInventory().get(1).add("None");
-			player.getInventory().add(new ArrayList<String>());
-			player.getInventory().get(2).add("None");
-			player.getInventory().add(new ArrayList<String>());
-			player.getInventory().get(3).add("None");
-			player.getInventory().add(new ArrayList<String>());
-			player.getInventory().get(4).add("None");
-			player.getInventory().add(new ArrayList<String>());
-			player.getInventory().get(5).add("None");
-			player.getInventory().add(new ArrayList<String>());
-			player.getInventory().get(6).add("None");
-			player.getInventory().add(new ArrayList<String>());
-			player.getInventory().get(7).add("None");
-			player.getInventory().add(new ArrayList<String>());
-			player.getInventory().get(8).add("None");
+			ArrayList<ArrayList<String>> inv = player.getInventory();
 			
 			
 			
@@ -57,11 +40,9 @@ public class Inventory extends Command {
 				 * get all the current helmet items into the array
 				 */
 				
-				player.getInventory().add(new ArrayList<String>());
-				player.getInventory().get(0).add("None");
+
 				
-				
-				ArrayList<String> helInv = player.getInventory().get(0);
+				ArrayList<String> helInv = inv.get(0);
 				String items = "Helmets:\n";
 				
 				for (String item: helInv) {
