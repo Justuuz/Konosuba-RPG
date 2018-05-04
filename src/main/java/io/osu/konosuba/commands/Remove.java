@@ -32,12 +32,12 @@ public class Remove extends Command {
 		 */
 		
 		ClientData player = Konosuba.CLIENT_DATA_MANAGER.getData(event.getChannel().getIdLong());
-		if(player.getStartStatus()) {
+		if(!player.getStartStatus()) {
 			EmbedBuilder help  = new EmbedBuilder();
 			
 			if(args[1].equalsIgnoreCase("helmet")) {
 				
-				if(!player.getHelmet().equalsIgnoreCase("none")) {
+				if(player.getHelmet().equalsIgnoreCase("None")) {
 					String message = "No item to remove";
 	
 					send(event.getGuild(), event.getChannel(), message, true);
@@ -51,7 +51,7 @@ public class Remove extends Command {
 			
 			if(args[1].equalsIgnoreCase("chest")) {
 				
-				if(!player.getChest().equalsIgnoreCase("none")) {
+				if(player.getChest().equalsIgnoreCase("none")) {
 					String message = "No item to remove";
 	
 					send(event.getGuild(), event.getChannel(), message, true);
@@ -65,7 +65,7 @@ public class Remove extends Command {
 			
 			if(args[1].equalsIgnoreCase("leggings")) {
 				
-				if(!player.getLeggings().equalsIgnoreCase("none")) {
+				if(player.getLeggings().equalsIgnoreCase("none")) {
 					String message = "No item to remove";
 	
 					send(event.getGuild(), event.getChannel(), message, true);
@@ -79,7 +79,7 @@ public class Remove extends Command {
 			
 			if(args[1].equalsIgnoreCase("onhand")) {
 				
-				if(!player.getOnHand().equalsIgnoreCase("none")) {
+				if(player.getOnHand().equalsIgnoreCase("none")) {
 					String message = "No item to remove";
 	
 					send(event.getGuild(), event.getChannel(), message, true);
@@ -93,7 +93,7 @@ public class Remove extends Command {
 			
 			if(args[1].equalsIgnoreCase("offhand")) {
 				
-				if(!player.getOffHand().equalsIgnoreCase("none")) {
+				if(player.getOffHand().equalsIgnoreCase("none")) {
 					String message = "No item to remove";
 	
 					send(event.getGuild(), event.getChannel(), message, true);
@@ -107,7 +107,7 @@ public class Remove extends Command {
 			
 			if(args[1].equalsIgnoreCase("cape")) {
 				
-				if(!player.getCape().equalsIgnoreCase("none")) {
+				if(player.getCape().equalsIgnoreCase("none")) {
 					String message = "No item to remove";
 	
 					send(event.getGuild(), event.getChannel(), message, true);
@@ -121,7 +121,7 @@ public class Remove extends Command {
 			
 			if(args[1].equalsIgnoreCase("necklace")) {
 				
-				if(!player.getNecklace().equalsIgnoreCase("none")) {
+				if(player.getNecklace().equalsIgnoreCase("none")) {
 					String message = "No item to remove";
 	
 					send(event.getGuild(), event.getChannel(), message, true);
@@ -135,7 +135,7 @@ public class Remove extends Command {
 			
 			if(args[1].equalsIgnoreCase("ring")) {
 				
-				if(!player.getRing().equalsIgnoreCase("none")) {
+				if(player.getRing().equalsIgnoreCase("none")) {
 					String message = "No item to remove";
 	
 					send(event.getGuild(), event.getChannel(), message, true);
@@ -148,7 +148,7 @@ public class Remove extends Command {
 			}
 			if(args[1].equalsIgnoreCase("boots")) {
 				
-				if(!player.getBoots().equalsIgnoreCase("none")) {
+				if(player.getBoots().equalsIgnoreCase("none")) {
 					String message = "No item to remove";
 	
 					send(event.getGuild(), event.getChannel(), message, true);
@@ -161,7 +161,7 @@ public class Remove extends Command {
 			}
 			if(args[1].equalsIgnoreCase("weapon")) {
 				
-				if(!player.getWeapon().equalsIgnoreCase("none")) {
+				if(player.getWeapon().equalsIgnoreCase("none")) {
 					String message = "No item to remove";
 	
 					send(event.getGuild(), event.getChannel(), message, true);
