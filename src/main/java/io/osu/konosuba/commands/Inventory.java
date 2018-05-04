@@ -25,18 +25,50 @@ public class Inventory extends Command {
 		
 		if(Konosuba.CLIENT_DATA_MANAGER.hasData(event.getChannel().getIdLong())) {
 			ClientData player = Konosuba.CLIENT_DATA_MANAGER.getData(event.getChannel().getIdLong());
+			
+			
+			player.setInventory(new ArrayList<ArrayList<String>>());
 
+			player.getInventory().add(new ArrayList<String>());
+			player.getInventory().get(1).add("None");
+			player.getInventory().add(new ArrayList<String>());
+			player.getInventory().get(2).add("None");
+			player.getInventory().add(new ArrayList<String>());
+			player.getInventory().get(3).add("None");
+			player.getInventory().add(new ArrayList<String>());
+			player.getInventory().get(4).add("None");
+			player.getInventory().add(new ArrayList<String>());
+			player.getInventory().get(5).add("None");
+			player.getInventory().add(new ArrayList<String>());
+			player.getInventory().get(6).add("None");
+			player.getInventory().add(new ArrayList<String>());
+			player.getInventory().get(7).add("None");
+			player.getInventory().add(new ArrayList<String>());
+			player.getInventory().get(8).add("None");
+			
+			
+			
+			send(event.getGuild(), event.getChannel(), player.getCape(), true);
 			EmbedBuilder help  = new EmbedBuilder();
 			
 			if(args[1].equalsIgnoreCase("helmet")) {
+				
+				/*
+				 * get all the current helmet items into the array
+				 */
+				
+				player.getInventory().add(new ArrayList<String>());
+				player.getInventory().get(0).add("None");
+				
+				
 				ArrayList<String> helInv = player.getInventory().get(0);
-				String items = "";
+				String items = "Helmets:\n";
 				
 				for (String item: helInv) {
 					items = items + item + "\n";
 				}
 				
-					send(event.getGuild(), event.getChannel(), "``` " + items + "'''", true);
+					send(event.getGuild(), event.getChannel(), "``` " + items + "```", false);
 			}
 			
 			if(args[1].equalsIgnoreCase("chest")) {
