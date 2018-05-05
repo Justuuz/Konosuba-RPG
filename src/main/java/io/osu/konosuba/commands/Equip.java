@@ -35,6 +35,8 @@ public class Equip extends Command {
 		 * helmet, chest, leggings, onHand, offHand, cape, necklace, ring, boots;
 		 */
 		ClientData player = Konosuba.CLIENT_DATA_MANAGER.getData(event.getAuthor().getIdLong());
+		
+		ArrayList<ArrayList<String>> inv = player.getInventory();
 		if(player.getStartStatus()) {
 		
 		if(args[1].equalsIgnoreCase("helmet")) {
@@ -48,7 +50,7 @@ public class Equip extends Command {
 					
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					
-					if(player.getInventory().get(0).contains(item)) {
+					if(inv.get(0).contains(item)) {
 					
 						player.setHelmet(item);
 						String message = "Equipped " + item;
@@ -72,7 +74,7 @@ public class Equip extends Command {
 					
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					
-					if(player.getInventory().get(1).contains(item)) {
+					if(inv.get(1).contains(item)) {
 							
 						player.setChest(item);
 						String message = "Equipped " + item;
@@ -97,7 +99,7 @@ public class Equip extends Command {
 					
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					
-					if(player.getInventory().get(2).contains(item)) {
+					if(inv.get(2).contains(item)) {
 					
 						player.setLeggings(item);
 						String message = "Equipped " + item;
@@ -123,7 +125,7 @@ public class Equip extends Command {
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					
 					
-					if(player.getInventory().get(3).contains(item)) {
+					if(inv.get(3).contains(item)) {
 						
 						
 					
@@ -151,7 +153,7 @@ public class Equip extends Command {
 					
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					
-					if(player.getInventory().get(4).contains(item)) {
+					if(inv.get(4).contains(item)) {
 					
 						player.setOffHand(item);
 						String message = "Equipped " + item;
@@ -176,7 +178,7 @@ public class Equip extends Command {
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					
 					
-					if(player.getInventory().get(5).contains(item)) {
+					if(inv.get(5).contains(item)) {
 						
 					
 						player.setCape(item);
@@ -201,7 +203,7 @@ public class Equip extends Command {
 					
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					
-					if(player.getInventory().get(6).contains(item)) {
+					if(inv.get(6).contains(item)) {
 						
 						player.setNecklace(item);
 						String message = "Equipped " + item;
@@ -225,7 +227,7 @@ public class Equip extends Command {
 					
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					
-					if(player.getInventory().get(7).contains(item)) {
+					if(inv.get(7).contains(item)) {
 						
 						player.setRing(item);
 						String message = "Equipped " + item;
@@ -249,7 +251,7 @@ public class Equip extends Command {
 					
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					 
-					if(player.getInventory().get(8).contains(item)) {
+					if(inv.get(8).contains(item)) {
 						
 						player.setBoots(item);
 						String message = "Equipped " + item;
@@ -272,7 +274,7 @@ public class Equip extends Command {
 					
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					 
-					if(player.getInventory().get(9).contains(item)) {
+					if(inv.get(9).contains(item)) {
 						
 						player.setWeapon(item);
 						String message = "Equipped " + item;
