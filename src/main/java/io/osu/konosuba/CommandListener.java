@@ -10,7 +10,7 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
 public class CommandListener extends ListenerAdapter {
 	
 	private final Command[] commands = {
-		new Example(),
+		new Creator(),
 		new Battle(),
 		new Shutdown(),
 		new Start(),

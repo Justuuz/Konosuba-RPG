@@ -18,7 +18,7 @@ import java.util.List;
 public class GearDataManager {
 	private final Gson gson = new Gson();
 	private final File file;
-	private final List<GearData> GearDataList = new ArrayList<>();
+	private final List<GearData> gearDataList = new ArrayList<>();
 
 	public GearDataManager(File file) {
 		this.file = file;
@@ -31,7 +31,7 @@ public class GearDataManager {
 			JSONArray array = new JSONArray(StringUtils.toString(lines.toArray(new String[lines.size()]), ""));
 			for (Object object : array) {
 				if (object instanceof JSONObject) {
-					GearDataList.add(gson.fromJson(object.toString(), GearData.class));
+					gearDataList.add(gson.fromJson(object.toString(), GearData.class));
 				}
 			}
 		} catch (IOException e) {
@@ -43,8 +43,8 @@ public class GearDataManager {
 		try {
 			PrintWriter printWriter = new PrintWriter(file);
 			JSONArray jsonArray = new JSONArray();
-			for (GearData GearData : GearDataList) {
-				jsonArray.put(new JSONObject(gson.toJson(GearData)));
+			for (GearData gearData : gearDataList) {
+				jsonArray.put(new JSONObject(gson.toJson(gearData)));
 			}
 			printWriter.print(jsonArray.toString(15).replaceAll(" {15}", "\t"));
 			printWriter.close();
@@ -62,18 +62,18 @@ public class GearDataManager {
 	}
 
 	public boolean hasData(String gear) {
-		for (GearData GearData : GearDataList) {
-			if (GearData.getGear() == gear) return true;
+		for (GearData gearData : gearDataList) {
+			if (gearData.getGear() == gear) return true;
 		}
 		return false;
 	}
 
 	public GearData getData(String gear) {
-		for (GearData GearData : GearDataList) {
-			if (GearData.getGear() == gear) return GearData;
+		for (GearData gearData : gearDataList) {
+			if (gearData.getGear() == gear) return gearData;
 		}
-		GearData GearData = new GearData(gear);
-		GearDataList.add(GearData);
-		return GearData;
+		GearData gearData = new GearData(gear);
+		gearDataList.add(gearData);
+		return gearData;
 	}
 }

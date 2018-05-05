@@ -6,7 +6,7 @@ import components.map.Map;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 public class GearData {
-	private String gear;
+	private final String gear;
 
 	public GearData(String gear) {
 		this.gear = gear;
@@ -27,6 +27,7 @@ public class GearData {
 
 	
 	private int strength, physicalDefense, magicalDefense, dexterity, magic, luck, hitpoints;
+	private String type;
 	
 	public int getStrength() {
 		return strength;
@@ -84,4 +85,11 @@ public class GearData {
 		this.luck = luck;
 	}
 	
+	public String getType() {
+		return type;
+	}
+	
+	public void setType(String type) {
+		this.type = type;
+	}
 }
