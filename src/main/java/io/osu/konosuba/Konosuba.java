@@ -25,6 +25,8 @@ public class Konosuba  {
 		
 		//this is for pulling information
 		public static final ClientDataManager CLIENT_DATA_MANAGER = new ClientDataManager(new File(System.getProperty("user.home") + "/git\\KonosubaBot\\Data\\User.JSON"));
+		public static final GearDataManager GEAR_DATA_MANAGER =  new GearDataManager(new File(System.getProperty("user.home") + "/git\\KonosubaBot\\Data\\Gears.JSON"));
+		public static final ClassDataManager CLASS_DATA_MANAGER =  new ClassDataManager(new File(System.getProperty("user.home") + "/git\\KonosubaBot\\Data\\Classes.JSON"));
 
 	
 	
@@ -38,6 +40,8 @@ public class Konosuba  {
 				
 				.build();
 		Konosuba.CLIENT_DATA_MANAGER.load();
+		Konosuba.GEAR_DATA_MANAGER.load();
+		Konosuba.CLASS_DATA_MANAGER.load();
 		key.close();
 		
 	}
