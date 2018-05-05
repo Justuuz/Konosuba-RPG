@@ -246,6 +246,7 @@ public class Inventory extends Command {
 			
 			if(args[1].equalsIgnoreCase("items")) {
 				EmbedBuilder item = new EmbedBuilder();
+				boolean noItems = false;
 				Map<String, Integer> itemList = player.getItems();
 				if(itemList.size() == 0) {
 					item.setTitle((event.getMember() != null ? event.getMember().getEffectiveName() : event.getAuthor().getName()) + "'s items");
@@ -254,11 +255,12 @@ public class Inventory extends Command {
 					item.setFooter("", event.getJDA().getSelfUser().getAvatarUrl());
 					item.setDescription("No items");
 					event.getChannel().sendMessage(item.build()).queue();
+					noItems = true;
 				}
 				Map<String, Integer> tempList = player.getItems();
 				tempList.clear();
 				String items = "ITEM\t\tQUANTITIY\n";
-				if(itemList.size() <= 50) {
+				if(itemList.size() <= 50 && !noItems) {
 					while(itemList.size() > 0) {
 						Map.Pair<String, Integer> itemPair = itemList.removeAny();
 						items = items + itemPair.key() + "\t\t" + itemPair.value() + "\n";
