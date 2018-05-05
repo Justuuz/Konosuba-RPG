@@ -6,6 +6,7 @@ import io.magiccraftmaster.util.StringUtils;
 import io.osu.konosuba.Command;
 import io.osu.konosuba.Konosuba;
 import io.osu.konosuba.data.ClientData;
+import io.osu.konosuba.util.PointsHandler;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 public class Equip extends Command {
@@ -23,7 +24,7 @@ public class Equip extends Command {
 	 * framework
 	 */
 
-	
+	private PointsHandler correctStats = new PointsHandler();
 	
 	@Override
 	public void run(MessageReceivedEvent event, String[] args) {
@@ -48,6 +49,7 @@ public class Equip extends Command {
 					if(inv.get(0).contains(item)) {
 					
 						player.setHelmet(item);
+						correctStats.recalibratePoints(player);
 						String message = "Equipped " + item;
 						send(event.getGuild(), event.getChannel(), message , true);
 					}
@@ -67,6 +69,7 @@ public class Equip extends Command {
 					if(inv.get(1).contains(item)) {
 							
 						player.setChest(item);
+						correctStats.recalibratePoints(player);
 						String message = "Equipped " + item;
 						send(event.getGuild(), event.getChannel(), message , true);
 					
@@ -87,6 +90,7 @@ public class Equip extends Command {
 					if(inv.get(2).contains(item)) {
 					
 						player.setLeggings(item);
+						correctStats.recalibratePoints(player);
 						String message = "Equipped " + item;
 						send(event.getGuild(), event.getChannel(), message , true);
 					
@@ -110,6 +114,7 @@ public class Equip extends Command {
 						
 					
 						player.setOnHand(item);
+						correctStats.recalibratePoints(player);
 						String message = "Equipped " + item;
 						send(event.getGuild(), event.getChannel(), message , true);
 					
@@ -131,6 +136,7 @@ public class Equip extends Command {
 					if(inv.get(4).contains(item)) {
 					
 						player.setOffHand(item);
+						correctStats.recalibratePoints(player);
 						String message = "Equipped " + item;
 						send(event.getGuild(), event.getChannel(), message , true);
 					}
@@ -152,6 +158,7 @@ public class Equip extends Command {
 						
 					
 						player.setCape(item);
+						correctStats.recalibratePoints(player);
 						String message = "Equipped " + item;
 						send(event.getGuild(), event.getChannel(), message , true);
 					}
@@ -172,6 +179,7 @@ public class Equip extends Command {
 					if(inv.get(6).contains(item)) {
 						
 						player.setNecklace(item);
+						correctStats.recalibratePoints(player);
 						String message = "Equipped " + item;
 						send(event.getGuild(), event.getChannel(), message , true);
 					}
@@ -192,6 +200,7 @@ public class Equip extends Command {
 					if(inv.get(7).contains(item)) {
 						
 						player.setRing(item);
+						correctStats.recalibratePoints(player);
 						String message = "Equipped " + item;
 						send(event.getGuild(), event.getChannel(), message , true);
 					}
@@ -211,6 +220,7 @@ public class Equip extends Command {
 					if(inv.get(8).contains(item)) {
 						
 						player.setBoots(item);
+						correctStats.recalibratePoints(player);
 						String message = "Equipped " + item;
 						send(event.getGuild(), event.getChannel(), message , true);
 					}
@@ -228,6 +238,7 @@ public class Equip extends Command {
 					if(inv.get(9).contains(item)) {
 						
 						player.setWeapon(item);
+						correctStats.recalibratePoints(player);
 						String message = "Equipped " + item;
 						send(event.getGuild(), event.getChannel(), message , true);
 					}
