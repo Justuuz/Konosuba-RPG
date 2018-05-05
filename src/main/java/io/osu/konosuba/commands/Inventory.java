@@ -23,8 +23,11 @@ public class Inventory extends Command {
 		// TODO Auto-generated method stub
 		
 		
-		if(Konosuba.CLIENT_DATA_MANAGER.hasData(event.getAuthor().getIdLong())) {
-			ClientData player = Konosuba.CLIENT_DATA_MANAGER.getData(event.getAuthor().getIdLong());
+
+		
+		if(Konosuba.CLIENT_DATA_MANAGER.hasData(event.getChannel().getIdLong())) {
+			ClientData player = Konosuba.CLIENT_DATA_MANAGER.getData(event.getChannel().getIdLong());
+
 			
 			
 			ArrayList<ArrayList<String>> inv = player.getInventory();
@@ -44,7 +47,7 @@ public class Inventory extends Command {
 				
 				ArrayList<String> helInv = inv.get(0);
 				String items = "Helmets:\n";
-				
+				 
 				for (String item: helInv) {
 					items = items + item + "\n";
 				}
@@ -53,10 +56,10 @@ public class Inventory extends Command {
 			}
 			
 			if(args[1].equalsIgnoreCase("chest")) {
-				ArrayList<String> helInv = inv.get(1);
+				ArrayList<String> cheInv = inv.get(1);
 				String items = "";
 				
-				for (String item: helInv) {
+				for (String item: cheInv) {
 					items = items + item + "\n";
 				}
 				
@@ -68,10 +71,10 @@ public class Inventory extends Command {
 			
 			if(args[1].equalsIgnoreCase("leggings")) {
 				
-				ArrayList<String> helInv = inv.get(2);
+				ArrayList<String> legInv = inv.get(2);
 				String items = "";
 				
-				for (String item: helInv) {
+				for (String item: legInv) {
 					items = items + item + "\n";
 				}
 				
@@ -82,10 +85,10 @@ public class Inventory extends Command {
 			}
 			
 			if(args[1].equalsIgnoreCase("onhand")) {
-				ArrayList<String> helInv = inv.get(3);
+				ArrayList<String> onInv = inv.get(3);
 				String items = "";
 				
-				for (String item: helInv) {
+				for (String item: onInv) {
 					items = items + item + "\n";
 				}
 				
@@ -95,10 +98,10 @@ public class Inventory extends Command {
 			}
 			
 			if(args[1].equalsIgnoreCase("offhand")) {
-				ArrayList<String> helInv = inv.get(4);
+				ArrayList<String> offInv = inv.get(4);
 				String items = "";
 				
-				for (String item: helInv) {
+				for (String item: offInv) {
 					items = items + item + "\n";
 				}
 				
@@ -109,10 +112,10 @@ public class Inventory extends Command {
 			}
 			
 			if(args[1].equalsIgnoreCase("cape")) {
-				ArrayList<String> helInv = inv.get(5);
+				ArrayList<String> capInv = inv.get(5);
 				String items = "";
 				
-				for (String item: helInv) {
+				for (String item: capInv) {
 					items = items + item + "\n";
 				}
 				
@@ -123,10 +126,10 @@ public class Inventory extends Command {
 			}
 			
 			if(args[1].equalsIgnoreCase("necklace")) {
-				ArrayList<String> helInv = inv.get(6);
+				ArrayList<String> necInv = inv.get(6);
 				String items = "";
 				
-				for (String item: helInv) {
+				for (String item: necInv) {
 					items = items + item + "\n";
 				}
 				
@@ -136,10 +139,10 @@ public class Inventory extends Command {
 			}
 			
 			if(args[1].equalsIgnoreCase("ring")) {
-				ArrayList<String> helInv = inv.get(7);
+				ArrayList<String> rinInv = inv.get(7);
 				String items = "";
 				
-				for (String item: helInv) {
+				for (String item: rinInv) {
 					items = items + item + "\n";
 				}
 				
@@ -149,10 +152,10 @@ public class Inventory extends Command {
 				
 			}
 			if(args[1].equalsIgnoreCase("boots")) {
-				ArrayList<String> helInv = inv.get(8);
+				ArrayList<String> booInv = inv.get(8);
 				String items = "";
 				
-				for (String item: helInv) {
+				for (String item: booInv) {
 					items = items + item + "\n";
 				}
 				
@@ -162,10 +165,10 @@ public class Inventory extends Command {
 				
 			}
 			if(args[1].equalsIgnoreCase("weapons")) {
-				ArrayList<String> helInv = inv.get(9);
+				ArrayList<String> weaInv = inv.get(9);
 				String items = "";
 				
-				for (String item: helInv) {
+				for (String item: weaInv) {
 					items = items + item + "\n";
 				}
 				

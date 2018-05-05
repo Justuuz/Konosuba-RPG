@@ -1,6 +1,21 @@
 [
 	{
 		"magic": 0,
+		"clientId": 441036744956182529,
+		"luck": 0,
+		"strength": 0,
+		"durability": 0,
+		"startStatus": false,
+		"classStatus": false,
+		"physicalDefense": 0,
+		"dexterity": 0,
+		"hitpoints": 0,
+		"battleStatus": false,
+		"balance": 0,
+		"magicalDefense": 0
+	},
+	{
+		"magic": 0,
 		"chest": "None",
 		"clientId": 168545253991645185,
 		"luck": 0,
@@ -12,13 +27,7 @@
 		"classStatus": false,
 		"physicalDefense": 0,
 		"inventory": [
-			[
-				"None",
-				"testHelm",
-				"crown",
-				"pirate_hat",
-				"santa_hat"
-			],
+			["None"],
 			["None"],
 			["None"],
 			["None"],
@@ -38,7 +47,7 @@
 		"boots": "None",
 		"cape": "None",
 		"leggings": "None",
-		"classType": "wizard",
+		"classType": "None",
 		"offHand": "None"
 	},
 	{
