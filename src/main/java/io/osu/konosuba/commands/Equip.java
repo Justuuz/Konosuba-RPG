@@ -41,12 +41,7 @@ public class Equip extends Command {
 		
 		if(args[1].equalsIgnoreCase("helmet")) {
 				
-				if(!player.getHelmet().equalsIgnoreCase("none")) {
-					String message = "Please remove the current item first";
-	
-					send(event.getGuild(), event.getChannel(), message, true);
-				}
-				else {
+
 					
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					
@@ -59,18 +54,13 @@ public class Equip extends Command {
 					else {
 						send(event.getGuild(), event.getChannel(), "not a valid item" , true);
 					}
-				}
+				
 				
 			}
 			
 			if(args[1].equalsIgnoreCase("chest")) {
 				
-				if(!player.getChest().equalsIgnoreCase("none")) {
-					String message = "Please remove the current item first";
-	
-					send(event.getGuild(), event.getChannel(), message, true);
-				}
-				else {
+
 					
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					
@@ -84,18 +74,13 @@ public class Equip extends Command {
 					else {
 						send(event.getGuild(), event.getChannel(), "not a valid item" , true);
 					}
-				}
+				
 				
 			}
 			
 			if(args[1].equalsIgnoreCase("leggings")) {
 				
-				if(!player.getLeggings().equalsIgnoreCase("none")) {
-					String message = "Please remove the current item first";
-	
-					send(event.getGuild(), event.getChannel(), message, true);
-				}
-				else {
+
 					
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					
@@ -109,18 +94,13 @@ public class Equip extends Command {
 					else {
 						send(event.getGuild(), event.getChannel(), "not a valid item" , true);
 					}
-				}
+				
 				
 			}
 			
 			if(args[1].equalsIgnoreCase("onhand")) {
 				
-				if(!player.getOnHand().equalsIgnoreCase("none")) {
-					String message = "Please remove the current item first";
-	
-					send(event.getGuild(), event.getChannel(), message, true);
-				}
-				else {
+
 					
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					
@@ -137,19 +117,14 @@ public class Equip extends Command {
 					else {
 						send(event.getGuild(), event.getChannel(), "not a valid item" , true);
 					}
-				}
+				
 				
 			}
 			
 			if(args[1].equalsIgnoreCase("offhand")) {
 				
 				
-				if(!player.getOffHand().equalsIgnoreCase("none")) {
-					String message = "Please remove the current item first";
-	
-					send(event.getGuild(), event.getChannel(), message, true);
-				}
-				else {
+
 					
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					
@@ -162,18 +137,13 @@ public class Equip extends Command {
 					else {
 						send(event.getGuild(), event.getChannel(), "not a valid item" , true);
 					}
-				}
+				
 				
 			}
 			
 			if(args[1].equalsIgnoreCase("cape")) {
 				
-				if(!player.getCape().equalsIgnoreCase("none")) {
-					String message = "Please remove the current item first";
-	
-					send(event.getGuild(), event.getChannel(), message, true);
-				}
-				else {
+
 					
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					
@@ -188,18 +158,14 @@ public class Equip extends Command {
 					else {
 						send(event.getGuild(), event.getChannel(), "not a valid item" , true);
 					}
-				}
+				
 				
 			}
 			
 			if(args[1].equalsIgnoreCase("necklace")) {
 				
-				if(!player.getNecklace().equalsIgnoreCase("none")) {
-					String message = "Please remove the current item first";
-	
-					send(event.getGuild(), event.getChannel(), message, true);
-				}
-				else {
+
+
 					
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					
@@ -212,18 +178,14 @@ public class Equip extends Command {
 					else {
 						send(event.getGuild(), event.getChannel(), "not a valid item" , true);
 					}
-				}
+				
 				
 			}
 			
 			if(args[1].equalsIgnoreCase("ring")) {
 				
-				if(!player.getRing().equalsIgnoreCase("none")) {
-					String message = "Please remove the current item first";
-	
-					send(event.getGuild(), event.getChannel(), message, true);
-				}
-				else {
+
+
 					
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					
@@ -236,18 +198,13 @@ public class Equip extends Command {
 					else {
 						send(event.getGuild(), event.getChannel(), "not a valid item" , true);
 					}
-				}
+				
 				
 			}
 			
 			if(args[1].equalsIgnoreCase("boots")) {
 				
-				if(!player.getBoots().equalsIgnoreCase("none")) {
-					String message = "Please remove the current item first";
-	
-					send(event.getGuild(), event.getChannel(), message, true);
-				}
-				else {
+
 					
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					 
@@ -260,18 +217,12 @@ public class Equip extends Command {
 					else {
 						send(event.getGuild(), event.getChannel(), "not a valid item" , true);
 					}
-				}
+				
 				
 			}
 			if(args[1].equalsIgnoreCase("weapons")) {
 				
-				if(!player.getWeapon().equalsIgnoreCase("none")) {
-					String message = "Please remove the current item first";
-	
-					send(event.getGuild(), event.getChannel(), message, true);
-				}
-				else {
-					
+
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					 
 					if(inv.get(9).contains(item)) {
@@ -283,7 +234,7 @@ public class Equip extends Command {
 					else {
 						send(event.getGuild(), event.getChannel(), "not a valid item" , true);
 					}
-				}
+				
 				
 			}
 			
