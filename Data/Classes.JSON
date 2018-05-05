@@ -18,5 +18,25 @@
 		"magicalDefense": 0,
 		"Class": "priest",
 		"physicalDefense": 0
+	},
+	{
+		"dexterity": 0,
+		"magic": 0,
+		"hitpoints": 0,
+		"luck": 0,
+		"strength": 0,
+		"magicalDefense": 0,
+		"Class": "priest",
+		"physicalDefense": 0
+	},
+	{
+		"dexterity": 0,
+		"magic": 0,
+		"hitpoints": 0,
+		"luck": 0,
+		"strength": 0,
+		"magicalDefense": 0,
+		"Class": "priest",
+		"physicalDefense": 0
 	}
 ]

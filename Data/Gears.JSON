@@ -1,3 +1,182 @@
 [
-	
+	{
+		"dexterity": 0,
+		"magic": 10,
+		"hitpoints": 10,
+		"luck": 10,
+		"strength": 10,
+		"magicalDefense": 0,
+		"physicalDefense": 0,
+		"gear": "admin_hat"
+	},
+	{
+		"dexterity": 0,
+		"magic": 0,
+		"hitpoints": 0,
+		"luck": 0,
+		"strength": 0,
+		"magicalDefense": 0,
+		"physicalDefense": 0,
+		"gear": "None"
+	},
+	{
+		"dexterity": 0,
+		"magic": 0,
+		"hitpoints": 0,
+		"luck": 0,
+		"strength": 0,
+		"magicalDefense": 0,
+		"physicalDefense": 0,
+		"gear": "None"
+	},
+	{
+		"dexterity": 0,
+		"magic": 0,
+		"hitpoints": 0,
+		"luck": 0,
+		"strength": 0,
+		"magicalDefense": 0,
+		"physicalDefense": 0,
+		"gear": "None"
+	},
+	{
+		"dexterity": 0,
+		"magic": 0,
+		"hitpoints": 0,
+		"luck": 0,
+		"strength": 0,
+		"magicalDefense": 0,
+		"physicalDefense": 0,
+		"gear": "None"
+	},
+	{
+		"dexterity": 0,
+		"magic": 0,
+		"hitpoints": 0,
+		"luck": 0,
+		"strength": 0,
+		"magicalDefense": 0,
+		"physicalDefense": 0,
+		"gear": "None"
+	},
+	{
+		"dexterity": 0,
+		"magic": 0,
+		"hitpoints": 0,
+		"luck": 0,
+		"strength": 0,
+		"magicalDefense": 0,
+		"physicalDefense": 0,
+		"gear": "None"
+	},
+	{
+		"dexterity": 0,
+		"magic": 0,
+		"hitpoints": 0,
+		"luck": 0,
+		"strength": 0,
+		"magicalDefense": 0,
+		"physicalDefense": 0,
+		"gear": "None"
+	},
+	{
+		"dexterity": 0,
+		"magic": 0,
+		"hitpoints": 0,
+		"luck": 0,
+		"strength": 0,
+		"magicalDefense": 0,
+		"physicalDefense": 0,
+		"gear": "None"
+	},
+	{
+		"dexterity": 0,
+		"magic": 0,
+		"hitpoints": 0,
+		"luck": 0,
+		"strength": 0,
+		"magicalDefense": 0,
+		"physicalDefense": 0,
+		"gear": "admin_hat"
+	},
+	{
+		"dexterity": 0,
+		"magic": 0,
+		"hitpoints": 0,
+		"luck": 0,
+		"strength": 0,
+		"magicalDefense": 0,
+		"physicalDefense": 0,
+		"gear": "None"
+	},
+	{
+		"dexterity": 0,
+		"magic": 0,
+		"hitpoints": 0,
+		"luck": 0,
+		"strength": 0,
+		"magicalDefense": 0,
+		"physicalDefense": 0,
+		"gear": "None"
+	},
+	{
+		"dexterity": 0,
+		"magic": 0,
+		"hitpoints": 0,
+		"luck": 0,
+		"strength": 0,
+		"magicalDefense": 0,
+		"physicalDefense": 0,
+		"gear": "None"
+	},
+	{
+		"dexterity": 0,
+		"magic": 0,
+		"hitpoints": 0,
+		"luck": 0,
+		"strength": 0,
+		"magicalDefense": 0,
+		"physicalDefense": 0,
+		"gear": "None"
+	},
+	{
+		"dexterity": 0,
+		"magic": 0,
+		"hitpoints": 0,
+		"luck": 0,
+		"strength": 0,
+		"magicalDefense": 0,
+		"physicalDefense": 0,
+		"gear": "None"
+	},
+	{
+		"dexterity": 0,
+		"magic": 0,
+		"hitpoints": 0,
+		"luck": 0,
+		"strength": 0,
+		"magicalDefense": 0,
+		"physicalDefense": 0,
+		"gear": "None"
+	},
+	{
+		"dexterity": 0,
+		"magic": 0,
+		"hitpoints": 0,
+		"luck": 0,
+		"strength": 0,
+		"magicalDefense": 0,
+		"physicalDefense": 0,
+		"gear": "None"
+	},
+	{
+		"dexterity": 0,
+		"magic": 0,
+		"hitpoints": 0,
+		"luck": 0,
+		"strength": 0,
+		"magicalDefense": 0,
+		"physicalDefense": 0,
+		"gear": "None"
+	}
 ]
