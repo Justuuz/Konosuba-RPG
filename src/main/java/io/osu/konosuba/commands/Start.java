@@ -27,6 +27,7 @@ public class Start extends Command {
 		//			send(event.getGuild(), event.getChannel(), "embeded means getStartStatus = true (this is before first if statement" ,player.getStartStatus());
 		if(args.length == 1) {
 			if(!player.getStartStatus()) {
+				//Map<String, Integer> items = new Map2<String, Integer>();
 
 
 
