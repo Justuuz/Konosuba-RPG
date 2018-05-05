@@ -20,7 +20,7 @@ public class Buy_admin extends Command {
 	@Override
 	public void run(MessageReceivedEvent event, String[] args) {
 		
-		ClientData player = Konosuba.CLIENT_DATA_MANAGER.getData(event.getChannel().getIdLong());
+		ClientData player = Konosuba.CLIENT_DATA_MANAGER.getData(event.getAuthor().getIdLong());
 	/*
 	 * Show UI here
 	 */

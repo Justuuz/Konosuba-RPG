@@ -31,8 +31,8 @@ public class Remove extends Command {
 		 * helmet, chest, leggings, onHand, offHand, cape, necklace, ring, boots;
 		 */
 		
-		ClientData player = Konosuba.CLIENT_DATA_MANAGER.getData(event.getChannel().getIdLong());
-		if(!player.getStartStatus()) {
+		ClientData player = Konosuba.CLIENT_DATA_MANAGER.getData(event.getAuthor().getIdLong());
+		if(player.getStartStatus()) {
 			EmbedBuilder help  = new EmbedBuilder();
 			
 			if(args[1].equalsIgnoreCase("helmet")) {

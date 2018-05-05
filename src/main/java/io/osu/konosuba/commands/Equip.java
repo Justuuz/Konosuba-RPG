@@ -34,8 +34,8 @@ public class Equip extends Command {
 		 * (important) cannot equip an item if there is already an item in that place
 		 * helmet, chest, leggings, onHand, offHand, cape, necklace, ring, boots;
 		 */
-		if(Konosuba.CLIENT_DATA_MANAGER.hasData(event.getChannel().getIdLong())) {
-		ClientData player = Konosuba.CLIENT_DATA_MANAGER.getData(event.getChannel().getIdLong());
+		if(Konosuba.CLIENT_DATA_MANAGER.hasData(event.getAuthor().getIdLong())) {
+		ClientData player = Konosuba.CLIENT_DATA_MANAGER.getData(event.getAuthor().getIdLong());
 		player.setInventory(new ArrayList<ArrayList<String>>());
 		player.getInventory().add(new ArrayList<String>());
 		player.getInventory().get(0).add("None");
