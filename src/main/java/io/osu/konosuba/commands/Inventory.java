@@ -237,7 +237,8 @@ public class Inventory extends Command {
 			
 			if(args[1].equalsIgnoreCase("items")) {
 				Map<String, Integer> itemList = player.getItems();
-				Map<String, Integer> tempList = itemList.newInstance();
+				Map<String, Integer> tempList = player.getItems();
+				tempList.clear();
 				String items = "ITEM\t\tQUANTITIY\n";
 				if(itemList.size() <= 50) {
 					while(itemList.size() > 0) {
