@@ -34,25 +34,26 @@ public class Inventory extends Command {
 			
 			
 			
-			send(event.getGuild(), event.getChannel(), player.getCape(), true);
-			EmbedBuilder help  = new EmbedBuilder();
+			
 			
 			if(args[1].equalsIgnoreCase("helmet")) {
 				
 				/*
 				 * get all the current helmet items into the array
 				 */
-				
-
-				
+				EmbedBuilder helmet = new EmbedBuilder();
+				helmet.setTitle((event.getMember() != null ? event.getMember().getEffectiveName() : event.getAuthor().getName()) + "'s helmets");
+				helmet.setAuthor("", event.getAuthor().getAvatarUrl());
+				helmet.setThumbnail("https://images.cdn2.stockunlimited.net/clipart/roman-soldier-helmet_1900552.jpg");
+				helmet.setFooter("To equip, do *equip (gear type) (piece)", event.getJDA().getSelfUser().getAvatarUrl());
 				ArrayList<String> helInv = inv.get(0);
-				String items = "Helmets:\n";
+				String items = "";
 				 
 				for (String item: helInv) {
 					items = items + item + "\n";
 				}
-				
-					send(event.getGuild(), event.getChannel(), "``` " + items + "```", false);
+				helmet.setDescription(items);
+					event.getChannel().sendMessage(helmet.build()).queue();
 			}
 			
 			if(args[1].equalsIgnoreCase("chest")) {
