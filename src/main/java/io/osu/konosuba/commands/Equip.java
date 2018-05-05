@@ -34,27 +34,8 @@ public class Equip extends Command {
 		 * (important) cannot equip an item if there is already an item in that place
 		 * helmet, chest, leggings, onHand, offHand, cape, necklace, ring, boots;
 		 */
-		if(Konosuba.CLIENT_DATA_MANAGER.hasData(event.getAuthor().getIdLong())) {
 		ClientData player = Konosuba.CLIENT_DATA_MANAGER.getData(event.getAuthor().getIdLong());
-		player.setInventory(new ArrayList<ArrayList<String>>());
-		player.getInventory().add(new ArrayList<String>());
-		player.getInventory().get(0).add("None");
-		player.getInventory().add(new ArrayList<String>());
-		player.getInventory().get(1).add("None");
-		player.getInventory().add(new ArrayList<String>());
-		player.getInventory().get(2).add("None");
-		player.getInventory().add(new ArrayList<String>());
-		player.getInventory().get(3).add("None");
-		player.getInventory().add(new ArrayList<String>());
-		player.getInventory().get(4).add("None");
-		player.getInventory().add(new ArrayList<String>());
-		player.getInventory().get(5).add("None");
-		player.getInventory().add(new ArrayList<String>());
-		player.getInventory().get(6).add("None");
-		player.getInventory().add(new ArrayList<String>());
-		player.getInventory().get(7).add("None");
-		player.getInventory().add(new ArrayList<String>());
-		player.getInventory().get(8).add("None");
+		if(player.getStartStatus()) {
 		
 		if(args[1].equalsIgnoreCase("helmet")) {
 				
