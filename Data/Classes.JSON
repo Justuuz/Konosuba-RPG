@@ -1,12 +1,12 @@
 [ 
 	{
-		"class:":"example", 
-		"Strength":1.2, 
-		"PhysicalDefense":1.0,
-		"MagicalDefense":1.0, 
-		"Dexterity":1.0,
-		"Magic":0.5,
-		"Luck":1.0
+		"class:":"priest", 
+		"Strength":5, 
+		"PhysicalDefense":0,
+		"MagicalDefense":3, 
+		"Dexterity":3,
+		"Magic":2,
+		"Luck":0
 		}
 		
 ]

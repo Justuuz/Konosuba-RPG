@@ -3,9 +3,20 @@
 	"Name":"Bronze_Sword",
 	"Type":"onhand",
 	"Strength":5,
-	"Defense":0,
+	"PhysicalDefense":5,
+	"MagicalDefense":0,
 	"Magic":0,
 	"Dexterity":0,
 	"Luck":0
+	},
+	{
+		"Name":"admin_hat",
+		"Type":"helmet",
+		"Strength":0,
+		"PhysicalDefense":5,
+		"MagicalDefense":0,
+		"Magic":0,
+		"Dexterity":0,
+		"Luck":0
 	}
 ]
