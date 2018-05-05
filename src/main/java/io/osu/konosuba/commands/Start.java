@@ -27,7 +27,7 @@ public class Start extends Command {
 		//			send(event.getGuild(), event.getChannel(), "embeded means getStartStatus = true (this is before first if statement" ,player.getStartStatus());
 		if(args.length == 1) {
 			if(!player.getStartStatus()) {
-				Map<String, Integer> items = new Map2<String, Integer>();
+				//Map<String, Integer> items = new Map2<String, Integer>();
 
 
 
@@ -69,7 +69,7 @@ public class Start extends Command {
 				player.getInventory().get(7).add("None");
 				player.getInventory().add(new ArrayList<String>());
 				player.getInventory().get(8).add("None");
-				player.setItems(items);
+				player.setItems(new Map2<String, Integer>());
 
 				String name = (event.getMember() != null ? event.getMember().getEffectiveName() : event.getAuthor().getName());
 				send(event.getGuild(), event.getChannel(), "Welcome " + name +"! Today is the day you start your adventure! Before we can start, I must ask "
