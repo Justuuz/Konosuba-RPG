@@ -266,7 +266,7 @@ public class Inventory extends Command {
 						items = items + itemPair.key() + "\t\t" + itemPair.value() + "\n";
 						tempList.add(itemPair.key(), itemPair.value());
 					}
-					itemList.combineWith(tempList);
+					itemList.transferFrom(tempList);
 					item.setTitle((event.getMember() != null ? event.getMember().getEffectiveName() : event.getAuthor().getName()) + "'s items");
 					item.setAuthor("", event.getAuthor().getAvatarUrl());
 					//item.setThumbnail();
