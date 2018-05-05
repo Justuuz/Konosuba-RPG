@@ -3,6 +3,8 @@ package io.osu.konosuba.commands;
 import java.awt.Color;
 import java.util.ArrayList;
 
+import components.map.Map;
+import components.map.Map2;
 import io.osu.konosuba.Command;
 import io.osu.konosuba.Konosuba;
 import io.osu.konosuba.data.ClientData;
@@ -66,6 +68,7 @@ public class Start extends Command {
 				player.getInventory().get(7).add("None");
 				player.getInventory().add(new ArrayList<String>());
 				player.getInventory().get(8).add("None");
+				player.setItems(new Map2<String, Integer>());
 
 				String name = (event.getMember() != null ? event.getMember().getEffectiveName() : event.getAuthor().getName());
 				send(event.getGuild(), event.getChannel(), "Welcome " + name +"! Today is the day you start your adventure! Before we can start, I must ask "
