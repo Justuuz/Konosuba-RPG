@@ -265,7 +265,19 @@ public class ClientData {
 	public void removeItems(String item, int amount) {
 		/*
 		 * amount will be less than or equal to the value
+		 * precondition xdddd
+		 * 
+		 * also there IS an item in the map when called
 		 */
+		
+		Map.Pair<String, Integer> itemPair = this.getItems().remove(item);
+		int amt = itemPair.value() - amount;
+		if(amt > 0) {
+			this.getItems().add(item,  amt);
+		}
+		// don't add the map if amt == 0
+		
+		
 
 
 	}

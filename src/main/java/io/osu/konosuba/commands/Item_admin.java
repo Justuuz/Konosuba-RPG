@@ -1,5 +1,6 @@
 package io.osu.konosuba.commands;
 
+import io.magiccraftmaster.util.StringUtils;
 import io.osu.konosuba.Command;
 import io.osu.konosuba.Konosuba;
 import io.osu.konosuba.data.ClientData;
@@ -26,22 +27,30 @@ public class Item_admin extends Command {
 	 */
 		
 		if(args[1].equalsIgnoreCase("stick")) {
-			player.addInventory("admin_hat", 0);
+			String number = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
+			int amount = Integer.parseInt(number);
+			player.addItems("stick", amount);
 			
 		}
 		
-		if(args[1].equalsIgnoreCase("admin_plate")) {
-			player.addInventory("admin_plate", 1);
+		if(args[1].equalsIgnoreCase("stones")) {
+			String number = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
+			int amount = Integer.parseInt(number);
+			player.addItems("stones", amount);
 		}
 		
 		
-		if(args[1].equalsIgnoreCase("admin_hat2")) {
-			player.addInventory("admin_hat2", 0);
+		if(args[1].equalsIgnoreCase("goo")) {
+			String number = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
+			int amount = Integer.parseInt(number);
+			player.addItems("goo", amount);
 			 
 		}
 		
-		if(args[1].equalsIgnoreCase("admin_hat3")) {
-			player.addInventory("admin_hat3", 0);
+		if(args[1].equalsIgnoreCase("bones")) {
+			String number = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
+			int amount = Integer.parseInt(number);
+			player.addItems("bones", amount);
 			
 		}
 		Konosuba.CLIENT_DATA_MANAGER.trySave();
