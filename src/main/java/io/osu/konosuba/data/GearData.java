@@ -26,7 +26,7 @@ public class GearData {
 	// Stats
 
 	
-	private int strength, physicalDefense, magicalDefense, dexterity, magic, luck, hitpoints, durability;
+	private int strength, physicalDefense, magicalDefense, dexterity, magic, luck, hitpoints;
 	
 	public int getStrength() {
 		return strength;

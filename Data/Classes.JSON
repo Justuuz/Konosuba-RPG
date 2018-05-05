@@ -1,12 +1,13 @@
 [ 
 	{
-		"class:":"priest", 
-		"Strength":5, 
-		"PhysicalDefense":0,
-		"MagicalDefense":3, 
-		"Dexterity":3,
-		"Magic":2,
-		"Luck":0
+		"Class:":"priest", 
+		"strength":5, 
+		"physicalDefense":0,
+		"magicalDefense":3, 
+		"dexterity":3,
+		"magic":2,
+		"luck":0,
+		"hitpoints":10
 		}
 		
 ]

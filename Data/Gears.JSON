@@ -1,22 +1,22 @@
 [
 	{
-	"Name":"Bronze_Sword",
-	"Type":"onhand",
-	"Strength":5,
-	"PhysicalDefense":5,
-	"MagicalDefense":0,
-	"Magic":0,
-	"Dexterity":0,
-	"Luck":0
+	"gear":"Bronze_Sword",
+	"strength":5,
+	"physicalDefense":5,
+	"magicalDefense":0,
+	"magic":0,
+	"dexterity":0,
+	"luck":0,
+	"hitpoints":0	
 	},
 	{
-		"Name":"admin_hat",
-		"Type":"helmet",
-		"Strength":0,
-		"PhysicalDefense":5,
-		"MagicalDefense":0,
-		"Magic":0,
-		"Dexterity":0,
-		"Luck":0
+		"gear":"admin_hat",
+		"strength":11,
+		"physicalDefense":5,
+		"magicalDefense":11,
+		"magic":11,
+		"dexterity":11,
+		"luck":11,
+		"hitpoints":11
 	}
 ]

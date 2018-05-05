@@ -25,23 +25,23 @@ public class Profile extends Command {
 			if(args.length == 1) {
 				EmbedBuilder profile = new EmbedBuilder();
 				profile.setTitle((event.getMember() != null ? event.getMember().getEffectiveName() : event.getAuthor().getName()) + "'s Profile");
-				profile.addField("Class", player.getClassType(), true);
-				profile.addField("Balance","" +player.getBalance(), true);
-				profile.addField("Stats", "Strength: " + player.getStrength()
-				+ "\nPhyiscal Defense: " + player.getPhysicalDefense()
-				+ "\nMagical Defense: " + player.getMagicalDefense()
-				+ "\nMagic: " + player.getMagic()
-				+ "\nDexterity " + player.getDexterity()
-				+ "\nLuck " + player.getLuck(), false);
-				profile.addField("Equipment", "Helmet: " + player.getHelmet()
-				+ "\nChestplate: " + player.getChest()
-				+"\nLeggings: " + player.getLeggings()
-				+"\nBoots: " + player.getBoots()
-				+"\nCape: " + player.getLeggings()
-				+"\nOnHand: " + player.getOnHand()
-				+"\nOffHand: " + player.getOffHand()
-				+ "\nRing: " + player.getRing()
-				+ "\nNecklace: " + player.getNecklace(), true);
+				profile.addField("__Class__", player.getClassType(), true);
+				profile.addField("__Balance__","" +player.getBalance(), true);
+				profile.addField("__Stats__", "**Strength:** " + player.getStrength()
+				+ "\n**Physical Defense:** " + player.getPhysicalDefense()
+				+ "\n**Magical Defense:** " + player.getMagicalDefense()
+				+ "\n**Magic:** " + player.getMagic()
+				+ "\n**Dexterity**: " + player.getDexterity()
+				+ "\n**Luck**: " + player.getLuck(), false);
+				profile.addField("__Equipment__", "**Helmet:** " + player.getHelmet()
+				+ "\n**Chestplate:** " + player.getChest()
+				+"\n**Leggings:** " + player.getLeggings()
+				+"\n**Boots:** " + player.getBoots()
+				+"\n**Cape:** " + player.getLeggings()
+				+"\n**OnHand:** " + player.getOnHand()
+				+"\n**OffHand:** " + player.getOffHand()
+				+ "\n**Ring:** " + player.getRing()
+				+ "\n**Necklace:** " + player.getNecklace(), true);	
 				profile.setThumbnail(event.getAuthor().getAvatarUrl());
 				event.getChannel().sendMessage(profile.build()).queue();
 				
