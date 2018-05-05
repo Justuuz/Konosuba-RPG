@@ -60,7 +60,10 @@
 		"ring": "None",
 		"startStatus": true,
 		"inventory": [
-			["None"],
+			[
+				"None",
+				"admin_hat"
+			],
 			["None"],
 			["None"],
 			["None"],

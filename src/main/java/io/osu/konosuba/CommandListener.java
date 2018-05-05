@@ -18,7 +18,9 @@ public class CommandListener extends ListenerAdapter {
 		new Remove(),
 		new Inventory(),
 		new Buy_admin(),
-		new Profile()
+		new Profile(),
+		new Item_admin(),
+		new ItemToss_Admin()
 	};
 
 	CommandListener() throws IOException {
