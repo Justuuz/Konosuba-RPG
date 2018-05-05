@@ -226,6 +226,15 @@ public class ClientData {
 		this.dexterity = dexterity;
 	}
 	
+	public int getLuck() {
+		return luck;
+	}
+	
+	public void setLuck(int luck) {
+		this.luck = luck;
+	}
+	
+	
 	public int getHitpoints() {
 		return hitpoints;
 	}
