@@ -73,6 +73,7 @@ public class Inventory extends Command {
 					items = items + item + "\n";
 				}
 				items.replaceAll("_", " ");
+				chest.setDescription(items);
 					event.getChannel().sendMessage(chest.build()).queue();
 				
 
@@ -94,6 +95,8 @@ public class Inventory extends Command {
 				}
 				
 				items.replaceAll("_", " ");
+				
+				legs.setDescription(items);
 				event.getChannel().sendMessage(legs.build()).queue();
 				
 
@@ -114,6 +117,7 @@ public class Inventory extends Command {
 				}
 				
 				items.replaceAll("_", " ");
+				onhand.setDescription(items);
 				event.getChannel().sendMessage(onhand.build()).queue();
 
 			}
@@ -133,6 +137,7 @@ public class Inventory extends Command {
 				}
 				
 				items.replaceAll("_", " ");
+				offhand.setDescription(items);
 				event.getChannel().sendMessage(offhand.build()).queue();
 				
 			}
@@ -152,6 +157,7 @@ public class Inventory extends Command {
 				}
 				
 				items.replaceAll("_", " ");
+				cape.setDescription(items);
 				event.getChannel().sendMessage(cape.build()).queue();
 				
 			}
@@ -171,6 +177,7 @@ public class Inventory extends Command {
 				}
 				
 				items.replaceAll("_", " ");
+				cape.setDescription(items);
 				event.getChannel().sendMessage(cape.build()).queue();
 
 			}
@@ -190,6 +197,7 @@ public class Inventory extends Command {
 				}
 				
 				items.replaceAll("_", " ");
+				cape.setDescription(items);
 				event.getChannel().sendMessage(cape.build()).queue();
 
 				
@@ -209,6 +217,7 @@ public class Inventory extends Command {
 				}
 				
 				items.replaceAll("_", " ");
+				cape.setDescription(items);
 				event.getChannel().sendMessage(cape.build()).queue();
 				
 
@@ -236,7 +245,16 @@ public class Inventory extends Command {
 //			}
 			
 			if(args[1].equalsIgnoreCase("items")) {
+				EmbedBuilder item = new EmbedBuilder();
 				Map<String, Integer> itemList = player.getItems();
+				if(itemList.size() == 0) {
+					item.setTitle((event.getMember() != null ? event.getMember().getEffectiveName() : event.getAuthor().getName()) + "'s items");
+					item.setAuthor("", event.getAuthor().getAvatarUrl());
+					//item.setThumbnail();
+					item.setFooter("", event.getJDA().getSelfUser().getAvatarUrl());
+					item.setDescription("No items");
+					event.getChannel().sendMessage(item.build()).queue();
+				}
 				Map<String, Integer> tempList = player.getItems();
 				tempList.clear();
 				String items = "ITEM\t\tQUANTITIY\n";
@@ -247,6 +265,12 @@ public class Inventory extends Command {
 						tempList.add(itemPair.key(), itemPair.value());
 					}
 					itemList.combineWith(tempList);
+					item.setTitle((event.getMember() != null ? event.getMember().getEffectiveName() : event.getAuthor().getName()) + "'s items");
+					item.setAuthor("", event.getAuthor().getAvatarUrl());
+					//item.setThumbnail();
+					item.setFooter("", event.getJDA().getSelfUser().getAvatarUrl());
+					item.setDescription(items);
+					event.getChannel().sendMessage(item.build()).queue();
 				}
 				else {
 					/*
@@ -256,8 +280,7 @@ public class Inventory extends Command {
 				}
 				
 
-				
-				send(event.getGuild(), event.getChannel(), "``` " + items + "'''", true);
+			
 				
 
 				

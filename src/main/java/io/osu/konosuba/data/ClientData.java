@@ -250,5 +250,24 @@ public class ClientData {
 	public void setItems(Map<String, Integer> items) {
 		this.items = items;
 	}
+	public void addItems(String item, int amount) {
+		if(this.getItems().hasKey(item)) {
+			Map.Pair<String, Integer> itemPair = this.getItems().remove(item);
+			int amt = itemPair.value() + amount;
+			this.getItems().add(item, amt);
+			
+		}
+		else {
+			this.getItems().add(item, amount);
+		}
+	}
+	
+	public void removeItems(String item, int amount) {
+		/*
+		 * amount will be less than or equal to the value
+		 */
+
+
+	}
 	
 }
