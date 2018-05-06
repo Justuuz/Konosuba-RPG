@@ -145,7 +145,7 @@ public class Start extends Command {
 					send(event.getGuild(), event.getChannel(), "You choose to be a " + args[2]+ "! Good choice! You are now set to go on your first adventure!", true);
 					player.setClassType("merchant");
 				}else {
-					send(event.getGuild(), event.getChannel(), "You already choosed a class! Stick with it!", true);
+					send(event.getGuild(), event.getChannel(), "Not one of the classes!", true);
 				}
 
 				Konosuba.CLIENT_DATA_MANAGER.trySave();
