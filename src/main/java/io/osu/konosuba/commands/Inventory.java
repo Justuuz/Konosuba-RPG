@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 import components.map.Map;
+import components.map.Map2;
 import io.osu.konosuba.Command;
 import io.osu.konosuba.Konosuba;
 import io.osu.konosuba.data.ClientData;
@@ -257,8 +258,8 @@ public class Inventory extends Command {
 					event.getChannel().sendMessage(item.build()).queue();
 					noItems = true;
 				}
-				Map<String, Integer> tempList = player.getItems();
-				tempList.clear();
+				Map<String, Integer> tempList = new Map2<String, Integer>();
+
 				String items = "ITEM\t\tQUANTITIY\n";
 				if(itemList.size() <= 50 && !noItems) {
 					while(itemList.size() > 0) {
