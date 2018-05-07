@@ -3,11 +3,12 @@ package io.osu.konosuba.data;
 import java.util.ArrayList;
 
 import components.map.Map;
+import components.naturalnumber.NaturalNumber;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 public class ClientData {
 	private final long clientId;
-	private int balance;
+	private NaturalNumber balance;
 
 	public ClientData(long clientId) {
 		this.clientId = clientId;
@@ -18,11 +19,11 @@ public class ClientData {
 	}
 
 
-	public int getBalance() {
+	public NaturalNumber getBalance() {
 		return balance;
 	}
 
-	public void setBalance(int balance) {
+	public void setBalance(NaturalNumber balance) {
 		this.balance = balance;
 	}
 

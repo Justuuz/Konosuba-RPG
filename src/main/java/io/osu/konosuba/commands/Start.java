@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 import components.map.Map;
 import components.map.Map2;
+import components.naturalnumber.NaturalNumber;
+import components.naturalnumber.NaturalNumber2;
 import io.osu.konosuba.Command;
 import io.osu.konosuba.Konosuba;
 import io.osu.konosuba.data.ClientData;
@@ -22,6 +24,7 @@ public class Start extends Command {
 	protected void run(MessageReceivedEvent event, String[] args) {
 
 		ClientData player = Konosuba.CLIENT_DATA_MANAGER.getData(event.getAuthor().getIdLong());
+		NaturalNumber zero = new NaturalNumber2(0);
 
 
 		//			send(event.getGuild(), event.getChannel(), "embeded means getStartStatus = true (this is before first if statement" ,player.getStartStatus());
@@ -42,7 +45,7 @@ public class Start extends Command {
 				player.setNecklace("None");
 				player.setOffHand("None");
 				player.setRing("None");
-				player.setBalance(0);
+				player.setBalance(zero);
 				player.setOnHand("None");
 				for(int i = 9; i >= 0; i--) {
 
