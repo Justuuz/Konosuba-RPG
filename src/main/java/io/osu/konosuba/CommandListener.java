@@ -20,7 +20,9 @@ public class CommandListener extends ListenerAdapter {
 		new Buy_admin(),
 		new Profile(),
 		new Item_admin(),
-		new ItemToss_Admin()
+		new ItemToss_Admin(),
+		new Location(),
+		new Move()
 	};
 
 	CommandListener() throws IOException {
