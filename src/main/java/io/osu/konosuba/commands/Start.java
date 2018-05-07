@@ -73,7 +73,7 @@ public class Start extends Command {
 				player.setItems(new Map2<String, Integer>());
 
 				String name = (event.getMember() != null ? event.getMember().getEffectiveName() : event.getAuthor().getName());
-				send(event.getGuild(), event.getChannel(), "Welcome " + name +"! Today is the day you start your adventure! Before we can start, I must ask "
+				send(event.getGuild(), event.getChannel(), "Welcome " + name +"! Today is the day you start your adventure in Axel! Before we can start, I must ask "
 						+ "traveler, what class are? Do *start choose Class Name to begin!",true);
 
 				send(event.getGuild(), event.getChannel(), "||Classes||\nWizard\r\n" + 
