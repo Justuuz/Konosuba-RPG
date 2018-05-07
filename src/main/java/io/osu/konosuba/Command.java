@@ -117,5 +117,5 @@ public abstract class Command {
 	 * @param event the event that passed
 	 * @param args the args
 	 */
-	protected abstract void run(MessageReceivedEvent event, String[] args);
+	public abstract void run(MessageReceivedEvent event, String[] args);
 }

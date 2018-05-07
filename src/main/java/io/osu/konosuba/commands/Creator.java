@@ -18,7 +18,7 @@ public class Creator extends Command {
 	}
 
 	@Override
-	protected void run(MessageReceivedEvent event, String[] args) {
+	public void run(MessageReceivedEvent event, String[] args) {
 		if(args[1].equalsIgnoreCase("create")) {
 			String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 			GearData gear = Konosuba.GEAR_DATA_MANAGER.getData(item);

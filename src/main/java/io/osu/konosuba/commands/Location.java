@@ -18,7 +18,7 @@ public class Location extends Command {
 	}
 
 	@Override
-	protected void run(MessageReceivedEvent event, String[] args) {
+	public void run(MessageReceivedEvent event, String[] args) {
 		// TODO Auto-generated method stub
 		
 		ClientData player = Konosuba.CLIENT_DATA_MANAGER.getData(event.getAuthor().getIdLong());

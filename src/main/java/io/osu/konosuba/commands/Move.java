@@ -39,6 +39,7 @@ public class Move extends Command {
 		A16 = "Axel_forest";
 		
 		String position = player.getLocation();
+		String first = player.getLocation();
 		String place = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 1), " ");
 		
 		//axel
@@ -244,7 +245,22 @@ public class Move extends Command {
 		}
 		
 		Konosuba.CLIENT_DATA_MANAGER.trySave();
-
+		String second = player.getLocation();
+		
+		boolean change;
+		if(first.equals(second)) {
+			change = false;
+		}
+		else {
+			change = true;
+		}
+		
+		/*
+		 * Location command goes after a move
+		 */
+		
+		Command lol = new Location();
+		lol.run(event, args);
 		
 
 	

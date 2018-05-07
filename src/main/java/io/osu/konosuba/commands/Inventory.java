@@ -20,7 +20,7 @@ public class Inventory extends Command {
 	}
 
 	@Override
-	protected void run(MessageReceivedEvent event, String[] args) {
+	public void run(MessageReceivedEvent event, String[] args) {
 		// TODO Auto-generated method stub
 		
 		

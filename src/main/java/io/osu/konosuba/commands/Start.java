@@ -21,7 +21,7 @@ public class Start extends Command {
 	}
 
 	@Override
-	protected void run(MessageReceivedEvent event, String[] args) {
+	public void run(MessageReceivedEvent event, String[] args) {
 
 		ClientData player = Konosuba.CLIENT_DATA_MANAGER.getData(event.getAuthor().getIdLong());
 		NaturalNumber zero = new NaturalNumber2(0);
