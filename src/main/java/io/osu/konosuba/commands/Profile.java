@@ -25,6 +25,7 @@ public class Profile extends Command {
 			if(args.length == 1) {
 				EmbedBuilder profile = new EmbedBuilder();
 				profile.setTitle((event.getMember() != null ? event.getMember().getEffectiveName() : event.getAuthor().getName()) + "'s Profile");
+				profile.addField("Location:", player.getLocation().replace("_", " ") , true);
 				profile.addField("__Class__", player.getClassType(), true);
 				profile.addField("__Balance__","" +player.getBalance(), true);
 				profile.addField("__Stats__", "**Strength:** " + player.getStrength()

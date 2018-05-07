@@ -32,6 +32,7 @@ public class Start extends Command {
 
 
 				player.setStartStatus(true);
+				player.setLocation("Axel");
 				player.setClassType("None");
 				player.setBoots("None");
 				player.setCape("None");
