@@ -42,7 +42,7 @@ public class Move extends Command {
 		String place = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 1), " ");
 		
 		//axel
-		if(position.equals(A1)) {
+		if(position.equalsIgnoreCase(A1)) {
 				if(place.equalsIgnoreCase("mansion")) {
 					player.setLocation(A2);
 			}
@@ -60,14 +60,14 @@ public class Move extends Command {
 		}
 		
 		//axel_mansion
-		if(position.equals(A2)) {
+		if(position.equalsIgnoreCase(A2)) {
 			if(place.equalsIgnoreCase("axel")) {
 					player.setLocation(A1);
 			}
 		}
 		
 		//axel fields
-		if(position.equals(A3)) {
+		if(position.equalsIgnoreCase(A3)) {
 			if(place.equalsIgnoreCase("axel")) {
 				player.setLocation(A1);
 			}
@@ -76,7 +76,7 @@ public class Move extends Command {
 			}
 
 		}
-		if(position.equals(A4)) {
+		if(position.equalsIgnoreCase(A4)) {
 			if(place.equalsIgnoreCase("axel")) {
 				player.setLocation(A1);
 			}
@@ -85,7 +85,7 @@ public class Move extends Command {
 			}
 
 		}
-		if(position.equals(A5)) {
+		if(position.equalsIgnoreCase(A5)) {
 			if(place.equalsIgnoreCase("axel")) {
 				player.setLocation(A1);
 			}
@@ -94,7 +94,7 @@ public class Move extends Command {
 			}
 
 		}
-		if(position.equals(A6)) {
+		if(position.equalsIgnoreCase(A6)) {
 			if(place.equalsIgnoreCase("axel")) {
 				player.setLocation(A1);
 			}
@@ -107,7 +107,7 @@ public class Move extends Command {
 
 		}
 		
-		if(position.equals(A7)) {
+		if(position.equalsIgnoreCase(A7)) {
 			if(place.equalsIgnoreCase("axel")) {
 				player.setLocation(A1);
 			}
@@ -119,7 +119,7 @@ public class Move extends Command {
 			 */
 
 		}
-		if(position.equals(A8)) {
+		if(position.equalsIgnoreCase(A8)) {
 			if(place.equalsIgnoreCase("axel")) {
 				player.setLocation(A1);
 			}
@@ -132,7 +132,7 @@ public class Move extends Command {
 
 		}
 		
-		if(position.equals(A9)) {
+		if(position.equalsIgnoreCase(A9)) {
 			if(place.equalsIgnoreCase("axel")) {
 				player.setLocation(A1);
 			}
@@ -145,7 +145,7 @@ public class Move extends Command {
 
 		}
 		
-		if(position.equals(A10)) {
+		if(position.equalsIgnoreCase(A10)) {
 			if(place.equalsIgnoreCase("axel")) {
 				player.setLocation(A1);
 			}
@@ -161,7 +161,7 @@ public class Move extends Command {
 
 		}
 		
-		if(position.equals(A11)) {
+		if(position.equalsIgnoreCase(A11)) {
 			if(place.equalsIgnoreCase("axel")) {
 				player.setLocation(A1);
 			}
@@ -172,7 +172,7 @@ public class Move extends Command {
 
 		}
 		
-		if(position.equals(A12)) {
+		if(position.equalsIgnoreCase(A12)) {
 			if(place.equalsIgnoreCase("axel")) {
 				player.setLocation(A1);
 			}
@@ -183,7 +183,7 @@ public class Move extends Command {
 
 		}
 		
-		if(position.equals(A13)) {
+		if(position.equalsIgnoreCase(A13)) {
 			if(place.equalsIgnoreCase("axel")) {
 				player.setLocation(A1);
 			}
@@ -199,7 +199,7 @@ public class Move extends Command {
 
 		}
 		
-		if(position.equals(A14)) {
+		if(position.equalsIgnoreCase(A14)) {
 			if(place.equalsIgnoreCase("axel")) {
 				player.setLocation(A1);
 			}
@@ -213,7 +213,7 @@ public class Move extends Command {
 
 		}
 		
-		if(position.equals(A15)) {
+		if(position.equalsIgnoreCase(A15)) {
 			if(place.equalsIgnoreCase("axel")) {
 				player.setLocation(A1);
 			}
@@ -227,7 +227,7 @@ public class Move extends Command {
 
 		}
 		
-		if(position.equals(A16)) {
+		if(position.equalsIgnoreCase(A16)) {
 			if(place.equalsIgnoreCase("axel")) {
 				player.setLocation(A1);
 			}

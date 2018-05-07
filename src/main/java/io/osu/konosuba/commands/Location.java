@@ -47,78 +47,172 @@ public class Location extends Command {
 		A15 = "Axel_mystery_forest";
 		A16 = "Axel_forest";
 		
-		if(position.equals(A1)) {
+		if(position.equalsIgnoreCase(A1)) {
 			location.setTitle("Axel");
 			location.setDescription("\bCOMMANDS:\b");
 			location.addField("Adventurer's Guild", "*buy\n*sell", true);
 			location.addField("Blacksmith", "*craft", true);
-			location.addField("Cafe", "*some command", true);
+			location.addField("Cafe", "*talk", true);
 			location.addField("*move [location]", "mansion, east road, fields, plains", true);
 			event.getChannel().sendMessage(location.build()).queue();
 	
 		}
 	
 		//axel_mansion
-		if(position.equals(A2)) {
+		if(position.equalsIgnoreCase(A2)) {
+			
+			location.setTitle("Axel Haunted Mansion");
+			location.setDescription("\bCOMMANDS:\b");
+			location.addField("Battle", "*battle", true);
+			location.addField("*move [location]", "axel", true);
+			event.getChannel().sendMessage(location.build()).queue();
 	
 		}
 	
 		//axel fields
-		if(position.equals(A3)) {
+		if(position.equalsIgnoreCase(A3)) {
+			location.setTitle("Axel Fields");
+			location.setDescription("\bCOMMANDS:\b");
+			location.addField("Battle", "*battle", true);
+			location.addField("*move [location]", "axel, forest", true);
+			event.getChannel().sendMessage(location.build()).queue();
 	
 	
 		}
-		if(position.equals(A4)) {
+		if(position.equalsIgnoreCase(A4)) {
+			location.setTitle("Axel Cave");
+			location.setDescription("\bCOMMANDS:\b");
+			location.addField("Battle", "*battle", true);
+			location.addField("search", "*search (planning for this to be a boss event)", true);
+			location.addField("*move [location]", "axel, east road", true);
+			event.getChannel().sendMessage(location.build()).queue();
 
 	
 		}
-		if(position.equals(A5)) {
+		if(position.equalsIgnoreCase(A5)) {
+			
+			location.setTitle("Axel Abandoned Castle");
+			location.setDescription("\bCOMMANDS:\b");
+			location.addField("Battle", "*battle", true);
+			location.addField("search", "*search (planning for this to be a boss event)", true);
+			location.addField("*move [location]", "axel, forest", true);
+			event.getChannel().sendMessage(location.build()).queue();
 	
 		}
-		if(position.equals(A6)) {
-	
-	
-		}
-		
-		if(position.equals(A7)) {
-	
-	
-		}
-		if(position.equals(A8)) {
-	
-	
-		}
-		
-		if(position.equals(A9)) {
-	
-		}
-		
-		if(position.equals(A10)) {
-	
-		}
-		
-		if(position.equals(A11)) {
+		if(position.equalsIgnoreCase(A6)) {
+			
+			location.setTitle("Axel East Road");
+			location.setDescription("\bCOMMANDS:\b");
+			location.addField("Battle", "*battle", true);
+			location.addField("*move [location]", "axel, undead road, cave", true);
+			event.getChannel().sendMessage(location.build()).queue();
 	
 	
 		}
 		
-		if(position.equals(A12)) {
+		if(position.equalsIgnoreCase(A7)) {
+			
+			location.setTitle("Axel Undead Road");
+			location.setDescription("\bCOMMANDS:\b");
+			location.addField("Battle", "*battle", true);
+			location.addField("*move [location]", "axel, east road, (to alcanteria)", true);
+			event.getChannel().sendMessage(location.build()).queue();
+	
+	
+		}
+		if(position.equalsIgnoreCase(A8)) {
+	
+			location.setTitle("Axel Plains");
+			location.setDescription("\bCOMMANDS:\b");
+			location.addField("Battle", "*battle", true);
+			location.addField("*move [location]", "axel, trail, big tree", true);
+			event.getChannel().sendMessage(location.build()).queue();
 	
 		}
 		
-		if(position.equals(A13)) {
+		if(position.equalsIgnoreCase(A9)) {
+			
+			location.setTitle("Axel Trail");
+			location.setDescription("\bCOMMANDS:\b");
+			location.addField("Battle", "*battle", true);
+			location.addField("*move [location]", "axel, plains, snow mountain", true);
+			event.getChannel().sendMessage(location.build()).queue();
 	
 		}
 		
-		if(position.equals(A14)) {
+		if(position.equalsIgnoreCase(A10)) {
+			
+			location.setTitle("Axel Snow Mountain");
+			location.setDescription("\bCOMMANDS:\b");
+			location.addField("Battle", "*battle", true);
+			location.addField("*move [location]", "axel, trail, peak, cave", true);
+			event.getChannel().sendMessage(location.build()).queue();
 	
 		}
 		
-		if(position.equals(A15)) {
+		if(position.equalsIgnoreCase(A11)) {
+			
+			location.setTitle("Axel Snow Mountain Peak");
+			location.setDescription("\bCOMMANDS:\b");
+			location.addField("Battle", "*battle", true);
+			location.addField("Climb", "*climb (another boss event)", true);
+			location.addField("*move [location]", "axel, snow mountain", true);
+			event.getChannel().sendMessage(location.build()).queue();
+	
 	
 		}
 		
-		if(position.equals(A16)) {
+		if(position.equalsIgnoreCase(A12)) {
+			location.setTitle("Axel Snow Mountain Cave");
+			location.setDescription("\bCOMMANDS:\b");
+			location.addField("Battle", "*battle", true);
+			location.addField("Search", "*search (another boss event)", true);
+			location.addField("*move [location]", "axel, snow mountain", true);
+			event.getChannel().sendMessage(location.build()).queue();
+	
+		}
+		
+		if(position.equalsIgnoreCase(A13)) {
+			
+			location.setTitle("Axel Lake");
+			location.setDescription("\bCOMMANDS:\b");
+			location.addField("Battle", "*battle", true);
+			location.addField("fish", "*fish (lol)", true);
+			location.addField("*move [location]", "axel, mystery forest, big tree, forest", true);
+			event.getChannel().sendMessage(location.build()).queue();
+	
+		}
+		
+		if(position.equalsIgnoreCase(A14)) {
+			
+			location.setTitle("Axel Big Tree");
+			location.setDescription("\bCOMMANDS:\b");
+			location.addField("Battle", "*battle", true);
+			location.addField("Climb", "*climb (boss event)", true);
+			location.addField("*move [location]", "axel, plains, lake", true);
+			event.getChannel().sendMessage(location.build()).queue();
+	
+		}
+		
+		if(position.equalsIgnoreCase(A15)) {
+			
+			location.setTitle("Axel Mystery Forest");
+			location.setDescription("\bCOMMANDS:\b");
+			location.addField("Battle", "*battle", true);
+
+			location.addField("*move [location]", "axel, lake", true);
+			event.getChannel().sendMessage(location.build()).queue();
+	
+		}
+		
+		if(position.equalsIgnoreCase(A16)) {
+			
+			location.setTitle("Axel Forest");
+			location.setDescription("\bCOMMANDS:\b");
+			location.addField("Battle", "*battle", true);
+
+			location.addField("*move [location]", "axel, lake, abandoned castle, fields", true);
+			event.getChannel().sendMessage(location.build()).queue();
 	
 		}
 		

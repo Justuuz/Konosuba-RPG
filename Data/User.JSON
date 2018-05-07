@@ -31,8 +31,8 @@
 	"battleStatus": false,
 	"onHand": "None",
 	"magicalDefense": 0,
-	"location": "Axel",
+	"location": "Axel_mansion",
 	"cape": "None",
 	"items": {},
-	"classType": "wizard"
+	"classType": "thief"
 }]
