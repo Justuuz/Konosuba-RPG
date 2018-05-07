@@ -258,9 +258,10 @@ public class Move extends Command {
 		/*
 		 * Location command goes after a move
 		 */
-		
-		Command lol = new Location();
-		lol.run(event, args);
+		if(change){
+			Command lol = new Location();
+			lol.run(event, args);
+		}
 		
 
 	
