@@ -24,7 +24,7 @@ public class Start extends Command {
 	public void run(MessageReceivedEvent event, String[] args) {
 
 		ClientData player = Konosuba.CLIENT_DATA_MANAGER.getData(event.getAuthor().getIdLong());
-		NaturalNumber zero = new NaturalNumber2(0);
+
 
 
 		//			send(event.getGuild(), event.getChannel(), "embeded means getStartStatus = true (this is before first if statement" ,player.getStartStatus());
@@ -45,7 +45,7 @@ public class Start extends Command {
 				player.setNecklace("None");
 				player.setOffHand("None");
 				player.setRing("None");
-				player.setBalance(zero);
+				player.setBalance(new NaturalNumber2(0));
 				player.setOnHand("None");
 				for(int i = 9; i >= 0; i--) {
 

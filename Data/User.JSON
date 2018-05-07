@@ -31,8 +31,8 @@
 	"battleStatus": false,
 	"onHand": "None",
 	"magicalDefense": 0,
-	"location": "Axel fields",
+	"location": "Axel_abandoned_castle",
 	"cape": "None",
 	"items": {},
-	"classType": "thief"
+	"classType": "cleric"
 }]
