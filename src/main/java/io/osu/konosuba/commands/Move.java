@@ -7,7 +7,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 public class Move extends Command {
 	
-	public Battle() {
+	public Move() {
 		super(Konosuba.COLOR, Konosuba.PREFIX, "move", "all related moving commands", null, 0);
 		// TODO Auto-generated constructor stub
 	}
