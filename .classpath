@@ -14,5 +14,6 @@
 	<classpathentry kind="lib" path="Outside Libraries/logback-core-1.2.3.jar"/>
 	<classpathentry kind="lib" path="Outside Libraries/logback-access-1.2.3.jar"/>
 	<classpathentry kind="lib" path="Outside Libraries/logback-classic-1.2.3.jar"/>
+	<classpathentry kind="lib" path="sqlite/sqlite3.exe"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
