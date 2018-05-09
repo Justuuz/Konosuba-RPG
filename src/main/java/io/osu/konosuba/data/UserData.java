@@ -1,4 +1,4 @@
-package io.osu.konosuba.util;
+package io.osu.konosuba.data;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -53,7 +53,7 @@ public class UserData {
 	// ===========================================
 	
 	
-	public UserData(long userid) throws Exception {
+	public UserData(long userid) {
 		this.userid = userid;
 		
 	}

@@ -3,8 +3,10 @@ package io.osu.konosuba.util;
 import java.util.ArrayList;
 
 import io.osu.konosuba.Konosuba;
+import io.osu.konosuba.data.ClassData;
 import io.osu.konosuba.data.ClientData;
 import io.osu.konosuba.data.GearData;
+import io.osu.konosuba.data.UserData;
 
 
 public class PointsHandler {
@@ -12,10 +14,10 @@ public class PointsHandler {
 	public PointsHandler() {
 	}
 
-	public void recalibratePoints(ClientData player) {
+	public void recalibratePoints(UserData player) throws Exception{
 		
 //		Object obj = new JsonParser().parse(new FileReader("Data/User.JSON"));
-//		JsonObject user = (JsonObject) obj;
+//		JsonObject user = (JsonObject) obj; 
 //		
 //		Object obj2 = new JsonParser().parse(new FileReader("Data/Armor.JSON"));
 //		JsonObject armor = (JsonObject) obj2;
@@ -28,23 +30,25 @@ public class PointsHandler {
 		
 		ArrayList<GearData> gear = new ArrayList<>();
 		
-		gear.add(Konosuba.GEAR_DATA_MANAGER.getData(player.getHelmet()));
+		gear.add(new GearData(player.getHelmet()));
 		
-		gear.add(Konosuba.GEAR_DATA_MANAGER.getData(player.getChest()));
+		gear.add(new GearData(player.getChest()));
 		
-		gear.add(Konosuba.GEAR_DATA_MANAGER.getData(player.getLeggings()));
+		gear.add(new GearData(player.getLegs()));
 		
-		gear.add(Konosuba.GEAR_DATA_MANAGER.getData(player.getBoots()));
+		gear.add(new GearData(player.getBoots()));
 		
-		gear.add(Konosuba.GEAR_DATA_MANAGER.getData(player.getCape()));
+		gear.add(new GearData(player.getCape()));
 		
-		gear.add(Konosuba.GEAR_DATA_MANAGER.getData(player.getRing()));
+		gear.add(new GearData(player.getRing()));
 		
-		gear.add(Konosuba.GEAR_DATA_MANAGER.getData(player.getOnHand()));
+		gear.add(new GearData(player.getOnhand()));
 		
-		gear.add(Konosuba.GEAR_DATA_MANAGER.getData(player.getOffHand()));
+		gear.add(new GearData(player.getOffhand()));
 		
-		gear.add(Konosuba.GEAR_DATA_MANAGER.getData(player.getNecklace()));
+		gear.add(new GearData(player.getNecklace()));
+		
+		
 		
 		
 		
@@ -54,6 +58,7 @@ public class PointsHandler {
 		int magic = 0;
 		int dex = 0;
 		int luck = 0;
+		int hitpoints = 0;
 		
 		for(GearData obj: gear) {
 			System.out.println(obj.getStrength());
@@ -68,15 +73,17 @@ public class PointsHandler {
 			dex = dex + obj.getLuck();
 			System.out.println(obj.getStrength());
 			luck = luck + obj.getLuck();
+			hitpoints = luck + obj.getHitpoints();
 		}
 		
-		System.out.println(Konosuba.CLASS_DATA_MANAGER.getData(player.getClassType()).getStrength());
-		strength = strength + Konosuba.CLASS_DATA_MANAGER.getData(player.getClassType()).getStrength();
-		phyDef = phyDef + Konosuba.CLASS_DATA_MANAGER.getData(player.getClassType()).getPhysicalDefense();
-		magDef = magDef + Konosuba.CLASS_DATA_MANAGER.getData(player.getClassType()).getMagicalDefense();
-		magic = magic + Konosuba.CLASS_DATA_MANAGER.getData(player.getClassType()).getMagic();
-		dex = dex + Konosuba.CLASS_DATA_MANAGER.getData(player.getClassType()).getDexterity();
-		luck = luck + Konosuba.CLASS_DATA_MANAGER.getData(player.getClassType()).getLuck();
+		System.out.println(new ClassData(player.getClasses()));
+		strength = strength + new ClassData(player.getClasses()).getStrength();
+		phyDef = phyDef + new ClassData(player.getClasses()).getPhysicalDefense();
+		magDef = magDef + new ClassData(player.getClasses()).getMagicalDefense();
+		magic = magic + new ClassData(player.getClasses()).getMagic();
+		dex = dex + new ClassData(player.getClasses()).getDexterity();
+		luck = luck + new ClassData(player.getClasses()).getLuck();
+		hitpoints = hitpoints + new ClassData(player.getClasses()).getHitpoints();
 		
 		
 		player.setStrength(strength);
@@ -85,8 +92,9 @@ public class PointsHandler {
 		player.setMagic(magic);
 		player.setDexterity(dex);
 		player.setLuck(luck);
+		player.setHitpoints(hitpoints);
 		
-		Konosuba.CLIENT_DATA_MANAGER.trySave();
+
 		
 	}
 }
