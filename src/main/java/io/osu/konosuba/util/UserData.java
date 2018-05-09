@@ -4,13 +4,17 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import com.google.gson.JsonArray;
+
+import components.map.Map;
 
 import java.sql.DriverManager;
 
@@ -43,13 +47,13 @@ public class UserData {
 	private int phys_def;
 	private int magi_def;
 	private int health;
-	private ArrayList<ArrayList<String>> invent;
-	private List<HashMap<String, Integer>> map; 
+	private List<List<String>> invent;
+	private HashMap<String, Integer> item; 
 	 
 	// ===========================================
 	
 	
-	public UserData(long userid) {
+	public UserData(long userid) throws Exception {
 		this.userid = userid;
 		SQLiteJDBC();
 	}
@@ -95,8 +99,25 @@ public class UserData {
 			phys_def = result.getInt("phys_def");
 			magi_def = result.getInt("magi_def");
 			health   = result.getInt("health");
-			// invent   = new JsonArray(result.getString("invent"))); Figure out later
-			// item     = result.get Figure out later
+			
+			JSONArray raw = new JSONArray(result.getString("invent"));
+			List<List<String>> stringListList = new ArrayList<>();
+			List<String> stringList = new ArrayList<>();
+			for (Object obj : raw) {
+			    for (Object obj2 : ((JSONArray) obj)) {
+			        stringList.add((String) obj2);
+			    }
+			    stringListList.add(new ArrayList<>(stringList)); // Fixes clearing
+			    stringList.clear();  
+			}
+			invent  = stringListList;
+			
+			JSONObject raw2 = new JSONObject(result.getString("item"));
+			HashMap<String, Integer> stringMap = new HashMap<>();
+			raw2.toMap().forEach((k,v) -> stringMap.put(k, (int)v));
+			item = stringMap;
+			
+			
 			
 		}else {
 			// Default
@@ -120,6 +141,8 @@ public class UserData {
 			phys_def = 0;
 			magi_def = 0;
 			health   = 0;
+			invent = null;
+			item = null;
 			
 		} 
 		statement.close();
@@ -151,7 +174,8 @@ public class UserData {
 					"  def_magi INTEGER NOT NULL DEFAULT 0," + 
 					"  health   INTEGER NOT NULL DEFAULT 0," + 
 					"  class    TEXT," + 
-					"  invent   TEXT" + 
+					"  invent   TEXT," + 
+					"  item     TEXT" +
 					");"
 	);
 		statement.execute("INSERT OR IGNORE INTO '" + table + "' (userid, "+key+") VALUES ("+userid+","+value+");"+
@@ -291,7 +315,132 @@ public class UserData {
         update(connect, "client", "off_hand" ,offhand);
     }
 	
+    public int getStrength() throws Exception {
+		update(connect, "client", userid);
+		return strength;
+	}
 	
+	public void setStrength(int strength) throws Exception {
+		this.strength = strength;
+		update(connect, "client", "strength", Integer.toString(strength));
+	}
+	
+	public int getMagic() throws Exception {
+		update(connect, "client", userid);
+		return magic;
+	}
+	
+	public void setMagic(int magic) throws Exception {
+		this.magic = magic;
+		update(connect, "client", "magic", Integer.toString(magic));
+	}
+	
+	public int getLuck() throws Exception {
+		update(connect, "client", userid);
+		return luck;
+	}
+	
+	public void setLuck(int luck) throws Exception {
+		this.luck = luck;
+		update(connect, "client", "luck", Integer.toString(luck));
+	}
+	
+	public int getDexterity() throws Exception {
+		update(connect, "client", userid);
+		return dex;
+	}
+	
+	public void setDexterity(int dexterity) throws Exception {
+		this.dex = dexterity;
+		update(connect, "client", "dex", Integer.toString(dexterity));
+	}
+	
+	public int getPhysicalDefense() throws Exception {
+		update(connect, "client", userid);
+		return phys_def;
+	}
+	
+	public void setPhysicalDefense(int physicalDefense) throws Exception {
+		this.phys_def = physicalDefense;
+		update(connect, "client", "phys_def", Integer.toString(physicalDefense));
+	}
+	
+	public int getMagicalDefense() throws Exception {
+		update(connect, "client", userid);
+		return magi_def;
+	}
+	
+	public void setMagicalDefense(int magicalDefense) throws Exception {
+		this.magi_def = magicalDefense;
+		update(connect, "client", "magi_def", Integer.toString(magicalDefense));
+	}
+	
+	public int getHitpoints() throws Exception {
+		update(connect, "client", userid);
+		return health;
+	}
+	
+	public void setHitpoints(int hitpoints) throws Exception {
+		this.health = hitpoints;
+		update(connect, "client", "health", Integer.toString(hitpoints));
+	}
+	
+	public List<List<String>> getInventory() throws Exception {
+		update(connect, "client", userid);
+		return invent;
+	}
+	
+	public void addInventory(int position, String item) throws Exception {
+		update(connect, "client", userid);
+		List<String> subInv = this.invent.remove(position);
+		subInv.add(item);	
+		this.invent.add(position, subInv);
+	}
+	
+	public void removeInventory(int position, String item) throws Exception {
+		List<String> subInv = this.invent.remove(position);
+		subInv.remove(item);	
+		this.invent.add(position, subInv); 
+	}
+	
+	public HashMap<String, Integer> getItems(){
+		return item;
+	}
+	
+	public void setItems(HashMap<String, Integer> item) {
+		this.item = item;
+	}
+	public void addItems(String item, int amount) {
+		if(this.getItems().containsKey(item)) {
+			int itemValue = this.getItems().remove(item);
+			int amt = itemValue + amount;
+			this.getItems().put(item, amt);
+			
+		}
+		else {
+			this.getItems().put(item, amount);
+		}
+	}
+	
+	public void removeItems(String item, int amount) {
+		/*
+		 * amount will be less than or equal to the value
+		 * precondition xdddd
+		 * 
+		 * also there IS an item in the map when called
+		 */
+		
+		int itemValue = this.getItems().remove(item);
+		int amt = itemValue - amount;
+		if(amt > 0) {
+			this.getItems().put(item,  amt);
+		}
+		// don't add the map if amt == 0
+		
+		
+
+
+	}
 		
 	
 }
