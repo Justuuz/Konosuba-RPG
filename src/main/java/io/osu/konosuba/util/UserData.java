@@ -55,22 +55,34 @@ public class UserData {
 	
 	public UserData(long userid) throws Exception {
 		this.userid = userid;
-		SQLiteJDBC();
-	}
-	
-	private Connection connect;
-	
-	void SQLiteJDBC() throws Exception{
-		Connection c = null;
-		Statement statement = null;
 		
-			Class.forName("org.postgresql.Driver");
-			c= DriverManager
-					.getConnection("jdbc:sqlite:" + System.getProperty("user.home") + "/git/KonosubaBot/Data/data.db");
-			c.setAutoCommit(false);
-			System.out.println("Connection success");
-			connect = c;
 	}
+	
+	
+	    private static Connection CONNECTION;
+	    static {
+	        try {
+	            Class.forName("org.sqlite.JDBC");
+	            CONNECTION = DriverManager.getConnection("jdbc:sqlite:" + System.getProperty("user.home") + "/git/KonosubaBot/Data/data.db");
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            CONNECTION=null;
+	            System.exit(0);
+	        }
+	    }
+
+	
+//	static void SQLiteJDBC() throws Exception{
+//		Connection CONNECTION = null;
+//		Statement statement = null;
+//		
+//			Class.forName("org.postgresql.Driver");
+//			c= DriverManager
+//					.getConnection("jdbc:sqlite:" + System.getProperty("user.home") + "/git/KonosubaBot/Data/data.db");
+//			c.setAutoCommit(false);
+//			System.out.println("Connection success");
+//			
+//	}
 	
 	
 	
