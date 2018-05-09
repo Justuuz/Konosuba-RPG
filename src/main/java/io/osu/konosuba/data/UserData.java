@@ -86,9 +86,9 @@ public class UserData {
 	
 	
 	
-	private void update(Connection CONNECTIONion, String table, long userid) throws Exception {
+	private void update(Connection connection, String table, long userid) throws Exception {
 		this.userid = userid;
-		Statement statement = CONNECTIONion.createStatement();
+		Statement statement = connection.createStatement();
 		ResultSet result = statement.executeQuery("SELECT * FROM '" +table+"' WHERE userid="+ userid + ";");
 		if(result.next()) {
 			balance  = result.getInt("balance");
@@ -162,8 +162,8 @@ public class UserData {
 		
 	}
 	
-	private void update(Connection CONNECTIONion, String table, String key, String value) throws Exception {
-		Statement statement = CONNECTIONion.createStatement();
+	private void update(Connection connection, String table, String key, String value) throws Exception {
+		Statement statement = connection.createStatement();
 		statement.execute(
 				"CREATE TABLE IF NOT EXISTS '"+ table + "' ("+
 					"  id       INTEGER PRIMARY KEY NOT NULL," + 
@@ -400,6 +400,10 @@ public class UserData {
 	public List<List<String>> getInventory() throws Exception {
 		update(CONNECTION, "client", userid);
 		return invent;
+	}
+	
+	public void setInventory() throws Exception {
+		update(CONNECTION, )
 	}
 	
 	public void addInventory(int position, String item) throws Exception {

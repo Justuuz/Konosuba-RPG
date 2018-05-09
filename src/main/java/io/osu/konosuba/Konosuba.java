@@ -4,6 +4,8 @@ import java.awt.Color;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 import javax.security.auth.login.LoginException;
 import io.osu.konosuba.data.*;
@@ -24,10 +26,17 @@ public class Konosuba  {
 		public static final String PREFIX = "*";
 		
 		//this is for pulling information
-		public static final ClientDataManager CLIENT_DATA_MANAGER = new ClientDataManager(new File(System.getProperty("user.home") + "/git\\KonosubaBot\\Data\\User.JSON"));
-		public static final GearDataManager GEAR_DATA_MANAGER =  new GearDataManager(new File(System.getProperty("user.home") + "/git\\KonosubaBot\\Data\\Gears.JSON"));
-		public static final ClassDataManager CLASS_DATA_MANAGER =  new ClassDataManager(new File(System.getProperty("user.home") + "/git\\KonosubaBot\\Data\\Classes.JSON"));
-
+		public static Connection CONNECTION;
+	    static {
+	        try {
+	            Class.forName("org.sqlite.JDBC");
+	            CONNECTION = DriverManager.getConnection("jdbc:sqlite:" + System.getProperty("user.home") + "/git/KonosubaBot/Data/data.db");
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            CONNECTION=null;
+	            System.exit(0);
+	        }
+	    }
 	
 	
 	public static void main(String[] args) throws LoginException, IOException {
@@ -39,10 +48,7 @@ public class Konosuba  {
 				.setBulkDeleteSplittingEnabled(false)
 				
 				.build();
-		Konosuba.CLIENT_DATA_MANAGER.load();
-		Konosuba.GEAR_DATA_MANAGER.load();
-		Konosuba.CLASS_DATA_MANAGER.load();
-		key.close();
+		
 		
 	}
 }

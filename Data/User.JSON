@@ -1,20 +1,11 @@
-	[{
+[{
 	"magic": 0,
-	"chest": "None",
-	"clientId": 81911518148440064,
 	"luck": 0,
 	"strength": 0,
 	"ring": "None",
-	"durability": 0,
 	"startStatus": true,
-	"necklace": "None",
-	"classStatus": false,
-	"physicalDefense": 0,
 	"inventory": [
-		[
-			"None",
-			"admin_hat"
-		],
+		["None"],
 		["None"],
 		["None"],
 		["None"],
@@ -24,16 +15,24 @@
 		["None"],
 		["None"]
 	],
-	"dexterity": 0,
 	"hitpoints": 0,
+	"balance": {"a": {}},
+	"helmet": "None",
+	"boots": "None",
+	"leggings": "None",
+	"offHand": "None",
+	"chest": "None",
+	"clientId": 81911518148440064,
+	"durability": 0,
+	"necklace": "None",
+	"classStatus": false,
+	"physicalDefense": 0,
+	"dexterity": 0,
 	"battleStatus": false,
-	"balance": 0,
 	"onHand": "None",
 	"magicalDefense": 0,
-	"helmet": "admin_hat",
-	"boots": "None",
+	"location": "Axel",
 	"cape": "None",
-	"leggings": "None",
-	"classType": "priest",
-	"offHand": "None"
+	"items": {},
+	"classType": "None"
 }]
