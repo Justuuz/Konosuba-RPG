@@ -30,7 +30,7 @@ public class Konosuba  {
 	    static {
 	        try {
 	            Class.forName("org.sqlite.JDBC");
-	            CONNECTION = DriverManager.getConnection("jdbc:sqlite:" + System.getProperty("user.home") + "/git/KonosubaBot/Data/data.db");
+	            CONNECTION = DriverManager.getConnection("jdbc:sqlite:" + System.getProperty("user.home") + "/git/KonosubaBot/Datadata.db");
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	            CONNECTION=null;

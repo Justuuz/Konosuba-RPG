@@ -53,8 +53,9 @@ public class UserData {
 	// ===========================================
 	
 	
-	public UserData(long userid) {
+	public UserData(long userid) throws Exception {
 		this.userid = userid;
+		update(CONNECTION, "client", userid);
 		
 	}
 	
@@ -402,31 +403,36 @@ public class UserData {
 		return invent;
 	}
 	
-	public void setInventory() throws Exception {
-		update(CONNECTION, )
+	public void setInventory(List<List<String>> inventory) throws Exception {
+		this.invent = inventory;
+		update(CONNECTION, "client", "invent", inventory.toString());
 	}
 	
 	public void addInventory(int position, String item) throws Exception {
-		update(CONNECTION, "client", userid);
 		List<String> subInv = this.invent.remove(position);
 		subInv.add(item);	
 		this.invent.add(position, subInv);
+		update(CONNECTION, "client", userid);
 	}
 	
 	public void removeInventory(int position, String item) throws Exception {
 		List<String> subInv = this.invent.remove(position);
 		subInv.remove(item);	
 		this.invent.add(position, subInv); 
+		update(CONNECTION, "client", userid);
 	}
 	
-	public HashMap<String, Integer> getItems(){
+	public HashMap<String, Integer> getItems() throws Exception{
+		update(CONNECTION, "client", userid);
 		return item;
+		
 	}
 	
-	public void setItems(HashMap<String, Integer> item) {
+	public void setItems(HashMap<String, Integer> item) throws Exception {
 		this.item = item;
+		update(CONNECTION, "client", "item", item.toString());
 	}
-	public void addItems(String item, int amount) {
+	public void addItems(String item, int amount) throws Exception {
 		if(this.getItems().containsKey(item)) {
 			int itemValue = this.getItems().remove(item);
 			int amt = itemValue + amount;
@@ -436,9 +442,12 @@ public class UserData {
 		else {
 			this.getItems().put(item, amount);
 		}
+		
+		update(CONNECTION, "client", userid);
+		
 	}
 	
-	public void removeItems(String item, int amount) {
+	public void removeItems(String item, int amount) throws Exception {
 		/*
 		 * amount will be less than or equal to the value
 		 * precondition xdddd
@@ -451,6 +460,8 @@ public class UserData {
 		if(amt > 0) {
 			this.getItems().put(item,  amt);
 		}
+		update(CONNECTION, "client", userid);
+		
 		// don't add the map if amt == 0
 		
 		
