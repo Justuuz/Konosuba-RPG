@@ -86,9 +86,9 @@ public class UserData {
 	
 	
 	
-	private void update(Connection connection, String table, long userid) throws Exception {
+	private void update(Connection CONNECTIONion, String table, long userid) throws Exception {
 		this.userid = userid;
-		Statement statement = connection.createStatement();
+		Statement statement = CONNECTIONion.createStatement();
 		ResultSet result = statement.executeQuery("SELECT * FROM '" +table+"' WHERE userid="+ userid + ";");
 		if(result.next()) {
 			balance  = result.getInt("balance");
@@ -162,8 +162,8 @@ public class UserData {
 		
 	}
 	
-	private void update(Connection connection, String table, String key, String value) throws Exception {
-		Statement statement = connection.createStatement();
+	private void update(Connection CONNECTIONion, String table, String key, String value) throws Exception {
+		Statement statement = CONNECTIONion.createStatement();
 		statement.execute(
 				"CREATE TABLE IF NOT EXISTS '"+ table + "' ("+
 					"  id       INTEGER PRIMARY KEY NOT NULL," + 
@@ -198,212 +198,212 @@ public class UserData {
 	
 	
 	public int getBalance() throws Exception {
-		update(connect, "client", userid);
+		update(CONNECTION, "client", userid);
 		return balance;
 	}
 	
 	public void setBalance(int balance) throws Exception {
 		this.balance = balance;
-		update(connect, "client", "balance", Integer.toString(balance));
+		update(CONNECTION, "client", "balance", Integer.toString(balance));
 	}
 	
 	public boolean getBattleStatus() throws Exception {
-		update(connect,  "battling", userid);
+		update(CONNECTION,  "battling", userid);
 		return battling;
 	}
 	
 	public void setBattleStatus(boolean battleStatus) throws Exception {
 		this.battling = battleStatus;
-		update(connect, "client", "battling",String.valueOf(battleStatus));
+		update(CONNECTION, "client", "battling",String.valueOf(battleStatus));
 	}
 	
 	public boolean getStartStatus() throws Exception {
-		update(connect,"starting" ,userid);
+		update(CONNECTION,"starting" ,userid);
 		return starting;
 	}
 	
 	public void setStartStatus(boolean startStatus) throws Exception {
 		this.starting = startStatus;
-		update(connect, "client", "starting", String.valueOf(startStatus));
+		update(CONNECTION, "client", "starting", String.valueOf(startStatus));
 	}
 
     public String getClasses() throws Exception {
-        update(connect, "client", userid);
+        update(CONNECTION, "client", userid);
         return classes;
     }
 
     public void setClasses(String classes) throws Exception {
         this.classes = classes;
-        update(connect, "client", "classes" ,classes);
+        update(CONNECTION, "client", "classes" ,classes);
     }
 
 	public String getHelmet() throws Exception {
-		update(connect, "client", userid);
+		update(CONNECTION, "client", userid);
 		return helm;
 	}
 	
 	public void setHelmet(String helmet) throws Exception {
 		this.helm = helmet;
-		update(connect, "client","helm",helmet);
+		update(CONNECTION, "client","helm",helmet);
 	}
 
 	public String getChest() throws Exception {
-		update(connect, "client", userid);
+		update(CONNECTION, "client", userid);
 		return chest;
 	}
 
 	public void setChest(String chest) throws Exception {
 	    this.chest = chest;
-	    update(connect, "client","chest", chest);
+	    update(CONNECTION, "client","chest", chest);
     }
 
     public String getLegs() throws Exception {
-	    update(connect, "client", userid);
+	    update(CONNECTION, "client", userid);
 	    return legs;
     }
 
     public void setLegs(String legs) throws Exception {
 	    this.legs = legs;
-	    update(connect, "client", "legs", legs);
+	    update(CONNECTION, "client", "legs", legs);
     }
 
     public String getBoots() throws Exception {
-	    update(connect, "client", userid);
+	    update(CONNECTION, "client", userid);
 	    return boots;
     }
 
     public void setBoots(String boots) throws Exception {
 	    this.boots = boots;
-	    update(connect, "client", "boots" ,boots);
+	    update(CONNECTION, "client", "boots" ,boots);
     }
 
     public String getRing() throws Exception {
-        update(connect, "client", userid);
+        update(CONNECTION, "client", userid);
         return ring;
     }
 
     public void setRing(String ring) throws Exception {
         this.ring = ring;
-        update(connect, "client", "ring" ,ring);
+        update(CONNECTION, "client", "ring" ,ring);
     }
 
     public String getNecklace() throws Exception {
-        update(connect, "client", userid);
+        update(CONNECTION, "client", userid);
         return neck;
     }
 
     public void setNecklace(String necklace) throws Exception {
         this.neck =necklace ;
-        update(connect, "client", "neck" ,necklace);
+        update(CONNECTION, "client", "neck" ,necklace);
     }
 
     public String getCape() throws Exception {
-        update(connect, "client", userid);
+        update(CONNECTION, "client", userid);
         return cape;
     }
 
     public void setCape(String cape) throws Exception {
         this.cape = cape;
-        update(connect, "client", "cape" ,cape);
+        update(CONNECTION, "client", "cape" ,cape);
     }
 
     public String getOnhand() throws Exception {
-        update(connect, "client", userid);
+        update(CONNECTION, "client", userid);
         return on_hand;
     }
 
     public void setOnhand(String onhand) throws Exception {
         this.on_hand = onhand;
-        update(connect, "client", "on_hand" ,onhand);
+        update(CONNECTION, "client", "on_hand" ,onhand);
     }
 
     public String getOffhand() throws Exception {
-        update(connect, "client", userid);
+        update(CONNECTION, "client", userid);
         return off_hand;
     }
 
     public void setOffhand(String offhand) throws Exception {
         this.off_hand = offhand;
-        update(connect, "client", "off_hand" ,offhand);
+        update(CONNECTION, "client", "off_hand" ,offhand);
     }
 	
     public int getStrength() throws Exception {
-		update(connect, "client", userid);
+		update(CONNECTION, "client", userid);
 		return strength;
 	}
 	
 	public void setStrength(int strength) throws Exception {
 		this.strength = strength;
-		update(connect, "client", "strength", Integer.toString(strength));
+		update(CONNECTION, "client", "strength", Integer.toString(strength));
 	}
 	
 	public int getMagic() throws Exception {
-		update(connect, "client", userid);
+		update(CONNECTION, "client", userid);
 		return magic;
 	}
 	
 	public void setMagic(int magic) throws Exception {
 		this.magic = magic;
-		update(connect, "client", "magic", Integer.toString(magic));
+		update(CONNECTION, "client", "magic", Integer.toString(magic));
 	}
 	
 	public int getLuck() throws Exception {
-		update(connect, "client", userid);
+		update(CONNECTION, "client", userid);
 		return luck;
 	}
 	
 	public void setLuck(int luck) throws Exception {
 		this.luck = luck;
-		update(connect, "client", "luck", Integer.toString(luck));
+		update(CONNECTION, "client", "luck", Integer.toString(luck));
 	}
 	
 	public int getDexterity() throws Exception {
-		update(connect, "client", userid);
+		update(CONNECTION, "client", userid);
 		return dex;
 	}
 	
 	public void setDexterity(int dexterity) throws Exception {
 		this.dex = dexterity;
-		update(connect, "client", "dex", Integer.toString(dexterity));
+		update(CONNECTION, "client", "dex", Integer.toString(dexterity));
 	}
 	
 	public int getPhysicalDefense() throws Exception {
-		update(connect, "client", userid);
+		update(CONNECTION, "client", userid);
 		return phys_def;
 	}
 	
 	public void setPhysicalDefense(int physicalDefense) throws Exception {
 		this.phys_def = physicalDefense;
-		update(connect, "client", "phys_def", Integer.toString(physicalDefense));
+		update(CONNECTION, "client", "phys_def", Integer.toString(physicalDefense));
 	}
 	
 	public int getMagicalDefense() throws Exception {
-		update(connect, "client", userid);
+		update(CONNECTION, "client", userid);
 		return magi_def;
 	}
 	
 	public void setMagicalDefense(int magicalDefense) throws Exception {
 		this.magi_def = magicalDefense;
-		update(connect, "client", "magi_def", Integer.toString(magicalDefense));
+		update(CONNECTION, "client", "magi_def", Integer.toString(magicalDefense));
 	}
 	
 	public int getHitpoints() throws Exception {
-		update(connect, "client", userid);
+		update(CONNECTION, "client", userid);
 		return health;
 	}
 	
 	public void setHitpoints(int hitpoints) throws Exception {
 		this.health = hitpoints;
-		update(connect, "client", "health", Integer.toString(hitpoints));
+		update(CONNECTION, "client", "health", Integer.toString(hitpoints));
 	}
 	
 	public List<List<String>> getInventory() throws Exception {
-		update(connect, "client", userid);
+		update(CONNECTION, "client", userid);
 		return invent;
 	}
 	
 	public void addInventory(int position, String item) throws Exception {
-		update(connect, "client", userid);
+		update(CONNECTION, "client", userid);
 		List<String> subInv = this.invent.remove(position);
 		subInv.add(item);	
 		this.invent.add(position, subInv);
