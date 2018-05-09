@@ -51,6 +51,7 @@ public class UserData {
 	
 	public UserData(long userid) {
 		this.userid = userid;
+		SQLiteJDBC();
 	}
 	
 	private Connection connect;
@@ -189,22 +190,106 @@ public class UserData {
 		this.starting = startStatus;
 		update(connect, "client", "starting", String.valueOf(startStatus));
 	}
-	
-	
-	
-	
+
+    public String getClasses() throws Exception {
+        update(connect, "client", userid);
+        return classes;
+    }
+
+    public void setClasses(String classes) throws Exception {
+        this.classes = classes;
+        update(connect, "client", "classes" ,classes);
+    }
+
 	public String getHelmet() throws Exception {
 		update(connect, "client", userid);
 		return helm;
-		
-		
 	}
 	
 	public void setHelmet(String helmet) throws Exception {
 		this.helm = helmet;
 		update(connect, "client","helm",helmet);
-				 
 	}
+
+	public String getChest() throws Exception {
+		update(connect, "client", userid);
+		return chest;
+	}
+
+	public void setChest(String chest) throws Exception {
+	    this.chest = chest;
+	    update(connect, "client","chest", chest);
+    }
+
+    public String getLegs() throws Exception {
+	    update(connect, "client", userid);
+	    return legs;
+    }
+
+    public void setLegs(String legs) throws Exception {
+	    this.legs = legs;
+	    update(connect, "client", "legs", legs);
+    }
+
+    public String getBoots() throws Exception {
+	    update(connect, "client", userid);
+	    return boots;
+    }
+
+    public void setBoots(String boots) throws Exception {
+	    this.boots = boots;
+	    update(connect, "client", "boots" ,boots);
+    }
+
+    public String getRing() throws Exception {
+        update(connect, "client", userid);
+        return ring;
+    }
+
+    public void setRing(String ring) throws Exception {
+        this.ring = ring;
+        update(connect, "client", "ring" ,ring);
+    }
+
+    public String getNecklace() throws Exception {
+        update(connect, "client", userid);
+        return neck;
+    }
+
+    public void setNecklace(String necklace) throws Exception {
+        this.neck =necklace ;
+        update(connect, "client", "neck" ,necklace);
+    }
+
+    public String getCape() throws Exception {
+        update(connect, "client", userid);
+        return cape;
+    }
+
+    public void setCape(String cape) throws Exception {
+        this.cape = cape;
+        update(connect, "client", "cape" ,cape);
+    }
+
+    public String getOnhand() throws Exception {
+        update(connect, "client", userid);
+        return on_hand;
+    }
+
+    public void setOnhand(String onhand) throws Exception {
+        this.on_hand = onhand;
+        update(connect, "client", "on_hand" ,onhand);
+    }
+
+    public String getOffhand() throws Exception {
+        update(connect, "client", userid);
+        return off_hand;
+    }
+
+    public void setOffhand(String offhand) throws Exception {
+        this.off_hand = offhand;
+        update(connect, "client", "off_hand" ,offhand);
+    }
 	
 	
 		
