@@ -22,7 +22,12 @@ public class CommandListener extends ListenerAdapter {
 		new Item_admin(),
 		new ItemToss_Admin(),
 		new Location(),
-		new Move()
+		new Move(),
+		new Buy(),
+		new Sell(),
+		new Talk(),
+		new Craft(),
+
 	};
 
 	CommandListener() throws IOException {
