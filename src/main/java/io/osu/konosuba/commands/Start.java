@@ -74,6 +74,7 @@ public class Start extends Command {
 					player.getInventory().add(new ArrayList<String>());
 					player.getInventory().get(8).add("None");
 					player.setItems(new HashMap<String, Integer>());
+					player.setLocation("Axel");
 
 					String name = (event.getMember() != null ? event.getMember().getEffectiveName() : event.getAuthor().getName());
 					send(event.getGuild(), event.getChannel(), "Welcome " + name +"! Today is the day you start your adventure! Before we can start, I must ask "

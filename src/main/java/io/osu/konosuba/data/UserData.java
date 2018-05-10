@@ -20,9 +20,9 @@ import java.sql.DriverManager;
 
 public class UserData {
 	
-	//  |userid|balance|battling|starting|classes|helm|chest|legs|boots|cape|ring|neck|on_hand|off_hand|strength|magic|luck|dex |phys_def|magi_def|health|invent|item    |
-	//	-----------------------------------------------------------------------------------------------------------------------------------------------------
-	//  |TEXT  |TEXT   |INT     |INT     |TEXT   |TEXT|TEXT |TEXT|TEXT |TEXT|TEXT|TEXT|TEXT   |TEXT    |INT     |INT  |INT |INT |INT     |INT     |INT   |TEXT  |TEXT    |
+	//  |userid|balance|battling|starting|classes|helm|chest|legs|boots|cape|ring|neck|on_hand|off_hand|strength|magic|luck|dex |phys_def|magi_def|health|invent|item|location|
+	//	----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	//  |TEXT  |TEXT   |INT     |INT     |TEXT   |TEXT|TEXT |TEXT|TEXT |TEXT|TEXT|TEXT|TEXT   |TEXT    |INT     |INT  |INT |INT |INT     |INT     |INT   |TEXT  |TEXT|TEXT    |
 	
 	
 	// = Cache ===================================
@@ -48,7 +48,8 @@ public class UserData {
 	private int magi_def;
 	private int health;
 	private List<List<String>> invent;
-	private HashMap<String, Integer> item; 
+	private HashMap<String, Integer> item;
+	private String location;
 	 
 	// ===========================================
 	
@@ -130,6 +131,8 @@ public class UserData {
 			raw2.toMap().forEach((k,v) -> stringMap.put(k, (int)v));
 			item = stringMap;
 			
+			location = result.getString("location");
+			
 			
 			
 		}else {
@@ -156,6 +159,7 @@ public class UserData {
 			health   = 0;
 			invent = null;
 			item = null;
+			location = null;
 			
 		} 
 		statement.close();
@@ -188,7 +192,8 @@ public class UserData {
 					"  health   INTEGER NOT NULL DEFAULT 0," + 
 					"  class    TEXT," + 
 					"  invent   TEXT," + 
-					"  item     TEXT" +
+					"  item     TEXT," +
+					"  location TEXT"  +
 					");"
 	);
 		statement.execute("INSERT OR IGNORE INTO '" + table + "' (userid, "+key+") VALUES ("+userid+","+value+");"+
@@ -463,11 +468,18 @@ public class UserData {
 		update(CONNECTION, "client", userid);
 		
 		// don't add the map if amt == 0
-		
-		
-
 
 	}
+	
+	public String getLocation() throws Exception {
+        update(CONNECTION, "client", userid);
+        return location;
+    }
+
+    public void setLocation(String location) throws Exception {
+        this.location = location;
+        update(CONNECTION, "client", "location" ,location);
+    }
 		
 	
 }
