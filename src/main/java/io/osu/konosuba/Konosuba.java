@@ -47,7 +47,11 @@ public class Konosuba  {
 	public static void main(String[] args) throws LoginException {
 		//noinspection SpellCheckingInspection
 		new DefaultShardManagerBuilder()
+<<<<<<< HEAD
 				.setToken(KOBOSUBA_TOKEN)
+=======
+				.setToken(null)
+>>>>>>> branch 'masterWithSQL' of https://github.com/Thrump/KonosubaBot
 				.addEventListeners(new CommandListener())
 				.setBulkDeleteSplittingEnabled(false)
 				// .setShardsTotal(1) // XXX DO NOT USE THIS!
