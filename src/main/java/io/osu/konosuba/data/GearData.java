@@ -1,17 +1,9 @@
 package io.osu.konosuba.data;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import components.map.Map;
 import io.osu.konosuba.Konosuba;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
@@ -105,7 +97,7 @@ public class GearData {
 	
 	
 	
-    public int getStrength() throws Exception {
+    public int getStrength() {
 		
 		return strength;
 	}
@@ -115,7 +107,7 @@ public class GearData {
 		update(Konosuba.CONNECTION, "gear", "strength", Integer.toString(strength));
 	}
 	
-	public int getMagic() throws Exception {
+	public int getMagic() {
 		
 		return magic;
 	}
@@ -125,7 +117,7 @@ public class GearData {
 		update(Konosuba.CONNECTION, "gear", "magic", Integer.toString(magic));
 	}
 	
-	public int getLuck() throws Exception {
+	public int getLuck() {
 		
 		return luck;
 	}
@@ -135,7 +127,7 @@ public class GearData {
 		update(Konosuba.CONNECTION, "gear", "luck", Integer.toString(luck));
 	}
 	
-	public int getDexterity() throws Exception {
+	public int getDexterity() {
 		
 		return dex;
 	}
@@ -145,7 +137,7 @@ public class GearData {
 		update(Konosuba.CONNECTION, "gear", "dex", Integer.toString(dexterity));
 	}
 	
-	public int getPhysicalDefense() throws Exception {
+	public int getPhysicalDefense() {
 		
 		return phys_def;
 	}
@@ -155,7 +147,7 @@ public class GearData {
 		update(Konosuba.CONNECTION, "gear", "phys_def", Integer.toString(physicalDefense));
 	}
 	
-	public int getMagicalDefense() throws Exception {
+	public int getMagicalDefense() {
 		
 		return magi_def;
 	}
@@ -165,7 +157,7 @@ public class GearData {
 		update(Konosuba.CONNECTION, "gear", "magi_def", Integer.toString(magicalDefense));
 	}
 	
-	public int getHitpoints() throws Exception {
+	public int getHitpoints() {
 		
 		return health;
 	}
@@ -175,7 +167,7 @@ public class GearData {
 		update(Konosuba.CONNECTION, "gear", "health", Integer.toString(hitpoints));
 	}
 	
-	public String getType() throws Exception{
+	public String getType() {
 		
 		return type;
 	}

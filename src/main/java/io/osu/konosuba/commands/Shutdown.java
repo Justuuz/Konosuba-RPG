@@ -1,6 +1,5 @@
 package io.osu.konosuba.commands;
 
-import io.osu.konosuba.commands.*;
 import io.osu.konosuba.*;
 
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;

@@ -1,6 +1,5 @@
 package io.osu.konosuba.commands;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import io.magiccraftmaster.util.StringUtils;
@@ -26,7 +25,7 @@ public class Equip extends Command {
 	 * framework
 	 */
 
-	private PointsHandler correctStats = new PointsHandler();
+	private final PointsHandler correctStats = new PointsHandler();
 	
 	@Override
 	public void run(MessageReceivedEvent event, String[] args) {

@@ -1,53 +1,55 @@
 package io.osu.konosuba;
 
-import java.awt.Color;
+import io.osu.konosuba.Listeners.CommandListener;
+import net.dv8tion.jda.bot.sharding.DefaultShardManagerBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
+import javax.security.auth.login.LoginException;
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-import javax.security.auth.login.LoginException;
-
-import io.osu.konosuba.Listeners.CommandListener;
-import components.simplereader.SimpleReader;
-import components.simplereader.SimpleReader1L;
-import net.dv8tion.jda.bot.sharding.DefaultShardManagerBuilder;
-import net.dv8tion.jda.bot.sharding.ShardManager;
-
 public class Konosuba  {
-	
-	static SimpleReader key = new SimpleReader1L((System.getProperty("user.home") + "/Desktop/Konosuba/key.txt"));
-	private static final String KOBOSUBA_TOKEN = key.nextLine();
-	
-	// This is now the default color for commands
-		public static final Color COLOR = new Color(153,50,204);
 
-		// This is now the default prefix for commands
-		public static final String PREFIX = "*";
-		
-		//this is for pulling information
-		public static Connection CONNECTION;{
-	        try {
-	            CONNECTION = DriverManager.getConnection("jdbc:sqlite:" + System.getProperty("user.home") + "\\git\\KonosubaBot\\Data\\data.db");
-	            System.out.println("Connected to database");
-	        } catch (Exception e) {
-	        	System.out.println("Error");
-	            e.printStackTrace();
-	            CONNECTION=null;
-	            System.exit(0);
-	        }
-	    }
-	
-	
-	public static void main(String[] args) throws LoginException, IllegalArgumentException, IOException, InterruptedException {
-		
-		
-		ShardManager SHARD_MANAGER = new DefaultShardManagerBuilder()
-				.setToken(KOBOSUBA_TOKEN)
-				.setShardsTotal(1)
+	//public static final Logger LOGGER = LoggerFactory.getLogger(Konosuba.class);
+
+	//private static SimpleReader key = new SimpleReader1L((System.getProperty("user.home") + "/Desktop/Konosuba/key.txt"));
+	//private static final String KOBOSUBA_TOKEN = key.nextLine();
+
+	// This is now the default color for commands
+	public static final Color COLOR = new Color(153,50,204);
+
+	// This is now the default prefix for commands
+	public static final String PREFIX = "*>";
+
+	//this is for pulling information
+	public static Connection CONNECTION;
+	static {
+		try {
+			String dbPath = System.getProperty("user.home") + (System.getProperty("user.home").startsWith("/home") ? "/konosuba.db" : "/git/KonosubaBot/Data/data.db");
+
+			//noinspection SpellCheckingInspection
+			Class.forName("org.sqlite.JDBC");
+			//noinspection SpellCheckingInspection
+			CONNECTION = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
+		} catch (Exception e) {
+			e.printStackTrace();
+			CONNECTION = null;
+			System.exit(0);
+		}
+	}
+
+
+	public static void main(String[] args) throws LoginException {
+		//noinspection SpellCheckingInspection
+		new DefaultShardManagerBuilder()
+				.setToken("NDAwODUzNTIwOTM0NTAyNDIw.Dczz4A.cMOOaGKdm0QWNac3_pIyTIpgfSk")
 				.addEventListeners(new CommandListener())
 				.setBulkDeleteSplittingEnabled(false)
+				// .setShardsTotal(1) // XXX DO NOT USE THIS!
 				.build();
-		
+
+
 	}
 }

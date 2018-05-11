@@ -48,7 +48,7 @@ public class Buy_admin extends Command {
 		}
 		
 		}catch(Exception e) {
-			
+			e.printStackTrace();
 		}
 	}
 }

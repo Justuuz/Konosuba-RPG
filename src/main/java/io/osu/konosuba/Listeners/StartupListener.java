@@ -3,17 +3,14 @@ package io.osu.konosuba.Listeners;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-import io.osu.konosuba.Command;
-import io.osu.konosuba.data.UserData;
 import net.dv8tion.jda.core.events.ReadyEvent;
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
 
 
-public class StartupListener extends ListenerAdapter {
+class StartupListener extends ListenerAdapter {
 
-	public static Connection CONNECTION;
+	private static Connection CONNECTION;
     static {
     	System.out.println("Error");
         try {

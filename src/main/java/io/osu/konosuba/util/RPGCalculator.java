@@ -1,5 +1,5 @@
 package io.osu.konosuba.util;
 
-public class RPGCalculator {
+class RPGCalculator {
 
 }

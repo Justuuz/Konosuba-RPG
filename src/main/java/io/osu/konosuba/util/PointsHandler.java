@@ -1,12 +1,10 @@
 package io.osu.konosuba.util;
 
-import java.util.ArrayList;
-
-import io.osu.konosuba.Konosuba;
 import io.osu.konosuba.data.ClassData;
-import io.osu.konosuba.data.ClientData;
 import io.osu.konosuba.data.GearData;
 import io.osu.konosuba.data.UserData;
+
+import java.util.ArrayList;
 
 
 public class PointsHandler {
@@ -42,7 +40,7 @@ public class PointsHandler {
 		
 		gear.add(new GearData(player.getRing()));
 		
-		gear.add(new GearData(player.getOnhand()));
+		gear.add(new GearData(player.getPrimary()));
 		
 		gear.add(new GearData(player.getOffhand()));
 		
@@ -58,7 +56,7 @@ public class PointsHandler {
 		int magic = 0;
 		int dex = 0;
 		int luck = 0;
-		int hitpoints = 0;
+		int health = 0;
 		
 		for(GearData obj: gear) {
 			System.out.println(obj.getStrength());
@@ -73,7 +71,7 @@ public class PointsHandler {
 			dex = dex + obj.getLuck();
 			System.out.println(obj.getStrength());
 			luck = luck + obj.getLuck();
-			hitpoints = luck + obj.getHitpoints();
+			health = luck + obj.getHitpoints();
 		}
 		
 		System.out.println(new ClassData(player.getClasses()));
@@ -83,7 +81,7 @@ public class PointsHandler {
 		magic = magic + new ClassData(player.getClasses()).getMagic();
 		dex = dex + new ClassData(player.getClasses()).getDexterity();
 		luck = luck + new ClassData(player.getClasses()).getLuck();
-		hitpoints = hitpoints + new ClassData(player.getClasses()).getHitpoints();
+		health = health + new ClassData(player.getClasses()).getHealth();
 		
 		
 		player.setStrength(strength);
@@ -92,7 +90,7 @@ public class PointsHandler {
 		player.setMagic(magic);
 		player.setDexterity(dex);
 		player.setLuck(luck);
-		player.setHitpoints(hitpoints);
+		player.setHealth(health);
 		
 
 		
