@@ -30,7 +30,7 @@ public class Konosuba  {
 	public static Connection CONNECTION;
 	static {
 		try {
-			String dbPath = System.getProperty("user.home") + (System.getProperty("user.home").startsWith("/home") ? "/konosuba.db" : "/git/KonosubaBot/Data/dataStructure.db");
+			String dbPath = System.getProperty("user.home") + (System.getProperty("user.home").startsWith("/home") ? "/konosuba.db" : "/git/KonosubaBot/structure.db");
 
 			//noinspection SpellCheckingInspection
 			Class.forName("org.sqlite.JDBC");
