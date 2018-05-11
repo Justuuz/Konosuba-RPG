@@ -3,6 +3,7 @@ package io.osu.konosuba.Listeners;
 import io.osu.konosuba.Command;
 import io.osu.konosuba.commands.*;
 import io.osu.konosuba.commands.Shutdown;
+import io.osu.konosuba.test.Check;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
@@ -19,7 +20,8 @@ public class CommandListener extends ListenerAdapter {
 		new Buy_admin(),
 		new Profile(),
 		new Item_admin(),
-		new ItemToss_Admin()
+		new ItemToss_Admin(),
+		new Check(),
 	};
 
 	@Override

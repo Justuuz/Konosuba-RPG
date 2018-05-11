@@ -24,13 +24,13 @@ public class Konosuba  {
 	public static final Color COLOR = new Color(153,50,204);
 
 	// This is now the default prefix for commands
-	public static final String PREFIX = "*>";
+	public static final String PREFIX = "*";
 
 	//this is for pulling information
 	public static Connection CONNECTION;
 	static {
 		try {
-			String dbPath = System.getProperty("user.home") + (System.getProperty("user.home").startsWith("/home") ? "/konosuba.db" : "/git/KonosubaBot/structure.db");
+			String dbPath = System.getProperty("user.home") + (System.getProperty("user.home").startsWith("/home") ? "/konosuba.db" : "/Desktop/Stuff/git/KonosubaBot/structure.db");
 
 			//noinspection SpellCheckingInspection
 			Class.forName("org.sqlite.JDBC");
@@ -47,11 +47,8 @@ public class Konosuba  {
 	public static void main(String[] args) throws LoginException {
 		//noinspection SpellCheckingInspection
 		new DefaultShardManagerBuilder()
-<<<<<<< HEAD
 				.setToken(KOBOSUBA_TOKEN)
-=======
-				.setToken(null)
->>>>>>> branch 'masterWithSQL' of https://github.com/Thrump/KonosubaBot
+				
 				.addEventListeners(new CommandListener())
 				.setBulkDeleteSplittingEnabled(false)
 				// .setShardsTotal(1) // XXX DO NOT USE THIS!
