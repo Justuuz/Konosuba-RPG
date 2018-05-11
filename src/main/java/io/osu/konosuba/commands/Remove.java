@@ -33,7 +33,6 @@ public class Remove extends Command {
 		try {
 			UserData player = new UserData(event.getAuthor().getIdLong());
 			if(player.getStartStatus()) {
-				EmbedBuilder help  = new EmbedBuilder();
 
 				if(args[1].equalsIgnoreCase("helmet")) {
 

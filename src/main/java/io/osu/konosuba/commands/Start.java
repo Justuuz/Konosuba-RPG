@@ -1,15 +1,11 @@
 package io.osu.konosuba.commands;
 
-import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import components.map.Map;
-import components.map.Map2;
 import io.osu.konosuba.Command;
 import io.osu.konosuba.Konosuba;
 import io.osu.konosuba.data.UserData;
-import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 public class Start extends Command {

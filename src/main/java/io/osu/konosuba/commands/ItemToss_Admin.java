@@ -10,7 +10,7 @@ public class ItemToss_Admin extends Command {
 	
 	public ItemToss_Admin() {
 		super(Konosuba.COLOR, Konosuba.PREFIX, "itemtoss_admin", "all related battle commands", null, 0);
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	/*
