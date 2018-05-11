@@ -2,13 +2,13 @@ package io.osu.konosuba;
 
 import java.awt.Color;
 
-import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
 import javax.security.auth.login.LoginException;
-import io.osu.konosuba.data.*;
+
+import io.osu.konosuba.Listeners.CommandListener;
 import components.simplereader.SimpleReader;
 import components.simplereader.SimpleReader1L;
 import net.dv8tion.jda.bot.sharding.DefaultShardManagerBuilder;
@@ -26,12 +26,12 @@ public class Konosuba  {
 		public static final String PREFIX = "*";
 		
 		//this is for pulling information
-		public static Connection CONNECTION;
-	    static {
+		public static Connection CONNECTION;{
 	        try {
-	            Class.forName("org.sqlite.JDBC");
-	            CONNECTION = DriverManager.getConnection("jdbc:sqlite:" + System.getProperty("user.home") + "/git/KonosubaBot/Datadata.db");
+	            CONNECTION = DriverManager.getConnection("jdbc:sqlite:" + System.getProperty("user.home") + "\\git\\KonosubaBot\\Data\\data.db");
+	            System.out.println("Connected to database");
 	        } catch (Exception e) {
+	        	System.out.println("Error");
 	            e.printStackTrace();
 	            CONNECTION=null;
 	            System.exit(0);
@@ -39,16 +39,15 @@ public class Konosuba  {
 	    }
 	
 	
-	public static void main(String[] args) throws LoginException, IOException {
+	public static void main(String[] args) throws LoginException, IllegalArgumentException, IOException, InterruptedException {
+		
+		
 		ShardManager SHARD_MANAGER = new DefaultShardManagerBuilder()
 				.setToken(KOBOSUBA_TOKEN)
 				.setShardsTotal(1)
 				.addEventListeners(new CommandListener())
-				
 				.setBulkDeleteSplittingEnabled(false)
-				
 				.build();
-		
 		
 	}
 }

@@ -1,12 +1,15 @@
 package io.osu.konosuba.commands;
 
 import java.awt.Color;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 
 import components.map.Map;
 import io.osu.konosuba.Command;
 import io.osu.konosuba.Konosuba;
-import io.osu.konosuba.data.ClientData;
+
+import io.osu.konosuba.data.UserData;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -24,13 +27,13 @@ public class Inventory extends Command {
 		
 		
 
-		
-		if(Konosuba.CLIENT_DATA_MANAGER.hasData(event.getAuthor().getIdLong())) {
-			ClientData player = Konosuba.CLIENT_DATA_MANAGER.getData(event.getAuthor().getIdLong());
+		UserData player = new UserData(event.getAuthor().getIdLong());
+		if(player.getStartStatus()) {
+			
 
 			
 			
-			ArrayList<ArrayList<String>> inv = player.getInventory();
+			List<List<String>> inv = player.getInventory();
 			
 			
 			
@@ -39,14 +42,14 @@ public class Inventory extends Command {
 			if(args[1].equalsIgnoreCase("helmet")) {
 				
 				/*
-				 * get all the current helmet items into the array
+				 * get all the current helmet items into the 
 				 */
 				EmbedBuilder helmet = new EmbedBuilder();
 				helmet.setTitle((event.getMember() != null ? event.getMember().getEffectiveName() : event.getAuthor().getName()) + "'s Helmets");
 				helmet.setAuthor("", event.getAuthor().getAvatarUrl());
 				helmet.setThumbnail("https://cdn130.picsart.com/250247865001212.png");
 				helmet.setFooter("To equip, do *equip (gear type) (piece)", event.getJDA().getSelfUser().getAvatarUrl());
-				ArrayList<String> helInv = inv.get(0);
+				List<String> helInv = inv.get(0);
 				String items = "";
 				 
 				for (String item: helInv) {
@@ -66,7 +69,7 @@ public class Inventory extends Command {
 				chest.setFooter("To equip, do *equip (gear type) (piece)", event.getJDA().getSelfUser().getAvatarUrl());
 
 				
-				ArrayList<String> cheInv = inv.get(1);
+				List<String> cheInv = inv.get(1);
 				String items = "";
 				
 				for (String item: cheInv) {
@@ -87,7 +90,7 @@ public class Inventory extends Command {
 				legs.setThumbnail("https://i.imgur.com/BTMazbj.png");
 				legs.setFooter("To equip, do *equip (gear type) (piece)", event.getJDA().getSelfUser().getAvatarUrl());
 				
-				ArrayList<String> legInv = inv.get(2);
+				List<String> legInv = inv.get(2);
 				String items = "";
 				
 				for (String item: legInv) {
@@ -109,7 +112,7 @@ public class Inventory extends Command {
 				onhand.setAuthor("", event.getAuthor().getAvatarUrl());
 				onhand.setThumbnail("https://i.imgur.com/kD7hIBU.png");
 				onhand.setFooter("To equip, do *equip (gear type) (piece)", event.getJDA().getSelfUser().getAvatarUrl());
-				ArrayList<String> onInv = inv.get(3);
+				List<String> onInv = inv.get(3);
 				String items = "";
 				
 				for (String item: onInv) {
@@ -129,7 +132,7 @@ public class Inventory extends Command {
 				offhand.setThumbnail("https://pre00.deviantart.net/0509/th/pre/i/2016/048/5/8/basic_pixel_sword_by_dr_morgan47-d9s5a12.png");
 				offhand.setFooter("To equip, do *equip (gear type) (piece)", event.getJDA().getSelfUser().getAvatarUrl());
 				
-				ArrayList<String> offInv = inv.get(4);
+				List<String> offInv = inv.get(4);
 				String items = "";
 				
 				for (String item: offInv) {
@@ -149,7 +152,7 @@ public class Inventory extends Command {
 				cape.setThumbnail("https://pre00.deviantart.net/0509/th/pre/i/2016/048/5/8/basic_pixel_sword_by_dr_morgan47-d9s5a12.png");
 				cape.setFooter("To equip, do *equip (gear type) (piece)", event.getJDA().getSelfUser().getAvatarUrl());
 				
-				ArrayList<String> capInv = inv.get(5);
+				List<String> capInv = inv.get(5);
 				String items = "";
 				
 				for (String item: capInv) {
@@ -169,7 +172,7 @@ public class Inventory extends Command {
 				cape.setThumbnail("https://pre00.deviantart.net/0509/th/pre/i/2016/048/5/8/basic_pixel_sword_by_dr_morgan47-d9s5a12.png");
 				cape.setFooter("To equip, do *equip (gear type) (piece)", event.getJDA().getSelfUser().getAvatarUrl());
 				
-				ArrayList<String> necInv = inv.get(6);
+				List<String> necInv = inv.get(6);
 				String items = "";
 				
 				for (String item: necInv) {
@@ -189,7 +192,7 @@ public class Inventory extends Command {
 				cape.setThumbnail("https://pre00.deviantart.net/0509/th/pre/i/2016/048/5/8/basic_pixel_sword_by_dr_morgan47-d9s5a12.png");
 				cape.setFooter("To equip, do *equip (gear type) (piece)", event.getJDA().getSelfUser().getAvatarUrl());
 				
-				ArrayList<String> rinInv = inv.get(7);
+				List<String> rinInv = inv.get(7);
 				String items = "";
 				
 				for (String item: rinInv) {
@@ -209,7 +212,7 @@ public class Inventory extends Command {
 				cape.setThumbnail("https://pre00.deviantart.net/0509/th/pre/i/2016/048/5/8/basic_pixel_sword_by_dr_morgan47-d9s5a12.png");
 				cape.setFooter("To equip, do *equip (gear type) (piece)", event.getJDA().getSelfUser().getAvatarUrl());
 				
-				ArrayList<String> booInv = inv.get(8);
+				List<String> booInv = inv.get(8);
 				String items = "";
 				
 				for (String item: booInv) {
@@ -232,7 +235,7 @@ public class Inventory extends Command {
 //				cape.setThumbnail("https://pre00.deviantart.net/0509/th/pre/i/2016/048/5/8/basic_pixel_sword_by_dr_morgan47-d9s5a12.png");
 //				cape.setFooter("To equip, do *equip (gear type) (piece)", event.getJDA().getSelfUser().getAvatarUrl());
 //				
-//				ArrayList<String> weaInv = inv.get(9);
+//				List<String> weaInv = inv.get(9);
 //				String items = "";
 //				
 //				for (String item: weaInv) {
@@ -247,7 +250,7 @@ public class Inventory extends Command {
 			if(args[1].equalsIgnoreCase("items")) {
 				EmbedBuilder item = new EmbedBuilder();
 				boolean noItems = false;
-				Map<String, Integer> itemList = player.getItems();
+				HashMap<String, Integer> itemList = player.getItems();
 				if(itemList.size() == 0) {
 					item.setTitle((event.getMember() != null ? event.getMember().getEffectiveName() : event.getAuthor().getName()) + "'s items");
 					item.setAuthor("", event.getAuthor().getAvatarUrl());
@@ -257,12 +260,12 @@ public class Inventory extends Command {
 					event.getChannel().sendMessage(item.build()).queue();
 					noItems = true;
 				}
-				Map<String, Integer> tempList = player.getItems();
+				HashMap<String, Integer> tempList = player.getItems();
 				tempList.clear();
 				String items = "ITEM\t\tQUANTITIY\n";
 				if(itemList.size() <= 50 && !noItems) {
 					while(itemList.size() > 0) {
-						Map.Pair<String, Integer> itemPair = itemList.removeAny();
+						Map.Pair<String, Integer> itemPair = itemList.remove;
 						items = items + itemPair.key() + "\t\t" + itemPair.value() + "\n";
 						tempList.add(itemPair.key(), itemPair.value());
 					}

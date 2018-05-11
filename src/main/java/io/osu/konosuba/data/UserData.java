@@ -2,6 +2,7 @@ package io.osu.konosuba.data;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,6 +16,7 @@ import org.json.JSONObject;
 import com.google.gson.JsonArray;
 
 import components.map.Map;
+import io.osu.konosuba.Konosuba;
 
 import java.sql.DriverManager;
 
@@ -22,7 +24,7 @@ public class UserData {
 	
 	//  |userid|balance|battling|starting|classes|helm|chest|legs|boots|cape|ring|neck|on_hand|off_hand|strength|magic|luck|dex |phys_def|magi_def|health|invent|item|location|
 	//	----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	//  |TEXT  |TEXT   |INT     |INT     |TEXT   |TEXT|TEXT |TEXT|TEXT |TEXT|TEXT|TEXT|TEXT   |TEXT    |INT     |INT  |INT |INT |INT     |INT     |INT   |TEXT  |TEXT|TEXT    |
+	//  |INT  |TEXT   |INT     |INT     |TEXT   |TEXT|TEXT |TEXT|TEXT |TEXT|TEXT|TEXT|TEXT   |TEXT    |INT     |INT  |INT |INT |INT     |INT     |INT   |TEXT  |TEXT|TEXT    |
 	
 	
 	// = Cache ===================================
@@ -56,37 +58,8 @@ public class UserData {
 	
 	public UserData(long userid) throws Exception {
 		this.userid = userid;
-		update(CONNECTION, "client", userid);
-		
-	}
-	
-	
-	    private static Connection CONNECTION;
-	    static {
-	        try {
-	            Class.forName("org.sqlite.JDBC");
-	            CONNECTION = DriverManager.getConnection("jdbc:sqlite:" + System.getProperty("user.home") + "/git/KonosubaBot/Data/data.db");
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	            CONNECTION=null;
-	            System.exit(0);
-	        }
-	    }
-
-	
-//	static void SQLiteJDBC() throws Exception{
-//		Connection CONNECTION = null;
-//		Statement statement = null;
-//		
-//			Class.forName("org.postgresql.Driver");
-//			c= DriverManager
-//					.getConnection("jdbc:sqlite:" + System.getProperty("user.home") + "/git/KonosubaBot/Data/data.db");
-//			c.setAutoCommit(false);
-//			System.out.println("Connection success");
-//			
-//	}
-	
-	
+		update(Konosuba.CONNECTION, "client", this.userid);
+	}	
 	
 	private void update(Connection connection, String table, long userid) throws Exception {
 		this.userid = userid;
@@ -204,238 +177,238 @@ public class UserData {
 	
 	
 	public int getBalance() throws Exception {
-		update(CONNECTION, "client", userid);
+		
 		return balance;
 	}
 	
 	public void setBalance(int balance) throws Exception {
 		this.balance = balance;
-		update(CONNECTION, "client", "balance", Integer.toString(balance));
+		update(Konosuba.CONNECTION, "client", "balance", Integer.toString(balance));
 	}
 	
 	public boolean getBattleStatus() throws Exception {
-		update(CONNECTION,  "battling", userid);
+		
 		return battling;
 	}
 	
 	public void setBattleStatus(boolean battleStatus) throws Exception {
 		this.battling = battleStatus;
-		update(CONNECTION, "client", "battling",String.valueOf(battleStatus));
+		update(Konosuba.CONNECTION, "client", "battling",String.valueOf(battleStatus));
 	}
 	
 	public boolean getStartStatus() throws Exception {
-		update(CONNECTION,"starting" ,userid);
+	
 		return starting;
 	}
 	
 	public void setStartStatus(boolean startStatus) throws Exception {
 		this.starting = startStatus;
-		update(CONNECTION, "client", "starting", String.valueOf(startStatus));
+		update(Konosuba.CONNECTION, "client", "starting", String.valueOf(startStatus));
 	}
 
     public String getClasses() throws Exception {
-        update(CONNECTION, "client", userid);
+        
         return classes;
     }
 
     public void setClasses(String classes) throws Exception {
         this.classes = classes;
-        update(CONNECTION, "client", "classes" ,classes);
+        update(Konosuba.CONNECTION, "client", "classes" ,classes);
     }
 
 	public String getHelmet() throws Exception {
-		update(CONNECTION, "client", userid);
+		
 		return helm;
 	}
 	
 	public void setHelmet(String helmet) throws Exception {
 		this.helm = helmet;
-		update(CONNECTION, "client","helm",helmet);
+		update(Konosuba.CONNECTION, "client","helm",helmet);
 	}
 
 	public String getChest() throws Exception {
-		update(CONNECTION, "client", userid);
+		
 		return chest;
 	}
 
 	public void setChest(String chest) throws Exception {
 	    this.chest = chest;
-	    update(CONNECTION, "client","chest", chest);
+	    update(Konosuba.CONNECTION, "client","chest", chest);
     }
 
     public String getLegs() throws Exception {
-	    update(CONNECTION, "client", userid);
+	    
 	    return legs;
     }
 
     public void setLegs(String legs) throws Exception {
 	    this.legs = legs;
-	    update(CONNECTION, "client", "legs", legs);
+	    update(Konosuba.CONNECTION, "client", "legs", legs);
     }
 
     public String getBoots() throws Exception {
-	    update(CONNECTION, "client", userid);
+	   
 	    return boots;
     }
 
     public void setBoots(String boots) throws Exception {
 	    this.boots = boots;
-	    update(CONNECTION, "client", "boots" ,boots);
+	    update(Konosuba.CONNECTION, "client", "boots" ,boots);
     }
 
     public String getRing() throws Exception {
-        update(CONNECTION, "client", userid);
+        
         return ring;
     }
 
     public void setRing(String ring) throws Exception {
         this.ring = ring;
-        update(CONNECTION, "client", "ring" ,ring);
+        update(Konosuba.CONNECTION, "client", "ring" ,ring);
     }
 
     public String getNecklace() throws Exception {
-        update(CONNECTION, "client", userid);
+        
         return neck;
     }
 
     public void setNecklace(String necklace) throws Exception {
         this.neck =necklace ;
-        update(CONNECTION, "client", "neck" ,necklace);
+        update(Konosuba.CONNECTION, "client", "neck" ,necklace);
     }
 
     public String getCape() throws Exception {
-        update(CONNECTION, "client", userid);
+        
         return cape;
     }
 
     public void setCape(String cape) throws Exception {
         this.cape = cape;
-        update(CONNECTION, "client", "cape" ,cape);
+        update(Konosuba.CONNECTION, "client", "cape" ,cape);
     }
 
     public String getOnhand() throws Exception {
-        update(CONNECTION, "client", userid);
+        
         return on_hand;
     }
 
     public void setOnhand(String onhand) throws Exception {
         this.on_hand = onhand;
-        update(CONNECTION, "client", "on_hand" ,onhand);
+        update(Konosuba.CONNECTION, "client", "on_hand" ,onhand);
     }
 
     public String getOffhand() throws Exception {
-        update(CONNECTION, "client", userid);
+        
         return off_hand;
     }
 
     public void setOffhand(String offhand) throws Exception {
         this.off_hand = offhand;
-        update(CONNECTION, "client", "off_hand" ,offhand);
+        update(Konosuba.CONNECTION, "client", "off_hand" ,offhand);
     }
 	
     public int getStrength() throws Exception {
-		update(CONNECTION, "client", userid);
+		
 		return strength;
 	}
 	
 	public void setStrength(int strength) throws Exception {
 		this.strength = strength;
-		update(CONNECTION, "client", "strength", Integer.toString(strength));
+		update(Konosuba.CONNECTION, "client", "strength", Integer.toString(strength));
 	}
 	
 	public int getMagic() throws Exception {
-		update(CONNECTION, "client", userid);
+		
 		return magic;
 	}
 	
 	public void setMagic(int magic) throws Exception {
 		this.magic = magic;
-		update(CONNECTION, "client", "magic", Integer.toString(magic));
+		update(Konosuba.CONNECTION, "client", "magic", Integer.toString(magic));
 	}
 	
 	public int getLuck() throws Exception {
-		update(CONNECTION, "client", userid);
+		
 		return luck;
 	}
 	
 	public void setLuck(int luck) throws Exception {
 		this.luck = luck;
-		update(CONNECTION, "client", "luck", Integer.toString(luck));
+		update(Konosuba.CONNECTION, "client", "luck", Integer.toString(luck));
 	}
 	
 	public int getDexterity() throws Exception {
-		update(CONNECTION, "client", userid);
+		
 		return dex;
 	}
 	
 	public void setDexterity(int dexterity) throws Exception {
 		this.dex = dexterity;
-		update(CONNECTION, "client", "dex", Integer.toString(dexterity));
+		update(Konosuba.CONNECTION, "client", "dex", Integer.toString(dexterity));
 	}
 	
 	public int getPhysicalDefense() throws Exception {
-		update(CONNECTION, "client", userid);
+		
 		return phys_def;
 	}
 	
 	public void setPhysicalDefense(int physicalDefense) throws Exception {
 		this.phys_def = physicalDefense;
-		update(CONNECTION, "client", "phys_def", Integer.toString(physicalDefense));
+		update(Konosuba.CONNECTION, "client", "phys_def", Integer.toString(physicalDefense));
 	}
 	
 	public int getMagicalDefense() throws Exception {
-		update(CONNECTION, "client", userid);
+		
 		return magi_def;
 	}
 	
 	public void setMagicalDefense(int magicalDefense) throws Exception {
 		this.magi_def = magicalDefense;
-		update(CONNECTION, "client", "magi_def", Integer.toString(magicalDefense));
+		update(Konosuba.CONNECTION, "client", "magi_def", Integer.toString(magicalDefense));
 	}
 	
 	public int getHitpoints() throws Exception {
-		update(CONNECTION, "client", userid);
+		
 		return health;
 	}
 	
 	public void setHitpoints(int hitpoints) throws Exception {
 		this.health = hitpoints;
-		update(CONNECTION, "client", "health", Integer.toString(hitpoints));
+		update(Konosuba.CONNECTION, "client", "health", Integer.toString(hitpoints));
 	}
 	
 	public List<List<String>> getInventory() throws Exception {
-		update(CONNECTION, "client", userid);
+		
 		return invent;
 	}
 	
 	public void setInventory(List<List<String>> inventory) throws Exception {
 		this.invent = inventory;
-		update(CONNECTION, "client", "invent", inventory.toString());
+		update(Konosuba.CONNECTION, "client", "invent", inventory.toString());
 	}
 	
 	public void addInventory(int position, String item) throws Exception {
 		List<String> subInv = this.invent.remove(position);
 		subInv.add(item);	
 		this.invent.add(position, subInv);
-		update(CONNECTION, "client", userid);
+		update(Konosuba.CONNECTION, "client", userid);
 	}
 	
 	public void removeInventory(int position, String item) throws Exception {
 		List<String> subInv = this.invent.remove(position);
 		subInv.remove(item);	
 		this.invent.add(position, subInv); 
-		update(CONNECTION, "client", userid);
+		update(Konosuba.CONNECTION, "client", userid);
 	}
 	
 	public HashMap<String, Integer> getItems() throws Exception{
-		update(CONNECTION, "client", userid);
+		
 		return item;
 		
 	}
 	
 	public void setItems(HashMap<String, Integer> item) throws Exception {
 		this.item = item;
-		update(CONNECTION, "client", "item", item.toString());
+		update(Konosuba.CONNECTION, "client", "item", item.toString());
 	}
 	public void addItems(String item, int amount) throws Exception {
 		if(this.getItems().containsKey(item)) {
@@ -448,7 +421,7 @@ public class UserData {
 			this.getItems().put(item, amount);
 		}
 		
-		update(CONNECTION, "client", userid);
+		update(Konosuba.CONNECTION, "client", userid);
 		
 	}
 	
@@ -465,20 +438,20 @@ public class UserData {
 		if(amt > 0) {
 			this.getItems().put(item,  amt);
 		}
-		update(CONNECTION, "client", userid);
+		update(Konosuba.CONNECTION, "client", userid);
 		
 		// don't add the map if amt == 0
 
 	}
 	
 	public String getLocation() throws Exception {
-        update(CONNECTION, "client", userid);
+        
         return location;
     }
 
     public void setLocation(String location) throws Exception {
         this.location = location;
-        update(CONNECTION, "client", "location" ,location);
+        update(Konosuba.CONNECTION, "client", "location" ,location);
     }
 		
 	

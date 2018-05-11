@@ -3,7 +3,7 @@ package io.osu.konosuba.commands;
 import io.magiccraftmaster.util.StringUtils;
 import io.osu.konosuba.Command;
 import io.osu.konosuba.Konosuba;
-import io.osu.konosuba.data.ClientData;
+import io.osu.konosuba.data.UserData;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 public class ItemToss_Admin extends Command {
@@ -20,8 +20,8 @@ public class ItemToss_Admin extends Command {
 	
 	@Override
 	public void run(MessageReceivedEvent event, String[] args) {
-		
-		ClientData player = Konosuba.CLIENT_DATA_MANAGER.getData(event.getAuthor().getIdLong());
+		try {
+		UserData player = new UserData(event.getAuthor().getIdLong());
 	/*
 	 * Show UI here
 	 */
@@ -29,8 +29,8 @@ public class ItemToss_Admin extends Command {
 		if(args[1].equalsIgnoreCase("stick")) {
 			String number = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 			int amount = Integer.parseInt(number);
-			if(player.getItems().hasKey("stick")) {
-				if(player.getItems().value("stick") - amount >= 0) {
+			if(player.getItems().containsKey("stick")) {
+				if(player.getItems().get(("stick")) - amount >= 0) {
 					player.removeItems("stick", amount);
 				}
 				else {
@@ -47,8 +47,8 @@ public class ItemToss_Admin extends Command {
 		if(args[1].equalsIgnoreCase("stones")) {
 			String number = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 			int amount = Integer.parseInt(number);
-			if(player.getItems().hasKey("stones")) {
-				if(player.getItems().value("stones") - amount >= 0) {
+			if(player.getItems().containsKey("stones")) {
+				if(player.getItems().get("stones") - amount >= 0) {
 					player.removeItems("stones", amount);
 				}
 				else {
@@ -64,8 +64,8 @@ public class ItemToss_Admin extends Command {
 		if(args[1].equalsIgnoreCase("goo")) {
 			String number = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 			int amount = Integer.parseInt(number);
-			if(player.getItems().hasKey("goo")) {
-				if(player.getItems().value("goo") - amount >= 0) {
+			if(player.getItems().containsKey("goo")) {
+				if(player.getItems().get("goo") - amount >= 0) {
 					player.removeItems("goo", amount);
 				}
 				else {
@@ -81,8 +81,8 @@ public class ItemToss_Admin extends Command {
 		if(args[1].equalsIgnoreCase("bones")) {
 			String number = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 			int amount = Integer.parseInt(number);
-			if(player.getItems().hasKey("bones")) {
-				if(player.getItems().value("bones") - amount >= 0) {
+			if(player.getItems().containsKey("bones")) {
+				if(player.getItems().get("bones") - amount >= 0) {
 					player.removeItems("bones", amount);
 				}
 				else {
@@ -94,7 +94,9 @@ public class ItemToss_Admin extends Command {
 			}
 			
 		}
-		Konosuba.CLIENT_DATA_MANAGER.trySave();
+		}catch(Exception e) {
+			
+		}
 		
 	}
 }

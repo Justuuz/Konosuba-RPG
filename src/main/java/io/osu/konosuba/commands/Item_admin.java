@@ -4,6 +4,7 @@ import io.magiccraftmaster.util.StringUtils;
 import io.osu.konosuba.Command;
 import io.osu.konosuba.Konosuba;
 import io.osu.konosuba.data.ClientData;
+import io.osu.konosuba.data.UserData;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 public class Item_admin extends Command {
@@ -20,8 +21,8 @@ public class Item_admin extends Command {
 	
 	@Override
 	public void run(MessageReceivedEvent event, String[] args) {
-		
-		ClientData player = Konosuba.CLIENT_DATA_MANAGER.getData(event.getAuthor().getIdLong());
+		try {
+		UserData player = new UserData(event.getAuthor().getIdLong());
 	/*
 	 * Show UI here
 	 */
@@ -53,7 +54,10 @@ public class Item_admin extends Command {
 			player.addItems("bones", amount);
 			
 		}
-		Konosuba.CLIENT_DATA_MANAGER.trySave();
+		}catch (Exception e){
+			e.printStackTrace();
+			System.exit(0);
+		}
 		
 	}
 }

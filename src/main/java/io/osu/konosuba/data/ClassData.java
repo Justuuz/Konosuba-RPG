@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import components.map.Map;
+import io.osu.konosuba.Konosuba;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 public class ClassData {
@@ -26,25 +27,15 @@ public class ClassData {
 	private int health;
 
 
-	public ClassData(String classtype) {
+	public ClassData(String classtype) throws Exception {
 		this.classtype = classtype;
+		update(Konosuba.CONNECTION, "classes", classtype);
 	}
 
-	private static Connection CONNECTION;
-    static {
-        try {
-            Class.forName("org.sqlite.JDBC");
-            CONNECTION = DriverManager.getConnection("jdbc:sqlite:" + System.getProperty("user.home") + "/git/KonosubaBot/Data/data.db");
-        } catch (Exception e) {
-            e.printStackTrace();
-            CONNECTION=null;
-            System.exit(0);
-        }
-    }
     
-    private void update(Connection CONNECTIONion, String table, String classtype) throws Exception {
+    private void update(Connection connection, String table, String classtype) throws Exception {
 		this.classtype = classtype;
-		Statement statement = CONNECTIONion.createStatement();
+		Statement statement = connection.createStatement();
 		ResultSet result = statement.executeQuery("SELECT * FROM '" +table+"' WHERE classtype="+ classtype + ";");
 		if(result.next()) {
 			
@@ -73,8 +64,8 @@ public class ClassData {
 		
 	}
     
-    private void update(Connection CONNECTIONion, String table, String key, String value) throws Exception {
-		Statement statement = CONNECTIONion.createStatement();
+    private void update(Connection connection, String table, String key, String value) throws Exception {
+		Statement statement = connection.createStatement();
 		statement.execute(
 				"CREATE TABLE IF NOT EXISTS '"+ table + "' ("+
 					"  classtype TEXT PRIMARY KEY NOT NULL," + 
@@ -105,73 +96,73 @@ public class ClassData {
 	
 	
     public int getStrength() throws Exception {
-		update(CONNECTION, "classtype", classtype);
+		
 		return strength;
 	}
 	
 	public void setStrength(int strength) throws Exception {
 		this.strength = strength;
-		update(CONNECTION, "classtype", "strength", Integer.toString(strength));
+		update(Konosuba.CONNECTION, "classtype", "strength", Integer.toString(strength));
 	}
 	
 	public int getMagic() throws Exception {
-		update(CONNECTION, "classtype", classtype);
+		
 		return magic;
 	}
 	
 	public void setMagic(int magic) throws Exception {
 		this.magic = magic;
-		update(CONNECTION, "classtype", "magic", Integer.toString(magic));
+		update(Konosuba.CONNECTION, "classtype", "magic", Integer.toString(magic));
 	}
 	
 	public int getLuck() throws Exception {
-		update(CONNECTION, "classtype", classtype);
+		
 		return luck;
 	}
 	
 	public void setLuck(int luck) throws Exception {
 		this.luck = luck;
-		update(CONNECTION, "classtype", "luck", Integer.toString(luck));
+		update(Konosuba.CONNECTION, "classtype", "luck", Integer.toString(luck));
 	}
 	
 	public int getDexterity() throws Exception {
-		update(CONNECTION, "classtype", classtype);
+		
 		return dex;
 	}
 	
 	public void setDexterity(int dexterity) throws Exception {
 		this.dex = dexterity;
-		update(CONNECTION, "classtype", "dex", Integer.toString(dexterity));
+		update(Konosuba.CONNECTION, "classtype", "dex", Integer.toString(dexterity));
 	}
 	
 	public int getPhysicalDefense() throws Exception {
-		update(CONNECTION, "classtype", classtype);
+		
 		return phys_def;
 	}
 	
 	public void setPhysicalDefense(int physicalDefense) throws Exception {
 		this.phys_def = physicalDefense;
-		update(CONNECTION, "classtype", "phys_def", Integer.toString(physicalDefense));
+		update(Konosuba.CONNECTION, "classtype", "phys_def", Integer.toString(physicalDefense));
 	}
 	
 	public int getMagicalDefense() throws Exception {
-		update(CONNECTION, "classtype", classtype);
+		
 		return magi_def;
 	}
 	
 	public void setMagicalDefense(int magicalDefense) throws Exception {
 		this.magi_def = magicalDefense;
-		update(CONNECTION, "classtype", "magi_def", Integer.toString(magicalDefense));
+		update(Konosuba.CONNECTION, "classtype", "magi_def", Integer.toString(magicalDefense));
 	}
 	
 	public int getHitpoints() throws Exception {
-		update(CONNECTION, "classtype", classtype);
+		
 		return health;
 	}
 	
 	public void setHitpoints(int hitpoints) throws Exception {
 		this.health = hitpoints;
-		update(CONNECTION, "classtype", "health", Integer.toString(hitpoints));
+		update(Konosuba.CONNECTION, "classtype", "health", Integer.toString(hitpoints));
 	}
 	
 	

@@ -1,11 +1,13 @@
 package io.osu.konosuba.commands;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import io.magiccraftmaster.util.StringUtils;
 import io.osu.konosuba.Command;
 import io.osu.konosuba.Konosuba;
-import io.osu.konosuba.data.ClientData;
+
+import io.osu.konosuba.data.UserData;
 import io.osu.konosuba.util.PointsHandler;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
@@ -35,11 +37,13 @@ public class Equip extends Command {
 		 * (important) cannot equip an item if there is already an item in that place
 		 * helmet, chest, leggings, onHand, offHand, cape, necklace, ring, boots;
 		 */
-		ClientData player = Konosuba.CLIENT_DATA_MANAGER.getData(event.getAuthor().getIdLong());
 		
-		ArrayList<ArrayList<String>> inv = player.getInventory();
+		try {
+		UserData player = new UserData(event.getAuthor().getIdLong());
+		
+		
 		if(player.getStartStatus()) {
-		
+			List<List<String>> inv = player.getInventory();
 		if(args[1].equalsIgnoreCase("helmet")) {
 				
 
@@ -89,7 +93,7 @@ public class Equip extends Command {
 					
 					if(inv.get(2).contains(item)) {
 					
-						player.setLeggings(item);
+						player.setLegs(item);
 						correctStats.recalibratePoints(player);
 						String message = "Equipped " + item;
 						send(event.getGuild(), event.getChannel(), message , true);
@@ -113,7 +117,7 @@ public class Equip extends Command {
 						
 						
 					
-						player.setOnHand(item);
+						player.setOnhand(item);
 						correctStats.recalibratePoints(player);
 						String message = "Equipped " + item;
 						send(event.getGuild(), event.getChannel(), message , true);
@@ -135,7 +139,7 @@ public class Equip extends Command {
 					
 					if(inv.get(4).contains(item)) {
 					
-						player.setOffHand(item);
+						player.setOffhand(item);
 						correctStats.recalibratePoints(player);
 						String message = "Equipped " + item;
 						send(event.getGuild(), event.getChannel(), message , true);
@@ -230,31 +234,16 @@ public class Equip extends Command {
 				
 				
 			}
-			if(args[1].equalsIgnoreCase("weapons")) {
-				
-
-					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
-					 
-					if(inv.get(9).contains(item)) {
-						
-						player.setWeapon(item);
-						correctStats.recalibratePoints(player);
-						String message = "Equipped " + item;
-						send(event.getGuild(), event.getChannel(), message , true);
-					}
-					else {
-						send(event.getGuild(), event.getChannel(), "not a valid item" , true);
-					}
-				
-				
-			}
 			
-			//update client data
-			Konosuba.CLIENT_DATA_MANAGER.trySave();
 			
 		}else {
 			send(event.getGuild(), event.getChannel(), "You haven't started yet!", true);
 			return;
 		}
 	}
+		catch(Exception e) {
+			e.printStackTrace();
+			System.exit(0);
+		}
+}
 }

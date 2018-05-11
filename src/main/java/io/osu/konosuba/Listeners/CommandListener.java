@@ -1,8 +1,8 @@
-package io.osu.konosuba;
+package io.osu.konosuba.Listeners;
 
 import java.io.IOException;
 
-
+import io.osu.konosuba.Command;
 import io.osu.konosuba.commands.*;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
@@ -23,7 +23,7 @@ public class CommandListener extends ListenerAdapter {
 		new ItemToss_Admin()
 	};
 
-	CommandListener() throws IOException {
+	public CommandListener() throws IOException {
 		
 	}
 

@@ -22,5 +22,7 @@
 	<classpathentry kind="lib" path="Outside Libraries/components.jar"/>
 	<classpathentry kind="lib" path="Outside Libraries/gson-2.8.4.jar"/>
 	<classpathentry kind="lib" path="Outside Libraries/JDA-3.6.0_354-withDependencies.jar"/>
+	<classpathentry kind="lib" path="Outside Libraries/logback-core-1.2.3.jar"/>
+	<classpathentry kind="lib" path="Outside Libraries/logback-classic-1.2.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
