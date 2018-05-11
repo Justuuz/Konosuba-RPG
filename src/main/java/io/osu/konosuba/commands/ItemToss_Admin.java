@@ -95,7 +95,7 @@ public class ItemToss_Admin extends Command {
 			
 		}
 		}catch(Exception e) {
-			
+			e.printStackTrace();
 		}
 		
 	}

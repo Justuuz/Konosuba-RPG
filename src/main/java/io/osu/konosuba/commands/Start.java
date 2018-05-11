@@ -1,15 +1,11 @@
 package io.osu.konosuba.commands;
 
-import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import components.map.Map;
-import components.map.Map2;
 import io.osu.konosuba.Command;
 import io.osu.konosuba.Konosuba;
 import io.osu.konosuba.data.UserData;
-import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 public class Start extends Command {
@@ -54,25 +50,25 @@ public class Start extends Command {
 					//					 */
 
 
-					player.getInventory().add(new ArrayList<String>());
+					player.getInventory().add(new ArrayList<>());
 					player.getInventory().get(0).add("None");
-					player.getInventory().add(new ArrayList<String>());
+					player.getInventory().add(new ArrayList<>());
 					player.getInventory().get(1).add("None"); 
-					player.getInventory().add(new ArrayList<String>());
+					player.getInventory().add(new ArrayList<>());
 					player.getInventory().get(2).add("None");
-					player.getInventory().add(new ArrayList<String>());
+					player.getInventory().add(new ArrayList<>());
 					player.getInventory().get(3).add("None");
-					player.getInventory().add(new ArrayList<String>());
+					player.getInventory().add(new ArrayList<>());
 					player.getInventory().get(4).add("None");
-					player.getInventory().add(new ArrayList<String>());
+					player.getInventory().add(new ArrayList<>());
 					player.getInventory().get(5).add("None");
-					player.getInventory().add(new ArrayList<String>());
+					player.getInventory().add(new ArrayList<>());
 					player.getInventory().get(6).add("None");
-					player.getInventory().add(new ArrayList<String>());
+					player.getInventory().add(new ArrayList<>());
 					player.getInventory().get(7).add("None");
-					player.getInventory().add(new ArrayList<String>());
+					player.getInventory().add(new ArrayList<>());
 					player.getInventory().get(8).add("None");
-					player.setItems(new HashMap<String, Integer>());
+					player.setItems(new HashMap<>());
 					player.setLocation("Axel");
 
 					String name = (event.getMember() != null ? event.getMember().getEffectiveName() : event.getAuthor().getName());

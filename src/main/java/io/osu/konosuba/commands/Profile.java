@@ -1,13 +1,9 @@
 package io.osu.konosuba.commands;
 
-import java.awt.Color;
-
 import io.osu.konosuba.Command;
 import io.osu.konosuba.Konosuba;
-import io.osu.konosuba.data.ClientData;
 import io.osu.konosuba.data.UserData;
 import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 public class Profile extends Command {

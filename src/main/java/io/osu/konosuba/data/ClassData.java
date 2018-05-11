@@ -1,12 +1,9 @@
 package io.osu.konosuba.data;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
 
-import components.map.Map;
 import io.osu.konosuba.Konosuba;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
@@ -95,7 +92,7 @@ public class ClassData {
 	
 	
 	
-    public int getStrength() throws Exception {
+    public int getStrength() {
 		
 		return strength;
 	}
@@ -105,7 +102,7 @@ public class ClassData {
 		update(Konosuba.CONNECTION, "classtype", "strength", Integer.toString(strength));
 	}
 	
-	public int getMagic() throws Exception {
+	public int getMagic() {
 		
 		return magic;
 	}
@@ -115,7 +112,7 @@ public class ClassData {
 		update(Konosuba.CONNECTION, "classtype", "magic", Integer.toString(magic));
 	}
 	
-	public int getLuck() throws Exception {
+	public int getLuck() {
 		
 		return luck;
 	}
@@ -125,7 +122,7 @@ public class ClassData {
 		update(Konosuba.CONNECTION, "classtype", "luck", Integer.toString(luck));
 	}
 	
-	public int getDexterity() throws Exception {
+	public int getDexterity() {
 		
 		return dex;
 	}
@@ -135,7 +132,7 @@ public class ClassData {
 		update(Konosuba.CONNECTION, "classtype", "dex", Integer.toString(dexterity));
 	}
 	
-	public int getPhysicalDefense() throws Exception {
+	public int getPhysicalDefense() {
 		
 		return phys_def;
 	}
@@ -145,7 +142,7 @@ public class ClassData {
 		update(Konosuba.CONNECTION, "classtype", "phys_def", Integer.toString(physicalDefense));
 	}
 	
-	public int getMagicalDefense() throws Exception {
+	public int getMagicalDefense() {
 		
 		return magi_def;
 	}
@@ -154,8 +151,16 @@ public class ClassData {
 		this.magi_def = magicalDefense;
 		update(Konosuba.CONNECTION, "classtype", "magi_def", Integer.toString(magicalDefense));
 	}
+
+	public int getHealth() {
+		return getHitpoints();
+	}
+
+	public void setHealth(int health) throws Exception {
+		setHitpoints(health);
+	}
 	
-	public int getHitpoints() throws Exception {
+	public int getHitpoints() {
 		
 		return health;
 	}
