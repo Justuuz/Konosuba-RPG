@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
-@SuppressWarnings("ResultOfMethodCallIgnored")
 public class Inventory extends Command {
 
 	public Inventory() {

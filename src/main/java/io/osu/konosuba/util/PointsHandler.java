@@ -75,13 +75,13 @@ public class PointsHandler {
 		}
 		
 		System.out.println(new ClassData(player.getClasses()));
-		strength = strength + new ClassData(player.getClasses()).getStrength();
-		phyDef = phyDef + new ClassData(player.getClasses()).getPhysicalDefense();
-		magDef = magDef + new ClassData(player.getClasses()).getMagicalDefense();
-		magic = magic + new ClassData(player.getClasses()).getMagic();
-		dex = dex + new ClassData(player.getClasses()).getDexterity();
-		luck = luck + new ClassData(player.getClasses()).getLuck();
-		health = health + new ClassData(player.getClasses()).getHealth();
+		strength = (int)(strength * new ClassData(player.getClasses()).getStrength());
+		phyDef = (int)(phyDef * new ClassData(player.getClasses()).getPhysicalDefense());
+		magDef = (int)(magDef * new ClassData(player.getClasses()).getMagicalDefense());
+		magic = (int)(magic * new ClassData(player.getClasses()).getMagic());
+		dex = (int)(dex + new ClassData(player.getClasses()).getDexterity());
+		luck =(int)(luck + new ClassData(player.getClasses()).getLuck());
+		health = (int)(health + new ClassData(player.getClasses()).getHealth());
 		
 		
 		player.setStrength(strength);

@@ -6,7 +6,7 @@ import java.sql.Statement;
 
 import io.osu.konosuba.Konosuba;
 
-@SuppressWarnings({"unused", "WeakerAccess"})
+@SuppressWarnings({"unused"})
 public class ClassData {
 	
 	// |strength|magic|luck|dex |phys_def|magi_def|health|classtype|
@@ -15,13 +15,13 @@ public class ClassData {
 	
 	// = Cache  ======================================
 	private String classtype;
-	private int strength;
-	private int magic;
-	private int luck;
-	private int dex;
-	private int phys_def;
-	private int magi_def;
-	private int health;
+	private double strength;
+	private double magic;
+	private double luck;
+	private double dex;
+	private double phys_def;
+	private double magi_def;
+	private double health;
 
 
 	public ClassData(String classtype) throws Exception {
@@ -92,82 +92,82 @@ public class ClassData {
 	
 	
 	
-    public int getStrength() {
+    public double getStrength() {
 		
 		return strength;
 	}
 	
-	public void setStrength(int strength) throws Exception {
+	public void setStrength(double strength) throws Exception {
 		this.strength = strength;
-		update(Konosuba.CONNECTION, "classtype", "strength", Integer.toString(strength));
+		update(Konosuba.CONNECTION, "classtype", "strength", Double.toString(strength));
 	}
 	
-	public int getMagic() {
+	public double getMagic() {
 		
 		return magic;
 	}
 	
-	public void setMagic(int magic) throws Exception {
+	public void setMagic(double magic) throws Exception {
 		this.magic = magic;
-		update(Konosuba.CONNECTION, "classtype", "magic", Integer.toString(magic));
+		update(Konosuba.CONNECTION, "classtype", "magic", Double.toString(magic));
 	}
 	
-	public int getLuck() {
+	public double getLuck() {
 		
 		return luck;
 	}
 	
-	public void setLuck(int luck) throws Exception {
+	public void setLuck(double luck) throws Exception {
 		this.luck = luck;
-		update(Konosuba.CONNECTION, "classtype", "luck", Integer.toString(luck));
+		update(Konosuba.CONNECTION, "classtype", "luck", Double.toString(luck));
 	}
 	
-	public int getDexterity() {
+	public double getDexterity() {
 		
 		return dex;
 	}
 	
-	public void setDexterity(int dexterity) throws Exception {
+	public void setDexterity(double dexterity) throws Exception {
 		this.dex = dexterity;
-		update(Konosuba.CONNECTION, "classtype", "dex", Integer.toString(dexterity));
+		update(Konosuba.CONNECTION, "classtype", "dex", Double.toString(dexterity));
 	}
 	
-	public int getPhysicalDefense() {
+	public double getPhysicalDefense() {
 		
 		return phys_def;
 	}
 	
-	public void setPhysicalDefense(int physicalDefense) throws Exception {
+	public void setPhysicalDefense(double physicalDefense) throws Exception {
 		this.phys_def = physicalDefense;
-		update(Konosuba.CONNECTION, "classtype", "phys_def", Integer.toString(physicalDefense));
+		update(Konosuba.CONNECTION, "classtype", "phys_def", Double.toString(physicalDefense));
 	}
 	
-	public int getMagicalDefense() {
+	public double getMagicalDefense() {
 		
 		return magi_def;
 	}
 	
-	public void setMagicalDefense(int magicalDefense) throws Exception {
+	public void setMagicalDefense(double magicalDefense) throws Exception {
 		this.magi_def = magicalDefense;
-		update(Konosuba.CONNECTION, "classtype", "magi_def", Integer.toString(magicalDefense));
+		update(Konosuba.CONNECTION, "classtype", "magi_def", Double.toString(magicalDefense));
 	}
 
-	public int getHealth() {
-		return getHitpoints();
+	public double getHealth() {
+		return getHitpodoubles();
 	}
 
-	public void setHealth(int health) throws Exception {
-		setHitpoints(health);
+	public void setHealth(double health) throws Exception {
+		setHitpodoubles(health);
 	}
 	
-	public int getHitpoints() {
+	public double getHitpodoubles() {
 		
 		return health;
 	}
 	
-	public void setHitpoints(int hitpoints) throws Exception {
-		this.health = hitpoints;
-		update(Konosuba.CONNECTION, "classtype", "health", Integer.toString(hitpoints));
+	public void setHitpodoubles(double hitpodoubles) throws Exception {
+		this.health = hitpodoubles;
+		update(Konosuba.CONNECTION, "classtype", "health", Double.toString(hitpodoubles));
 	}
 	
 	

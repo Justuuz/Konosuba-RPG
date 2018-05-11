@@ -5,6 +5,9 @@ import net.dv8tion.jda.bot.sharding.DefaultShardManagerBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import components.simplereader.SimpleReader;
+import components.simplereader.SimpleReader1L;
+
 import javax.security.auth.login.LoginException;
 import java.awt.Color;
 import java.sql.Connection;
@@ -14,8 +17,8 @@ public class Konosuba  {
 
 	//public static final Logger LOGGER = LoggerFactory.getLogger(Konosuba.class);
 
-	//private static SimpleReader key = new SimpleReader1L((System.getProperty("user.home") + "/Desktop/Konosuba/key.txt"));
-	//private static final String KOBOSUBA_TOKEN = key.nextLine();
+	private static SimpleReader key = new SimpleReader1L((System.getProperty("user.home") + "/Desktop/Konosuba/key.txt"));
+	private static final String KOBOSUBA_TOKEN = key.nextLine();
 
 	// This is now the default color for commands
 	public static final Color COLOR = new Color(153,50,204);
@@ -27,7 +30,7 @@ public class Konosuba  {
 	public static Connection CONNECTION;
 	static {
 		try {
-			String dbPath = System.getProperty("user.home") + (System.getProperty("user.home").startsWith("/home") ? "/konosuba.db" : "/git/KonosubaBot/Data/data.db");
+			String dbPath = System.getProperty("user.home") + (System.getProperty("user.home").startsWith("/home") ? "/konosuba.db" : "/git/KonosubaBot/Data/dataStructure.db");
 
 			//noinspection SpellCheckingInspection
 			Class.forName("org.sqlite.JDBC");
@@ -44,7 +47,7 @@ public class Konosuba  {
 	public static void main(String[] args) throws LoginException {
 		//noinspection SpellCheckingInspection
 		new DefaultShardManagerBuilder()
-				.setToken("NDAwODUzNTIwOTM0NTAyNDIw.Dczz4A.cMOOaGKdm0QWNac3_pIyTIpgfSk")
+				.setToken(KOBOSUBA_TOKEN)
 				.addEventListeners(new CommandListener())
 				.setBulkDeleteSplittingEnabled(false)
 				// .setShardsTotal(1) // XXX DO NOT USE THIS!
