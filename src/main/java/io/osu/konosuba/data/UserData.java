@@ -191,8 +191,9 @@ public class UserData {
 	}
 	
 	public void setBalance(int balance) throws Exception {
-		this.balance = balance;
 		update( "balance", balance);
+		this.balance = balance;
+		
 	}
 	
 	public boolean getBattleStatus() {
@@ -201,8 +202,9 @@ public class UserData {
 	}
 	
 	public void setBattleStatus(boolean battleStatus) throws Exception {
-		this.battling = battleStatus;
 		update( "battling",battleStatus? 1 : 0);
+		this.battling = battleStatus;
+		
 	}
 	
 	public boolean getStartStatus() {
@@ -210,8 +212,9 @@ public class UserData {
 	}
 	
 	public void setStartStatus(boolean startStatus) throws Exception {
-		this.starting = startStatus;
 		update( "starting", startStatus? 1: 0);
+		this.starting = startStatus;
+		
 	}
 
     public String getClasses() {
@@ -220,8 +223,9 @@ public class UserData {
     }
 
     public void setClasses(String classes) throws Exception {
+    	update("classes" ,classes);
         this.classes = classes;
-        update("classes" ,classes);
+        
     }
 
 	public String getHelmet() {
@@ -230,8 +234,9 @@ public class UserData {
 	}
 	
 	public void setHelmet(String helmet) throws Exception {
-		this.helm = helmet;
 		update( "helm",helmet);
+		this.helm = helmet;
+		
 	}
 
 	public String getChest() {
@@ -240,8 +245,9 @@ public class UserData {
 	}
 
 	public void setChest(String chest) throws Exception {
+		update( "chest", chest);
 	    this.chest = chest;
-	    update( "chest", chest);
+	   
     }
 
     public String getLegs() {
@@ -250,8 +256,9 @@ public class UserData {
     }
 
     public void setLegs(String legs) throws Exception {
+    	update( "legs", legs);
 	    this.legs = legs;
-	    update( "legs", legs);
+	   
     }
 
     public String getBoots() {
@@ -260,8 +267,9 @@ public class UserData {
     }
 
     public void setBoots(String boots) throws Exception {
+    	update( "boots" ,boots);
 	    this.boots = boots;
-	    update( "boots" ,boots);
+	    
     }
 
     public String getRing() {
@@ -270,8 +278,9 @@ public class UserData {
     }
 
     public void setRing(String ring) throws Exception {
+    	update( "ring" ,ring);
         this.ring = ring;
-        update( "ring" ,ring);
+        
     }
 
     public String getNecklace() {
@@ -280,8 +289,9 @@ public class UserData {
     }
 
     public void setNecklace(String necklace) throws Exception {
+    	update( "neck" ,necklace);
         this.neck =necklace ;
-        update( "neck" ,necklace);
+        
     }
 
     public String getCape() {
@@ -290,8 +300,9 @@ public class UserData {
     }
 
     public void setCape(String cape) throws Exception {
+    	update( "cape" ,cape);
         this.cape = cape;
-        update( "cape" ,cape);
+        
     }
 
     public String getPrimary() {
@@ -303,13 +314,13 @@ public class UserData {
 	}
 
     public String getOnhand() {
-        
         return on_hand;
     }
 
     public void setOnhand(String onhand) throws Exception {
+    	update( "on_hand" ,onhand);
         this.on_hand = onhand;
-        update( "on_hand" ,onhand);
+        
     }
 
     public String getOffhand() {
@@ -318,8 +329,9 @@ public class UserData {
     }
 
     public void setOffhand(String offhand) throws Exception {
+    	update( "off_hand" ,offhand);
         this.off_hand = offhand;
-        update( "off_hand" ,offhand);
+        
     }
 	
     public int getStrength() {
@@ -328,8 +340,9 @@ public class UserData {
 	}
 	
 	public void setStrength(int strength) throws Exception {
-		this.strength = strength;
 		update( "strength", (strength));
+		this.strength = strength;
+		
 	}
 	
 	public int getMagic() {
@@ -338,8 +351,9 @@ public class UserData {
 	}
 	
 	public void setMagic(int magic) throws Exception {
-		this.magic = magic;
 		update( "magic", (magic));
+		this.magic = magic;
+		
 	}
 	
 	public int getLuck() {
@@ -348,8 +362,9 @@ public class UserData {
 	}
 	
 	public void setLuck(int luck) throws Exception {
-		this.luck = luck;
 		update( "luck", (luck));
+		this.luck = luck;
+		
 	}
 	
 	public int getDexterity() {
@@ -358,8 +373,9 @@ public class UserData {
 	}
 	
 	public void setDexterity(int dexterity) throws Exception {
-		this.dex = dexterity;
 		update( "dex", (dexterity));
+		this.dex = dexterity;
+		
 	}
 	
 	public int getPhysicalDefense() {
@@ -368,8 +384,9 @@ public class UserData {
 	}
 	
 	public void setPhysicalDefense(int physicalDefense) throws Exception {
-		this.phys_def = physicalDefense;
 		update( "phys_def", (physicalDefense));
+		this.phys_def = physicalDefense;
+		
 	}
 	
 	public int getMagicalDefense() {
@@ -378,8 +395,9 @@ public class UserData {
 	}
 	
 	public void setMagicalDefense(int magicalDefense) throws Exception {
-		this.magi_def = magicalDefense;
 		update( "magi_def", (magicalDefense));
+		this.magi_def = magicalDefense;
+		
 	}
 
 	public int getHealth() {
@@ -396,18 +414,19 @@ public class UserData {
 	}
 	
 	public void setHitpoints(int hitpoints) throws Exception {
-		this.health = hitpoints;
 		update( "health", (hitpoints));
+		this.health = hitpoints;
+		
 	}
 	
 	public List<List<String>> getInventory() {
-		
 		return invent;
 	}
 	
 	public void setInventory(List<List<String>> inventory) throws Exception {
-		this.invent = inventory;
 		update( "invent", inventory);
+		this.invent = inventory;
+		
 	}
 	
 	public void addInventory(int position, String item) throws Exception {
@@ -431,8 +450,9 @@ public class UserData {
 	}
 	
 	public void setItems(HashMap<String, Integer> item) throws Exception {
-		this.item = item;
 		update( "item", item);
+		this.item = item;
+		
 	}
 	public void addItems(String item, int amount) throws Exception {
 		if(this.getItems().containsKey(item)) {
@@ -474,8 +494,9 @@ public class UserData {
     }
 
     public void setLocation(String location) throws Exception {
+    	update( "location" ,location);
         this.location = location;
-        update( "location" ,location);
+        
     }
 		
 	
