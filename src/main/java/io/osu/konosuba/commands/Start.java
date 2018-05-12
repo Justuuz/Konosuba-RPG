@@ -5,8 +5,6 @@ import java.util.ArrayList;
 
 import components.map.Map;
 import components.map.Map2;
-import components.naturalnumber.NaturalNumber;
-import components.naturalnumber.NaturalNumber2;
 import io.osu.konosuba.Command;
 import io.osu.konosuba.Konosuba;
 import io.osu.konosuba.data.ClientData;
@@ -21,10 +19,9 @@ public class Start extends Command {
 	}
 
 	@Override
-	public void run(MessageReceivedEvent event, String[] args) {
+	protected void run(MessageReceivedEvent event, String[] args) {
 
 		ClientData player = Konosuba.CLIENT_DATA_MANAGER.getData(event.getAuthor().getIdLong());
-
 
 
 		//			send(event.getGuild(), event.getChannel(), "embeded means getStartStatus = true (this is before first if statement" ,player.getStartStatus());
@@ -35,7 +32,6 @@ public class Start extends Command {
 
 
 				player.setStartStatus(true);
-				player.setLocation("Axel");
 				player.setClassType("None");
 				player.setBoots("None");
 				player.setCape("None");
@@ -45,7 +41,7 @@ public class Start extends Command {
 				player.setNecklace("None");
 				player.setOffHand("None");
 				player.setRing("None");
-				player.setBalance(new NaturalNumber2(0));
+				player.setBalance(0);
 				player.setOnHand("None");
 				for(int i = 9; i >= 0; i--) {
 
@@ -76,7 +72,7 @@ public class Start extends Command {
 				player.setItems(new Map2<String, Integer>());
 
 				String name = (event.getMember() != null ? event.getMember().getEffectiveName() : event.getAuthor().getName());
-				send(event.getGuild(), event.getChannel(), "Welcome " + name +"! Today is the day you start your adventure in Axel! Before we can start, I must ask "
+				send(event.getGuild(), event.getChannel(), "Welcome " + name +"! Today is the day you start your adventure! Before we can start, I must ask "
 						+ "traveler, what class are? Do *start choose Class Name to begin!",true);
 
 				send(event.getGuild(), event.getChannel(), "||Classes||\nWizard\r\n" + 
