@@ -59,33 +59,34 @@ public class UserData {
 		this.userid = userid;
 		Statement statement = Konosuba.CONNECTION.createStatement();
 		if(first) {
-		statement.execute(
+			statement.execute(
 				"CREATE TABLE IF NOT EXISTS 'client' ("+
 					"  userid   INT PRIMARY KEY NOT NULL," + 
 					"  balance  INT NOT NULL DEFAULT 0," + 
 					"  battling INT NOT NULL DEFAULT 0," + 
 					"  starting INT NOT NULL DEFAULT 0," + 
-					"  helm     TEXT," + 
-					"  chest    TEXT," + 
-					"  legs     TEXT," + 
-					"  boots    TEXT," + 
-					"  ring     TEXT," + 
-					"  neck     TEXT," + 
-					"  on_hand  TEXT," + 
-					"  off_hand TEXT," + 
+					"  helm     TEXT NOT NULL," + 
+					"  chest    TEXT NOT NULL," + 
+					"  legs     TEXT NOT NULL," + 
+					"  boots    TEXT NOT NULL," + 
+					"  ring     TEXT NOT NULL," + 
+					"  neck     TEXT NOT NULL," + 
+					"  cape     TEXT NOT NULL," +
+					"  on_hand  TEXT NOT NULL," + 
+					"  off_hand TEXT NOT NULL," + 
 					"  strength INT NOT NULL DEFAULT 0," + 
 					"  magic    INT NOT NULL DEFAULT 0," + 
 					"  luck     INT NOT NULL DEFAULT 0," + 
 					"  dex      INT NOT NULL DEFAULT 0," + 
-					"  def_phys INT NOT NULL DEFAULT 0," + 
-					"  def_magi INT NOT NULL DEFAULT 0," + 
+					"  phys_def INT NOT NULL DEFAULT 0," + 
+					"  magi_def INT NOT NULL DEFAULT 0," + 
 					"  health   INT NOT NULL DEFAULT 0," + 
-					"  classes  TEXT," + 
-					"  invent   TEXT," + 
-					"  item     TEXT," +
-					"  location TEXT"  +
+					"  classtype TEXT NOT NULL," + 
+					"  invent   TEXT NOT NULL," + 
+					"  item     TEXT NOT NULL," +
+					"  location TEXT NOT NULL"  +
 					");"
-	);
+					);
 		first = false;
 		}
 		
@@ -96,7 +97,7 @@ public class UserData {
 			balance  = hasResult ? result.getInt("balance") : 0;
 			battling = hasResult ? result.getInt("battling") == 1 : false;
 			starting = hasResult ? result.getInt("starting") == 1 : false;
-			classes  = hasResult ? result.getString("classes") : null;
+			classes  = hasResult ? result.getString("classtype") : null;
 			helm     = hasResult ? result.getString("helm") : null;
 			chest    = hasResult ? result.getString("chest") : null;
 			legs     = hasResult ? result.getString("legs") : null;
@@ -114,29 +115,29 @@ public class UserData {
 			magi_def = hasResult ? result.getInt("magi_def") : 0;
 			health   = hasResult ? result.getInt("health") : 0;
 			location = hasResult ? result.getString("location") : null;
-//			if(hasResult) {
-//				JSONArray raw = new JSONArray(result.getString("invent"));
-//				List<List<String>> stringListList = new ArrayList<>();
-//				List<String> stringList = new ArrayList<>();
-//				for (Object obj : raw) {
-//				    for (Object obj2 : ((JSONArray) obj)) {
-//				        stringList.add((String) obj2);
-//				    }
-//				    stringListList.add(new ArrayList<>(stringList)); // Fixes clearing
-//				    stringList.clear();  
-//				}
-//				invent  = stringListList;
-//				
-//				JSONObject raw2 = new JSONObject(result.getString("item"));
-//				HashMap<String, Integer> stringMap = new HashMap<>();
-//				raw2.toMap().forEach((k,v) -> stringMap.put(k, (int)v));
-//				item = stringMap;
-//				
-//				
-//			}else {
-//				invent = null;
-//				item = null;
-//			}
+			if(hasResult) {
+				JSONArray raw = new JSONArray(result.getString("invento"));
+				List<List<String>> stringListList = new ArrayList<>();
+				List<String> stringList = new ArrayList<>();
+				for (Object obj : raw) {
+				    for (Object obj2 : ((JSONArray) obj)) {
+				        stringList.add((String) obj2);
+				    }
+				    stringListList.add(new ArrayList<>(stringList)); // Fixes clearing
+				    stringList.clear();  
+				}
+				invent  = stringListList;
+				
+				JSONObject raw2 = new JSONObject(result.getString("itemo"));
+				HashMap<String, Integer> stringMap = new HashMap<>();
+				raw2.toMap().forEach((k,v) -> stringMap.put(k, (int)v));
+				item = stringMap;
+				
+				
+			}else {
+				invent = null;
+				item = null;
+			}
 			
 			
 			
@@ -177,7 +178,7 @@ public class UserData {
 	
 	private void update(String key, Object value) throws Exception {
 		Statement statement = Konosuba.CONNECTION.createStatement();
-		statement.addBatch("INSERT OR IGNORE INTO 'client' (userid,"+key+") VALUES ("+userid+","+value+");");
+		statement.addBatch("INSERT OR IGNORE INTO 'client' (userid,"+key+") VALUES ("+userid+",'"+value+"');");
 		statement.addBatch("UPDATE 'client' SET "+key+"="+value+" WHERE userid="+userid+";");
 		statement.executeBatch();
 		statement.close();
@@ -218,13 +219,12 @@ public class UserData {
 	}
 
     public String getClasses() {
-        
         return classes;
     }
 
-    public void setClasses(String classes) throws Exception {
-    	update("classes" ,classes);
-        this.classes = classes;
+    public void setClasses(String classtype) throws Exception {
+    	update("classtype" ,classtype);
+        this.classes = classtype;
         
     }
 
@@ -295,12 +295,11 @@ public class UserData {
     }
 
     public String getCape() {
-        
         return cape;
     }
 
     public void setCape(String cape) throws Exception {
-    	update( "cape" ,cape);
+    	update("cape" ,cape);
         this.cape = cape;
         
     }
@@ -424,7 +423,7 @@ public class UserData {
 	}
 	
 	public void setInventory(List<List<String>> inventory) throws Exception {
-		update( "invent", inventory);
+		update("invento", inventory);
 		this.invent = inventory;
 		
 	}
@@ -450,7 +449,7 @@ public class UserData {
 	}
 	
 	public void setItems(HashMap<String, Integer> item) throws Exception {
-		update( "item", item);
+		update( "itemo", item);
 		this.item = item;
 		
 	}
