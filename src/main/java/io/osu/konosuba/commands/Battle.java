@@ -2,7 +2,7 @@ package io.osu.konosuba.commands;
 
 import io.osu.konosuba.Command;
 import io.osu.konosuba.Konosuba;
-import io.osu.konosuba.data.ClientData;
+import io.osu.konosuba.data.UserData;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 public class Battle extends Command {
@@ -21,7 +21,12 @@ public class Battle extends Command {
 	public void run(MessageReceivedEvent event, String[] args) {
 		
 		//Getting the players information from here.
-		ClientData user = Konosuba.CLIENT_DATA_MANAGER.getData(event.getChannel().getIdLong());
+		try {
+			UserData user = new UserData(event.getChannel().getIdLong());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	/*
 	 * Show UI here
 	 */

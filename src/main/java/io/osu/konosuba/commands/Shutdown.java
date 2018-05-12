@@ -1,6 +1,5 @@
 package io.osu.konosuba.commands;
 
-import io.osu.konosuba.commands.*;
 import io.osu.konosuba.*;
 
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -21,9 +20,6 @@ public class Shutdown extends Command{
 		}
 		if(args[0].equalsIgnoreCase("shutdown")) {
 			send(event.getGuild(), event.getChannel(), "**Shutting Down!**", true);
-			Konosuba.CLIENT_DATA_MANAGER.save();
-			Konosuba.GEAR_DATA_MANAGER.save();
-			Konosuba.CLASS_DATA_MANAGER.save();
 			event.getJDA().shutdown();
 			System.exit(0);
 		}

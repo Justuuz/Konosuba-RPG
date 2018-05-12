@@ -2,7 +2,8 @@ package io.osu.konosuba.commands;
 
 import io.osu.konosuba.Command;
 import io.osu.konosuba.Konosuba;
-import io.osu.konosuba.data.ClientData;
+
+import io.osu.konosuba.data.UserData;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 public class Buy_admin extends Command {
@@ -19,32 +20,35 @@ public class Buy_admin extends Command {
 	
 	@Override
 	public void run(MessageReceivedEvent event, String[] args) {
+		try {
 		
-		ClientData player = Konosuba.CLIENT_DATA_MANAGER.getData(event.getAuthor().getIdLong());
+		UserData player = new UserData(event.getAuthor().getIdLong());
 	/*
 	 * Show UI here
 	 */
 		
 		if(args[1].equalsIgnoreCase("admin_hat")) {
-			player.addInventory("admin_hat", 0);
+			player.addInventory(0, "admin_hat");
 			
 		}
 		
 		if(args[1].equalsIgnoreCase("admin_plate")) {
-			player.addInventory("admin_plate", 1);
+			player.addInventory(1, "admin_plate");
 		}
 		
 		
 		if(args[1].equalsIgnoreCase("admin_hat2")) {
-			player.addInventory("admin_hat2", 0);
+			player.addInventory(0, "admin_hat2");
 			 
 		}
 		
 		if(args[1].equalsIgnoreCase("admin_hat3")) {
-			player.addInventory("admin_hat3", 0);
+			player.addInventory(0, "admin_hat3");
 			
 		}
-		Konosuba.CLIENT_DATA_MANAGER.trySave();
 		
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

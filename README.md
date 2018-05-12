@@ -17,14 +17,14 @@ Konosuba is an upcoming discord rpg bot that is based off the anime "Konosuba"
 
 - Framework of Bot - 20%
 - Commands
- - Inventory - 80%
- - Profile -90%
+ - Inventory - 0%
+ - Profile -0%
  - Go -0%
  - Daily -0%
  - Shop - 0%
  - Buy/Sell -0%
  - Craft -0%
- - Equip -90%
+ - Equip -0%
  - battle - 5%
  - attack - 0%
  - item - 0%
