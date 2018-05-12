@@ -2,9 +2,6 @@ package io.osu.konosuba;
 
 import io.osu.konosuba.Listeners.CommandListener;
 import net.dv8tion.jda.bot.sharding.DefaultShardManagerBuilder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import components.simplereader.SimpleReader;
 import components.simplereader.SimpleReader1L;
 
