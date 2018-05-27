@@ -179,7 +179,7 @@ public class UserData {
 	private void update(String key, Object value) throws Exception {
 		Statement statement = Konosuba.CONNECTION.createStatement();
 		statement.addBatch("INSERT OR IGNORE INTO 'client' (userid,"+key+") VALUES ("+userid+",'"+value+"');");
-		statement.addBatch("UPDATE 'client' SET "+key+"="+value+" WHERE userid="+userid+";");
+		statement.addBatch("UPDATE 'client' SET "+key+"='"+value+"' WHERE userid="+userid+";");
 		statement.executeBatch();
 		statement.close();
 	}
