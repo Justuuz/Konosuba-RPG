@@ -135,7 +135,7 @@ public class UserData {
 	private void update(Connection connection, String key, String value) throws Exception {
 		Statement statement = connection.createStatement();
 		statement.execute(
-				"CREATE TABLE IF NOT EXISTS 'client' ("+
+				"CREATE TABLE IF NOT EXISTS `client` ("+
 					"  id       INTEGER PRIMARY KEY NOT NULL," + 
 					"  balance  INTEGER NOT NULL DEFAULT 0," + 
 					"  battling INTEGER NOT NULL DEFAULT 0," + 
@@ -161,8 +161,8 @@ public class UserData {
 					"  location TEXT"  +
 					");"
 	);
-		statement.execute("INSERT OR IGNORE INTO '" + "client" + "' (userid, "+key+") VALUES ("+userid+","+value+");"+
-							"UPDATE '"+ "client" + "' SET "+key+"="+value+" WHERE userid="+userid+";");
+		statement.execute("INSERT OR IGNORE INTO `" + "client" + "` (userid, "+key+") VALUES ("+userid+","+value+");"+
+							"UPDATE `"+ "client" + "` SET "+key+"="+value+" WHERE userid="+userid+";");
 		statement.close();
 	}
 	
