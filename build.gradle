@@ -1,9 +1,9 @@
 plugins {
-    id 'java'
-    id 'idea'
-    id 'eclipse'
-    id 'application'
-    id 'com.github.johnrengelman.shadow' version '2.0.3'
+	id 'java'
+	id 'idea'
+	id 'eclipse'
+	id 'application'
+	id 'com.github.johnrengelman.shadow' version '2.0.3'
 }
 
 version '1.0_0' // MAJOR.MINOR_PATCH
@@ -13,32 +13,29 @@ mainClassName = 'io.osu.konosuba.Main'
 sourceCompatibility = 1.8
 
 repositories {
-    jcenter()
-    maven {url 'https://jitpack.io'}
+	jcenter()
+	maven {url 'https://jitpack.io'}
 }
 
 //noinspection SpellCheckingInspection
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+	testCompile group: 'junit', name: 'junit', version: '4.12'
 
-    // JDA
-    compile 'net.dv8tion:JDA:3.6.0_359'
+	// MagicUtils - https://github.com/MagicCraftMaster/magic-utils-java
+	compile group: 'com.github.MagicCraftMaster', name: 'magic-utils-java', version: 'master-SNAPSHOT'
 
-    // Lavaplayer
-    //compile 'com.sedmelluq:lavaplayer:1.2.45'
+	// JDA
+	compile 'net.dv8tion:JDA:3.6.0_359'
 
-    // Logback - https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
-    compile 'ch.qos.logback:logback-classic:1.2.3'
+	// Logback - https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
+	compile 'ch.qos.logback:logback-classic:1.2.3'
 
-    // SQLite - https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc
-    compile group: 'org.xerial', name: 'sqlite-jdbc', version: '3.21.0.1'
+	// SQLite - https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc
+	compile group: 'org.xerial', name: 'sqlite-jdbc', version: '3.21.0.1'
 
-    // SnakeYAML - https://mvnrepository.com/artifact/org.yaml/snakeyaml
-    //compile group: 'org.yaml', name: 'snakeyaml', version: '1.19'
+	// SnakeYAML - https://mvnrepository.com/artifact/org.yaml/snakeyaml
+	compile group: 'org.yaml', name: 'snakeyaml', version: '1.19'
 
-    // Groovy - https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-jsr223
-    //compile group: 'org.codehaus.groovy', name: 'groovy-jsr223', version: '2.4.13'
-
-    // Discord Bot List API - https://github.com/DiscordBotList/DBL-Java-Library
-    //compile group: 'com.github.DiscordBotList', name: 'DBL-Java-Wrapper', version: 'v1.0'
+	// GSON - https://mvnrepository.com/artifact/com.google.code.gson/gson
+	compile group: 'com.google.code.gson', name: 'gson', version: '2.8.4'
 }

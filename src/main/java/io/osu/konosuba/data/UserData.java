@@ -1,16 +1,11 @@
 package io.osu.konosuba.data;
 
-import java.sql.Connection;
+import io.osu.konosuba.Konosuba;
+
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import io.osu.konosuba.Konosuba;
 
 public class UserData {
 	
@@ -46,134 +41,74 @@ public class UserData {
 	private String location;
 	 
 	// ===========================================
-	
+
 	private boolean first = true;
 	
 	public UserData(long userid) throws Exception {
-		update(userid);	
-		this.userid = userid;
-			
-	}	
-	
+		update(userid);
+	}
+
 	private void update(long userid) throws Exception {
 		this.userid = userid;
 		Statement statement = Konosuba.CONNECTION.createStatement();
 		if(first) {
 			statement.execute(
 				"CREATE TABLE IF NOT EXISTS 'client' ("+
-					"  userid   INT PRIMARY KEY NOT NULL," + 
-					"  balance  INT NOT NULL DEFAULT 0," + 
-					"  battling INT NOT NULL DEFAULT 0," + 
-					"  starting INT NOT NULL DEFAULT 0," + 
-					"  helm     TEXT NOT NULL," + 
-					"  chest    TEXT NOT NULL," + 
-					"  legs     TEXT NOT NULL," + 
-					"  boots    TEXT NOT NULL," + 
-					"  ring     TEXT NOT NULL," + 
-					"  neck     TEXT NOT NULL," + 
-					"  cape     TEXT NOT NULL," +
-					"  on_hand  TEXT NOT NULL," + 
-					"  off_hand TEXT NOT NULL," + 
-					"  strength INT NOT NULL DEFAULT 0," + 
-					"  magic    INT NOT NULL DEFAULT 0," + 
-					"  luck     INT NOT NULL DEFAULT 0," + 
-					"  dex      INT NOT NULL DEFAULT 0," + 
-					"  phys_def INT NOT NULL DEFAULT 0," + 
-					"  magi_def INT NOT NULL DEFAULT 0," + 
-					"  health   INT NOT NULL DEFAULT 0," + 
-					"  classtype TEXT NOT NULL," + 
-					"  invent   TEXT NOT NULL," + 
-					"  item     TEXT NOT NULL," +
-					"  location TEXT NOT NULL"  +
+						"userid   INT PRIMARY KEY NOT NULL," +
+						"balance  INT NOT NULL DEFAULT 0," +
+						"battling INT NOT NULL DEFAULT 0," +
+						"starting INT NOT NULL DEFAULT 0," +
+						"helm     TEXT," +
+						"chest    TEXT," +
+						"legs     TEXT," +
+						"boots    TEXT," +
+						"ring     TEXT," +
+						"neck     TEXT," +
+						"cape     TEXT," +
+						"on_hand  TEXT," +
+						"off_hand TEXT," +
+						"strength INT NOT NULL DEFAULT 0," +
+						"magic    INT NOT NULL DEFAULT 0," +
+						"luck     INT NOT NULL DEFAULT 0," +
+						"dex      INT NOT NULL DEFAULT 0," +
+						"phys_def INT NOT NULL DEFAULT 0," +
+						"magi_def INT NOT NULL DEFAULT 0," +
+						"health   INT NOT NULL DEFAULT 0," +
+						"classtype TEXT," +
+						"invent   TEXT NOT NULL DEFAULT '[]'," +
+						"item     TEXT," +
+						"location TEXT"  +
 					");"
 					);
-		first = false;
+			first = false;
 		}
 		
 		ResultSet result = statement.executeQuery("SELECT * FROM 'client' WHERE userid="+ userid + ";");
-//		if(result.next()) {
 		boolean hasResult = result.next();
-		
-			balance  = hasResult ? result.getInt("balance") : 0;
-			battling = hasResult ? result.getInt("battling") == 1 : false;
-			starting = hasResult ? result.getInt("starting") == 1 : false;
-			classes  = hasResult ? result.getString("classtype") : null;
-			helm     = hasResult ? result.getString("helm") : null;
-			chest    = hasResult ? result.getString("chest") : null;
-			legs     = hasResult ? result.getString("legs") : null;
-			boots    = hasResult ? result.getString("boots") : null;
-			cape     = hasResult ? result.getString("cape") : null;
-			ring     = hasResult ? result.getString("ring") : null;
-			neck     = hasResult ? result.getString("neck") : null;
-			on_hand  = hasResult ? result.getString("on_hand") : null;
-			off_hand = hasResult ? result.getString("off_hand") : null;
-			strength = hasResult ? result.getInt("strength") : 0;
-			magic    = hasResult ? result.getInt("magic") : 0;
-			luck     = hasResult ? result.getInt("luck") : 0;
-			dex      = hasResult ? result.getInt("dex") : 0;
-			phys_def = hasResult ? result.getInt("phys_def") : 0;
-			magi_def = hasResult ? result.getInt("magi_def") : 0;
-			health   = hasResult ? result.getInt("health") : 0;
-			location = hasResult ? result.getString("location") : null;
-			if(hasResult) {
-				JSONArray raw = new JSONArray(result.getString("invento"));
-				List<List<String>> stringListList = new ArrayList<>();
-				List<String> stringList = new ArrayList<>();
-				for (Object obj : raw) {
-				    for (Object obj2 : ((JSONArray) obj)) {
-				        stringList.add((String) obj2);
-				    }
-				    stringListList.add(new ArrayList<>(stringList)); // Fixes clearing
-				    stringList.clear();  
-				}
-				invent  = stringListList;
-				
-				JSONObject raw2 = new JSONObject(result.getString("itemo"));
-				HashMap<String, Integer> stringMap = new HashMap<>();
-				raw2.toMap().forEach((k,v) -> stringMap.put(k, (int)v));
-				item = stringMap;
-				
-				
-			}else {
-				invent = null;
-				item = null;
-			}
-			
-			
-			
-			
-			
-			
-//		}else {
-//			// Default
-//			balance  = 0;
-//			battling = false;
-//			starting = false;
-//			classes  = null;
-//			helm     = null;
-//			chest    = null;
-//			legs     = null;
-//			boots    = null;
-//			cape     = null;
-//			ring     = null;
-//			neck     = null;
-//			on_hand  = null;
-//			off_hand = null;
-//			strength = 0;
-//			magic    = 0;
-//			luck     = 0;
-//			dex      = 0;
-//			phys_def = 0;
-//			magi_def = 0;
-//			health   = 0;
-//			invent = null;
-//			item = null;
-//			location = null;
-//			
-//		} 
+
+		balance  = hasResult ? result.getInt("balance") : 0;
+		battling = hasResult && result.getInt("battling") == 1;
+		starting = hasResult && result.getInt("starting") == 1;
+		classes  = hasResult ? result.getString("classtype") : null;
+		helm     = hasResult ? result.getString("helm") : null;
+		chest    = hasResult ? result.getString("chest") : null;
+		legs     = hasResult ? result.getString("legs") : null;
+		boots    = hasResult ? result.getString("boots") : null;
+		cape     = hasResult ? result.getString("cape") : null;
+		ring     = hasResult ? result.getString("ring") : null;
+		neck     = hasResult ? result.getString("neck") : null;
+		on_hand  = hasResult ? result.getString("on_hand") : null;
+		off_hand = hasResult ? result.getString("off_hand") : null;
+		strength = hasResult ? result.getInt("strength") : 0;
+		magic    = hasResult ? result.getInt("magic") : 0;
+		luck     = hasResult ? result.getInt("luck") : 0;
+		dex      = hasResult ? result.getInt("dex") : 0;
+		phys_def = hasResult ? result.getInt("phys_def") : 0;
+		magi_def = hasResult ? result.getInt("magi_def") : 0;
+		health   = hasResult ? result.getInt("health") : 0;
+		location = hasResult ? result.getString("location") : null;
+
 		statement.close();
-		
-		
 	}
 	
 	private void update(String key, Object value) throws Exception {
@@ -213,7 +148,7 @@ public class UserData {
 	}
 	
 	public void setStartStatus(boolean startStatus) throws Exception {
-		update( "starting", startStatus? 1: 0);
+		update( "starting", startStatus ? 1 : 0);
 		this.starting = startStatus;
 		
 	}
@@ -423,7 +358,7 @@ public class UserData {
 	}
 	
 	public void setInventory(List<List<String>> inventory) throws Exception {
-		update("invento", inventory);
+		update("invent", inventory);
 		this.invent = inventory;
 		
 	}
@@ -449,7 +384,7 @@ public class UserData {
 	}
 	
 	public void setItems(HashMap<String, Integer> item) throws Exception {
-		update( "itemo", item);
+		update( "item", item);
 		this.item = item;
 		
 	}

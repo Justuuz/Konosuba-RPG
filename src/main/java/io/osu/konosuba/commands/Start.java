@@ -1,16 +1,12 @@
 package io.osu.konosuba.commands;
 
-import java.awt.Color;
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import components.map.Map;
-import components.map.Map2;
 import io.osu.konosuba.Command;
 import io.osu.konosuba.Konosuba;
 import io.osu.konosuba.data.UserData;
-import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Start extends Command {
 
@@ -46,9 +42,9 @@ public class Start extends Command {
 					player.setRing("None");
 					player.setBalance(0);
 					player.setOnhand("None");
-					for(int i = 9; i >= 0; i--) {
+					/*for(int i = 9; i >= 0; i--) {
 
-					}
+					}*/
 					//					/*
 					//					 * add "none" to all inventory types
 					//					 */

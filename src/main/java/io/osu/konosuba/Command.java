@@ -109,7 +109,17 @@ public abstract class Command {
 			send(event.getGuild(), event.getChannel(), "You don't have permission for that", false);
 			return;
 		}
-		if (args[0].equalsIgnoreCase(name)) run(event, args);
+			if (args[0].equalsIgnoreCase(name)) run(event, args);
+	}
+
+	/**
+	 * Simple utility
+	 * @param args the command args
+	 * @param index the argument index
+	 * @return a boolean
+	 */
+	public boolean hasArgument(String[] args, int index) {
+		return args.length > index;
 	}
 
 	/**

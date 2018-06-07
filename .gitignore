@@ -1,2 +1,10 @@
 .idea
+.gradle
+.settings
+Outside Libraries
+Data
 /bin/
+_config.yml
+.classpath
+.project
+data.yaml

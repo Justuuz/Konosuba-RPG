@@ -4,6 +4,8 @@ import io.osu.konosuba.Listeners.CommandListener;
 import net.dv8tion.jda.bot.sharding.DefaultShardManagerBuilder;
 import components.simplereader.SimpleReader;
 import components.simplereader.SimpleReader1L;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.security.auth.login.LoginException;
 import java.awt.Color;
@@ -22,6 +24,9 @@ public class Konosuba  {
 
 	// This is now the default prefix for commands
 	public static final String PREFIX = "*";
+
+	// This is the default logger
+	public static final Logger LOGGER = LoggerFactory.getLogger(Konosuba.class);
 
 	//this is for pulling information
 	public static Connection CONNECTION;
