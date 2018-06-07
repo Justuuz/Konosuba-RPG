@@ -26,10 +26,6 @@ public class Start extends Command {
 			//			send(event.getGuild(), event.getChannel(), "embeded means getStartStatus = true (this is before first if statement" ,player.getStartStatus());
 			if(args.length == 1) {
 				if(!player.getStartStatus()) {
-					//Map<String, Integer> items = new Map2<String, Integer>();
-
-
-
 					player.setStartStatus(true);
 					player.setClasses("None");
 					player.setBoots("None");
@@ -42,38 +38,21 @@ public class Start extends Command {
 					player.setRing("None");
 					player.setBalance(0);
 					player.setOnhand("None");
-					/*for(int i = 9; i >= 0; i--) {
-
-					}*/
-					//					/*
-					//					 * add "none" to all inventory types
-					//					 */
-
 					player.setInventory(new ArrayList<>());
+					player.getInventory().add(new ArrayList<String>());				
+					player.getInventory().add(new ArrayList<String>());					
+					player.getInventory().add(new ArrayList<String>());					
 					player.getInventory().add(new ArrayList<String>());
-					player.getInventory().get(0).add("None");
 					player.getInventory().add(new ArrayList<String>());
-					player.getInventory().get(1).add("None"); 
 					player.getInventory().add(new ArrayList<String>());
-					player.getInventory().get(2).add("None");
 					player.getInventory().add(new ArrayList<String>());
-					player.getInventory().get(3).add("None");
 					player.getInventory().add(new ArrayList<String>());
-					player.getInventory().get(4).add("None");
 					player.getInventory().add(new ArrayList<String>());
-					player.getInventory().get(5).add("None");
-					player.getInventory().add(new ArrayList<String>());
-					player.getInventory().get(6).add("None");
-					player.getInventory().add(new ArrayList<String>());
-					player.getInventory().get(7).add("None");
-					player.getInventory().add(new ArrayList<String>());
-					player.getInventory().get(8).add("None");
 					player.setItems(new HashMap<>());
 
 					String name = (event.getMember() != null ? event.getMember().getEffectiveName() : event.getAuthor().getName());
 					send(event.getGuild(), event.getChannel(), "Welcome " + name +"! Today is the day you start your adventure! Before we can start, I must ask "
 							+ "traveler, what class are? Do *start choose Class Name to begin!",true);
-
 					send(event.getGuild(), event.getChannel(), "||Classes||\nWizard\r\n" + 
 							"Arch_Wizard\r\n" + 
 							"Crusader\r\n" + 
@@ -94,7 +73,6 @@ public class Start extends Command {
 				}
 
 			}
-
 			if(player.getStartStatus()) {
 				if(args[1].equalsIgnoreCase("classes")) {
 					send(event.getGuild(), event.getChannel(), "||Classes||\nWizard\r\n" + 
@@ -109,7 +87,6 @@ public class Start extends Command {
 							"Rogue\r\n" + 
 							"Merchant",true);
 					return;
-
 				}
 
 				if(args[1].equalsIgnoreCase("choose")) {
