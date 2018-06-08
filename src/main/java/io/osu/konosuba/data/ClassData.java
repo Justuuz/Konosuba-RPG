@@ -33,7 +33,7 @@ public class ClassData {
     
     private void update(String classtype) throws Exception {
 		this.classtype = classtype;
-		Statement statement = Konosuba.CONNECTION.createStatement();
+		Statement statement = Konosuba.CONNECTION2.createStatement();
 		if(first) {
 			statement.execute(
 					"CREATE TABLE IF NOT EXISTS 'classes' ("+
@@ -63,7 +63,7 @@ public class ClassData {
 	}
     
     private void update(String key, Object value) throws Exception {
-		Statement statement = Konosuba.CONNECTION.createStatement();
+		Statement statement = Konosuba.CONNECTION2.createStatement();
 		statement.execute("INSERT OR IGNORE REALO 'classes' (classtype, "+key+") VALUES ("+classtype+","+value+");"+
 							"UPDATE 'classes' SET "+key+"="+value+" WHERE classtype="+classtype+";");
 		statement.close();

@@ -54,7 +54,7 @@ public class UserData {
 
 	private void update(long userid) throws Exception {
 		this.userid = userid;
-		Statement statement = Konosuba.CONNECTION.createStatement();
+		Statement statement = Konosuba.CONNECTION1.createStatement();
 		if(first) {
 			statement.execute(
 				"CREATE TABLE IF NOT EXISTS 'client' ("+
@@ -140,7 +140,7 @@ public class UserData {
 	}
 	
 	private void update(String key, Object value) throws Exception {
-		Statement statement = Konosuba.CONNECTION.createStatement();
+		Statement statement = Konosuba.CONNECTION1.createStatement();
 		statement.addBatch("INSERT OR IGNORE INTO 'client' (userid,"+key+") VALUES ("+userid+",'"+value+"');");
 		statement.addBatch("UPDATE 'client' SET "+key+"='"+value+"' WHERE userid="+userid+";");
 		statement.executeBatch();

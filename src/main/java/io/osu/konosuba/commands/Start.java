@@ -7,6 +7,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Start extends Command {
 
@@ -38,32 +39,29 @@ public class Start extends Command {
 					player.setRing("None");
 					player.setBalance(0);
 					player.setOnhand("None");
-					player.setInventory(new ArrayList<>());
-					player.getInventory().add(new ArrayList<String>());				
-					player.getInventory().add(new ArrayList<String>());					
-					player.getInventory().add(new ArrayList<String>());					
-					player.getInventory().add(new ArrayList<String>());
-					player.getInventory().add(new ArrayList<String>());
-					player.getInventory().add(new ArrayList<String>());
-					player.getInventory().add(new ArrayList<String>());
-					player.getInventory().add(new ArrayList<String>());
-					player.getInventory().add(new ArrayList<String>());
+					List<List<String>> list = new ArrayList<List<String>>();
+					for(int i=0; i < 9; i++) {
+						list.add(new ArrayList<String>());
+					}
+					player.setInventory(list);
 					player.setItems(new HashMap<>());
 
 					String name = (event.getMember() != null ? event.getMember().getEffectiveName() : event.getAuthor().getName());
 					send(event.getGuild(), event.getChannel(), "Welcome " + name +"! Today is the day you start your adventure! Before we can start, I must ask "
-							+ "traveler, what class are? Do *start choose Class Name to begin!",true);
-					send(event.getGuild(), event.getChannel(), "||Classes||\nWizard\r\n" + 
-							"Arch_Wizard\r\n" + 
-							"Crusader\r\n" + 
-							"Adventurer\r\n" + 
-							"Cleric\r\n" + 
-							"Mage\r\n" + 
-							"Thief\r\n" + 
-							"Priest\r\n" + 
-							"Warrior\r\n" + 
-							"Rogue\r\n" + 
-							"Merchant",true);
+							+ "traveler, what class are? Do *start choose Class Name to begin!"
+							+ "\n" +
+							 "||Classes||\nWizard\r\n" + 
+								"Arch_wizard\r\n" + 
+								"Crusader\r\n" + 
+								"Adventurer\r\n" + 
+								"Cleric\r\n" + 
+								"Mage\r\n" + 
+								"Thief\r\n" + 
+								"Priest\r\n" + 
+								"Warrior\r\n" + 
+								"Rogue\r\n" + 
+								"Merchant"
+							,true);
 
 					return;	
 				}else{

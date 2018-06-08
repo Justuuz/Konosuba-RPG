@@ -14,7 +14,8 @@ public class GearData {
 	// |INT     |INT  |INT |INT |INT     |INT     |INT   |INT |
 	
 	// = Cache  ======================================
-	private String gear;
+	private int id;
+	private String name;
 	private int strength;
 	private int magic;
 	private int luck;
@@ -27,20 +28,20 @@ public class GearData {
 	
 	private boolean first = true;
 
-	public GearData(String gear) throws Exception {
-		update(gear);
+	public GearData(int id) throws Exception {
+		update(id);
 	}
 
 	
     
-    private void update(String gear) throws Exception {
-		this.gear = gear;
-	
-		Statement statement = Konosuba.CONNECTION.createStatement();
+    private void update(int id) throws Exception {
+    	this.id = id;
+		Statement statement = Konosuba.CONNECTION2.createStatement();
 		if(first) {
 			statement.execute(
 					"CREATE TABLE IF NOT EXISTS 'gear' ("+
-						"  gear     TEXT PRIMARY KEY NOT NULL," + 
+						"  id       INT PRIMARY KEY NOT NULL," +
+						"  name     TEXT NOT NULL," + 
 						"  strength INT NOT NULL DEFAULT 0," + 
 						"  magic    INT NOT NULL DEFAULT 0," + 
 						"  luck     INT NOT NULL DEFAULT 0," + 
@@ -53,9 +54,10 @@ public class GearData {
 					);
 			first = false;
 		}
-		ResultSet result = statement.executeQuery("SELECT * FROM 'gear' WHERE gear="+ gear + ";");
+		ResultSet result = statement.executeQuery("SELECT * FROM 'gear' WHERE id="+ id + ";");
 		boolean hasResult = result.next();
 		
+		name     = hasResult ? result.getString("name") : null;
 		strength = hasResult ? result.getInt("strength") : 0;
 		magic    = hasResult ? result.getInt("magic") : 0;
 		luck     = hasResult ? result.getInt("luck") : 0;
@@ -69,9 +71,9 @@ public class GearData {
 	}
     
     private void update(String key, Object value) throws Exception {
-		Statement statement = Konosuba.CONNECTION.createStatement();
-		statement.execute("INSERT OR IGNORE INTO 'gear' (gear, "+key+") VALUES ("+gear+","+value+");"+
-							"UPDATE 'gear' SET "+key+"="+value+" WHERE gear="+gear+";");
+		Statement statement = Konosuba.CONNECTION2.createStatement();
+		statement.execute("INSERT OR IGNORE INTO 'gear' (id, "+key+") VALUES ("+id+","+value+");"+
+							"UPDATE 'gear' SET "+key+"="+value+" WHERE id="+id+";");
 		statement.close();
 	}
 
@@ -83,7 +85,9 @@ public class GearData {
 
 
 	
-
+public String getName() {
+	return name;
+}
 	
 	
 	

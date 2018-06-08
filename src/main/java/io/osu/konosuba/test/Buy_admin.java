@@ -29,6 +29,7 @@ public class Buy_admin extends Command {
 		
 		if(args[1].equalsIgnoreCase("admin_hat")) {
 			player.addInventory(0, "admin_hat");
+			send(event.getGuild(), event.getChannel(), "added", true);
 			
 		}
 		

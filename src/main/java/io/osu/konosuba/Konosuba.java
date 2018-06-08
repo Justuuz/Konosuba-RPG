@@ -29,7 +29,7 @@ public class Konosuba  {
 	public static final Logger LOGGER = LoggerFactory.getLogger(Konosuba.class);
 
 	//this is for pulling information
-	public static Connection CONNECTION;
+	public static Connection CONNECTION1;
 	static {
 		try {
 			String dbPath = System.getProperty("user.home") + (System.getProperty("user.home").startsWith("/home") ? "/konosuba.db" : "/Desktop/Stuff/git/KonosubaBot/structure.db");
@@ -37,10 +37,26 @@ public class Konosuba  {
 			//noinspection SpellCheckingInspection
 			Class.forName("org.sqlite.JDBC");
 			//noinspection SpellCheckingInspection
-			CONNECTION = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
+			CONNECTION1 = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
 		} catch (Exception e) {
 			e.printStackTrace();
-			CONNECTION = null;
+			CONNECTION1 = null;
+			System.exit(0);
+		}
+	}
+	
+	public static Connection CONNECTION2;
+	static {
+		try {
+			String dbPath = System.getProperty("user.home") + (System.getProperty("user.home").startsWith("/home") ? "/konosuba.db" : "/Desktop/Stuff/git/KonosubaBot/readData.db");
+
+			//noinspection SpellCheckingInspection
+			Class.forName("org.sqlite.JDBC");
+			//noinspection SpellCheckingInspection
+			CONNECTION1 = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
+		} catch (Exception e) {
+			e.printStackTrace();
+			CONNECTION1 = null;
 			System.exit(0);
 		}
 	}

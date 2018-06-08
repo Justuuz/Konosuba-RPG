@@ -23,7 +23,7 @@ public final class Data {
 	// ====================
 
 	Data(long id) throws SQLException {
-		Statement statement = Konosuba.CONNECTION.createStatement();
+		Statement statement = Konosuba.CONNECTION1.createStatement();
 		if (first) {
 			statement.execute("CREATE TABLE IF NOT EXISTS 'test' (id INT PRIMARY KEY NOT NULL, balance INT NOT NULL DEFAULT 0);");
 			first = false;
@@ -40,7 +40,7 @@ public final class Data {
 
 	private void update(String key, Object value) {
 		try {
-			Statement statement = Konosuba.CONNECTION.createStatement();
+			Statement statement = Konosuba.CONNECTION1.createStatement();
 
 			statement.addBatch("INSERT OR IGNORE INTO 'test' (id,"+key+") VALUES ("+id+","+value+");");
 			statement.addBatch("UPDATE 'test' SET "+key+"="+value+" WHERE id="+id+";");
