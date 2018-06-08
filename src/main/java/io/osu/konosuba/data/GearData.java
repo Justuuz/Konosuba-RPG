@@ -23,64 +23,55 @@ public class GearData {
 	private int magi_def;
 	private int health;
 	private String type;
+	// ===============================================
 	
+	private boolean first = true;
 
 	public GearData(String gear) throws Exception {
-		this.gear = gear;
-		update(Konosuba.CONNECTION, "gear", gear);
+		update(gear);
 	}
 
 	
     
-    private void update(Connection connection, String table, String gear) throws Exception {
+    private void update(String gear) throws Exception {
 		this.gear = gear;
-		Statement statement = connection.createStatement();
-		ResultSet result = statement.executeQuery("SELECT * FROM '" +table+"' WHERE gear="+ gear + ";");
-		if(result.next()) {
-			
-			strength = result.getInt("strength");
-			magic    = result.getInt("magic");
-			luck     = result.getInt("luck");
-			dex      = result.getInt("dex");
-			phys_def = result.getInt("phys_def");
-			magi_def = result.getInt("magi_def");
-			health   = result.getInt("health");
-			type     = result.getString("type");
+	
+		Statement statement = Konosuba.CONNECTION.createStatement();
+		if(first) {
+			statement.execute(
+					"CREATE TABLE IF NOT EXISTS 'gear' ("+
+						"  gear     TEXT PRIMARY KEY NOT NULL," + 
+						"  strength INT NOT NULL DEFAULT 0," + 
+						"  magic    INT NOT NULL DEFAULT 0," + 
+						"  luck     INT NOT NULL DEFAULT 0," + 
+						"  dex      INT NOT NULL DEFAULT 0," + 
+						"  def_phys INT NOT NULL DEFAULT 0," + 
+						"  def_magi INT NOT NULL DEFAULT 0," + 
+						"  health   INT NOT NULL DEFAULT 0," + 
+						"  type    TEXT" + 
+						");"
+					);
+			first = false;
+		}
+		ResultSet result = statement.executeQuery("SELECT * FROM 'gear' WHERE gear="+ gear + ";");
+		boolean hasResult = result.next();
 		
-		}else {
-			// Default	
-			strength = 0;
-			magic    = 0;
-			luck     = 0;
-			dex      = 0;
-			phys_def = 0;
-			magi_def = 0;
-			health   = 0;
-			type     = null;
-			
-			
-		} 
+		strength = hasResult ? result.getInt("strength") : 0;
+		magic    = hasResult ? result.getInt("magic") : 0;
+		luck     = hasResult ? result.getInt("luck") : 0;
+		dex      = hasResult ? result.getInt("dex") : 0;
+		phys_def = hasResult ? result.getInt("phys_def") : 0;
+		magi_def = hasResult ? result.getInt("magi_def") : 0;
+		health   = hasResult ? result.getInt("health") : 0;
+		type     = hasResult ? result.getString("type") : null;
 		statement.close();
 		
 	}
     
-    private void update(Connection connection, String table, String key, String value) throws Exception {
-		Statement statement = connection.createStatement();
-		statement.execute(
-				"CREATE TABLE IF NOT EXISTS '"+ table + "' ("+
-					"  gear     TEXT PRIMARY KEY NOT NULL," + 
-					"  strength INTEGER NOT NULL DEFAULT 0," + 
-					"  magic    INTEGER NOT NULL DEFAULT 0," + 
-					"  luck     INTEGER NOT NULL DEFAULT 0," + 
-					"  dex      INTEGER NOT NULL DEFAULT 0," + 
-					"  def_phys INTEGER NOT NULL DEFAULT 0," + 
-					"  def_magi INTEGER NOT NULL DEFAULT 0," + 
-					"  health   INTEGER NOT NULL DEFAULT 0," + 
-					"  type    TEXT" + 
-					");"
-	);
-		statement.execute("INSERT OR IGNORE INTO '" + table + "' (gear, "+key+") VALUES ("+gear+","+value+");"+
-							"UPDATE '"+ table + "' SET "+key+"="+value+" WHERE gear="+gear+";");
+    private void update(String key, Object value) throws Exception {
+		Statement statement = Konosuba.CONNECTION.createStatement();
+		statement.execute("INSERT OR IGNORE INTO 'gear' (gear, "+key+") VALUES ("+gear+","+value+");"+
+							"UPDATE 'gear' SET "+key+"="+value+" WHERE gear="+gear+";");
 		statement.close();
 	}
 
@@ -97,14 +88,15 @@ public class GearData {
 	
 	
 	
-    public int getStrength() {
+ public int getStrength() {
 		
 		return strength;
 	}
 	
 	public void setStrength(int strength) throws Exception {
+		update( "strength", (strength));
 		this.strength = strength;
-		update(Konosuba.CONNECTION, "gear", "strength", Integer.toString(strength));
+		
 	}
 	
 	public int getMagic() {
@@ -113,8 +105,9 @@ public class GearData {
 	}
 	
 	public void setMagic(int magic) throws Exception {
+		update( "magic", (magic));
 		this.magic = magic;
-		update(Konosuba.CONNECTION, "gear", "magic", Integer.toString(magic));
+		
 	}
 	
 	public int getLuck() {
@@ -123,8 +116,9 @@ public class GearData {
 	}
 	
 	public void setLuck(int luck) throws Exception {
+		update( "luck", (luck));
 		this.luck = luck;
-		update(Konosuba.CONNECTION, "gear", "luck", Integer.toString(luck));
+		
 	}
 	
 	public int getDexterity() {
@@ -133,8 +127,9 @@ public class GearData {
 	}
 	
 	public void setDexterity(int dexterity) throws Exception {
+		update( "dex", (dexterity));
 		this.dex = dexterity;
-		update(Konosuba.CONNECTION, "gear", "dex", Integer.toString(dexterity));
+		
 	}
 	
 	public int getPhysicalDefense() {
@@ -143,8 +138,9 @@ public class GearData {
 	}
 	
 	public void setPhysicalDefense(int physicalDefense) throws Exception {
+		update( "phys_def", (physicalDefense));
 		this.phys_def = physicalDefense;
-		update(Konosuba.CONNECTION, "gear", "phys_def", Integer.toString(physicalDefense));
+		
 	}
 	
 	public int getMagicalDefense() {
@@ -153,8 +149,17 @@ public class GearData {
 	}
 	
 	public void setMagicalDefense(int magicalDefense) throws Exception {
+		update( "magi_def", (magicalDefense));
 		this.magi_def = magicalDefense;
-		update(Konosuba.CONNECTION, "gear", "magi_def", Integer.toString(magicalDefense));
+		
+	}
+
+	public int getHealth() {
+		return getHitpoints();
+	}
+
+	public void setHealth(int health) throws Exception {
+		setHitpoints(health);
 	}
 	
 	public int getHitpoints() {
@@ -163,8 +168,9 @@ public class GearData {
 	}
 	
 	public void setHitpoints(int hitpoints) throws Exception {
+		update( "health", (hitpoints));
 		this.health = hitpoints;
-		update(Konosuba.CONNECTION, "gear", "health", Integer.toString(hitpoints));
+		
 	}
 	
 	public String getType() {
@@ -174,6 +180,6 @@ public class GearData {
 	
 	public void setType(String type) throws Exception{
 		this.type = type;
-		update(Konosuba.CONNECTION, "gear", "type", type);
+		update("type", type);
 	}
 }

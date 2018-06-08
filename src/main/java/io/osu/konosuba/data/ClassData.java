@@ -11,7 +11,7 @@ public class ClassData {
 	
 	// |strength|magic|luck|dex |phys_def|magi_def|health|classtype|
 	// -------------------------------------------------------------
-	// |INT     |INT  |INT |INT |INT     |INT     |INT   |TEXT     |
+	// |REAL     |REAL  |REAL |REAL |REAL     |REAL     |REAL   |TEXT     |
 	
 	// = Cache  ======================================
 	private String classtype;
@@ -22,61 +22,50 @@ public class ClassData {
 	private double phys_def;
 	private double magi_def;
 	private double health;
-
+	// ===============================================
+	private boolean first = true;
+	
 
 	public ClassData(String classtype) throws Exception {
-		this.classtype = classtype;
-		update(Konosuba.CONNECTION, "classes", classtype);
+		update(classtype);
 	}
 
     
-    private void update(Connection connection, String table, String classtype) throws Exception {
+    private void update(String classtype) throws Exception {
 		this.classtype = classtype;
-		Statement statement = connection.createStatement();
-		ResultSet result = statement.executeQuery("SELECT * FROM '" +table+"' WHERE classtype="+ classtype + ";");
-		if(result.next()) {
-			
-			strength = result.getInt("strength");
-			magic    = result.getInt("magic");
-			luck     = result.getInt("luck");
-			dex      = result.getInt("dex");
-			phys_def = result.getInt("phys_def");
-			magi_def = result.getInt("magi_def");
-			health   = result.getInt("health");
-			
-		
-		}else {
-			// Default	
-			strength = 0;
-			magic    = 0;
-			luck     = 0;
-			dex      = 0;
-			phys_def = 0;
-			magi_def = 0;
-			health   = 0;
-			
-			
-		} 
+		Statement statement = Konosuba.CONNECTION.createStatement();
+		if(first) {
+			statement.execute(
+					"CREATE TABLE IF NOT EXISTS 'classes' ("+
+						"  classtype TEXT PRIMARY KEY NOT NULL," + 
+						"  strength REAL NOT NULL DEFAULT 0.0," + 
+						"  magic    REAL NOT NULL DEFAULT 0.0," + 
+						"  luck     REAL NOT NULL DEFAULT 0.0," + 
+						"  dex      REAL NOT NULL DEFAULT 0.0," + 
+						"  def_phys REAL NOT NULL DEFAULT 0.0," + 
+						"  def_magi REAL NOT NULL DEFAULT 0.0," + 
+						"  health   REAL NOT NULL DEFAULT 0.0" +  
+						");"
+					);
+			first = false;
+		}
+		ResultSet result = statement.executeQuery("SELECT * FROM 'classes' WHERE classtype="+ classtype + ";");
+		boolean hasResult = result.next();
+		strength = hasResult ? result.getDouble("strength") : 0.0;
+		magic    = hasResult ? result.getDouble("magic") : 0.0;
+		luck     = hasResult ? result.getDouble("luck") : 0.0;
+		dex      = hasResult ? result.getDouble("dex") : 0.0;
+		phys_def = hasResult ? result.getDouble("phys_def") : 0.0;
+		magi_def = hasResult ? result.getDouble("magi_def") : 0.0;
+		health   = hasResult ? result.getDouble("health") : 0.0;
 		statement.close();
 		
 	}
     
-    private void update(Connection connection, String table, String key, String value) throws Exception {
-		Statement statement = connection.createStatement();
-		statement.execute(
-				"CREATE TABLE IF NOT EXISTS '"+ table + "' ("+
-					"  classtype TEXT PRIMARY KEY NOT NULL," + 
-					"  strength INTEGER NOT NULL DEFAULT 0," + 
-					"  magic    INTEGER NOT NULL DEFAULT 0," + 
-					"  luck     INTEGER NOT NULL DEFAULT 0," + 
-					"  dex      INTEGER NOT NULL DEFAULT 0," + 
-					"  def_phys INTEGER NOT NULL DEFAULT 0," + 
-					"  def_magi INTEGER NOT NULL DEFAULT 0," + 
-					"  health   INTEGER NOT NULL DEFAULT 0" +  
-					");"
-	);
-		statement.execute("INSERT OR IGNORE INTO '" + table + "' (classtype, "+key+") VALUES ("+classtype+","+value+");"+
-							"UPDATE '"+ table + "' SET "+key+"="+value+" WHERE classtype="+classtype+";");
+    private void update(String key, Object value) throws Exception {
+		Statement statement = Konosuba.CONNECTION.createStatement();
+		statement.execute("INSERT OR IGNORE REALO 'classes' (classtype, "+key+") VALUES ("+classtype+","+value+");"+
+							"UPDATE 'classes' SET "+key+"="+value+" WHERE classtype="+classtype+";");
 		statement.close();
 	}
 
@@ -92,14 +81,15 @@ public class ClassData {
 	
 	
 	
-    public double getStrength() {
+public double getStrength() {
 		
 		return strength;
 	}
 	
 	public void setStrength(double strength) throws Exception {
+		update( "strength", (strength));
 		this.strength = strength;
-		update(Konosuba.CONNECTION, "classtype", "strength", Double.toString(strength));
+		
 	}
 	
 	public double getMagic() {
@@ -108,8 +98,9 @@ public class ClassData {
 	}
 	
 	public void setMagic(double magic) throws Exception {
+		update( "magic", (magic));
 		this.magic = magic;
-		update(Konosuba.CONNECTION, "classtype", "magic", Double.toString(magic));
+		
 	}
 	
 	public double getLuck() {
@@ -118,8 +109,9 @@ public class ClassData {
 	}
 	
 	public void setLuck(double luck) throws Exception {
+		update( "luck", (luck));
 		this.luck = luck;
-		update(Konosuba.CONNECTION, "classtype", "luck", Double.toString(luck));
+		
 	}
 	
 	public double getDexterity() {
@@ -128,8 +120,9 @@ public class ClassData {
 	}
 	
 	public void setDexterity(double dexterity) throws Exception {
+		update( "dex", (dexterity));
 		this.dex = dexterity;
-		update(Konosuba.CONNECTION, "classtype", "dex", Double.toString(dexterity));
+		
 	}
 	
 	public double getPhysicalDefense() {
@@ -138,8 +131,9 @@ public class ClassData {
 	}
 	
 	public void setPhysicalDefense(double physicalDefense) throws Exception {
+		update( "phys_def", (physicalDefense));
 		this.phys_def = physicalDefense;
-		update(Konosuba.CONNECTION, "classtype", "phys_def", Double.toString(physicalDefense));
+		
 	}
 	
 	public double getMagicalDefense() {
@@ -148,8 +142,9 @@ public class ClassData {
 	}
 	
 	public void setMagicalDefense(double magicalDefense) throws Exception {
+		update( "magi_def", (magicalDefense));
 		this.magi_def = magicalDefense;
-		update(Konosuba.CONNECTION, "classtype", "magi_def", Double.toString(magicalDefense));
+		
 	}
 
 	public double getHealth() {
@@ -166,8 +161,9 @@ public class ClassData {
 	}
 	
 	public void setHitpodoubles(double hitpodoubles) throws Exception {
+		update( "health", (hitpodoubles));
 		this.health = hitpodoubles;
-		update(Konosuba.CONNECTION, "classtype", "health", Double.toString(hitpodoubles));
+		
 	}
 	
 	
