@@ -42,7 +42,7 @@ public class Equip extends Command {
 		
 		
 		if(player.getStartStatus()) {
-			List<List<String>> inv = player.getInventory();
+			List<List<Integer>> inv = player.getInventory();
 		if(args[1].equalsIgnoreCase("helmet")) {
 				
 

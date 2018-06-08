@@ -15,7 +15,7 @@ public class UserData {
 	
 	//  |userid|balance|battling|starting|classes|helm|chest|legs|boots|cape|ring|neck|on_hand|off_hand|strength|magic|luck|dex |phys_def|magi_def|health|invent|item|location|
 	//	----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	//  |INT  |TEXT   |INT     |INT     |TEXT   |TEXT|TEXT |TEXT|TEXT |TEXT|TEXT|TEXT|TEXT   |TEXT    |INT     |INT  |INT |INT |INT     |INT     |INT   |TEXT  |TEXT|TEXT    |
+	//  |INT  |INT   |INT     |INT     |INT   |INT|INT |INT|INT |INT|INT|INT|INT   |INT    |INT     |INT  |INT |INT |INT     |INT     |INT   |INT  |INT|INT    |
 	
 	
 	// = Cache ===================================
@@ -23,16 +23,16 @@ public class UserData {
 	private int balance;
 	private boolean battling;
 	private boolean starting;
-	private String classes;
-	private String helm;
-	private String chest;
-	private String legs;
-	private String boots;
-	private String cape;
-	private String ring;
-	private String neck;
-	private String on_hand;
-	private String off_hand;
+	private int classes;
+	private int helm;
+	private int chest;
+	private int legs;
+	private int boots;
+	private int cape;
+	private int ring;
+	private int neck;
+	private int on_hand;
+	private int off_hand;
 	private int strength;
 	private int magic;
 	private int luck;
@@ -40,9 +40,9 @@ public class UserData {
 	private int phys_def;
 	private int magi_def;
 	private int health;
-	private List<List<String>> invent;
-	private HashMap<String, Integer> item;
-	private String location;
+	private List<List<Integer>> invent;
+	private HashMap<Integer, Integer> item;
+	private int location;
 	 
 	// ===========================================
 
@@ -62,15 +62,15 @@ public class UserData {
 						"balance  INT NOT NULL DEFAULT 0," +
 						"battling INT NOT NULL DEFAULT 0," +
 						"starting INT NOT NULL DEFAULT 0," +
-						"helm     TEXT," +
-						"chest    TEXT," +
-						"legs     TEXT," +
-						"boots    TEXT," +
-						"ring     TEXT," +
-						"neck     TEXT," +
-						"cape     TEXT," +
-						"on_hand  TEXT," +
-						"off_hand TEXT," +
+						"helm     INT NOT NULL DEFAULT 0," +
+						"chest    INT NOT NULL DEFAULT 0," +
+						"legs     INT NOT NULL DEFAULT 0," +
+						"boots    INT NOT NULL DEFAULT 0," +
+						"ring     INT NOT NULL DEFAULT 0," +
+						"neck     INT NOT NULL DEFAULT 0," +
+						"cape     INT NOT NULL DEFAULT 0," +
+						"on_hand  INT NOT NULL DEFAULT 0," +
+						"off_hand INT NOT NULL DEFAULT 0," +
 						"strength INT NOT NULL DEFAULT 0," +
 						"magic    INT NOT NULL DEFAULT 0," +
 						"luck     INT NOT NULL DEFAULT 0," +
@@ -78,10 +78,10 @@ public class UserData {
 						"phys_def INT NOT NULL DEFAULT 0," +
 						"magi_def INT NOT NULL DEFAULT 0," +
 						"health   INT NOT NULL DEFAULT 0," +
-						"classtype TEXT," +
-						"invent   TEXT NOT NULL DEFAULT '[]'," +
-						"item     TEXT," +
-						"location TEXT"  +
+						"classtype INT," +
+						"invent   INT NOT NULL DEFAULT '[]'," +
+						"item     INT," +
+						"location INT"  +
 					");"
 					);
 			first = false;
@@ -93,16 +93,16 @@ public class UserData {
 		balance  = hasResult ? result.getInt("balance") : 0;
 		battling = hasResult && result.getInt("battling") == 1;
 		starting = hasResult && result.getInt("starting") == 1;
-		classes  = hasResult ? result.getString("classtype") : null;
-		helm     = hasResult ? result.getString("helm") : null;
-		chest    = hasResult ? result.getString("chest") : null;
-		legs     = hasResult ? result.getString("legs") : null;
-		boots    = hasResult ? result.getString("boots") : null;
-		cape     = hasResult ? result.getString("cape") : null;
-		ring     = hasResult ? result.getString("ring") : null;
-		neck     = hasResult ? result.getString("neck") : null;
-		on_hand  = hasResult ? result.getString("on_hand") : null;
-		off_hand = hasResult ? result.getString("off_hand") : null;
+		classes  = hasResult ? result.getInt("classtype") : 0;
+		helm     = hasResult ? result.getInt("helm") : 0;
+		chest    = hasResult ? result.getInt("chest") : 0;
+		legs     = hasResult ? result.getInt("legs") : 0;
+		boots    = hasResult ? result.getInt("boots") : 0;
+		cape     = hasResult ? result.getInt("cape") : 0;
+		ring     = hasResult ? result.getInt("ring") : 0;
+		neck     = hasResult ? result.getInt("neck") : 0;
+		on_hand  = hasResult ? result.getInt("on_hand") : 0;
+		off_hand = hasResult ? result.getInt("off_hand") : 0;
 		strength = hasResult ? result.getInt("strength") : 0;
 		magic    = hasResult ? result.getInt("magic") : 0;
 		luck     = hasResult ? result.getInt("luck") : 0;
@@ -110,24 +110,24 @@ public class UserData {
 		phys_def = hasResult ? result.getInt("phys_def") : 0;
 		magi_def = hasResult ? result.getInt("magi_def") : 0;
 		health   = hasResult ? result.getInt("health") : 0;
-		location = hasResult ? result.getString("location") : null;
+		location = hasResult ? result.getInt("location") : 0;
 
 		if(hasResult) {
-			JSONArray raw = new JSONArray(result.getString("invent"));
-			List<List<String>> stringListList = new ArrayList<>();
-			List<String> stringList = new ArrayList<>();
+			JSONArray raw = new JSONArray(result.getInt("invent"));
+			List<List<Integer>> stringListList = new ArrayList<>();
+			List<Integer> stringList = new ArrayList<>();
 			for (Object obj : raw) {
 			    for (Object obj2 : ((JSONArray) obj)) {
-			        stringList.add((String) obj2);
+			        stringList.add((int) obj2);
 			    }
 			    stringListList.add(new ArrayList<>(stringList)); // Fixes clearing
 			    stringList.clear();  
 			}
 			invent  = stringListList;
 			
-			JSONObject raw2 = new JSONObject(result.getString("item"));
-			HashMap<String, Integer> stringMap = new HashMap<>();
-			raw2.toMap().forEach((k,v) -> stringMap.put(k, (int)v));
+			JSONObject raw2 = new JSONObject(result.getInt("item"));
+			HashMap<Integer, Integer> stringMap = new HashMap<>();
+			raw2.toMap().forEach((k,v) -> stringMap.put(Integer.parseInt(k), (int)v));
 			item = stringMap;
 			
 			
@@ -181,116 +181,116 @@ public class UserData {
 		
 	}
 
-    public String getClasses() {
+    public int getClasses() {
         return classes;
     }
 
-    public void setClasses(String classtype) throws Exception {
+    public void setClasses(int classtype) throws Exception {
     	update("classtype" ,classtype);
         this.classes = classtype;
         
     }
 
-	public String getHelmet() {
+	public int getHelmet() {
 		
 		return helm;
 	}
 	
-	public void setHelmet(String helmet) throws Exception {
+	public void setHelmet(int helmet) throws Exception {
 		update( "helm",helmet);
 		this.helm = helmet;
 		
 	}
 
-	public String getChest() {
+	public int getChest() {
 		
 		return chest;
 	}
 
-	public void setChest(String chest) throws Exception {
+	public void setChest(int chest) throws Exception {
 		update( "chest", chest);
 	    this.chest = chest;
 	   
     }
 
-    public String getLegs() {
+    public int getLegs() {
 	    
 	    return legs;
     }
 
-    public void setLegs(String legs) throws Exception {
+    public void setLegs(int legs) throws Exception {
     	update( "legs", legs);
 	    this.legs = legs;
 	   
     }
 
-    public String getBoots() {
+    public int getBoots() {
 	   
 	    return boots;
     }
 
-    public void setBoots(String boots) throws Exception {
+    public void setBoots(int boots) throws Exception {
     	update( "boots" ,boots);
 	    this.boots = boots;
 	    
     }
 
-    public String getRing() {
+    public int getRing() {
         
         return ring;
     }
 
-    public void setRing(String ring) throws Exception {
+    public void setRing(int ring) throws Exception {
     	update( "ring" ,ring);
         this.ring = ring;
         
     }
 
-    public String getNecklace() {
+    public int getNecklace() {
         
         return neck;
     }
 
-    public void setNecklace(String necklace) throws Exception {
+    public void setNecklace(int necklace) throws Exception {
     	update( "neck" ,necklace);
         this.neck =necklace ;
         
     }
 
-    public String getCape() {
+    public int getCape() {
         return cape;
     }
 
-    public void setCape(String cape) throws Exception {
+    public void setCape(int cape) throws Exception {
     	update("cape" ,cape);
         this.cape = cape;
         
     }
 
-    public String getPrimary() {
+    public int getPrimary() {
 		return getOnhand();
 	}
 
-	public void setPrimary(String primary) throws Exception {
+	public void setPrimary(int primary) throws Exception {
 		setOnhand(primary);
 	}
 
-    public String getOnhand() {
+    public int getOnhand() {
         return on_hand;
     }
 
-    public void setOnhand(String onhand) throws Exception {
+    public void setOnhand(int onhand) throws Exception {
     	update( "on_hand" ,onhand);
         this.on_hand = onhand;
         
     }
 
-    public String getOffhand() {
+    public int getOffhand() {
         
         return off_hand;
     }
 
-    public void setOffhand(String offhand) throws Exception {
+    public void setOffhand(int offhand) throws Exception {
     	update( "off_hand" ,offhand);
         this.off_hand = offhand;
         
@@ -381,42 +381,42 @@ public class UserData {
 		
 	}
 	
-	public List<List<String>> getInventory() {
+	public List<List<Integer>> getInventory() {
 		return invent;
 	}
 	
-	public void setInventory(List<List<String>> inventory) throws Exception {
+	public void setInventory(List<List<Integer>> inventory) throws Exception {
 		update("invent", inventory);
 		this.invent = inventory;
 		
 	}
 	
-	public void addInventory(int position, String item) throws Exception {
-		List<String> subInv = this.invent.remove(position);
+	public void addInventory(int position, int item) throws Exception {
+		List<Integer> subInv = this.invent.remove(position);
 		subInv.add(item);	
 		this.invent.add(position, subInv);
 		
 	}
 	
-	public void removeInventory(int position, String item) throws Exception {
-		List<String> subInv = this.invent.remove(position);
+	public void removeInventory(int position, int item) throws Exception {
+		List<Integer> subInv = this.invent.remove(position);
 		subInv.remove(item);	
 		this.invent.add(position, subInv); 
 		
 	}
 	
-	public HashMap<String, Integer> getItems() {
+	public HashMap<Integer, Integer> getItems() {
 		
 		return item;
 		
 	}
 	
-	public void setItems(HashMap<String, Integer> item) throws Exception {
+	public void setItems(HashMap<Integer, Integer> item) throws Exception {
 		update( "item", item);
 		this.item = item;
 		
 	}
-	public void addItems(String item, int amount) throws Exception {
+	public void addItems(int item, int amount) throws Exception {
 		if(this.getItems().containsKey(item)) {
 			int itemValue = this.getItems().remove(item);
 			int amt = itemValue + amount;
@@ -431,7 +431,7 @@ public class UserData {
 		
 	}
 	
-	public void removeItems(String item, int amount) throws Exception {
+	public void removeItems(int item, int amount) throws Exception {
 		/*
 		 * amount will be less than or equal to the value
 		 * precondition xdddd
@@ -450,12 +450,12 @@ public class UserData {
 
 	}
 	
-	public String getLocation() {
+	public int getLocation() {
         
         return location;
     }
 
-    public void setLocation(String location) throws Exception {
+    public void setLocation(int location) throws Exception {
     	update( "location" ,location);
         this.location = location;
         

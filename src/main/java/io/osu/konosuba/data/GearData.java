@@ -14,7 +14,7 @@ public class GearData {
 	// |INT     |INT  |INT |INT |INT     |INT     |INT   |INT |
 	
 	// = Cache  ======================================
-	private int id;
+	private int gearid;
 	private String name;
 	private int strength;
 	private int magic;
@@ -28,19 +28,19 @@ public class GearData {
 	
 	private boolean first = true;
 
-	public GearData(int id) throws Exception {
-		update(id);
+	public GearData(int gearid) throws Exception {
+		update(gearid);
 	}
 
 	
     
-    private void update(int id) throws Exception {
-    	this.id = id;
+    private void update(int gearid) throws Exception {
+    	this.gearid = gearid;
 		Statement statement = Konosuba.CONNECTION2.createStatement();
 		if(first) {
 			statement.execute(
 					"CREATE TABLE IF NOT EXISTS 'gear' ("+
-						"  id       INT PRIMARY KEY NOT NULL," +
+						"  gearid       INT PRIMARY KEY NOT NULL," +
 						"  name     TEXT NOT NULL," + 
 						"  strength INT NOT NULL DEFAULT 0," + 
 						"  magic    INT NOT NULL DEFAULT 0," + 
@@ -54,7 +54,7 @@ public class GearData {
 					);
 			first = false;
 		}
-		ResultSet result = statement.executeQuery("SELECT * FROM 'gear' WHERE id="+ id + ";");
+		ResultSet result = statement.executeQuery("SELECT * FROM 'gear' WHERE gearid="+ gearid + ";");
 		boolean hasResult = result.next();
 		
 		name     = hasResult ? result.getString("name") : null;
@@ -72,8 +72,8 @@ public class GearData {
     
     private void update(String key, Object value) throws Exception {
 		Statement statement = Konosuba.CONNECTION2.createStatement();
-		statement.execute("INSERT OR IGNORE INTO 'gear' (id, "+key+") VALUES ("+id+","+value+");"+
-							"UPDATE 'gear' SET "+key+"="+value+" WHERE id="+id+";");
+		statement.execute("INSERT OR IGNORE INTO 'gear' (gearid, "+key+") VALUES ("+gearid+","+value+");"+
+							"UPDATE 'gear' SET "+key+"="+value+" WHERE gearid="+gearid+";");
 		statement.close();
 	}
 
@@ -84,14 +84,13 @@ public class GearData {
 	 */
 
 
-	
+    public int getGearId() {
+		return gearid;
+	}
+    
     public String getName() {
     	return name;
     }
-	
-	public int getId() {
-		return id;
-	}
 	
 	
  public int getStrength() {

@@ -9,12 +9,13 @@ import io.osu.konosuba.Konosuba;
 @SuppressWarnings({"unused"})
 public class ClassData {
 	
-	// |strength|magic|luck|dex |phys_def|magi_def|health|classtype|
+	// |strength|magic|luck|dex |phys_def|magi_def|health|classname|
 	// -------------------------------------------------------------
 	// |REAL     |REAL  |REAL |REAL |REAL     |REAL     |REAL   |TEXT     |
 	
 	// = Cache  ======================================
-	private String classtype;
+	private int classid;
+	private String classname;
 	private double strength;
 	private double magic;
 	private double luck;
@@ -26,18 +27,19 @@ public class ClassData {
 	private boolean first = true;
 	
 
-	public ClassData(String classtype) throws Exception {
-		update(classtype);
+	public ClassData(int classid) throws Exception {
+		update(classid);
 	}
 
     
-    private void update(String classtype) throws Exception {
-		this.classtype = classtype;
+    private void update(int classid) throws Exception {
+		this.classid = classid;
 		Statement statement = Konosuba.CONNECTION2.createStatement();
 		if(first) {
 			statement.execute(
 					"CREATE TABLE IF NOT EXISTS 'classes' ("+
-						"  classtype TEXT PRIMARY KEY NOT NULL," + 
+						"  classid  INT PRIMARY KEY NOT NULL DEFAULT 0 " +
+						"  classname TEXT NOT NULL," + 
 						"  strength REAL NOT NULL DEFAULT 1.0," + 
 						"  magic    REAL NOT NULL DEFAULT 1.0," + 
 						"  luck     REAL NOT NULL DEFAULT 1.0," + 
@@ -49,8 +51,9 @@ public class ClassData {
 					);
 			first = false;
 		}
-		ResultSet result = statement.executeQuery("SELECT * FROM 'classes' WHERE classtype="+ classtype + ";");
+		ResultSet result = statement.executeQuery("SELECT * FROM 'classes' WHERE classID="+ classid + ";");
 		boolean hasResult = result.next();
+		classname = hasResult ?  result.getString("classname") : null;
 		strength = hasResult ? result.getDouble("strength") : 1.0;
 		magic    = hasResult ? result.getDouble("magic") : 1.0;
 		luck     = hasResult ? result.getDouble("luck") : 1.0;
@@ -64,8 +67,8 @@ public class ClassData {
     
     private void update(String key, Object value) throws Exception {
 		Statement statement = Konosuba.CONNECTION2.createStatement();
-		statement.execute("INSERT OR IGNORE REALO 'classes' (classtype, "+key+") VALUES ("+classtype+","+value+");"+
-							"UPDATE 'classes' SET "+key+"="+value+" WHERE classtype="+classtype+";");
+		statement.execute("INSERT OR IGNORE REALO 'classes' (classid, "+key+") VALUES ("+classid+","+value+");"+
+							"UPDATE 'classes' SET "+key+"="+value+" WHERE classid="+classid+";");
 		statement.close();
 	}
 

@@ -36,7 +36,7 @@ public class Inventory extends Command {
 
 			
 			
-			List<List<String>> inv = player.getInventory();
+			List<List<Integer>> inv = player.getInventory();
 			
 			
 			
@@ -52,10 +52,10 @@ public class Inventory extends Command {
 				helmet.setAuthor("", event.getAuthor().getAvatarUrl());
 				helmet.setThumbnail("https://cdn130.picsart.com/250247865001212.png");
 				helmet.setFooter("To equip, do *equip (gear type) (piece)", event.getJDA().getSelfUser().getAvatarUrl());
-				List<String> helInv = inv.get(0);
+				List<Integer> helInv = inv.get(0);
 				StringBuilder items = new StringBuilder();
 				 
-				for (String item: helInv) {
+				for (Integer item: helInv) {
 					items.append(item).append("\n");
 				}
 				
@@ -72,10 +72,10 @@ public class Inventory extends Command {
 				chest.setFooter("To equip, do *equip (gear type) (piece)", event.getJDA().getSelfUser().getAvatarUrl());
 
 				
-				List<String> cheInv = inv.get(1);
+				List<Integer> cheInv = inv.get(1);
 				StringBuilder items = new StringBuilder();
 				
-				for (String item: cheInv) {
+				for (Integer item: cheInv) {
 					items.append(item).append("\n");
 				}
 				items.toString().replaceAll("_", " ");
@@ -93,10 +93,10 @@ public class Inventory extends Command {
 				legs.setThumbnail("https://i.imgur.com/BTMazbj.png");
 				legs.setFooter("To equip, do *equip (gear type) (piece)", event.getJDA().getSelfUser().getAvatarUrl());
 				
-				List<String> legInv = inv.get(2);
+				List<Integer> legInv = inv.get(2);
 				StringBuilder items = new StringBuilder();
 				
-				for (String item: legInv) {
+				for (Integer item: legInv) {
 					items.append(item).append("\n");
 				}
 				
@@ -115,10 +115,10 @@ public class Inventory extends Command {
 				onhand.setAuthor("", event.getAuthor().getAvatarUrl());
 				onhand.setThumbnail("https://i.imgur.com/kD7hIBU.png");
 				onhand.setFooter("To equip, do *equip (gear type) (piece)", event.getJDA().getSelfUser().getAvatarUrl());
-				List<String> onInv = inv.get(3);
+				List<Integer> onInv = inv.get(3);
 				StringBuilder items = new StringBuilder();
 				
-				for (String item: onInv) {
+				for (Integer item: onInv) {
 					items.append(item).append("\n");
 				}
 				
@@ -135,10 +135,10 @@ public class Inventory extends Command {
 				offhand.setThumbnail("https://pre00.deviantart.net/0509/th/pre/i/2016/048/5/8/basic_pixel_sword_by_dr_morgan47-d9s5a12.png");
 				offhand.setFooter("To equip, do *equip (gear type) (piece)", event.getJDA().getSelfUser().getAvatarUrl());
 				
-				List<String> offInv = inv.get(4);
+				List<Integer> offInv = inv.get(4);
 				StringBuilder items = new StringBuilder();
 				
-				for (String item: offInv) {
+				for (Integer item: offInv) {
 					items.append(item).append("\n");
 				}
 				
@@ -155,10 +155,10 @@ public class Inventory extends Command {
 				cape.setThumbnail("https://pre00.deviantart.net/0509/th/pre/i/2016/048/5/8/basic_pixel_sword_by_dr_morgan47-d9s5a12.png");
 				cape.setFooter("To equip, do *equip (gear type) (piece)", event.getJDA().getSelfUser().getAvatarUrl());
 				
-				List<String> capInv = inv.get(5);
+				List<Integer> capInv = inv.get(5);
 				StringBuilder items = new StringBuilder();
 				
-				for (String item: capInv) {
+				for (Integer item: capInv) {
 					items.append(item).append("\n");
 				}
 				
@@ -175,10 +175,10 @@ public class Inventory extends Command {
 				cape.setThumbnail("https://pre00.deviantart.net/0509/th/pre/i/2016/048/5/8/basic_pixel_sword_by_dr_morgan47-d9s5a12.png");
 				cape.setFooter("To equip, do *equip (gear type) (piece)", event.getJDA().getSelfUser().getAvatarUrl());
 				
-				List<String> necInv = inv.get(6);
+				List<Integer> necInv = inv.get(6);
 				StringBuilder items = new StringBuilder();
 				
-				for (String item: necInv) {
+				for (Integer item: necInv) {
 					items.append(item).append("\n");
 				}
 				
@@ -195,10 +195,10 @@ public class Inventory extends Command {
 				cape.setThumbnail("https://pre00.deviantart.net/0509/th/pre/i/2016/048/5/8/basic_pixel_sword_by_dr_morgan47-d9s5a12.png");
 				cape.setFooter("To equip, do *equip (gear type) (piece)", event.getJDA().getSelfUser().getAvatarUrl());
 				
-				List<String> rinInv = inv.get(7);
+				List<Integer> rinInv = inv.get(7);
 				StringBuilder items = new StringBuilder();
 				
-				for (String item: rinInv) {
+				for (Integer item: rinInv) {
 					items.append(item).append("\n");
 				}
 				
@@ -215,10 +215,10 @@ public class Inventory extends Command {
 				cape.setThumbnail("https://pre00.deviantart.net/0509/th/pre/i/2016/048/5/8/basic_pixel_sword_by_dr_morgan47-d9s5a12.png");
 				cape.setFooter("To equip, do *equip (gear type) (piece)", event.getJDA().getSelfUser().getAvatarUrl());
 				
-				List<String> booInv = inv.get(8);
+				List<Integer> booInv = inv.get(8);
 				StringBuilder items = new StringBuilder();
 				
-				for (String item: booInv) {
+				for (Integer item: booInv) {
 					items.append(item).append("\n");
 				}
 				
@@ -238,10 +238,10 @@ public class Inventory extends Command {
 //				cape.setThumbnail("https://pre00.deviantart.net/0509/th/pre/i/2016/048/5/8/basic_pixel_sword_by_dr_morgan47-d9s5a12.png");
 //				cape.setFooter("To equip, do *equip (gear type) (piece)", event.getJDA().getSelfUser().getAvatarUrl());
 //				
-//				List<String> weaInv = inv.get(9);
-//				String items = "";
+//				List<Integer> weaInv = inv.get(9);
+//				Integer items = "";
 //				
-//				for (String item: weaInv) {
+//				for (Integer item: weaInv) {
 //					items = items + item + "\n";
 //				}
 //				
@@ -253,7 +253,7 @@ public class Inventory extends Command {
 			if(args[1].equalsIgnoreCase("items")) {
 				EmbedBuilder item = new EmbedBuilder();
 				boolean noItems = false;
-				HashMap<String, Integer> itemList = player.getItems();
+				HashMap<Integer, Integer> itemList = player.getItems();
 				if(itemList.size() == 0) {
 					item.setTitle((event.getMember() != null ? event.getMember().getEffectiveName() : event.getAuthor().getName()) + "'s items");
 					item.setAuthor("", event.getAuthor().getAvatarUrl());
@@ -263,7 +263,7 @@ public class Inventory extends Command {
 					event.getChannel().sendMessage(item.build()).queue();
 					noItems = true;
 				}
-				HashMap<String, Integer> tempList = player.getItems();
+				HashMap<Integer, Integer> tempList = player.getItems();
 				tempList.clear();
 				StringBuilder items = new StringBuilder("ITEM\t\tQUANTITIY\n");
 				if(itemList.size() <= 50 && !noItems) {
@@ -271,7 +271,7 @@ public class Inventory extends Command {
 					// TODO FIX THESE!
 
 					/*while(itemList.size() > 0) {
-						Map.Pair<String, Integer> itemPair = itemList.remove;
+						Map.Pair<Integer, Integer> itemPair = itemList.remove;
 						items.append(itemPair.key()).append("\t\t").append(itemPair.value()).append("\n");
 						tempList.add(itemPair.key(), itemPair.value());
 					}
