@@ -9,13 +9,13 @@ import io.osu.konosuba.Konosuba;
 @SuppressWarnings({"unused"})
 public class ClassData {
 	
-	// |strength|magic|luck|dex |phys_def|magi_def|health|classname|
+	// |strength|magic|luck|dex |phys_def|magi_def|health|name|
 	// -------------------------------------------------------------
 	// |REAL     |REAL  |REAL |REAL |REAL     |REAL     |REAL   |TEXT     |
 	
 	// = Cache  ======================================
 	private int classid;
-	private String classname;
+	private String name;
 	private double strength;
 	private double magic;
 	private double luck;
@@ -38,14 +38,14 @@ public class ClassData {
 		if(first) {
 			statement.execute(
 					"CREATE TABLE IF NOT EXISTS 'classes' ("+
-						"  classid  INT PRIMARY KEY NOT NULL DEFAULT 0 " +
-						"  classname TEXT NOT NULL," + 
+						"  classid  INT PRIMARY KEY NOT NULL DEFAULT 0, " +
+						"  name     TEXT NOT NULL," + 
 						"  strength REAL NOT NULL DEFAULT 1.0," + 
 						"  magic    REAL NOT NULL DEFAULT 1.0," + 
 						"  luck     REAL NOT NULL DEFAULT 1.0," + 
 						"  dex      REAL NOT NULL DEFAULT 1.0," + 
-						"  def_phys REAL NOT NULL DEFAULT 1.0," + 
-						"  def_magi REAL NOT NULL DEFAULT 1.0," + 
+						"  phys_def REAL NOT NULL DEFAULT 1.0," + 
+						"  magi_def REAL NOT NULL DEFAULT 1.0," + 
 						"  health   REAL NOT NULL DEFAULT 1.0" +  
 						");"
 					);
@@ -53,7 +53,7 @@ public class ClassData {
 		}
 		ResultSet result = statement.executeQuery("SELECT * FROM 'classes' WHERE classID="+ classid + ";");
 		boolean hasResult = result.next();
-		classname = hasResult ?  result.getString("classname") : null;
+		name = hasResult ?  result.getString("name") : null;
 		strength = hasResult ? result.getDouble("strength") : 1.0;
 		magic    = hasResult ? result.getDouble("magic") : 1.0;
 		luck     = hasResult ? result.getDouble("luck") : 1.0;
@@ -82,7 +82,9 @@ public class ClassData {
 	// Stats
 
 	
-	
+	public String getName() {
+		return name;
+	}
 	
 public double getStrength() {
 		

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import io.magiccraftmaster.util.StringUtils;
 import io.osu.konosuba.Konosuba;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
@@ -46,8 +47,8 @@ public class GearData {
 						"  magic    INT NOT NULL DEFAULT 0," + 
 						"  luck     INT NOT NULL DEFAULT 0," + 
 						"  dex      INT NOT NULL DEFAULT 0," + 
-						"  def_phys INT NOT NULL DEFAULT 0," + 
-						"  def_magi INT NOT NULL DEFAULT 0," + 
+						"  phys_def INT NOT NULL DEFAULT 0," + 
+						"  magi_def INT NOT NULL DEFAULT 0," + 
 						"  health   INT NOT NULL DEFAULT 0," + 
 						"  type    TEXT" + 
 						");"
@@ -76,6 +77,16 @@ public class GearData {
 							"UPDATE 'gear' SET "+key+"="+value+" WHERE gearid="+gearid+";");
 		statement.close();
 	}
+    
+    public int search(String item) throws Exception {
+		Statement statement = Konosuba.CONNECTION2.createStatement();
+		ResultSet result = statement.executeQuery("SELECT * FROM 'gear' WHERE name LIKE '" + item + "';");
+		if(result.next()) {
+			return result.getInt(item);
+		}else {
+			return 0;
+		}
+    }
 
 
 

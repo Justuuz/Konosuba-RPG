@@ -28,23 +28,23 @@ public class Buy_admin extends Command {
 	 */
 		
 		if(args[1].equalsIgnoreCase("admin_hat")) {
-			player.addInventory(0, "admin_hat");
+			player.addInventory(0, 1);
 			send(event.getGuild(), event.getChannel(), "added", true);
 			
 		}
 		
 		if(args[1].equalsIgnoreCase("admin_plate")) {
-			player.addInventory(1, "admin_plate");
+			player.addInventory(1, 1);
 		}
 		
 		
 		if(args[1].equalsIgnoreCase("admin_hat2")) {
-			player.addInventory(0, "admin_hat2");
+			player.addInventory(0, 3);
 			 
 		}
 		
 		if(args[1].equalsIgnoreCase("admin_hat3")) {
-			player.addInventory(0, "admin_hat3");
+			player.addInventory(0, 4);
 			
 		}
 		

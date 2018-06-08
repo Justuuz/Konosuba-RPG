@@ -2,6 +2,7 @@ package io.osu.konosuba.commands;
 
 import io.osu.konosuba.Command;
 import io.osu.konosuba.Konosuba;
+import io.osu.konosuba.data.GearData;
 import io.osu.konosuba.data.UserData;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -34,7 +35,10 @@ public class Inventory extends Command {
 		if(player.getStartStatus()) {
 			
 
-			
+			if(args.length == 1) {
+				send(event.getGuild(), event.getChannel(), "Not enough arguments.", true);
+				return;
+			}
 			
 			List<List<Integer>> inv = player.getInventory();
 			
@@ -56,7 +60,14 @@ public class Inventory extends Command {
 				StringBuilder items = new StringBuilder();
 				 
 				for (Integer item: helInv) {
-					items.append(item).append("\n");
+					try {
+						GearData name = new GearData(item);
+						items.append(name.getName()).append("\n");
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
 				}
 				
 				items.toString().replace('_', ' ');
@@ -76,7 +87,13 @@ public class Inventory extends Command {
 				StringBuilder items = new StringBuilder();
 				
 				for (Integer item: cheInv) {
-					items.append(item).append("\n");
+					try {
+						GearData name = new GearData(item);
+						items.append(name.getName()).append("\n");
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 				items.toString().replaceAll("_", " ");
 				chest.setDescription(items.toString());
@@ -97,7 +114,13 @@ public class Inventory extends Command {
 				StringBuilder items = new StringBuilder();
 				
 				for (Integer item: legInv) {
-					items.append(item).append("\n");
+					try {
+						GearData name = new GearData(item);
+						items.append(name.getName()).append("\n");
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 				
 				items.toString().replaceAll("_", " ");
@@ -119,7 +142,14 @@ public class Inventory extends Command {
 				StringBuilder items = new StringBuilder();
 				
 				for (Integer item: onInv) {
-					items.append(item).append("\n");
+					try {
+						GearData name = new GearData(item);
+						items.append(name.getName()).append("\n");
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+						
 				}
 				
 				items.toString().replaceAll("_", " ");
@@ -139,7 +169,13 @@ public class Inventory extends Command {
 				StringBuilder items = new StringBuilder();
 				
 				for (Integer item: offInv) {
-					items.append(item).append("\n");
+					try {
+						GearData name = new GearData(item);
+						items.append(name.getName()).append("\n");
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 				
 				items.toString().replaceAll("_", " ");
@@ -159,7 +195,13 @@ public class Inventory extends Command {
 				StringBuilder items = new StringBuilder();
 				
 				for (Integer item: capInv) {
-					items.append(item).append("\n");
+					try {
+						GearData name = new GearData(item);
+						items.append(name.getName()).append("\n");
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 				
 				items.toString().replaceAll("_", " ");
@@ -179,7 +221,13 @@ public class Inventory extends Command {
 				StringBuilder items = new StringBuilder();
 				
 				for (Integer item: necInv) {
-					items.append(item).append("\n");
+					try {
+						GearData name = new GearData(item);
+						items.append(name.getName()).append("\n");
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 				
 				items.toString().replaceAll("_", " ");
@@ -199,7 +247,13 @@ public class Inventory extends Command {
 				StringBuilder items = new StringBuilder();
 				
 				for (Integer item: rinInv) {
-					items.append(item).append("\n");
+					try {
+						GearData name = new GearData(item);
+						items.append(name.getName()).append("\n");
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 				
 				items.toString().replaceAll("_", " ");
@@ -219,7 +273,13 @@ public class Inventory extends Command {
 				StringBuilder items = new StringBuilder();
 				
 				for (Integer item: booInv) {
-					items.append(item).append("\n");
+					try {
+						GearData name = new GearData(item);
+						items.append(name.getName()).append("\n");
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 				
 				items.toString().replaceAll("_", " ");

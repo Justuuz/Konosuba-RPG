@@ -78,7 +78,7 @@ public class UserData {
 						"phys_def INT NOT NULL DEFAULT 0," +
 						"magi_def INT NOT NULL DEFAULT 0," +
 						"health   INT NOT NULL DEFAULT 0," +
-						"classtype INT," +
+						"classtype INT NOT NULL DEFAULT 0," +
 						"invent   INT NOT NULL DEFAULT '[]'," +
 						"item     INT," +
 						"location INT"  +
@@ -113,7 +113,7 @@ public class UserData {
 		location = hasResult ? result.getInt("location") : 0;
 
 		if(hasResult) {
-			JSONArray raw = new JSONArray(result.getInt("invent"));
+			JSONArray raw = new JSONArray(result.getString("invent"));
 			List<List<Integer>> stringListList = new ArrayList<>();
 			List<Integer> stringList = new ArrayList<>();
 			for (Object obj : raw) {
@@ -395,6 +395,7 @@ public class UserData {
 		List<Integer> subInv = this.invent.remove(position);
 		subInv.add(item);	
 		this.invent.add(position, subInv);
+		update("invent", this.invent);
 		
 	}
 	

@@ -53,10 +53,10 @@ public class Konosuba  {
 			//noinspection SpellCheckingInspection
 			Class.forName("org.sqlite.JDBC");
 			//noinspection SpellCheckingInspection
-			CONNECTION1 = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
+			CONNECTION2 = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
 		} catch (Exception e) {
 			e.printStackTrace();
-			CONNECTION1 = null;
+			CONNECTION2 = null;
 			System.exit(0);
 		}
 	}

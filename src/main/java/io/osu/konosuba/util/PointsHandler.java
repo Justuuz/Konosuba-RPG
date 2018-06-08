@@ -74,7 +74,7 @@ public class PointsHandler {
 			health = luck + obj.getHitpoints();
 		}
 		
-		System.out.println(new ClassData(player.getClasses()));
+
 		strength = (int)(strength * new ClassData(player.getClasses()).getStrength());
 		phyDef = (int)(phyDef * new ClassData(player.getClasses()).getPhysicalDefense());
 		magDef = (int)(magDef * new ClassData(player.getClasses()).getMagicalDefense());
