@@ -3,6 +3,7 @@ package io.osu.konosuba.commands;
 import io.osu.konosuba.Command;
 import io.osu.konosuba.Konosuba;
 import io.osu.konosuba.data.UserData;
+import io.osu.konosuba.util.PointsHandler;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
@@ -18,7 +19,7 @@ public class Remove extends Command {
 	/*
 	 * framework
 	 */
-
+	private final PointsHandler correctStats = new PointsHandler();
 
 
 	@Override
@@ -33,7 +34,10 @@ public class Remove extends Command {
 		try {
 			UserData player = new UserData(event.getAuthor().getIdLong());
 			if(player.getStartStatus()) {
-
+				if(args.length == 1) {
+					send(event.getGuild(),event.getChannel(), "Not enough arguments" , true);
+					return;
+				}
 				if(args[1].equalsIgnoreCase("helmet")) {
 
 					if(player.getHelmet() == 0) {
@@ -44,6 +48,8 @@ public class Remove extends Command {
 					}
 					else {
 						player.setHelmet(0);
+						correctStats.recalibratePoints(player);
+						send(event.getGuild(), event.getChannel(), "Successful: item removed.", true);
 					}
 
 				}
@@ -58,6 +64,8 @@ public class Remove extends Command {
 					}
 					else {
 						player.setChest(0);
+						correctStats.recalibratePoints(player);
+						send(event.getGuild(), event.getChannel(), "Successful: item removed.", true);
 					}
 
 				}
@@ -72,6 +80,8 @@ public class Remove extends Command {
 					}
 					else {
 						player.setLegs(0);
+						correctStats.recalibratePoints(player);
+						send(event.getGuild(), event.getChannel(), "Successful: item removed.", true);
 					}
 
 				}
@@ -86,6 +96,8 @@ public class Remove extends Command {
 					}
 					else {
 						player.setOnhand(0);
+						correctStats.recalibratePoints(player);
+						send(event.getGuild(), event.getChannel(), "Successful: item removed.", true);
 					}
 
 				}
@@ -96,10 +108,11 @@ public class Remove extends Command {
 						String message = "No item to remove";
 
 						send(event.getGuild(), event.getChannel(), message, true);
-
 					}
 					else {
 						player.setOffhand(0);
+						correctStats.recalibratePoints(player);
+						send(event.getGuild(), event.getChannel(), "Successful: item removed.", true);
 					}
 
 				}
@@ -114,6 +127,8 @@ public class Remove extends Command {
 					}
 					else {
 						player.setCape(0);
+						correctStats.recalibratePoints(player);
+						send(event.getGuild(), event.getChannel(), "Successful: item removed.", true);
 					}
 
 				}
@@ -128,6 +143,8 @@ public class Remove extends Command {
 					}
 					else {
 						player.setNecklace(0);
+						correctStats.recalibratePoints(player);
+						send(event.getGuild(), event.getChannel(), "Successful: item removed.", true);
 					}
 
 				}
@@ -142,6 +159,8 @@ public class Remove extends Command {
 					}
 					else {
 						player.setRing(0);
+						correctStats.recalibratePoints(player);
+						send(event.getGuild(), event.getChannel(), "Successful: item removed.", true);
 					}
 
 				}
@@ -155,6 +174,8 @@ public class Remove extends Command {
 					}
 					else {
 						player.setBoots(0);
+						correctStats.recalibratePoints(player);
+						send(event.getGuild(), event.getChannel(), "Successful: item removed.", true);
 					}
 
 				}
