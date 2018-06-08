@@ -4,8 +4,12 @@ import io.osu.konosuba.Konosuba;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class UserData {
 	
@@ -108,6 +112,30 @@ public class UserData {
 		health   = hasResult ? result.getInt("health") : 0;
 		location = hasResult ? result.getString("location") : null;
 
+		if(hasResult) {
+			JSONArray raw = new JSONArray(result.getString("invent"));
+			List<List<String>> stringListList = new ArrayList<>();
+			List<String> stringList = new ArrayList<>();
+			for (Object obj : raw) {
+			    for (Object obj2 : ((JSONArray) obj)) {
+			        stringList.add((String) obj2);
+			    }
+			    stringListList.add(new ArrayList<>(stringList)); // Fixes clearing
+			    stringList.clear();  
+			}
+			invent  = stringListList;
+			
+			JSONObject raw2 = new JSONObject(result.getString("item"));
+			HashMap<String, Integer> stringMap = new HashMap<>();
+			raw2.toMap().forEach((k,v) -> stringMap.put(k, (int)v));
+			item = stringMap;
+			
+			
+		}else {
+			invent = null;
+			item = null;
+		}
+		
 		statement.close();
 	}
 	

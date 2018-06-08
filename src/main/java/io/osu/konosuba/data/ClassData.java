@@ -38,26 +38,26 @@ public class ClassData {
 			statement.execute(
 					"CREATE TABLE IF NOT EXISTS 'classes' ("+
 						"  classtype TEXT PRIMARY KEY NOT NULL," + 
-						"  strength REAL NOT NULL DEFAULT 0.0," + 
-						"  magic    REAL NOT NULL DEFAULT 0.0," + 
-						"  luck     REAL NOT NULL DEFAULT 0.0," + 
-						"  dex      REAL NOT NULL DEFAULT 0.0," + 
-						"  def_phys REAL NOT NULL DEFAULT 0.0," + 
-						"  def_magi REAL NOT NULL DEFAULT 0.0," + 
-						"  health   REAL NOT NULL DEFAULT 0.0" +  
+						"  strength REAL NOT NULL DEFAULT 1.0," + 
+						"  magic    REAL NOT NULL DEFAULT 1.0," + 
+						"  luck     REAL NOT NULL DEFAULT 1.0," + 
+						"  dex      REAL NOT NULL DEFAULT 1.0," + 
+						"  def_phys REAL NOT NULL DEFAULT 1.0," + 
+						"  def_magi REAL NOT NULL DEFAULT 1.0," + 
+						"  health   REAL NOT NULL DEFAULT 1.0" +  
 						");"
 					);
 			first = false;
 		}
 		ResultSet result = statement.executeQuery("SELECT * FROM 'classes' WHERE classtype="+ classtype + ";");
 		boolean hasResult = result.next();
-		strength = hasResult ? result.getDouble("strength") : 0.0;
-		magic    = hasResult ? result.getDouble("magic") : 0.0;
-		luck     = hasResult ? result.getDouble("luck") : 0.0;
-		dex      = hasResult ? result.getDouble("dex") : 0.0;
-		phys_def = hasResult ? result.getDouble("phys_def") : 0.0;
-		magi_def = hasResult ? result.getDouble("magi_def") : 0.0;
-		health   = hasResult ? result.getDouble("health") : 0.0;
+		strength = hasResult ? result.getDouble("strength") : 1.0;
+		magic    = hasResult ? result.getDouble("magic") : 1.0;
+		luck     = hasResult ? result.getDouble("luck") : 1.0;
+		dex      = hasResult ? result.getDouble("dex") : 1.0;
+		phys_def = hasResult ? result.getDouble("phys_def") : 1.0;
+		magi_def = hasResult ? result.getDouble("magi_def") : 1.0;
+		health   = hasResult ? result.getDouble("health") : 1.0;
 		statement.close();
 		
 	}
