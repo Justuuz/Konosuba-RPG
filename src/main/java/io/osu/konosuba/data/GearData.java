@@ -85,11 +85,13 @@ public class GearData {
 
 
 	
-public String getName() {
-	return name;
-}
+    public String getName() {
+    	return name;
+    }
 	
-	
+	public int getId() {
+		return id;
+	}
 	
 	
  public int getStrength() {
