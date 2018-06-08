@@ -1,4 +1,4 @@
-package io.osu.konosuba.commands;
+package io.osu.konosuba.test;
 
 import io.osu.konosuba.Command;
 import io.osu.konosuba.Konosuba;
