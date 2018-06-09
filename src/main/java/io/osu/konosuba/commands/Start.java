@@ -39,6 +39,7 @@ public class Start extends Command {
 					player.setRing(0);
 					player.setBalance(0);
 					player.setOnhand(0);
+					player.setHealth(10);
 					List<List<Integer>> list = new ArrayList<List<Integer>>();
 					for(int i=0; i < 9; i++) {
 						list.add(new ArrayList<Integer>());
@@ -50,17 +51,17 @@ public class Start extends Command {
 					send(event.getGuild(), event.getChannel(), "Welcome " + name +"! Today is the day you start your adventure! Before we can start, I must ask "
 							+ "traveler, what class are? Do *start choose Class Name to begin!"
 							+ "\n" +
-							 "||Classes||\nWizard\r\n" + 
-								"Arch_wizard\r\n" + 
-								"Crusader\r\n" + 
-								"Adventurer\r\n" + 
-								"Cleric\r\n" + 
-								"Mage\r\n" + 
-								"Thief\r\n" + 
-								"Priest\r\n" + 
-								"Warrior\r\n" + 
-								"Rogue\r\n" + 
-								"Merchant"
+							 "**-----------------------------Classes-----------------------------**\n" + 
+								"Arch Wizard\n" + 
+								"Crusader\n" + 
+								"Adventurer\n" + 
+								"Cleric\n" + 
+								"Thief\n" + 
+								"Priest\n" + 
+								"Knight\n" + 
+								"Rogue\n" + 
+								"Merchant\n" +
+								"Lich"
 							,true);
 
 					return;	
@@ -73,25 +74,25 @@ public class Start extends Command {
 			}
 			if(player.getStartStatus()) {
 				if(args[1].equalsIgnoreCase("classes")) {
-					send(event.getGuild(), event.getChannel(), "||Classes||\nWizard\r\n" + 
-							"Arch_wizard\r\n" + 
-							"Crusader\r\n" + 
-							"Adventurer\r\n" + 
-							"Cleric\r\n" + 
-							"Mage\r\n" + 
-							"Thief\r\n" + 
-							"Priest\r\n" + 
-							"Warrior\r\n" + 
-							"Rogue\r\n" + 
-							"Merchant",true);
+					send(event.getGuild(), event.getChannel(), "**-----------------------------Classes-----------------------------**\\n"
+							+ "Arch Wizard\n" + 
+							"Crusader\n" + 
+							"Adventurer\n" + 
+							"Cleric\n" + 
+							"Thief\n" + 
+							"Priest\n" + 
+							"Knight\n" + 
+							"Rogue\n" + 
+							"Merchant\n" +
+							"Lich",true);
 					return;
 				}
 
 				if(args[1].equalsIgnoreCase("choose")) {
-					if(args[2].equalsIgnoreCase("wizard") & player.getClasses() == 0) {
+					if(args[2].equalsIgnoreCase("Lich") & player.getClasses() == 0) {
 						send(event.getGuild(), event.getChannel(), "You choose to be a " + args[2]+ "! Good choice! You are now set to go on your first adventure!", true);
 						player.setClasses(1);
-					}else if(args[2].equalsIgnoreCase("arch_wizard") & player.getClasses() == 0) {
+					}else if(args[2].equalsIgnoreCase("arch wizard") & player.getClasses() == 0) {
 						send(event.getGuild(), event.getChannel(), "You choose to be a " + args[2]+ "! Good choice! You are now set to go on your first adventure!", true);
 						player.setClasses(2);
 					}else if(args[2].equalsIgnoreCase("crusader") & player.getClasses() == 0) {
@@ -100,18 +101,15 @@ public class Start extends Command {
 					}else if(args[2].equalsIgnoreCase("adventurer") & player.getClasses() == 0) {
 						send(event.getGuild(), event.getChannel(), "You choose to be a " + args[2]+ "! Good choice! You are now set to go on your first adventure!", true);
 						player.setClasses(4);
-					}else if(args[2].equalsIgnoreCase("cleric") & player.getClasses() == 0) {
-						send(event.getGuild(), event.getChannel(), "You choose to be a " + args[2]+ "! Good choice! You are now set to go on your first adventure!", true);
-						player.setClasses(5);
 					}else if(args[2].equalsIgnoreCase("thief") & player.getClasses() == 0) {
 						send(event.getGuild(), event.getChannel(), "You choose to be a " + args[2]+ "! Good choice! You are now set to go on your first adventure!", true);
-						player.setClasses(6);
+						player.setClasses(5);
 					}else if(args[2].equalsIgnoreCase("priest") & player.getClasses() == 0) {
 						send(event.getGuild(), event.getChannel(), "You choose to be a " + args[2]+ "! Good choice! You are now set to go on your first adventure!", true);
-						player.setClasses(7);
-					}else if(args[2].equalsIgnoreCase("warrior") & player.getClasses() == 0) {
+						player.setClasses(6);
+					}else if(args[2].equalsIgnoreCase("knight") & player.getClasses() == 0) {
 						send(event.getGuild(), event.getChannel(), "You choose to be a " + args[2]+ "! Good choice! You are now set to go on your first adventure!", true);
-						player.setClasses(8);
+						player.setClasses(7);
 					}else if(args[2].equalsIgnoreCase("rogue") & player.getClasses() == 0) {
 						send(event.getGuild(), event.getChannel(), "You choose to be a " + args[2]+ "! Good choice! You are now set to go on your first adventure!", true);
 						player.setClasses(8);

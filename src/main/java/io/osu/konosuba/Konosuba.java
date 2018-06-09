@@ -11,12 +11,13 @@ import javax.security.auth.login.LoginException;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.Scanner;
 
 public class Konosuba  {
 
 	//public static final Logger LOGGER = LoggerFactory.getLogger(Konosuba.class);
 
-	private static SimpleReader key = new SimpleReader1L((System.getProperty("user.home") + "/Desktop/Konosuba/key.txt"));
+	private static Scanner key = new Scanner((System.getProperty("user.home") + "/Desktop/Konosuba/key.txt"));
 	private static final String KOBOSUBA_TOKEN = key.nextLine();
 
 	// This is now the default color for commands
@@ -66,7 +67,6 @@ public class Konosuba  {
 		//noinspection SpellCheckingInspection
 		new DefaultShardManagerBuilder()
 				.setToken(KOBOSUBA_TOKEN)
-				.setToken(null)
 				.addEventListeners(new CommandListener())
 				.setBulkDeleteSplittingEnabled(false)
 				// .setShardsTotal(1) // XXX DO NOT USE THIS!
