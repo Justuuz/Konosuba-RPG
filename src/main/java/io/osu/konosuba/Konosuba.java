@@ -1,6 +1,7 @@
 package io.osu.konosuba;
 
 import io.osu.konosuba.Listeners.CommandListener;
+import io.osu.konosuba.Listeners.StartupListener;
 import net.dv8tion.jda.bot.sharding.DefaultShardManagerBuilder;
 import components.simplereader.SimpleReader;
 import components.simplereader.SimpleReader1L;
@@ -18,7 +19,7 @@ public class Konosuba  {
 	//public static final Logger LOGGER = LoggerFactory.getLogger(Konosuba.class);
 
 	private static Scanner key = new Scanner((System.getProperty("user.home") + "/Desktop/Konosuba/key.txt"));
-	private static final String KOBOSUBA_TOKEN = key.nextLine();
+	private static final String KOBOSUBA_TOKEN = "NDAwODUzNTIwOTM0NTAyNDIw.Dczz4A.cMOOaGKdm0QWNac3_pIyTIpgfSk";
 
 	// This is now the default color for commands
 	public static final Color COLOR = new Color(153,50,204);
@@ -68,6 +69,7 @@ public class Konosuba  {
 		new DefaultShardManagerBuilder()
 				.setToken(KOBOSUBA_TOKEN)
 				.addEventListeners(new CommandListener())
+				.addEventListeners(new StartupListener())
 				.setBulkDeleteSplittingEnabled(false)
 				// .setShardsTotal(1) // XXX DO NOT USE THIS!
 				.build();

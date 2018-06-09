@@ -24,6 +24,10 @@ public class GearData {
 	private int phys_def;
 	private int magi_def;
 	private int health;
+	private int buyvalue;
+	private int sellvalue;
+	private boolean sellable;
+	private String description;
 	private String type;
 	// ===============================================
 	
@@ -50,6 +54,10 @@ public class GearData {
 						"  phys_def INT NOT NULL DEFAULT 0," + 
 						"  magi_def INT NOT NULL DEFAULT 0," + 
 						"  health   INT NOT NULL DEFAULT 0," + 
+						"  buyvalue INT NOT NULL DEFAULT 0," +
+						" sellvalue INT NOT NULL DEFAULT 0," +
+						" sellable  INT NOT NULL DEFAULT 0," +
+						" description TEXT NOT NULL," +
 						"  type    TEXT" + 
 						");"
 					);
@@ -66,6 +74,10 @@ public class GearData {
 		phys_def = hasResult ? result.getInt("phys_def") : 0;
 		magi_def = hasResult ? result.getInt("magi_def") : 0;
 		health   = hasResult ? result.getInt("health") : 0;
+		buyvalue = hasResult ? result.getInt("buyvalue") : 0;
+		sellvalue = hasResult ? result.getInt("sellvalue") : 0;
+		sellable = hasResult && result.getInt("sellable") == 1;
+		description = hasResult ? result.getString("description") : null;
 		type     = hasResult ? result.getString("type") : null;
 		statement.close();
 		
@@ -187,6 +199,42 @@ public class GearData {
 		update( "health", (hitpoints));
 		this.health = hitpoints;
 		
+	}
+	
+	public int getBuyValue() {
+		return buyvalue;
+	}
+	
+	public void setBuyValue(int buyvalue) throws Exception {
+		update("buyvalue", buyvalue);
+		this.buyvalue = buyvalue;
+	}
+	
+	public int getSellValue() {
+		return sellvalue;
+	}
+	
+	public void setSellValue(int sellvalue) throws Exception {
+		update("sellvalue", sellvalue);
+		this.sellvalue = sellvalue;
+	}
+	
+	public boolean getSellable() {
+		return sellable;
+	}
+	
+	public void setSellable(boolean sellable) throws Exception{
+		update("sellable", sellable ? 1: 0);
+		this.sellable = sellable;
+	}
+	
+	public String getDescription () {
+		return description;
+	}
+	
+	public void setDescription(String description) throws Exception {
+		update("description", description);
+		this.description = description;
 	}
 	
 	public String getType() {

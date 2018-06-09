@@ -11,6 +11,9 @@ public class ItemData {
 	// = Cache ==============================
 	private int itemid;
 	private String name;
+	private boolean sellable;
+	private int sellvalue;
+	private int buyvalue;
 	
 	
 	// ======================================
