@@ -58,23 +58,17 @@ public class PointsHandler {
 		int luck = 0;
 		int health = 0;
 		
-		for(GearData obj: gear) {
-			System.out.println(obj.getStrength());
+		for(GearData obj: gear) {	
 			strength = strength + obj.getStrength();
-			System.out.println(obj.getPhysicalDefense());
 			phyDef = phyDef + obj.getPhysicalDefense();
-			System.out.println(obj.getMagicalDefense());
 			magDef = magDef + obj.getMagicalDefense();
-			System.out.println(obj.getMagic());
 			magic = magic + obj.getDexterity();
-			System.out.println(obj.getStrength());
 			dex = dex + obj.getLuck();
-			System.out.println(obj.getStrength());
 			luck = luck + obj.getLuck();
 			health = luck + obj.getHitpoints();
 		}
 		
-		System.out.println(new ClassData(player.getClasses()));
+
 		strength = (int)(strength * new ClassData(player.getClasses()).getStrength());
 		phyDef = (int)(phyDef * new ClassData(player.getClasses()).getPhysicalDefense());
 		magDef = (int)(magDef * new ClassData(player.getClasses()).getMagicalDefense());

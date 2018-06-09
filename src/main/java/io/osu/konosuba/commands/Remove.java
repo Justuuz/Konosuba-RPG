@@ -3,6 +3,7 @@ package io.osu.konosuba.commands;
 import io.osu.konosuba.Command;
 import io.osu.konosuba.Konosuba;
 import io.osu.konosuba.data.UserData;
+import io.osu.konosuba.util.PointsHandler;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
@@ -18,7 +19,7 @@ public class Remove extends Command {
 	/*
 	 * framework
 	 */
-
+	private final PointsHandler correctStats = new PointsHandler();
 
 
 	@Override
@@ -33,128 +34,148 @@ public class Remove extends Command {
 		try {
 			UserData player = new UserData(event.getAuthor().getIdLong());
 			if(player.getStartStatus()) {
-
+				if(args.length == 1) {
+					send(event.getGuild(),event.getChannel(), "Not enough arguments" , true);
+					return;
+				}
 				if(args[1].equalsIgnoreCase("helmet")) {
 
-					if(player.getHelmet().equalsIgnoreCase("none")) {
+					if(player.getHelmet() == 0) {
 						String message = "No item to remove";
 
 						send(event.getGuild(), event.getChannel(), message, true);
 
 					}
 					else {
-						player.setHelmet("None");
+						player.setHelmet(0);
+						correctStats.recalibratePoints(player);
+						send(event.getGuild(), event.getChannel(), "Successful: item removed.", true);
 					}
 
 				}
 
 				if(args[1].equalsIgnoreCase("chest")) {
 
-					if(player.getChest().equalsIgnoreCase("none")) {
+					if(player.getChest() == 0) {
 						String message = "No item to remove";
 
 						send(event.getGuild(), event.getChannel(), message, true);
 
 					}
 					else {
-						player.setChest("None");
+						player.setChest(0);
+						correctStats.recalibratePoints(player);
+						send(event.getGuild(), event.getChannel(), "Successful: item removed.", true);
 					}
 
 				}
 
 				if(args[1].equalsIgnoreCase("leggings")) {
 
-					if(player.getLegs().equalsIgnoreCase("none")) {
+					if(player.getLegs() == 0) {
 						String message = "No item to remove";
 
 						send(event.getGuild(), event.getChannel(), message, true);
 
 					}
 					else {
-						player.setLegs("None");
+						player.setLegs(0);
+						correctStats.recalibratePoints(player);
+						send(event.getGuild(), event.getChannel(), "Successful: item removed.", true);
 					}
 
 				}
 
 				if(args[1].equalsIgnoreCase("onhand")) {
 
-					if(player.getOnhand().equalsIgnoreCase("none")) {
+					if(player.getOnhand() == 0) {
 						String message = "No item to remove";
 
 						send(event.getGuild(), event.getChannel(), message, true);
 
 					}
 					else {
-						player.setOnhand("None");
+						player.setOnhand(0);
+						correctStats.recalibratePoints(player);
+						send(event.getGuild(), event.getChannel(), "Successful: item removed.", true);
 					}
 
 				}
 
 				if(args[1].equalsIgnoreCase("offhand")) {
 
-					if(player.getOffhand().equalsIgnoreCase("none")) {
+					if(player.getOffhand() == 0) {
 						String message = "No item to remove";
 
 						send(event.getGuild(), event.getChannel(), message, true);
-
 					}
 					else {
-						player.setOffhand("None");
+						player.setOffhand(0);
+						correctStats.recalibratePoints(player);
+						send(event.getGuild(), event.getChannel(), "Successful: item removed.", true);
 					}
 
 				}
 
 				if(args[1].equalsIgnoreCase("cape")) {
 
-					if(player.getCape().equalsIgnoreCase("none")) {
+					if(player.getCape() == 0) {
 						String message = "No item to remove";
 
 						send(event.getGuild(), event.getChannel(), message, true);
 
 					}
 					else {
-						player.setCape("None");
+						player.setCape(0);
+						correctStats.recalibratePoints(player);
+						send(event.getGuild(), event.getChannel(), "Successful: item removed.", true);
 					}
 
 				}
 
 				if(args[1].equalsIgnoreCase("necklace")) {
 
-					if(player.getNecklace().equalsIgnoreCase("none")) {
+					if(player.getNecklace() == 0) {
 						String message = "No item to remove";
 
 						send(event.getGuild(), event.getChannel(), message, true);
 
 					}
 					else {
-						player.setNecklace("None");
+						player.setNecklace(0);
+						correctStats.recalibratePoints(player);
+						send(event.getGuild(), event.getChannel(), "Successful: item removed.", true);
 					}
 
 				}
 
 				if(args[1].equalsIgnoreCase("ring")) {
 
-					if(player.getRing().equalsIgnoreCase("none")) {
+					if(player.getRing() == 0) {
 						String message = "No item to remove";
 
 						send(event.getGuild(), event.getChannel(), message, true);
 
 					}
 					else {
-						player.setRing("None");
+						player.setRing(0);
+						correctStats.recalibratePoints(player);
+						send(event.getGuild(), event.getChannel(), "Successful: item removed.", true);
 					}
 
 				}
 				if(args[1].equalsIgnoreCase("boots")) {
 
-					if(player.getBoots().equalsIgnoreCase("none")) {
+					if(player.getBoots() == 0) {
 						String message = "No item to remove";
 
 						send(event.getGuild(), event.getChannel(), message, true);
 
 					}
 					else {
-						player.setBoots("None");
+						player.setBoots(0);
+						correctStats.recalibratePoints(player);
+						send(event.getGuild(), event.getChannel(), "Successful: item removed.", true);
 					}
 
 				}
