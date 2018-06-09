@@ -19,7 +19,7 @@ public class Konosuba  {
 	//public static final Logger LOGGER = LoggerFactory.getLogger(Konosuba.class);
 
 	private static Scanner key = new Scanner((System.getProperty("user.home") + "/Desktop/Konosuba/key.txt"));
-	private static final String KOBOSUBA_TOKEN = "NDAwODUzNTIwOTM0NTAyNDIw.Dczz4A.cMOOaGKdm0QWNac3_pIyTIpgfSk";
+	private static final String KOBOSUBA_TOKEN = key.nextLine();
 
 	// This is now the default color for commands
 	public static final Color COLOR = new Color(153,50,204);
