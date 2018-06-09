@@ -33,7 +33,7 @@ public class Konosuba  {
 	public static Connection CONNECTION1;
 	static {
 		try {
-			String dbPath = System.getProperty("user.home") + (System.getProperty("user.home").startsWith("/home") ? "/konosuba.db" : "/Desktop/Stuff/git/KonosubaBot/structure.db");
+			String dbPath = System.getProperty("user.home") + (System.getProperty("user.home").startsWith("/home") ? "/konosuba.db" : "/Desktop/Stuff/git/KonosubaBot/Data/structure.db");
 
 			//noinspection SpellCheckingInspection
 			Class.forName("org.sqlite.JDBC");
@@ -49,7 +49,7 @@ public class Konosuba  {
 	public static Connection CONNECTION2;
 	static {
 		try {
-			String dbPath = System.getProperty("user.home") + (System.getProperty("user.home").startsWith("/home") ? "/konosuba.db" : "/Desktop/Stuff/git/KonosubaBot/readData.db");
+			String dbPath = System.getProperty("user.home") + (System.getProperty("user.home").startsWith("/home") ? "/konosuba.db" : "/Desktop/Stuff/git/KonosubaBot/Data/readData.db");
 
 			//noinspection SpellCheckingInspection
 			Class.forName("org.sqlite.JDBC");
