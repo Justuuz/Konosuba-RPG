@@ -61,6 +61,16 @@ public class BattleData {
 		}
 	}
 	
+	public void delete(long userid) {
+		try {
+			Statement statement = Konosuba.CONNECTION1.createStatement();
+			statement.execute("DELETE * FROM 'battle WHERE userid=" +userid);
+			statement.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	// ============================================
 	
 	public int getMonsterId () {
@@ -88,6 +98,10 @@ public class BattleData {
 	public void setMonsterHealth(int monsterhealth) {
 		update("monsterhealth", monsterhealth);
 		this.monsterhealth = monsterhealth;
+	}
+	
+	public void endSession (long userid) {
+		delete(userid);
 	}
 
 }
