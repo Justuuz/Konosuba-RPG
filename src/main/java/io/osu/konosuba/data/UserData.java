@@ -23,7 +23,7 @@ import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-@SuppressWarnings({"unused", "WeakerAccess"})
+@SuppressWarnings({"unused"})
 public class UserData {
 	
 	//  |userid|balance|battling|starting|classes|helm|chest|legs|boots|cape|ring|neck|on_hand|off_hand|strength|magic|luck|dex |phys_def|magi_def|health|invent|item|location|
