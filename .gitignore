@@ -2,7 +2,7 @@
 .gradle
 .settings
 Outside Libraries
-Data
+konosuba.db-journal
 /bin/
 _config.yml
 .classpath
