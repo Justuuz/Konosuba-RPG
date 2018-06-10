@@ -1,7 +1,7 @@
 package io.osu.konosuba.util;
 
 import io.osu.konosuba.data.ClassData;
-import io.osu.konosuba.data.GearData;
+import io.osu.konosuba.data.ItemData;
 import io.osu.konosuba.data.UserData;
 
 import java.util.ArrayList;
@@ -26,25 +26,25 @@ public class PointsHandler {
 //		Object obj4 = new JsonParser().parse(new FileReader("Data/Weapons.JSON"));
 //		JsonObject wep = (JsonObject) obj4;
 		
-		ArrayList<GearData> gear = new ArrayList<>();
+		ArrayList<ItemData> gear = new ArrayList<>();
 		
-		gear.add(new GearData(player.getHelmet()));
+		gear.add(new ItemData(player.getHelmet()));
 		
-		gear.add(new GearData(player.getChest()));
+		gear.add(new ItemData(player.getChest()));
 		
-		gear.add(new GearData(player.getLegs()));
+		gear.add(new ItemData(player.getLegs()));
 		
-		gear.add(new GearData(player.getBoots()));
+		gear.add(new ItemData(player.getBoots()));
 		
-		gear.add(new GearData(player.getCape()));
+		gear.add(new ItemData(player.getCape()));
 		
-		gear.add(new GearData(player.getRing()));
+		gear.add(new ItemData(player.getRing()));
 		
-		gear.add(new GearData(player.getPrimary()));
+		gear.add(new ItemData(player.getPrimary()));
 		
-		gear.add(new GearData(player.getOffhand()));
+		gear.add(new ItemData(player.getOffhand()));
 		
-		gear.add(new GearData(player.getNecklace()));
+		gear.add(new ItemData(player.getNecklace()));
 		
 		
 		
@@ -58,7 +58,7 @@ public class PointsHandler {
 		int luck = 0;
 		int health = 0;
 		
-		for(GearData obj: gear) {	
+		for(ItemData obj: gear) {	
 			strength = strength + obj.getStrength();
 			phyDef = phyDef + obj.getPhysicalDefense();
 			magDef = magDef + obj.getMagicalDefense();

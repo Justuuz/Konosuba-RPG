@@ -2,7 +2,7 @@ package io.osu.konosuba.commands;
 
 import io.osu.konosuba.Command;
 import io.osu.konosuba.Konosuba;
-import io.osu.konosuba.data.GearData;
+import io.osu.konosuba.data.ItemData;
 import io.osu.konosuba.data.UserData;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -61,7 +61,7 @@ public class Inventory extends Command {
 				 
 				for (Integer item: helInv) {
 					try {
-						GearData name = new GearData(item);
+						ItemData name = new ItemData(item);
 						items.append(name.getName()).append("\n");
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
@@ -88,7 +88,7 @@ public class Inventory extends Command {
 				
 				for (Integer item: cheInv) {
 					try {
-						GearData name = new GearData(item);
+						ItemData name = new ItemData(item);
 						items.append(name.getName()).append("\n");
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
@@ -115,7 +115,7 @@ public class Inventory extends Command {
 				
 				for (Integer item: legInv) {
 					try {
-						GearData name = new GearData(item);
+						ItemData name = new ItemData(item);
 						items.append(name.getName()).append("\n");
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
@@ -143,7 +143,7 @@ public class Inventory extends Command {
 				
 				for (Integer item: onInv) {
 					try {
-						GearData name = new GearData(item);
+						ItemData name = new ItemData(item);
 						items.append(name.getName()).append("\n");
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
@@ -170,7 +170,7 @@ public class Inventory extends Command {
 				
 				for (Integer item: offInv) {
 					try {
-						GearData name = new GearData(item);
+						ItemData name = new ItemData(item);
 						items.append(name.getName()).append("\n");
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
@@ -196,7 +196,7 @@ public class Inventory extends Command {
 				
 				for (Integer item: capInv) {
 					try {
-						GearData name = new GearData(item);
+						ItemData name = new ItemData(item);
 						items.append(name.getName()).append("\n");
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
@@ -222,7 +222,7 @@ public class Inventory extends Command {
 				
 				for (Integer item: necInv) {
 					try {
-						GearData name = new GearData(item);
+						ItemData name = new ItemData(item);
 						items.append(name.getName()).append("\n");
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
@@ -248,7 +248,7 @@ public class Inventory extends Command {
 				
 				for (Integer item: rinInv) {
 					try {
-						GearData name = new GearData(item);
+						ItemData name = new ItemData(item);
 						items.append(name.getName()).append("\n");
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
@@ -274,7 +274,7 @@ public class Inventory extends Command {
 				
 				for (Integer item: booInv) {
 					try {
-						GearData name = new GearData(item);
+						ItemData name = new ItemData(item);
 						items.append(name.getName()).append("\n");
 					} catch (Exception e) {
 						// TODO Auto-generated catch block

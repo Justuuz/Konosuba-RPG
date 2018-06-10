@@ -53,6 +53,7 @@ public class UserData {
 	private int phys_def;
 	private int magi_def;
 	private int health;
+	private int mana;
 	private List<List<Integer>> invent;
 	private HashMap<Integer, Integer> item;
 	private int location;
@@ -70,7 +71,7 @@ public class UserData {
 		Statement statement = Konosuba.CONNECTION1.createStatement();
 		if(first) {
 			statement.execute(
-				"CREATE TABLE IF NOT EXISTS 'client' ("+
+				"CREATE TABLE IF NOT EXISTS 'clients' ("+
 						"userid   INT PRIMARY KEY NOT NULL," +
 						"balance  INT NOT NULL DEFAULT 0," +
 						"battling INT NOT NULL DEFAULT 0," +
@@ -91,16 +92,17 @@ public class UserData {
 						"phys_def INT NOT NULL DEFAULT 0," +
 						"magi_def INT NOT NULL DEFAULT 0," +
 						"health   INT NOT NULL DEFAULT 0," +
+						"mana     INT NOT NULL DEFAULT 0," +
 						"classtype INT NOT NULL DEFAULT 0," +
 						"invent   INT NOT NULL DEFAULT '[]'," +
-						"item     INT," +
-						"location INT"  +
+						"item     TEXT," +
+						"location TEXT"  +
 					");"
 					);
 			first = false;
 		}
 		
-		ResultSet result = statement.executeQuery("SELECT * FROM 'client' WHERE userid="+ userid + ";");
+		ResultSet result = statement.executeQuery("SELECT * FROM 'clients' WHERE userid="+ userid + ";");
 		boolean hasResult = result.next();
 
 		balance  = hasResult ? result.getInt("balance") : 0;
@@ -123,6 +125,7 @@ public class UserData {
 		phys_def = hasResult ? result.getInt("phys_def") : 0;
 		magi_def = hasResult ? result.getInt("magi_def") : 0;
 		health   = hasResult ? result.getInt("health") : 0;
+		mana     = hasResult ? result.getInt("mana") : 0;
 		location = hasResult ? result.getInt("location") : 0;
 
 		if(hasResult) {
@@ -154,7 +157,7 @@ public class UserData {
 	
 	private void update(String key, Object value) throws Exception {
 		Statement statement = Konosuba.CONNECTION1.createStatement();
-		statement.addBatch("INSERT OR IGNORE INTO 'client' (userid,"+key+") VALUES ("+userid+",'"+value+"');");
+		statement.addBatch("INSERT OR IGNORE INTO 'clients' (userid,"+key+") VALUES ("+userid+",'"+value+"');");
 		statement.addBatch("UPDATE 'client' SET "+key+"='"+value+"' WHERE userid="+userid+";");
 		statement.executeBatch();
 		statement.close();
@@ -392,6 +395,15 @@ public class UserData {
 		update( "health", (hitpoints));
 		this.health = hitpoints;
 		
+	}
+	
+	public int getMana() {
+		return mana;
+	}
+	
+	public void setMana(int mana) throws Exception {
+		update("mana", mana);
+		this.mana = mana;
 	}
 	
 	public List<List<Integer>> getInventory() {

@@ -3,7 +3,7 @@ package io.osu.konosuba.test;
 import io.magiccraftmaster.util.StringUtils;
 import io.osu.konosuba.Command;
 import io.osu.konosuba.Konosuba;
-import io.osu.konosuba.data.GearData;
+import io.osu.konosuba.data.ItemData;
 
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
@@ -20,7 +20,7 @@ public class Creator extends Command {
 		try {
 		if(args[1].equalsIgnoreCase("create")) {
 			String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
-			GearData gear = new GearData(item);
+			ItemData gear = new ItemData(item);
 			gear.setDexterity(0); //example
 			gear.setStrength(0); //example
 			
@@ -29,7 +29,7 @@ public class Creator extends Command {
 		
 		if(args[1].equalsIgnoreCase("strength")) {
 			String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
-			GearData gear = new GearData(item);
+			ItemData gear = new ItemData(item);
 			gear.setStrength(Integer.parseInt(args[3]));
 		}
 		

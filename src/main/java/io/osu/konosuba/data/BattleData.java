@@ -12,6 +12,8 @@ public class BattleData {
 	private int monsterid;
 	private int userhealth;
 	private int monsterhealth;
+	private int usermana;
+	private int monstermana;
 	
 	// ===================================
 	
@@ -27,21 +29,25 @@ public class BattleData {
 			Statement statement = Konosuba.CONNECTION1.createStatement();
 			if(first) {
 				statement.execute(
-						"CREATE TABLE IF NOT EXISTS 'battle' (" +
+						"CREATE TABLE IF NOT EXISTS 'battles' (" +
 								"userid     INT PRIMARY KEY NOT NULL," +
 								"monsterid  INT NOT NULL," +
-								"userhealth INT NOT NULL," +
-								"monsterhealth INT NOT NULL" +
+								"userhealth INT NOT NULL DEFAULT 0," +
+								"usermana   INT NOT NULL DEFAULT 0," +
+								"monsterhealth INT NOT NULL DEFAULT 0," +
+								"monstermana INT NOT NULL DEFAULT 0" +
 								");"
 						);
 					first = false;
 			}
-			ResultSet result = statement.executeQuery("SELECT * FROM 'battle' WHERE userid=" + userid +";");
+			ResultSet result = statement.executeQuery("SELECT * FROM 'battles' WHERE userid=" + userid +";");
 			boolean hasResult = result.next();
 			
 			monsterid     = hasResult ? result.getInt("monsterid") : null;
 			userhealth    = hasResult ? result.getInt("userhealth") : 0;
+			usermana      = hasResult ? result.getInt("usermana") : 0;
 			monsterhealth = hasResult ? result.getInt("monsterhealth") : 0;
+			monstermana   = hasResult ? result.getInt("monstermana") : 0;
 			
 			statement.close();
 		} catch (Exception e) {
@@ -52,8 +58,8 @@ public class BattleData {
 	private void update(String key, Object value) {
 		try {
 		Statement statement = Konosuba.CONNECTION1.createStatement();
-		statement.addBatch("INSERT OR IGNORE INTO 'client' (userid,"+key+") VALUES ("+userid+",'"+value+"');");
-		statement.addBatch("UPDATE 'client' SET "+key+"='"+value+"' WHERE userid="+userid+";");
+		statement.addBatch("INSERT OR IGNORE INTO 'battles' (userid,"+key+") VALUES ("+userid+",'"+value+"');");
+		statement.addBatch("UPDATE 'battles' SET "+key+"='"+value+"' WHERE userid="+userid+";");
 		statement.executeBatch();
 		statement.close();
 		} catch(Exception e) {
@@ -64,7 +70,7 @@ public class BattleData {
 	public void delete(long userid) {
 		try {
 			Statement statement = Konosuba.CONNECTION1.createStatement();
-			statement.execute("DELETE * FROM 'battle WHERE userid=" +userid);
+			statement.execute("DELETE * FROM 'battles' WHERE userid=" +userid + ";");
 			statement.close();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -95,9 +101,27 @@ public class BattleData {
 		return monsterhealth;
 	}
 	
+	public int getUserMana() {
+		return usermana;
+	}
+	
+	public void setUserMana(int usermana)  {
+		update("usermana", usermana);
+		this.usermana = usermana;
+	}
+	
 	public void setMonsterHealth(int monsterhealth) {
 		update("monsterhealth", monsterhealth);
 		this.monsterhealth = monsterhealth;
+	}
+	
+	public int getMonsterMana() {
+		return monstermana;
+	}
+	
+	public void setMana(int monstermana) {
+		update("monstermana", monstermana);
+		this.monstermana = monstermana;
 	}
 	
 	public void endSession (long userid) {

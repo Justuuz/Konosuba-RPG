@@ -13,6 +13,7 @@ public class MonsterData {
 	
 	// = Cache ===========================
 	private int monsterid;
+	private String name;
 	private int strength;
 	private int magic;
 	private int luck;
@@ -20,6 +21,7 @@ public class MonsterData {
 	private int phys_def;
 	private int magi_def;
 	private int health;
+	private int mana;
 	private int mincash;
 	private int maxcash;
 	private List<Integer> drop;
@@ -40,7 +42,8 @@ public class MonsterData {
 			if(first) {
 				statement.execute(
 						"CREATE TABLE IF NOT EXISTS 'monster' (" +
-						"monsterid INT PRIMARY KEY NOT NULL DEFAULT 0" +
+						"monsterid INT PRIMARY KEY NOT NULL DEFAULT 0," +
+						"name      TEXT NOT NULL," +		
 						"strength  INT NOT NULL DEFAULT 0," +
 						"magic     INT NOT NULL DEFAULT 0," +
 						"luck      INT NOT NULL DEFAULT 0," +
@@ -60,6 +63,7 @@ public class MonsterData {
 			ResultSet result = statement.executeQuery("SELECT * FROM 'monster' WHERE monsterid=" + monsterid + ";");
 			boolean hasResult = result.next();
 			
+			name     = hasResult ? result.getString("name") : null;
 			strength = hasResult ? result.getInt("strength") : 0;
 			magic    = hasResult ? result.getInt("magic") : 0;
 			luck     = hasResult ? result.getInt("luck") : 0;
@@ -67,6 +71,7 @@ public class MonsterData {
 			phys_def = hasResult ? result.getInt("phys_def") : 0;
 			magi_def = hasResult ? result.getInt("magi_def") : 0;
 			health   = hasResult ? result.getInt("health") : 0;
+			mana     = hasResult ? result.getInt("mana") : 0;
 			
 			if(hasResult) {
 				JSONArray raw = new JSONArray(result.getString("drop"));
@@ -98,13 +103,22 @@ public class MonsterData {
 	private void update(String key, Object value) {
 		try {
 			Statement statement = Konosuba.CONNECTION2.createStatement();
-			statement.addBatch("INSERT OR IGNORE INTO 'monster' (monsterid,"+key+") VALUES ("+monsterid+",'"+value+"');");
-			statement.addBatch("UPDATE 'monsterid' SET "+key+"='"+value+"' WHERE monsterid="+monsterid+";");
+			statement.addBatch("INSERT OR IGNORE INTO 'monsters' (monsterid,"+key+") VALUES ("+monsterid+",'"+value+"');");
+			statement.addBatch("UPDATE 'monsters' SET "+key+"='"+value+"' WHERE monsterid="+monsterid+";");
 			statement.executeBatch();
 			statement.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		update("name", name);
+		this.name = name;
 	}
 	
 public int getStrength() {
@@ -190,6 +204,15 @@ public int getStrength() {
 		update( "health", (hitpoints));
 		this.health = hitpoints;
 		
+	}
+	
+	public int getMana() {
+		return mana;
+	}
+	
+	public void setMana(int mana) throws Exception {
+		update("mana", mana);
+		this.mana = mana;
 	}
 	
 	public int getMinCash() {

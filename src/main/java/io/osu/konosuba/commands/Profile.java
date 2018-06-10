@@ -3,7 +3,7 @@ package io.osu.konosuba.commands;
 import io.osu.konosuba.Command;
 import io.osu.konosuba.Konosuba;
 import io.osu.konosuba.data.ClassData;
-import io.osu.konosuba.data.GearData;
+import io.osu.konosuba.data.ItemData;
 import io.osu.konosuba.data.UserData;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -32,15 +32,15 @@ public class Profile extends Command {
 				+ "\n**Magic:** " + player.getMagic()
 				+ "\n**Dexterity**: " + player.getDexterity()
 				+ "\n**Luck**: " + player.getLuck(), false);
-				profile.addField("__Equipment__", "**Helmet:** " + new GearData(player.getHelmet()).getName()
-				+ "\n**Chestplate:** " + new GearData(player.getChest()).getName()
-				+"\n**Leggings:** " + new GearData(player.getLegs()).getName()
-				+"\n**Boots:** " + new GearData(player.getBoots()).getName()
-				+"\n**Cape:** " + new GearData(player.getCape()).getName()
-				+"\n**OnHand:** " + new GearData(player.getOnhand()).getName()
-				+"\n**OffHand:** " + new GearData(player.getOffhand()).getName()
-				+ "\n**Ring:** " + new GearData(player.getRing()).getName()
-				+ "\n**Necklace:** " + new GearData(player.getNecklace()).getName(), true);	
+				profile.addField("__Equipment__", "**Helmet:** " + new ItemData(player.getHelmet()).getName()
+				+ "\n**Chestplate:** " + new ItemData(player.getChest()).getName()
+				+"\n**Leggings:** " + new ItemData(player.getLegs()).getName()
+				+"\n**Boots:** " + new ItemData(player.getBoots()).getName()
+				+"\n**Cape:** " + new ItemData(player.getCape()).getName()
+				+"\n**OnHand:** " + new ItemData(player.getOnhand()).getName()
+				+"\n**OffHand:** " + new ItemData(player.getOffhand()).getName()
+				+ "\n**Ring:** " + new ItemData(player.getRing()).getName()
+				+ "\n**Necklace:** " + new ItemData(player.getNecklace()).getName(), true);	
 				profile.setThumbnail(event.getAuthor().getAvatarUrl());
 				event.getChannel().sendMessage(profile.build()).queue();
 				

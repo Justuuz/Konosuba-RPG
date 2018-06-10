@@ -23,6 +23,7 @@ public class ClassData {
 	private double phys_def;
 	private double magi_def;
 	private double health;
+	private double mana;
 	// ===============================================
 	private boolean first = true;
 	
@@ -46,7 +47,8 @@ public class ClassData {
 						"  dex      REAL NOT NULL DEFAULT 1.0," + 
 						"  phys_def REAL NOT NULL DEFAULT 1.0," + 
 						"  magi_def REAL NOT NULL DEFAULT 1.0," + 
-						"  health   REAL NOT NULL DEFAULT 1.0" +  
+						"  health   REAL NOT NULL DEFAULT 1.0," +
+						"  mana     REAL NOT NULL DEFAULT 1.0" +
 						");"
 					);
 			first = false;
@@ -61,6 +63,7 @@ public class ClassData {
 		phys_def = hasResult ? result.getDouble("phys_def") : 1.0;
 		magi_def = hasResult ? result.getDouble("magi_def") : 1.0;
 		health   = hasResult ? result.getDouble("health") : 1.0;
+		mana     = hasResult ?  result.getDouble("mana") : 1.0;
 		statement.close();
 		
 	}
@@ -169,6 +172,15 @@ public double getStrength() {
 		update( "health", (hitpodoubles));
 		this.health = hitpodoubles;
 		
+	}
+	
+	public double getMana() {
+		return mana;
+	}
+	
+	public void setMana(double mana) throws Exception {
+		update("mana", mana);
+		this.mana = mana;
 	}
 	
 	
