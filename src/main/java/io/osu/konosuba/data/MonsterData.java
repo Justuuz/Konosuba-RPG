@@ -54,9 +54,9 @@ public class MonsterData {
 						"health    INTEGER NOT NULL DEFAULT 0," +
 						"mincash   INTEGER NOT NULL DEFAULT 0," +
 						"maxcash   INTEGER NOT NULL DEFAULT 0," +
-						"spells    TEXT NOT NULL DEFAULT '[]'," +
-						"drops      TEXT NOT NULL DEFAULT '[]'," +
-						"location  TEXT NOT NULL DEFAULT '[]'" +
+						"spells    INT NOT NULL DEFAULT '[]'," +
+						"drops     INT NOT NULL DEFAULT '[]'," +
+						"location  INT NOT NULL DEFAULT '[]'" +
 						");"
 						);
 				first = false;

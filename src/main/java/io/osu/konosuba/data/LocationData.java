@@ -47,11 +47,11 @@ public class LocationData {
 						"weaponshopname TEXT NOT NULL," +
 						"blacksmithname TEXT NOT NULL," +
 						"magicshopname  TEXT NOT NULL," +
-						"itemshop      TEXT NOT NULL DEFAULT '[]'," +
-						"weaponshop    TEXT NOT NULL DEFAULT '[]'," +
-						"magicshop     TEXT NOT NULL DEFAULT '[]'," +
-						"monsterlist   TEXT NOT NULL DEFAULT '[]'," +
-						"locationlist  TEXT NOT NULL DEFAULT '[]'" +
+						"itemshop      INT NOT NULL DEFAULT '[]'," +
+						"weaponshop    INT NOT NULL DEFAULT '[]'," +
+						"magicshop     INT NOT NULL DEFAULT '[]'," +
+						"monsterlist   INT NOT NULL DEFAULT '[]'," +
+						"locationlist  INT NOT NULL DEFAULT '[]'" +
 						");"
 					);
 				first = false;
@@ -141,7 +141,7 @@ public class LocationData {
 		int value = -1;
 		try {
 			Statement statement = Konosuba.CONNECTION2.createStatement();
-			ResultSet result = statement.executeQuery("SELECT * FROM 'locations' WHERE sublocation=" +locationName+ ";");
+			ResultSet result = statement.executeQuery("SELECT * FROM 'locations' WHERE sublocation='" +locationName+ "';");
 			boolean hasResult = result.next();
 			value = hasResult ? result.getInt("locationid") : -1;
 		}catch (Exception e) {
@@ -173,7 +173,7 @@ public class LocationData {
 	
 	public String getMagicShopName() {
 		return magicShopName;
-	}
+	}	
 	
 	public List<Integer> getItemShop() {
 		return itemShop;

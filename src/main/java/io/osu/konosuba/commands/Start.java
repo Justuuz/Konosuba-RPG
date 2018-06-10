@@ -77,7 +77,7 @@ public class Start extends Command {
 			}
 			if(player.getStartStatus()) {
 				if(args[1].equalsIgnoreCase("classes")) {
-					send(event.getGuild(), event.getChannel(), "**-----------------------------Classes-----------------------------**\\n"
+					send(event.getGuild(), event.getChannel(), "**-----------------------------Classes-----------------------------**\n"
 							+ "Arch Wizard\n" + 
 							"Crusader\n" + 
 							"Adventurer\n" + 

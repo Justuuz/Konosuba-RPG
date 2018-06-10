@@ -73,12 +73,13 @@ public class Location extends Command{
 			StringBuilder list = new StringBuilder();
 			list.append("|");
 			for(int name : locationInfo.getLocationList()) {
-				list.append(" **" + new LocationData(name).getSubLocation() + "**|");
+				String name2 = new LocationData(name).getSubLocation();
+				list.append(" **" + name2 + "**|");
 			}
 			location.addField("**Surrounding Areas**", list.toString(), true);
 		}
 		
-		location.setFooter("To move locations: *location move [place]","");
+		location.setFooter("To move locations: *location move [place]","https://cdn130.picsart.com/250247865001212.png");
 		send(event, location.build());
 		
 	}

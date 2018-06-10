@@ -96,8 +96,8 @@ public class UserData {
 						"health   INTEGER NOT NULL DEFAULT 0," +
 						"mana     INTEGER NOT NULL DEFAULT 0," +
 						"classtype INTEGER NOT NULL DEFAULT 0," +
-						"invent   TEXT NOT NULL DEFAULT '[]'," +
-						"spells   TEXT NOT NULL DEFAULT '[]'," +
+						"invent   INT NOT NULL DEFAULT '[]'," +
+						"spells   INT NOT NULL DEFAULT '[]'," +
 						"item     TEXT," +
 						"location INTEGER NOT NULL DEFAULT 0"  +
 					");"
@@ -171,7 +171,7 @@ public class UserData {
 	private void update(String key, Object value) throws Exception {
 		Statement statement = Konosuba.CONNECTION1.createStatement();
 		statement.addBatch("INSERT OR IGNORE INTO 'clients' (userid,"+key+") VALUES ("+userid+",'"+value+"');");
-		statement.addBatch("UPDATE 'client' SET "+key+"='"+value+"' WHERE userid="+userid+";");
+		statement.addBatch("UPDATE 'clients' SET "+key+"='"+value+"' WHERE userid="+userid+";");
 		statement.executeBatch();
 		statement.close();
 	}

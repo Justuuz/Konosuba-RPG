@@ -65,7 +65,7 @@ public class ItemData {
 					);
 			first = false;
 		}
-		ResultSet result = statement.executeQuery("SELECT * FROM 'items' WHERE gearid="+ itemid + ";");
+		ResultSet result = statement.executeQuery("SELECT * FROM 'items' WHERE itemid="+ itemid + ";");
 		boolean hasResult = result.next();
 		
 		name     = hasResult ? result.getString("name") : null;
@@ -88,14 +88,14 @@ public class ItemData {
     
     private void update(String key, Object value) throws Exception {
 		Statement statement = Konosuba.CONNECTION2.createStatement();
-		statement.execute("INSERT OR IGNORE INTO 'gear' (gearid, "+key+") VALUES ("+itemid+","+value+");"+
-							"UPDATE 'gear' SET "+key+"="+value+" WHERE gearid="+itemid+";");
+		statement.execute("INSERT OR IGNORE INTO 'items' (itemid, "+key+") VALUES ("+itemid+","+value+");"+
+							"UPDATE 'items' SET "+key+"="+value+" WHERE itemid="+itemid+";");
 		statement.close();
 	}
     
     public int search(String item) throws Exception {
 		Statement statement = Konosuba.CONNECTION2.createStatement();
-		ResultSet result = statement.executeQuery("SELECT * FROM 'gear' WHERE name LIKE '" + item + "';");
+		ResultSet result = statement.executeQuery("SELECT * FROM 'items' WHERE name LIKE '" + item + "';");
 		if(result.next()) {
 			return result.getInt(item);
 		}else {
