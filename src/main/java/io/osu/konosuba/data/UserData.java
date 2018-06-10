@@ -54,6 +54,7 @@ public class UserData {
 	private int magi_def;
 	private int health;
 	private int mana;
+	private List<Integer> spells;
 	private List<List<Integer>> invent;
 	private HashMap<Integer, Integer> item;
 	private int location;
@@ -95,6 +96,7 @@ public class UserData {
 						"mana     INTEGER NOT NULL DEFAULT 0," +
 						"classtype INTEGER NOT NULL DEFAULT 0," +
 						"invent   TEXT NOT NULL DEFAULT '[]'," +
+						"spells   TEXT NOT NULL DEFAULT '[]'," +
 						"item     TEXT," +
 						"location INTEGER NOT NULL DEFAULT 0"  +
 					");"
@@ -140,6 +142,13 @@ public class UserData {
 			    stringList.clear();  
 			}
 			invent  = stringListList;
+			stringList.clear();
+			raw = new JSONArray(result.getString("spells"));
+			for(Object obj : raw) {
+				stringList.add((int) obj);
+			}
+			spells = stringList;
+			stringList.clear();
 			
 			JSONObject raw2 = new JSONObject(result.getInt("item"));
 			HashMap<Integer, Integer> stringMap = new HashMap<>();
@@ -150,6 +159,7 @@ public class UserData {
 		}else {
 			invent = null;
 			item = null;
+			spells = null;
 		}
 		
 		statement.close();
@@ -404,6 +414,25 @@ public class UserData {
 	public void setMana(int mana) throws Exception {
 		update("mana", mana);
 		this.mana = mana;
+	}
+	
+	public List<Integer> getSpells() {
+		return spells;
+	}
+	
+	public void setSpells(List<Integer> spells) throws Exception{
+		update("spells", spells);
+		this.spells = spells;
+	}
+	
+	public void addSpells(int spell) throws Exception {
+		this.spells.add(spell);
+		update("spells", this.spells);
+	}
+	
+	public void removeSpells(int spell) throws Exception {
+		this.spells.remove(spell);
+		update("spells", this.spells);
 	}
 	
 	public List<List<Integer>> getInventory() {

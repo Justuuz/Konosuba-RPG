@@ -13,15 +13,14 @@ public class LocationData {
 	
 	// Cache ==============================
 	private int locationid;
-	private boolean hasBlacksmith;
-	private boolean hasItemShop;
-	private boolean hasWeaponShop;
-	private boolean hasMonsters;
+	private String locationName;
 	private String itemShopName;
 	private String weaponShopName;
 	private String blacksmithName;
+	private String magicShopName;
 	private List<Integer> itemShop;
 	private List<Integer> weaponShop;
+	private List<Integer> magicShop;
 	private List<Integer> monsterList;
 	private List<Integer> locationList;
 	
@@ -41,15 +40,14 @@ public class LocationData {
 				statement.execute(
 				"CREATE TABLE IF NOT EXISTS 'locations' (" +
 						"locationid    INTEGER PRIMARY KEY NOT NULL DEFAULT 0," +
-						"hasblacksmith INTEGER NOT NULL DEFAULT 0," +
-						"hasitemshop   INTEGER NOT NULL DEFAULT 0," +
-						"hasweaponshop INTEGER NOT NULL DEFAULT 0," +
-						"hasmonsters   INTEGER NOT NULL DEFAULT 0," +
+						"locationname  TEXT NOT NULL," +
 						"itemshopname  TEXT NOT NULL," +
 						"weaponshopname TEXT NOT NULL," +
 						"blacksmithname TEXT NOT NULL," +
+						"magicshopname  TEXT NOT NULL," +
 						"itemshop      TEXT NOT NULL DEFAULT '[]'," +
 						"weaponshop    TEXT NOT NULL DEFAULT '[]'," +
+						"magicshop     TEXT NOT NULL DEFAULT '[]'," +
 						"monsterlist   TEXT NOT NULL DEFAULT '[]'," +
 						"locationlist  TEXT NOT NULL DEFAULT '[]'" +
 						");"
@@ -59,13 +57,11 @@ public class LocationData {
 			ResultSet result = statement.executeQuery("SELECT * FROM 'locations' WHERE locationid=" + locationid + ";");
 			boolean hasResult =  result.next();
 			
-			hasBlacksmith   = hasResult && result.getInt("hasblacksmith") == 1;
-			hasItemShop     = hasResult && result.getInt("hasitemshop") == 1;
-			hasWeaponShop   = hasResult && result.getInt("hasweaponshop") == 1;
-			hasMonsters     = hasResult && result.getInt("hasmonsters") == 1;
+			locationName    = hasResult ? result.getString("locationname") : null;
 			itemShopName    = hasResult ? result.getString("itemshopname") : null;
 			weaponShopName  = hasResult ? result.getString("weaponshopname") : null;
 			blacksmithName  = hasResult ? result.getString("blacksmithname") : null;
+			magicShopName   = hasResult ? result.getString("magicshopname") : null;
 			
 			if(hasResult) {
 				JSONArray raw = new JSONArray(result.getString("itemshop"));
@@ -100,11 +96,21 @@ public class LocationData {
 
 				locationList = stringList;
 				stringList.clear();
+				
+				raw = new JSONArray(result.getString("magicshop"));
+				for(Object obj : raw) {
+					stringList.add((int) obj);
+				}
+				magicShop = stringList;
+				stringList.clear();
+				
+				
 			}else {
 				itemShop = null;
 				weaponShop = null;
 				monsterList = null;
 				locationList = null;
+				magicShop = null;
 			}
 			
 			statement.close();
@@ -114,65 +120,28 @@ public class LocationData {
 		
 		
 	}
-	private void update(String key, Object value) {
-		try {
-			Statement statement = Konosuba.CONNECTION2.createStatement();
-			statement.addBatch("INSERT OR IGNORE INTO 'locations' (locationid,"+key+") VALUES ("+locationid+",'"+value+"');");
-			statement.addBatch("UPDATE 'location' SET "+key+"='"+value+"' WHERE locationid="+locationid+";");
-			statement.executeBatch();
-			statement.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+//	private void update(String key, Object value) {
+//		try {
+//			Statement statement = Konosuba.CONNECTION2.createStatement();
+//			statement.addBatch("INSERT OR IGNORE INTO 'locations' (locationid,"+key+") VALUES ("+locationid+",'"+value+"');");
+//			statement.addBatch("UPDATE 'location' SET "+key+"='"+value+"' WHERE locationid="+locationid+";");
+//			statement.executeBatch();
+//			statement.close();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
 	
-	public boolean getHasBlacksmith() {
-		
-		return hasBlacksmith;
-	}
+	// Realized won't be needing to set anything. gonna leave setters out. 
 	
-	public void setBattleStatus(boolean hasBlacksmith)  {
-		update( "hasblacksmith",hasBlacksmith? 1 : 0);
-		this.hasBlacksmith = hasBlacksmith;
-		
-	}
 	
-	public boolean getHasItemShop() {
-		
-		return hasItemShop;
-	}
-	
-	public void setHasItemShop(boolean hasItemShop) {
-		update( "hasitemshop",hasItemShop? 1 : 0);
-		this.hasItemShop = hasItemShop;
-		
-	}
-	
-	public boolean getHasWeaponShop() {
-		
-		return hasWeaponShop;
-	}
-	
-	public void setHasWeaponShop(boolean hasWeaponShop) {
-		update( "hasweaponshop",hasWeaponShop? 1 : 0);
-		this.hasWeaponShop = hasWeaponShop;
-		
-	}
-	
-	public boolean getHasMonsters() {
-		return hasMonsters;
-	}
-	
-	public void setHasMonsters(boolean hasMonsters) {
-		update("hasMonsters", hasMonsters? 1 : 0);
-		this.hasMonsters = hasMonsters;
+	public String getLocationName() {
+		return locationName;
 	}
 	
 	public String getItemShopName() {
 		return itemShopName;
 	}
-	
-	// Realized won't be needing to set anything. gonna leave setters out. 
 	
 	public String getWeaponShopName() {
 		return weaponShopName;
@@ -182,12 +151,20 @@ public class LocationData {
 		return blacksmithName;
 	}
 	
+	public String getMagicShopName() {
+		return magicShopName;
+	}
+	
 	public List<Integer> getItemShop() {
 		return itemShop;
 	}
 	
 	public List<Integer> getWeaponShop() {
 		return weaponShop;
+	}
+	
+	public List<Integer> getMagicShop() {
+		return magicShop;
 	}
 	
 	public List<Integer> getLocationList() {

@@ -24,6 +24,7 @@ public class MonsterData {
 	private int mana;
 	private int mincash;
 	private int maxcash;
+	private List<Integer> spells;
 	private List<Integer> drop;
 	private List<Integer> location;
 	
@@ -53,8 +54,9 @@ public class MonsterData {
 						"health    INTEGER NOT NULL DEFAULT 0," +
 						"mincash   INTEGER NOT NULL DEFAULT 0," +
 						"maxcash   INTEGER NOT NULL DEFAULT 0," +
-						"drop      INTEGER NOT NULL DEFAULT '[]'," +
-						"location  INTEGER NOT NULL DEFAULT '[]'" +
+						"spells    TEXT NOT NULL DEFAULT '[]'," +
+						"drop      TEXT NOT NULL DEFAULT '[]'," +
+						"location  TEXT NOT NULL DEFAULT '[]'" +
 						");"
 						);
 				first = false;
@@ -88,9 +90,17 @@ public class MonsterData {
 				}
 				location = stringList;
 				stringList.clear();
+				
+				raw = new JSONArray(result.getString("spells"));
+				for(Object obj :  raw) {
+					stringList.add((int) obj);
+				}
+				spells = stringList;
+				stringList.clear();
 			}else {
 				drop = null;
 				location = null;
+				spells = null;
 			}
 			
 			statement.close();
@@ -221,6 +231,25 @@ public int getStrength() {
 	
 	public int getMaxCash() {
 		return maxcash;
+	}
+	
+	public List<Integer> getSpells() {
+		return spells;
+	}
+	
+	public void setSpells(List<Integer> spells) throws Exception{
+		update("spells", spells);
+		this.spells = spells;
+	}
+	
+	public void addSpells(int spell) throws Exception {
+		this.spells.add(spell);
+		update("spells", this.spells);
+	}
+	
+	public void removeSpells(int spell) throws Exception {
+		this.spells.remove(spell);
+		update("spells", this.spells);
 	}
 	
 	public List<Integer> getLocation() {
