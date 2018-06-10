@@ -55,7 +55,7 @@ public class MonsterData {
 						"mincash   INTEGER NOT NULL DEFAULT 0," +
 						"maxcash   INTEGER NOT NULL DEFAULT 0," +
 						"spells    TEXT NOT NULL DEFAULT '[]'," +
-						"drop      TEXT NOT NULL DEFAULT '[]'," +
+						"drops      TEXT NOT NULL DEFAULT '[]'," +
 						"location  TEXT NOT NULL DEFAULT '[]'" +
 						");"
 						);
@@ -76,7 +76,7 @@ public class MonsterData {
 			mana     = hasResult ? result.getInt("mana") : 0;
 			
 			if(hasResult) {
-				JSONArray raw = new JSONArray(result.getString("drop"));
+				JSONArray raw = new JSONArray(result.getString("drops"));
 				List<Integer> stringList = new ArrayList<>();
 				for(Object obj : raw) {
 					stringList.add((int) obj);

@@ -35,7 +35,6 @@ public class Konosuba  {
 	static {
 		try {
 			String dbPath = System.getProperty("user.home") + (System.getProperty("user.home").startsWith("/home") ? "/konosuba.db" : "/Desktop/Stuff/git/KonosubaBot/Data/konosuba.db");
-
 			//noinspection SpellCheckingInspection
 			Class.forName("org.sqlite.JDBC");
 			//noinspection SpellCheckingInspection

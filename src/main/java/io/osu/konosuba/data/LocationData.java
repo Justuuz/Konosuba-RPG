@@ -13,7 +13,8 @@ public class LocationData {
 	
 	// Cache ==============================
 	private int locationid;
-	private String locationName;
+	private String mainLocation;
+	private String subLocation;
 	private String itemShopName;
 	private String weaponShopName;
 	private String blacksmithName;
@@ -40,7 +41,8 @@ public class LocationData {
 				statement.execute(
 				"CREATE TABLE IF NOT EXISTS 'locations' (" +
 						"locationid    INTEGER PRIMARY KEY NOT NULL DEFAULT 0," +
-						"locationname  TEXT NOT NULL," +
+						"mainlocation  TEXT NOT NULL," +
+						"sublocation   TEXT NOT NULL," +
 						"itemshopname  TEXT NOT NULL," +
 						"weaponshopname TEXT NOT NULL," +
 						"blacksmithname TEXT NOT NULL," +
@@ -57,7 +59,8 @@ public class LocationData {
 			ResultSet result = statement.executeQuery("SELECT * FROM 'locations' WHERE locationid=" + locationid + ";");
 			boolean hasResult =  result.next();
 			
-			locationName    = hasResult ? result.getString("locationname") : null;
+			mainLocation    = hasResult ? result.getString("mainlocation") : null;
+			subLocation     = hasResult ? result.getString("sublocation") : null;
 			itemShopName    = hasResult ? result.getString("itemshopname") : null;
 			weaponShopName  = hasResult ? result.getString("weaponshopname") : null;
 			blacksmithName  = hasResult ? result.getString("blacksmithname") : null;
@@ -134,9 +137,26 @@ public class LocationData {
 	
 	// Realized won't be needing to set anything. gonna leave setters out. 
 	
+	public int getLocationId(String locationName) {
+		int value = -1;
+		try {
+			Statement statement = Konosuba.CONNECTION2.createStatement();
+			ResultSet result = statement.executeQuery("SELECT * FROM 'locations' WHERE sublocation=" +locationName+ ";");
+			boolean hasResult = result.next();
+			value = hasResult ? result.getInt("locationid") : -1;
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return value;
+	}
 	
-	public String getLocationName() {
-		return locationName;
+	public String getMainLocation() {
+		return mainLocation;
+	}
+	
+	public String getSubLocation() {
+		return subLocation;
 	}
 	
 	public String getItemShopName() {

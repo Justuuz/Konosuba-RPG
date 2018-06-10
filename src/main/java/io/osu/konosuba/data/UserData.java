@@ -69,6 +69,7 @@ public class UserData {
 
 	private void update(long userid) throws Exception {
 		this.userid = userid;
+		try {
 		Statement statement = Konosuba.CONNECTION1.createStatement();
 		if(first) {
 			statement.execute(
@@ -103,7 +104,6 @@ public class UserData {
 					);
 			first = false;
 		}
-		
 		ResultSet result = statement.executeQuery("SELECT * FROM 'clients' WHERE userid="+ userid + ";");
 		boolean hasResult = result.next();
 
@@ -163,6 +163,9 @@ public class UserData {
 		}
 		
 		statement.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private void update(String key, Object value) throws Exception {
