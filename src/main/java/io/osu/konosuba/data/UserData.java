@@ -72,31 +72,31 @@ public class UserData {
 		if(first) {
 			statement.execute(
 				"CREATE TABLE IF NOT EXISTS 'clients' ("+
-						"userid   INT PRIMARY KEY NOT NULL," +
-						"balance  INT NOT NULL DEFAULT 0," +
-						"battling INT NOT NULL DEFAULT 0," +
-						"starting INT NOT NULL DEFAULT 0," +
-						"helm     INT NOT NULL DEFAULT 0," +
-						"chest    INT NOT NULL DEFAULT 0," +
-						"legs     INT NOT NULL DEFAULT 0," +
-						"boots    INT NOT NULL DEFAULT 0," +
-						"ring     INT NOT NULL DEFAULT 0," +
-						"neck     INT NOT NULL DEFAULT 0," +
-						"cape     INT NOT NULL DEFAULT 0," +
-						"on_hand  INT NOT NULL DEFAULT 0," +
-						"off_hand INT NOT NULL DEFAULT 0," +
-						"strength INT NOT NULL DEFAULT 0," +
-						"magic    INT NOT NULL DEFAULT 0," +
-						"luck     INT NOT NULL DEFAULT 0," +
-						"dex      INT NOT NULL DEFAULT 0," +
-						"phys_def INT NOT NULL DEFAULT 0," +
-						"magi_def INT NOT NULL DEFAULT 0," +
-						"health   INT NOT NULL DEFAULT 0," +
-						"mana     INT NOT NULL DEFAULT 0," +
-						"classtype INT NOT NULL DEFAULT 0," +
-						"invent   INT NOT NULL DEFAULT '[]'," +
+						"userid   INTEGER PRIMARY KEY NOT NULL," +
+						"balance  INTEGER NOT NULL DEFAULT 0," +
+						"battling INTEGER NOT NULL DEFAULT 0," +
+						"starting INTEGER NOT NULL DEFAULT 0," +
+						"helm     INTEGER NOT NULL DEFAULT 0," +
+						"chest    INTEGER NOT NULL DEFAULT 0," +
+						"legs     INTEGER NOT NULL DEFAULT 0," +
+						"boots    INTEGER NOT NULL DEFAULT 0," +
+						"ring     INTEGER NOT NULL DEFAULT 0," +
+						"neck     INTEGER NOT NULL DEFAULT 0," +
+						"cape     INTEGER NOT NULL DEFAULT 0," +
+						"on_hand  INTEGER NOT NULL DEFAULT 0," +
+						"off_hand INTEGER NOT NULL DEFAULT 0," +
+						"strength INTEGER NOT NULL DEFAULT 0," +
+						"magic    INTEGER NOT NULL DEFAULT 0," +
+						"luck     INTEGER NOT NULL DEFAULT 0," +
+						"dex      INTEGER NOT NULL DEFAULT 0," +
+						"phys_def INTEGER NOT NULL DEFAULT 0," +
+						"magi_def INTEGER NOT NULL DEFAULT 0," +
+						"health   INTEGER NOT NULL DEFAULT 0," +
+						"mana     INTEGER NOT NULL DEFAULT 0," +
+						"classtype INTEGER NOT NULL DEFAULT 0," +
+						"invent   TEXT NOT NULL DEFAULT '[]'," +
 						"item     TEXT," +
-						"location TEXT"  +
+						"location INTEGER NOT NULL DEFAULT 0"  +
 					");"
 					);
 			first = false;

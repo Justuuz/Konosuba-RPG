@@ -48,19 +48,19 @@ public class ItemData {
 					"CREATE TABLE IF NOT EXISTS 'items' ("+
 						"  gearid       INT PRIMARY KEY NOT NULL," +
 						"  name     TEXT NOT NULL," + 
-						"  strength INT NOT NULL DEFAULT 0," + 
-						"  magic    INT NOT NULL DEFAULT 0," + 
-						"  luck     INT NOT NULL DEFAULT 0," + 
-						"  dex      INT NOT NULL DEFAULT 0," + 
-						"  phys_def INT NOT NULL DEFAULT 0," + 
-						"  magi_def INT NOT NULL DEFAULT 0," + 
-						"  health   INT NOT NULL DEFAULT 0," + 
-						"  mana     INT NOT NULL DEFAULT 0," +
-						"  buyvalue INT NOT NULL DEFAULT 0," +
-						"  sellvalue INT NOT NULL DEFAULT 0," +
-						"  sellable  INT NOT NULL DEFAULT 0," +
+						"  strength INTEGER NOT NULL DEFAULT 0," + 
+						"  magic    INTEGER NOT NULL DEFAULT 0," + 
+						"  luck     INTEGER NOT NULL DEFAULT 0," + 
+						"  dex      INTEGER NOT NULL DEFAULT 0," + 
+						"  phys_def INTEGER NOT NULL DEFAULT 0," + 
+						"  magi_def INTEGER NOT NULL DEFAULT 0," + 
+						"  health   INTEGER NOT NULL DEFAULT 0," + 
+						"  mana     INTEGER NOT NULL DEFAULT 0," +
+						"  buyvalue INTEGER NOT NULL DEFAULT 0," +
+						"  sellvalue INTEGER NOT NULL DEFAULT 0," +
+						"  sellable  INTEGER NOT NULL DEFAULT 0," +
 						" description TEXT NOT NULL," +
-						"  type    INT" + 
+						"  type    INTEGER NOT NULL" + 
 						");"
 					);
 			first = false;

@@ -42,19 +42,19 @@ public class MonsterData {
 			if(first) {
 				statement.execute(
 						"CREATE TABLE IF NOT EXISTS 'monster' (" +
-						"monsterid INT PRIMARY KEY NOT NULL DEFAULT 0," +
+						"monsterid INTEGER PRIMARY KEY NOT NULL DEFAULT 0," +
 						"name      TEXT NOT NULL," +		
-						"strength  INT NOT NULL DEFAULT 0," +
-						"magic     INT NOT NULL DEFAULT 0," +
-						"luck      INT NOT NULL DEFAULT 0," +
-						"dex       INT NOT NULL DEFAULT 0," +
-						"phys_def  INT NOT NULL DEFAULT 0," +
-						"magi_def  INT NOT NULL DEFAULT 0," +
-						"health    INT NOT NULL DEFAULT 0," +
-						"mincash   INT NOT NULL DEFAULT 0," +
-						"maxcash   INT NOT NULL DEFAULT 0," +
-						"drop      INT NOT NULL DEFAULT '[]'," +
-						"location  INT NOT NULL DEFAULT '[]'" +
+						"strength  INTEGER NOT NULL DEFAULT 0," +
+						"magic     INTEGER NOT NULL DEFAULT 0," +
+						"luck      INTEGER NOT NULL DEFAULT 0," +
+						"dex       INTEGER NOT NULL DEFAULT 0," +
+						"phys_def  INTEGER NOT NULL DEFAULT 0," +
+						"magi_def  INTEGER NOT NULL DEFAULT 0," +
+						"health    INTEGER NOT NULL DEFAULT 0," +
+						"mincash   INTEGER NOT NULL DEFAULT 0," +
+						"maxcash   INTEGER NOT NULL DEFAULT 0," +
+						"drop      INTEGER NOT NULL DEFAULT '[]'," +
+						"location  INTEGER NOT NULL DEFAULT '[]'" +
 						");"
 						);
 				first = false;

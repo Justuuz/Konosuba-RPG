@@ -48,10 +48,10 @@ public class LocationData {
 						"itemshopname  TEXT NOT NULL," +
 						"weaponshopname TEXT NOT NULL," +
 						"blacksmithname TEXT NOT NULL," +
-						"itemshop      TEXT NOT NULL," +
-						"weaponshop    TEXT NOT NULL," +
-						"monsterlist   TEXT NOT NULL," +
-						"locationlist  TEXT NOT NULL" +
+						"itemshop      TEXT NOT NULL DEFAULT '[]'," +
+						"weaponshop    TEXT NOT NULL DEFAULT '[]'," +
+						"monsterlist   TEXT NOT NULL DEFAULT '[]'," +
+						"locationlist  TEXT NOT NULL DEFAULT '[]'" +
 						");"
 					);
 				first = false;

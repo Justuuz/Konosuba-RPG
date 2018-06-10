@@ -39,7 +39,7 @@ public class ClassData {
 		if(first) {
 			statement.execute(
 					"CREATE TABLE IF NOT EXISTS 'classes' ("+
-						"  classid  INT PRIMARY KEY NOT NULL DEFAULT 0, " +
+						"  classid  INTEGER PRIMARY KEY NOT NULL DEFAULT 0, " +
 						"  name     TEXT NOT NULL," + 
 						"  strength REAL NOT NULL DEFAULT 1.0," + 
 						"  magic    REAL NOT NULL DEFAULT 1.0," + 

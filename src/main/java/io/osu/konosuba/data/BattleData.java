@@ -30,12 +30,12 @@ public class BattleData {
 			if(first) {
 				statement.execute(
 						"CREATE TABLE IF NOT EXISTS 'battles' (" +
-								"userid     INT PRIMARY KEY NOT NULL," +
-								"monsterid  INT NOT NULL," +
-								"userhealth INT NOT NULL DEFAULT 0," +
-								"usermana   INT NOT NULL DEFAULT 0," +
-								"monsterhealth INT NOT NULL DEFAULT 0," +
-								"monstermana INT NOT NULL DEFAULT 0" +
+								"userid     INTEGER PRIMARY KEY NOT NULL," +
+								"monsterid  INTEGER NOT NULL," +
+								"userhealth INTEGER NOT NULL DEFAULT 0," +
+								"usermana   INTEGER NOT NULL DEFAULT 0," +
+								"monsterhealth INTEGER NOT NULL DEFAULT 0," +
+								"monstermana INTEGER NOT NULL DEFAULT 0" +
 								");"
 						);
 					first = false;
