@@ -40,12 +40,15 @@ public class Start extends Command {
 					player.setBalance(0);
 					player.setOnhand(0);
 					player.setHealth(10);
+					player.setMana(10);
+					player.setSpells(new ArrayList<Integer>());
 					List<List<Integer>> list = new ArrayList<List<Integer>>();
 					for(int i=0; i < 9; i++) {
 						list.add(new ArrayList<Integer>());
 					}
 					player.setInventory(list);
 					player.setItems(new HashMap<>());
+					player.setLocation(0);
 
 					String name = (event.getMember() != null ? event.getMember().getEffectiveName() : event.getAuthor().getName());
 					send(event.getGuild(), event.getChannel(), "Welcome " + name +"! Today is the day you start your adventure! Before we can start, I must ask "
