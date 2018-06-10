@@ -4,6 +4,7 @@ import io.osu.konosuba.Command;
 import io.osu.konosuba.Konosuba;
 import io.osu.konosuba.data.ClassData;
 import io.osu.konosuba.data.ItemData;
+import io.osu.konosuba.data.LocationData;
 import io.osu.konosuba.data.UserData;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -26,7 +27,11 @@ public class Profile extends Command {
 				profile.setTitle((event.getMember() != null ? event.getMember().getEffectiveName() : event.getAuthor().getName()) + "'s Profile");
 				profile.addField("__Class__", "" + new ClassData(player.getClasses()).getName(), true);
 				profile.addField("__Balance__","" +player.getBalance(), true);
-				profile.addField("__Stats__", "**Strength:** " + player.getStrength()
+				profile.addField("__Location__", new LocationData(player.getLocation()).getMainLocation()  +": "+ new LocationData(player.getLocation()).getSubLocation(), true);
+				profile.addField("__Stats__",
+				"\n**Health**" + player.getHealth()
+				+"\n**Mana**" + player.getMana()
+				+ "\n**Strength:** " + player.getStrength()
 				+ "\n**Physical Defense:** " + player.getPhysicalDefense()
 				+ "\n**Magical Defense:** " + player.getMagicalDefense()
 				+ "\n**Magic:** " + player.getMagic()
