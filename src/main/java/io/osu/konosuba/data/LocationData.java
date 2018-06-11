@@ -92,12 +92,8 @@ public class LocationData {
 				monsterList = stringList;
 				stringList.clear();
 				
-				raw = new JSONArray(result.getString("locationlist"));
-				for(Object obj : raw) {
-					stringList.add((int) obj);
-				}
-
-				locationList = stringList;
+				for(Object loc : new JSONArray(result.getString("locationlist"))) locationList.add((int) loc);
+				
 				stringList.clear();
 				
 				raw = new JSONArray(result.getString("magicshop"));
