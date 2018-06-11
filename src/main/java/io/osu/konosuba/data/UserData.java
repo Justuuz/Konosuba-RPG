@@ -54,9 +54,9 @@ public class UserData {
 	private int magi_def;
 	private int health;
 	private int mana;
-	private List<Integer> spells;
-	private List<List<Integer>> invent;
-	private HashMap<Integer, Integer> item;
+	private List<Integer> spells = new ArrayList<>();
+	private List<List<Integer>> invent  = new ArrayList<>();
+	private HashMap<Integer, Integer> item = new HashMap<>();
 	private int location;
 	 
 	// ===========================================

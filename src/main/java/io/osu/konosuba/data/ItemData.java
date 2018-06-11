@@ -46,7 +46,7 @@ public class ItemData {
 		if(first) {
 			statement.execute(
 					"CREATE TABLE IF NOT EXISTS 'items' ("+
-						"  gearid       INT PRIMARY KEY NOT NULL," +
+						"  itemid       INT PRIMARY KEY NOT NULL," +
 						"  name     TEXT NOT NULL," + 
 						"  strength INTEGER NOT NULL DEFAULT 0," + 
 						"  magic    INTEGER NOT NULL DEFAULT 0," + 

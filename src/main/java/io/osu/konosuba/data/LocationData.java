@@ -19,11 +19,11 @@ public class LocationData {
 	private String weaponShopName;
 	private String blacksmithName;
 	private String magicShopName;
-	private List<Integer> itemShop;
-	private List<Integer> weaponShop;
-	private List<Integer> magicShop;
-	private List<Integer> monsterList;
-	private List<Integer> locationList;
+	private List<Integer> itemShop = new ArrayList<>();
+	private List<Integer> weaponShop = new ArrayList<>();
+	private List<Integer> magicShop = new ArrayList<>();
+	private List<Integer> monsterList = new ArrayList<>();
+	private List<Integer> locationList = new ArrayList<>();
 	
 	// ====================================
 	
@@ -67,41 +67,14 @@ public class LocationData {
 			magicShopName   = hasResult ? result.getString("magicshopname") : null;
 			
 			if(hasResult) {
-				JSONArray raw = new JSONArray(result.getString("itemshop"));
-				List<Integer> stringList = new ArrayList<>();
-				for(Object obj : raw) {
-					stringList.add((int) obj);
-				}
+				for(Object item : new JSONArray(result.getString("itemshop"))) itemShop.add((int) item);
+			
+				for(Object wea : new JSONArray(result.getString("weaponshop"))) weaponShop.add((int) wea);
 				
-				itemShop = stringList;
-				stringList.clear();
-				
-				raw = new JSONArray(result.getString("weaponshop"));
-				for(Object obj : raw) {
-					stringList.add((int) obj);
-				}
-
-				weaponShop = stringList;
-				stringList.clear();
-				
-				raw = new JSONArray(result.getString("monsterlist"));
-				for(Object obj : raw) {
-					stringList.add((int) obj);
-				}
-
-				monsterList = stringList;
-				stringList.clear();
+				for(Object mon : new JSONArray(result.getString("monsterlist"))) monsterList.add((int) mon);	
 				
 				for(Object loc : new JSONArray(result.getString("locationlist"))) locationList.add((int) loc);
 				
-				stringList.clear();
-				
-				raw = new JSONArray(result.getString("magicshop"));
-				for(Object obj : raw) {
-					stringList.add((int) obj);
-				}
-				magicShop = stringList;
-				stringList.clear();
 				
 				
 			}else {

@@ -57,6 +57,7 @@ public class PointsHandler {
 		int dex = 0;
 		int luck = 0;
 		int health = 0;
+		int mana  = 0;
 		
 		for(ItemData obj: gear) {	
 			strength = strength + obj.getStrength();
@@ -65,7 +66,8 @@ public class PointsHandler {
 			magic = magic + obj.getDexterity();
 			dex = dex + obj.getLuck();
 			luck = luck + obj.getLuck();
-			health = luck + obj.getHitpoints();
+			health = health + obj.getHitpoints();
+			mana = mana + obj.getMana();
 		}
 		
 
@@ -76,6 +78,7 @@ public class PointsHandler {
 		dex = (int)(dex + new ClassData(player.getClasses()).getDexterity());
 		luck =(int)(luck + new ClassData(player.getClasses()).getLuck());
 		health = (int)(health + new ClassData(player.getClasses()).getHealth());
+		mana = (int)(health + new ClassData(player.getClasses()).getMana());
 		
 		
 		player.setStrength(strength);
@@ -85,6 +88,7 @@ public class PointsHandler {
 		player.setDexterity(dex);
 		player.setLuck(luck);
 		player.setHealth(health);
+		player.setMana(mana);
 		
 
 		
