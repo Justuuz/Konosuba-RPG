@@ -74,9 +74,7 @@ public class LocationData {
 				for(Object mon : new JSONArray(result.getString("monsterlist"))) monsterList.add((int) mon);	
 				
 				for(Object loc : new JSONArray(result.getString("locationlist"))) locationList.add((int) loc);
-				
-				
-				
+					
 			}else {
 				itemShop = null;
 				weaponShop = null;
