@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.security.auth.login.LoginException;
 import java.awt.Color;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Scanner;
@@ -16,10 +17,22 @@ import java.util.Scanner;
 public class Konosuba  {
 
 	//public static final Logger LOGGER = LoggerFactory.getLogger(Konosuba.class);
-
-	private static Scanner key = new Scanner((System.getProperty("user.home") + "/Desktop/Konosuba/key.txt"));
-	private static final String KOBOSUBA_TOKEN = key.next();
-
+	private static String KOBOSUBA_TOKEN; 
+	private static File file  = new File((System.getProperty("user.home") + "/Desktop/Konosuba/key.txt"));
+	private static Scanner key;
+	static {
+		try {
+			key = new Scanner(file);
+			KOBOSUBA_TOKEN = key.nextLine();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+		
+	
+	
+	
 	// This is now the default color for commands
 	public static final Color COLOR = new Color(153,50,204);
 
