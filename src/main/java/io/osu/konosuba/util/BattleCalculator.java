@@ -17,11 +17,11 @@ public class BattleCalculator {
 	}
 
 	public double physicalHitChance(int strength, int dex) {
-		return (100/71) * Math.atan(dex/strength) + 50;
+		return (100/Math.PI) * Math.atan(Math.pow(dex, 1.2)/Math.pow(strength, .8)) + 50;
 	}
 	
 	public double magicalHitChance(int magic, int dex) {
-		return (100/71) * Math.atan(dex/magic) + 50;
+		return (100/Math.PI) * Math.atan(Math.pow(dex, 1.2)/Math.pow(magic, .8)) + 50;
 		
 	}
 	
