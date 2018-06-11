@@ -48,9 +48,9 @@ public class Equip extends Command {
 				if(args[1].equalsIgnoreCase("helmet")) {		
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					Statement statement = Konosuba.CONNECTION2.createStatement();
-					ResultSet result = statement.executeQuery("SELECT * FROM 'gear' WHERE name LIKE '" + item + "';");
+					ResultSet result = statement.executeQuery("SELECT * FROM 'items' WHERE name LIKE '" + item + "';");
 					if(result.next()) {
-						player.setHelmet(result.getInt("gearid"));
+						player.setHelmet(result.getInt("itemid"));
 						correctStats.recalibratePoints(player);
 						String message = "Equipped " + item;
 						send(event.getGuild(), event.getChannel(), message , true);
@@ -63,9 +63,9 @@ public class Equip extends Command {
 				if(args[1].equalsIgnoreCase("chest")) {	
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					Statement statement = Konosuba.CONNECTION1.createStatement();
-					ResultSet result = statement.executeQuery("SELECT * FROM 'gear' WHERE name LIKE '" + item + "';");
+					ResultSet result = statement.executeQuery("SELECT * FROM 'items' WHERE name LIKE '" + item + "';");
 					if(result.next()) {			
-						player.setChest(result.getInt("gearid"));
+						player.setChest(result.getInt("itemid"));
 						correctStats.recalibratePoints(player);
 						String message = "Equipped " + item;
 						send(event.getGuild(), event.getChannel(), message , true);
@@ -78,9 +78,9 @@ public class Equip extends Command {
 				if(args[1].equalsIgnoreCase("leggings")) {	
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					Statement statement = Konosuba.CONNECTION2.createStatement();
-					ResultSet result = statement.executeQuery("SELECT * FROM 'gear' WHERE name LIKE '" + item + "';");
+					ResultSet result = statement.executeQuery("SELECT * FROM 'items' WHERE name LIKE '" + item + "';");
 					if(result.next()) {
-						player.setLegs(result.getInt("gearid"));
+						player.setLegs(result.getInt("itemid"));
 						correctStats.recalibratePoints(player);
 						String message = "Equipped " + item;
 						send(event.getGuild(), event.getChannel(), message , true);
@@ -93,9 +93,9 @@ public class Equip extends Command {
 				if(args[1].equalsIgnoreCase("onhand")) {	
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					Statement statement = Konosuba.CONNECTION2.createStatement();
-					ResultSet result = statement.executeQuery("SELECT * FROM 'gear' WHERE name LIKE '" + item + "';");
+					ResultSet result = statement.executeQuery("SELECT * FROM 'items' WHERE name LIKE '" + item + "';");
 					if(result.next()) {
-						player.setOnhand(result.getInt("gearid"));
+						player.setOnhand(result.getInt("itemid"));
 						correctStats.recalibratePoints(player);
 						String message = "Equipped " + item;
 						send(event.getGuild(), event.getChannel(), message , true);
@@ -109,9 +109,9 @@ public class Equip extends Command {
 				if(args[1].equalsIgnoreCase("offhand")) {
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					Statement statement = Konosuba.CONNECTION2.createStatement();
-					ResultSet result = statement.executeQuery("SELECT * FROM 'gear' WHERE name LIKE '" + item + "';");
+					ResultSet result = statement.executeQuery("SELECT * FROM 'items' WHERE name LIKE '" + item + "';");
 					if(result.next()) {
-						player.setOffhand(result.getInt("gearid"));
+						player.setOffhand(result.getInt("itemid"));
 						correctStats.recalibratePoints(player);
 						String message = "Equipped " + item;
 						send(event.getGuild(), event.getChannel(), message , true);
@@ -124,9 +124,9 @@ public class Equip extends Command {
 				if(args[1].equalsIgnoreCase("cape")) {
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					Statement statement = Konosuba.CONNECTION2.createStatement();
-					ResultSet result = statement.executeQuery("SELECT * FROM 'gear' WHERE name LIKE '" + item + "';");
+					ResultSet result = statement.executeQuery("SELECT * FROM 'items' WHERE name LIKE '" + item + "';");
 					if(result.next()) {
-						player.setCape(result.getInt("gearid"));
+						player.setCape(result.getInt("itemid"));
 						correctStats.recalibratePoints(player);
 						String message = "Equipped " + item;
 						send(event.getGuild(), event.getChannel(), message , true);
@@ -139,9 +139,9 @@ public class Equip extends Command {
 				if(args[1].equalsIgnoreCase("necklace")) {
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					Statement statement = Konosuba.CONNECTION2.createStatement();
-					ResultSet result = statement.executeQuery("SELECT * FROM 'gear' WHERE name LIKE '" + item + "';");
+					ResultSet result = statement.executeQuery("SELECT * FROM 'items' WHERE name LIKE '" + item + "';");
 					if(result.next()) {
-						player.setNecklace(result.getInt("gearid"));
+						player.setNecklace(result.getInt("itemid"));
 						correctStats.recalibratePoints(player);
 						String message = "Equipped " + item;
 						send(event.getGuild(), event.getChannel(), message , true);
@@ -154,9 +154,9 @@ public class Equip extends Command {
 				if(args[1].equalsIgnoreCase("ring")) {
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					Statement statement = Konosuba.CONNECTION2.createStatement();
-					ResultSet result = statement.executeQuery("SELECT * FROM 'gear' WHERE name LIKE '" + item + "';");
+					ResultSet result = statement.executeQuery("SELECT * FROM 'items' WHERE name LIKE '" + item + "';");
 					if(result.next()) {
-						player.setRing(result.getInt("gearid"));
+						player.setRing(result.getInt("itemid"));
 						correctStats.recalibratePoints(player);
 						String message = "Equipped " + item;
 						send(event.getGuild(), event.getChannel(), message , true);
@@ -169,9 +169,9 @@ public class Equip extends Command {
 				if(args[1].equalsIgnoreCase("boots")) {
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					Statement statement = Konosuba.CONNECTION2.createStatement();
-					ResultSet result = statement.executeQuery("SELECT * FROM 'gear' WHERE name LIKE '" + item + "';");
+					ResultSet result = statement.executeQuery("SELECT * FROM 'items' WHERE name LIKE '" + item + "';");
 					if(result.next()) {
-						player.setBoots(result.getInt("gearid"));
+						player.setBoots(result.getInt("itemid"));
 						correctStats.recalibratePoints(player);
 						String message = "Equipped " + item;
 						send(event.getGuild(), event.getChannel(), message , true);

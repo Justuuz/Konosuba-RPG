@@ -29,8 +29,8 @@ public class Profile extends Command {
 				profile.addField("__Balance__","" +player.getBalance(), true);
 				profile.addField("__Location__", new LocationData(player.getLocation()).getMainLocation()  +": "+ new LocationData(player.getLocation()).getSubLocation(), true);
 				profile.addField("__Stats__",
-				"\n**Health**" + player.getHealth()
-				+"\n**Mana**" + player.getMana()
+				"\n**Health:** " + player.getHealth()
+				+"\n**Mana:** " + player.getMana()
 				+ "\n**Strength:** " + player.getStrength()
 				+ "\n**Physical Defense:** " + player.getPhysicalDefense()
 				+ "\n**Magical Defense:** " + player.getMagicalDefense()
@@ -45,7 +45,7 @@ public class Profile extends Command {
 				+"\n**OnHand:** " + new ItemData(player.getOnhand()).getName()
 				+"\n**OffHand:** " + new ItemData(player.getOffhand()).getName()
 				+ "\n**Ring:** " + new ItemData(player.getRing()).getName()
-				+ "\n**Necklace:** " + new ItemData(player.getNecklace()).getName(), true);	
+				+ "\n**Necklace:** " + new ItemData(player.getNecklace()).getName(), false);	
 				profile.setThumbnail(event.getAuthor().getAvatarUrl());
 				event.getChannel().sendMessage(profile.build()).queue();
 				

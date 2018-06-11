@@ -52,7 +52,7 @@ public class Start extends Command {
 
 					String name = (event.getMember() != null ? event.getMember().getEffectiveName() : event.getAuthor().getName());
 					send(event.getGuild(), event.getChannel(), "Welcome " + name +"! Today is the day you start your adventure! Before we can start, I must ask "
-							+ "traveler, what class are? Do *start choose Class Name to begin!"
+							+ "traveler, what class are? Do `*start choose [Class]` Name to begin!"
 							+ "\n" +
 							 "**-----------------------------Classes-----------------------------**\n" + 
 								"Arch Wizard\n" + 
@@ -95,8 +95,8 @@ public class Start extends Command {
 					if(args[2].equalsIgnoreCase("Lich") & player.getClasses() == 0) {
 						send(event.getGuild(), event.getChannel(), "You choose to be a " + args[2]+ "! Good choice! You are now set to go on your first adventure!", true);
 						player.setClasses(1);
-					}else if(args[2].equalsIgnoreCase("arch wizard") & player.getClasses() == 0) {
-						send(event.getGuild(), event.getChannel(), "You choose to be a " + args[2]+ "! Good choice! You are now set to go on your first adventure!", true);
+					}else if(args[2].equalsIgnoreCase("arch") && args[3].equalsIgnoreCase("wizard") & player.getClasses() == 0) {
+						send(event.getGuild(), event.getChannel(), "You choose to be a " + args[2] +  " " +args[3]+ "! Good choice! You are now set to go on your first adventure!", true);
 						player.setClasses(2);
 					}else if(args[2].equalsIgnoreCase("crusader") & player.getClasses() == 0) {
 						send(event.getGuild(), event.getChannel(), "You choose to be a " + args[2]+ "! Good choice! You are now set to go on your first adventure!", true);

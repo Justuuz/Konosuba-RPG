@@ -6,6 +6,7 @@ import io.magiccraftmaster.util.StringUtils;
 import io.osu.konosuba.Command;
 import io.osu.konosuba.Konosuba;
 import io.osu.konosuba.data.LocationData;
+import io.osu.konosuba.data.MonsterData;
 import io.osu.konosuba.data.UserData;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
@@ -42,6 +43,9 @@ public class Location extends Command{
 						send(event.getGuild(), event.getChannel(), "That location isn't near you!", true);
 					}
 				}
+			}else {
+				send(event.getGuild(), event.getChannel(), "You haven't started yet!", true);
+				return;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -67,14 +71,20 @@ public class Location extends Command{
 			location.addField("**" +locationInfo.getBlacksmithName() + "**", "*blacksmith", true);	
 		}
 		if(!locationInfo.getMonsterList().isEmpty()) {
-			location.addField("**Monsters Nearby**", "*seach", true);
+			StringBuilder list = new StringBuilder();
+			list.append("|");
+			for(int name : locationInfo.getMonsterList()) {
+				String name2 = new MonsterData(name).getName();
+				list.append("**" + name2 + "**|");
+			}
+			location.addField("**Monsters Nearby**", list.toString(), true);
 		}
 		if(!locationInfo.getLocationList().isEmpty()) {
 			StringBuilder list = new StringBuilder();
 			list.append("|");
 			for(int name : locationInfo.getLocationList()) {
 				String name2 = new LocationData(name).getSubLocation();
-				list.append(" **" + name2 + "**|");
+				list.append("**" + name2 + "**|");
 			}
 			location.addField("**Surrounding Areas**", list.toString(), true);
 		}
