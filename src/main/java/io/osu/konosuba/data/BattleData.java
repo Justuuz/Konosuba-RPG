@@ -14,6 +14,7 @@ public class BattleData {
 	private int monsterhealth;
 	private int usermana;
 	private int monstermana;
+	private long messageid;
 	
 	// ===================================
 	
@@ -35,7 +36,8 @@ public class BattleData {
 								"userhealth INTEGER NOT NULL DEFAULT 0," +
 								"usermana   INTEGER NOT NULL DEFAULT 0," +
 								"monsterhealth INTEGER NOT NULL DEFAULT 0," +
-								"monstermana INTEGER NOT NULL DEFAULT 0" +
+								"monstermana INTEGER NOT NULL DEFAULT 0," +
+								"messageid  INTEGER NOT NULL DEFAULT 0" +
 								");"
 						);
 					first = false;
@@ -48,6 +50,7 @@ public class BattleData {
 			usermana      = hasResult ? result.getInt("usermana") : 0;
 			monsterhealth = hasResult ? result.getInt("monsterhealth") : 0;
 			monstermana   = hasResult ? result.getInt("monstermana") : 0;
+			messageid     = hasResult ? result.getLong("messageid") : 0;
 			
 			statement.close();
 		} catch (Exception e) {
@@ -122,6 +125,15 @@ public class BattleData {
 	public void setMana(int monstermana) {
 		update("monstermana", monstermana);
 		this.monstermana = monstermana;
+	}
+	
+	public long getMessageId() {
+		return messageid;
+	}
+	
+	public void setMessageId(long messageid) {
+		update("messageid",messageid);
+		this.messageid = messageid;
 	}
 	
 	public void endSession (long userid) {
