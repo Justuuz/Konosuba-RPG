@@ -35,4 +35,6 @@ public class CommandListener extends ListenerAdapter {
 	public void onMessageReceived(MessageReceivedEvent event) {
 		for (Command command : commands) command.check(event); // This is all ya need to fire the event for every command
 	}
+	
+	
 }

@@ -12,6 +12,7 @@ import net.dv8tion.jda.core.entities.MessageChannel;
 import net.dv8tion.jda.core.entities.MessageEmbed;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 //import com.raichu.discord.data.*;
+import net.dv8tion.jda.core.events.message.react.MessageReactionAddEvent;
 
 import java.awt.*;
 
@@ -128,4 +129,6 @@ public abstract class Command {
 	 * @param args the args
 	 */
 	protected abstract void run(MessageReceivedEvent event, String[] args);
+	
+	public void run(MessageReactionAddEvent event) {}
 }

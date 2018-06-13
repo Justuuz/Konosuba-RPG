@@ -26,4 +26,8 @@ public final class Calculator {
 	public static boolean chance(int percent) {
 		return Math.random() <= (double) percent/100;
 	}
+	
+	public static boolean chance(double percent) {
+		return Math.random() <= percent/100;
+	}
 }

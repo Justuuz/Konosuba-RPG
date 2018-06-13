@@ -35,7 +35,11 @@ public class Location extends Command{
 				if(args[1].equalsIgnoreCase("move")) {
 					String movement =  StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					LocationData location = new LocationData(player.getLocation());
-					int locationid = location.getLocationId(movement);
+					String fix  = Character.toString(movement.charAt(0));
+					fix = fix.toUpperCase();
+					String two = movement.substring(1, movement.length());
+					fix += two;
+					int locationid = location.getLocationId(fix);
 					if(location.getLocationList().contains(locationid)) {
 						player.setLocation(locationid);
 						locationBuilder(player, event);

@@ -15,6 +15,8 @@ public class BattleData {
 	private int usermana;
 	private int monstermana;
 	private long messageid;
+	private long channelid;
+	private long guildid;
 	
 	// ===================================
 	
@@ -37,7 +39,9 @@ public class BattleData {
 								"usermana   INTEGER NOT NULL DEFAULT 0," +
 								"monsterhealth INTEGER NOT NULL DEFAULT 0," +
 								"monstermana INTEGER NOT NULL DEFAULT 0," +
-								"messageid  INTEGER NOT NULL DEFAULT 0" +
+								"messageid  INTEGER NOT NULL DEFAULT 0," +
+								"channelid  INTEGER NOT NULL DEFAULT 0,"+
+								"guildid    INTEGER NOT NULL DEFAULT 0" +
 								");"
 						);
 					first = false;
@@ -45,12 +49,14 @@ public class BattleData {
 			ResultSet result = statement.executeQuery("SELECT * FROM 'battles' WHERE userid=" + userid +";");
 			boolean hasResult = result.next();
 			
-			monsterid     = hasResult ? result.getInt("monsterid") : null;
+			monsterid     = hasResult ? result.getInt("monsterid") : 0;
 			userhealth    = hasResult ? result.getInt("userhealth") : 0;
 			usermana      = hasResult ? result.getInt("usermana") : 0;
 			monsterhealth = hasResult ? result.getInt("monsterhealth") : 0;
 			monstermana   = hasResult ? result.getInt("monstermana") : 0;
 			messageid     = hasResult ? result.getLong("messageid") : 0;
+			channelid     = hasResult ? result.getLong("channelid") : 0;
+			guildid       = hasResult ? result.getLong("guildid") : 0;
 			
 			statement.close();
 		} catch (Exception e) {
@@ -73,7 +79,7 @@ public class BattleData {
 	public void delete(long userid) {
 		try {
 			Statement statement = Konosuba.CONNECTION1.createStatement();
-			statement.execute("DELETE * FROM 'battles' WHERE userid=" +userid + ";");
+			statement.execute("DELETE FROM 'battles' WHERE userid=" +userid + ";");
 			statement.close();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -134,6 +140,24 @@ public class BattleData {
 	public void setMessageId(long messageid) {
 		update("messageid",messageid);
 		this.messageid = messageid;
+	}
+	
+	public long getChannelId() {
+		return channelid;
+	}
+	
+	public void setChannelId(long channelid) {
+		update("channelid",channelid);
+		this.channelid = channelid;
+	}
+	
+	public long getGuildId() {
+		return guildid;
+	}
+	
+	public void setGuildId(long guildid) {
+		update("guildid",guildid);
+		this.guildid = guildid;
 	}
 	
 	public void endSession (long userid) {

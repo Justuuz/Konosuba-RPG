@@ -1,6 +1,7 @@
 package io.osu.konosuba;
 
 import io.osu.konosuba.Listeners.CommandListener;
+import io.osu.konosuba.Listeners.ReactionListener;
 import io.osu.konosuba.Listeners.StartupListener;
 import net.dv8tion.jda.bot.sharding.DefaultShardManagerBuilder;
 
@@ -81,6 +82,7 @@ public class Konosuba  {
 				.setToken(KOBOSUBA_TOKEN)
 				.addEventListeners(new CommandListener())
 				.addEventListeners(new StartupListener())
+				.addEventListeners(new ReactionListener())
 				.setBulkDeleteSplittingEnabled(false)
 				// .setShardsTotal(1) // XXX DO NOT USE THIS!
 				.build();

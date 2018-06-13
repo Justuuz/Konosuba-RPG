@@ -56,8 +56,8 @@ public class PointsHandler {
 		int magic = 0;
 		int dex = 0;
 		int luck = 0;
-		int health = 0;
-		int mana  = 0;
+		int health = 10;
+		int mana  = 100;
 		
 		for(ItemData obj: gear) {	
 			strength = strength + obj.getStrength();
