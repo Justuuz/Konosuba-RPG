@@ -13,129 +13,134 @@ import net.dv8tion.jda.core.events.message.react.MessageReactionAddEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
 public class ReactionListener extends ListenerAdapter{
-	
-	
-	
+
+
+
 	@Override
 	public void onMessageReactionAdd(MessageReactionAddEvent event) {
 		String log1 = "";
 		String log2 = "";
 		try {
 			UserData player = new UserData(event.getUser().getIdLong());
-			System.out.println("check1");
+			BattleData battle = new BattleData(event.getUser().getIdLong());
 			if(player.getBattleStatus()) {
-				System.out.println("check2");
-				if(event.getReactionEmote().getEmote().getName().equalsIgnoreCase("crossed_swords")) {
-					System.out.println("check3");
-					if(event.getReaction().getCount() > 1) {
-						System.out.println("check4");
-						BattleData battle = new BattleData(event.getUser().getIdLong());
-						MonsterData monster = new MonsterData(battle.getMonsterId());
-						if(player.getDexterity() > monster.getDexterity() || player.getDexterity() == monster.getDexterity()) { // Player going First
-							int damage = BattleCalculator.physicalCalculation(player.getStrength(), monster.getPhysicalDefense());
-							double evade = BattleCalculator.evadeChance(monster.getDexterity(), player.getDexterity());
-							double hitChance = BattleCalculator.physicalHitChance(player.getStrength(), monster.getDexterity());
-							if(Calculator.chance(hitChance)) {
-								if(!Calculator.chance(evade)) {
-									battle.setMonsterHealth(battle.getMonsterHealth() - damage);
-								}else {
-									log1 = monster.getName() + " Dodged!";
-								}
+				if(event.getReactionEmote().getName().equalsIgnoreCase("\u2694") && event.getMessageIdLong() == battle.getMessageId()) {
+					MonsterData monster = new MonsterData(battle.getMonsterId());
+					if(player.getDexterity() > monster.getDexterity() || player.getDexterity() == monster.getDexterity()) { // Player going First
+						int damage = BattleCalculator.physicalCalculation(player.getStrength(), monster.getPhysicalDefense());
+						double evade = BattleCalculator.evadeChance(monster.getDexterity(), player.getDexterity());
+						double hitChance = BattleCalculator.physicalHitChance(player.getStrength(), monster.getDexterity());
+						if(Calculator.chance(hitChance)) {
+							if(!Calculator.chance(evade)) {
+								battle.setMonsterHealth(battle.getMonsterHealth() - damage);
 							}else {
-								log1 =  (event.getMember() != null ? event.getMember().getEffectiveName() : event.getUser().getName()) + "Missed!";
+								log1 = monster.getName() + " Dodged!";
 							}
-							//Monster Turn
-							damage = BattleCalculator.physicalCalculation(monster.getStrength(), player.getPhysicalDefense());
-							evade = BattleCalculator.evadeChance(player.getDexterity(), monster.getDexterity());
-							hitChance = BattleCalculator.physicalHitChance(monster.getStrength(), player.getDexterity());
-							if(Calculator.chance(hitChance)) {
-								if(!Calculator.chance(evade)) {
-									battle.setUserHealth(battle.getUserHealth() - damage);
-								}else {
-									log2 = (event.getMember() != null ? event.getMember().getEffectiveName() : event.getUser().getName()) + " Dodged!";
-								}
-							}else {
-								log2 = monster.getName() + " Missed!";
-							}
-							if(battle.getUserHealth() <= 0) {
-								EmbedBuilder message = new EmbedBuilder();
-								message.setDescription("You have been defeated by a " + monster.getName());
-								event.getTextChannel().editMessageById(battle.getMessageId(), message.build()).queue();
-								player.setBattleStatus(false);
-								battle.endSession(event.getUser().getIdLong());
-								return;
-							}else if(battle.getMonsterHealth() <= 0) {
-								int gold  = (int) Calculator.randomIn((int) monster.getMinCash(), (int) monster.getMaxCash(), false);
-								player.setBalance(player.getBalance() + gold);
-								EmbedBuilder message = new EmbedBuilder();
-								message.setDescription("You killed a " + monster.getName() +"! You earned:" + gold + " Gold.");
-								event.getTextChannel().editMessageById(battle.getMessageId(), message.build()).queue();
-								player.setBattleStatus(false);
-								battle.endSession(event.getUser().getIdLong());
-								return;
-							}
-						}else { //Monster going First
-							int damage = BattleCalculator.physicalCalculation(monster.getStrength(), player.getPhysicalDefense());
-							double evade = BattleCalculator.evadeChance(player.getDexterity(), monster.getDexterity());
-							double hitChance = BattleCalculator.physicalHitChance(monster.getStrength(), player.getDexterity());
-							if(Calculator.chance(hitChance)) {
-								if(!Calculator.chance(evade)) {
-									battle.setMonsterHealth(battle.getMonsterHealth() - damage);
-								}else {
-									log2 = (event.getMember() != null ? event.getMember().getEffectiveName() : event.getUser().getName()) + " Dodged!";
-								}
-							}else {
-								log2 = monster.getName() + " Missed!";
-							}
-							
-							//Player Turn
-							damage = BattleCalculator.physicalCalculation(player.getStrength(), monster.getPhysicalDefense());
-							evade = BattleCalculator.evadeChance(monster.getDexterity(), player.getDexterity());
-							hitChance = BattleCalculator.physicalHitChance(player.getStrength(), monster.getDexterity());
-							if(Calculator.chance(hitChance)) {
-								if(!Calculator.chance(evade)) {
-									battle.setMonsterHealth(battle.getMonsterHealth() - damage);
-								}else {
-									log1 = monster.getName() + " Dodged!";
-								}
-							}else {
-								 log1 = "You Missed!";
-							}
-							if(battle.getUserHealth() <= 0) {
-								EmbedBuilder message = new EmbedBuilder();
-								message.setDescription("You have been defeated by a " + monster.getName());
-								event.getTextChannel().editMessageById(battle.getMessageId(), message.build()).queue();
-								player.setBattleStatus(false);
-								battle.endSession(event.getUser().getIdLong());
-								return;
-							}else if(battle.getMonsterHealth() <= 0) {
-								int gold  = (int) Calculator.randomIn((int) monster.getMinCash(), (int) monster.getMaxCash(), false);
-								player.setBalance(player.getBalance() + gold);
-								EmbedBuilder message = new EmbedBuilder();
-								message.setDescription("You killed a " + monster.getName() +"! You earned:" + gold + " Gold.");
-								event.getTextChannel().editMessageById(battle.getMessageId(), message.build()).queue();
-								player.setBattleStatus(false);
-								battle.endSession(event.getUser().getIdLong());
-								return;
-							}
+						}else {
+							log1 =  (event.getMember() != null ? event.getMember().getEffectiveName() : event.getUser().getName()) + "Missed!";
 						}
-						battleMessage(battle, event, log1, log2);
+						//Monster Turn
+						damage = BattleCalculator.physicalCalculation(monster.getStrength(), player.getPhysicalDefense());
+						evade = BattleCalculator.evadeChance(player.getDexterity(), monster.getDexterity());
+						hitChance = BattleCalculator.physicalHitChance(monster.getStrength(), player.getDexterity());
+						if(Calculator.chance(hitChance)) {
+							if(!Calculator.chance(evade)) {
+								battle.setUserHealth(battle.getUserHealth() - damage);
+							}else {
+								log2 = (event.getMember() != null ? event.getMember().getEffectiveName() : event.getUser().getName()) + " Dodged!";
+							}
+						}else {
+							log2 = monster.getName() + " Missed!";
+						}
+						if(battle.getUserHealth() <= 0) {
+							EmbedBuilder message = new EmbedBuilder();
+							message.setDescription("You have been defeated by a " + monster.getName());
+							event.getTextChannel().editMessageById(battle.getMessageId(), message.build()).queue();
+							player.setBattleStatus(false);
+							battle.endSession(event.getUser().getIdLong());
+							return;
+						}else if(battle.getMonsterHealth() <= 0) {
+							int gold  = (int) Calculator.randomIn((int) monster.getMinCash(), (int) monster.getMaxCash(), false);
+							player.setBalance(player.getBalance() + gold);
+							EmbedBuilder message = new EmbedBuilder();
+							message.setDescription("You killed a " + monster.getName() +"! You earned:" + gold + " Gold.");
+							event.getTextChannel().editMessageById(battle.getMessageId(), message.build()).queue();
+							player.setBattleStatus(false);
+							battle.endSession(event.getUser().getIdLong());
+							return;
+						}
+					}else {
+						//Monster going First
+						int damage = BattleCalculator.physicalCalculation(monster.getStrength(), player.getPhysicalDefense());
+						double evade = BattleCalculator.evadeChance(player.getDexterity(), monster.getDexterity());
+						double hitChance = BattleCalculator.physicalHitChance(monster.getStrength(), player.getDexterity());
+						
+						if(Calculator.chance(hitChance)) {
+							if(!Calculator.chance(evade)) {
+								battle.setMonsterHealth(battle.getMonsterHealth() - damage);
+								
+							}else {
+								log2 = (event.getMember() != null ? event.getMember().getEffectiveName() : event.getUser().getName()) + " Dodged!";
+								
+							}
+						}else {
+							log2 = monster.getName() + " Missed!";
+							
+						}
 
-
+						//Player Turn
+						damage = BattleCalculator.physicalCalculation(player.getStrength(), monster.getPhysicalDefense());
+						evade = BattleCalculator.evadeChance(monster.getDexterity(), player.getDexterity());
+						hitChance = BattleCalculator.physicalHitChance(player.getStrength(), monster.getDexterity());
+						if(Calculator.chance(hitChance)) {
+							if(!Calculator.chance(evade)) {
+								battle.setMonsterHealth(battle.getMonsterHealth() - damage);
+							}else {
+								log1 = monster.getName() + " Dodged!";
+							}
+						}else {
+							log1 = "You Missed!";
+						}
+						if(battle.getUserHealth() <= 0) {
+							EmbedBuilder message = new EmbedBuilder();
+							message.setDescription("You have been defeated by a " + monster.getName());
+							event.getTextChannel().editMessageById(battle.getMessageId(), message.build()).queue();
+							player.setBattleStatus(false);
+							battle.endSession(event.getUser().getIdLong());
+							return;
+						}else if(battle.getMonsterHealth() <= 0) {
+							int gold  = (int) Calculator.randomIn((int) monster.getMinCash(), (int) monster.getMaxCash(), false);
+							player.setBalance(player.getBalance() + gold);
+							EmbedBuilder message = new EmbedBuilder();
+							message.setDescription("You killed a " + monster.getName() +"! You earned:" + gold + " Gold.");
+							event.getTextChannel().editMessageById(battle.getMessageId(), message.build()).queue();
+							player.setBattleStatus(false);
+							battle.endSession(event.getUser().getIdLong());
+							return;
+						}
 					}
-				}else if(event.getReactionEmote().getEmote().getName().equalsIgnoreCase("wand")){
-					
-				}else if(event.getReactionEmote().getEmote().getName().equalsIgnoreCase("bag")) {
-					
-				}else if(event.getReactionEmote().getEmote().getName().equalsIgnoreCase("exit")) {
-					
+					battleMessage(battle, event, log1, log2);
+
+
+				}else if(event.getReactionEmote().getEmote().getName().equalsIgnoreCase("wand") && event.getMessageIdLong() == battle.getMessageId()){
+
+				}else if(event.getReactionEmote().getEmote().getName().equalsIgnoreCase("bag") && event.getMessageIdLong() == battle.getMessageId()) {
+
+				}else if(event.getReactionEmote().getEmote().getName().equalsIgnoreCase("exit") && event.getMessageIdLong() == battle.getMessageId()) {
+					EmbedBuilder escape = new EmbedBuilder();
+					escape.setDescription((event.getMember() != null ? event.getMember().getEffectiveName() : event.getUser().getName()) + " Escaped from " + new MonsterData(battle.getMonsterId()).getName());
+					event.getTextChannel().editMessageById(battle.getMessageId(), escape.build()).queue();
+					System.out.println("check3");
+					battle.endSession(event.getUser().getIdLong());
+					player.setBattleStatus(false);
+
 				}
 			}
 		} catch(Exception e) {
 
 		}
 	}
-	
+
 	private void battleMessage(BattleData battle, MessageReactionAddEvent event,String log1, String log2) {
 
 		Consumer<Message> call = (response) -> {
@@ -171,7 +176,7 @@ public class ReactionListener extends ListenerAdapter{
 			event.getChannel().sendMessage(battleMessage.build()).queue(call);
 		}	
 	}
-	
-	
+
+
 
 }

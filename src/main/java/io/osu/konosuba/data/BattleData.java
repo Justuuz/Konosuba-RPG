@@ -88,6 +88,11 @@ public class BattleData {
 	
 	// ============================================
 	
+	
+	public long getUserId () {
+		return userid;
+	}
+	
 	public int getMonsterId () {
 		return monsterid;
 	}

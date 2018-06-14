@@ -42,7 +42,13 @@ public class Battle extends Command {
 
 			UserData player = new UserData(event.getAuthor().getIdLong());
 			if(player.getStartStatus()) {
-
+				if(args.length == 1) {
+					if(player.getBattleStatus()) {
+						battleMessage(new BattleData(event.getAuthor().getIdLong()),event);
+						return;
+					}
+					
+				}
 				if(args[1].equalsIgnoreCase("search")) {
 
 					if(!player.getBattleStatus()) {
