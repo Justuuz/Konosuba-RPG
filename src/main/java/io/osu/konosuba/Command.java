@@ -130,5 +130,4 @@ public abstract class Command {
 	 */
 	protected abstract void run(MessageReceivedEvent event, String[] args);
 	
-	public void run(MessageReactionAddEvent event) {}
 }

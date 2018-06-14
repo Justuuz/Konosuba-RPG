@@ -1,6 +1,7 @@
 package io.osu.konosuba.Listeners;
 
 import io.osu.konosuba.Command;
+import io.osu.konosuba.ReactionCommand;
 import io.osu.konosuba.commands.*;
 import io.osu.konosuba.commands.Shutdown;
 import io.osu.konosuba.test.Buy_admin;
@@ -10,6 +11,7 @@ import io.osu.konosuba.test.ItemToss_Admin;
 import io.osu.konosuba.test.Item_admin;
 import io.osu.konosuba.test.Start2;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.core.events.message.react.MessageReactionAddEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
 public class CommandListener extends ListenerAdapter {
@@ -34,6 +36,14 @@ public class CommandListener extends ListenerAdapter {
 	@Override
 	public void onMessageReceived(MessageReceivedEvent event) {
 		for (Command command : commands) command.check(event); // This is all ya need to fire the event for every command
+	}
+	
+	public void onMessageReactionAdd(MessageReactionAddEvent event) {
+	    for (Command command : commands) {
+	        if (command instanceof ReactionCommand) {
+	            ((ReactionCommand) command).run(event);
+	        }
+	    }
 	}
 	
 	
