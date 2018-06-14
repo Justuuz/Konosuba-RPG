@@ -9,11 +9,11 @@ import io.osu.konosuba.Konosuba;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 public class ItemData {
-	
+
 	// |strength|magic|luck|dex |phys_def|magi_def|health|type|
 	// ---------------------------------------------------
 	// |INT     |INT  |INT |INT |INT     |INT     |INT   |INT |
-	
+
 	// = Cache  ======================================
 	private int itemid;
 	private String name;
@@ -31,77 +31,90 @@ public class ItemData {
 	private String description;
 	private int type;
 	// ===============================================
-	
+
 	private boolean first = true;
 
-	public ItemData(int gearid) throws Exception {
+	public ItemData(int gearid)  {
 		update(gearid);
 	}
 
-	
-    
-    private void update(int itemid) throws Exception {
-    	this.itemid = itemid;
-		Statement statement = Konosuba.CONNECTION2.createStatement();
-		if(first) {
-			statement.execute(
-					"CREATE TABLE IF NOT EXISTS 'items' ("+
-						"  itemid       INT PRIMARY KEY NOT NULL," +
-						"  name     TEXT NOT NULL," + 
-						"  strength INTEGER NOT NULL DEFAULT 0," + 
-						"  magic    INTEGER NOT NULL DEFAULT 0," + 
-						"  luck     INTEGER NOT NULL DEFAULT 0," + 
-						"  dex      INTEGER NOT NULL DEFAULT 0," + 
-						"  phys_def INTEGER NOT NULL DEFAULT 0," + 
-						"  magi_def INTEGER NOT NULL DEFAULT 0," + 
-						"  health   INTEGER NOT NULL DEFAULT 0," + 
-						"  mana     INTEGER NOT NULL DEFAULT 0," +
-						"  buyvalue INTEGER NOT NULL DEFAULT 0," +
-						"  sellvalue INTEGER NOT NULL DEFAULT 0," +
-						"  sellable  INTEGER NOT NULL DEFAULT 0," +
-						" description TEXT NOT NULL," +
-						"  type    INTEGER NOT NULL" + 
-						");"
-					);
-			first = false;
+
+
+	private void update(int itemid) {
+		try {
+			this.itemid = itemid;
+			Statement statement = Konosuba.CONNECTION2.createStatement();
+			if(first) {
+				statement.execute(
+						"CREATE TABLE IF NOT EXISTS 'items' ("+
+								"  itemid       INT PRIMARY KEY NOT NULL," +
+								"  name     TEXT NOT NULL," + 
+								"  strength INTEGER NOT NULL DEFAULT 0," + 
+								"  magic    INTEGER NOT NULL DEFAULT 0," + 
+								"  luck     INTEGER NOT NULL DEFAULT 0," + 
+								"  dex      INTEGER NOT NULL DEFAULT 0," + 
+								"  phys_def INTEGER NOT NULL DEFAULT 0," + 
+								"  magi_def INTEGER NOT NULL DEFAULT 0," + 
+								"  health   INTEGER NOT NULL DEFAULT 0," + 
+								"  mana     INTEGER NOT NULL DEFAULT 0," +
+								"  buyvalue INTEGER NOT NULL DEFAULT 0," +
+								"  sellvalue INTEGER NOT NULL DEFAULT 0," +
+								"  sellable  INTEGER NOT NULL DEFAULT 0," +
+								" description TEXT NOT NULL," +
+								"  type    INTEGER NOT NULL" + 
+								");"
+						);
+				first = false;
+			}
+			ResultSet result = statement.executeQuery("SELECT * FROM 'items' WHERE itemid="+ itemid + ";");
+			boolean hasResult = result.next();
+
+			name     = hasResult ? result.getString("name") : null;
+			strength = hasResult ? result.getInt("strength") : 0;
+			magic    = hasResult ? result.getInt("magic") : 0;
+			luck     = hasResult ? result.getInt("luck") : 0;
+			dex      = hasResult ? result.getInt("dex") : 0;
+			phys_def = hasResult ? result.getInt("phys_def") : 0;
+			magi_def = hasResult ? result.getInt("magi_def") : 0;
+			health   = hasResult ? result.getInt("health") : 0;
+			mana     = hasResult ?  result.getInt("mana") : 0;
+			buyvalue = hasResult ? result.getInt("buyvalue") : 0;
+			sellvalue = hasResult ? result.getInt("sellvalue") : 0;
+			sellable = hasResult && result.getInt("sellable") == 1;
+			description = hasResult ? result.getString("description") : null;
+			type     = hasResult ? result.getInt("type") : null;
+			statement.close();
+		} catch(Exception e) {
+			e.printStackTrace();
 		}
-		ResultSet result = statement.executeQuery("SELECT * FROM 'items' WHERE itemid="+ itemid + ";");
-		boolean hasResult = result.next();
-		
-		name     = hasResult ? result.getString("name") : null;
-		strength = hasResult ? result.getInt("strength") : 0;
-		magic    = hasResult ? result.getInt("magic") : 0;
-		luck     = hasResult ? result.getInt("luck") : 0;
-		dex      = hasResult ? result.getInt("dex") : 0;
-		phys_def = hasResult ? result.getInt("phys_def") : 0;
-		magi_def = hasResult ? result.getInt("magi_def") : 0;
-		health   = hasResult ? result.getInt("health") : 0;
-		mana     = hasResult ?  result.getInt("mana") : 0;
-		buyvalue = hasResult ? result.getInt("buyvalue") : 0;
-		sellvalue = hasResult ? result.getInt("sellvalue") : 0;
-		sellable = hasResult && result.getInt("sellable") == 1;
-		description = hasResult ? result.getString("description") : null;
-		type     = hasResult ? result.getInt("type") : null;
-		statement.close();
-		
+
 	}
-    
-    private void update(String key, Object value) throws Exception {
-		Statement statement = Konosuba.CONNECTION2.createStatement();
-		statement.execute("INSERT OR IGNORE INTO 'items' (itemid, "+key+") VALUES ("+itemid+","+value+");"+
-							"UPDATE 'items' SET "+key+"="+value+" WHERE itemid="+itemid+";");
-		statement.close();
+
+	private void update(String key, Object value) {
+		try {
+			Statement statement = Konosuba.CONNECTION2.createStatement();
+			statement.execute("INSERT OR IGNORE INTO 'items' (itemid, "+key+") VALUES ("+itemid+","+value+");"+
+					"UPDATE 'items' SET "+key+"="+value+" WHERE itemid="+itemid+";");
+			statement.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
-    
-    public int search(String item) throws Exception {
-		Statement statement = Konosuba.CONNECTION2.createStatement();
-		ResultSet result = statement.executeQuery("SELECT * FROM 'items' WHERE name LIKE '" + item + "';");
-		if(result.next()) {
-			return result.getInt(item);
-		}else {
+
+	public int search(String item){
+		try {
+			Statement statement = Konosuba.CONNECTION2.createStatement();
+			ResultSet result = statement.executeQuery("SELECT * FROM 'items' WHERE name LIKE '" + item + "';");
+			if(result.next()) {
+				return result.getInt(item);
+			}else {
+				return 0;
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
 			return 0;
 		}
-    }
+	}
 
 
 
@@ -110,151 +123,151 @@ public class ItemData {
 	 */
 
 
-    public int getItemId() {
+	public int getItemId() {
 		return itemid;
 	}
-    
-    public String getName() {
-    	return name;
-    }
-	
-	
- public int getStrength() {
-		
+
+	public String getName() {
+		return name;
+	}
+
+
+	public int getStrength() {
+
 		return strength;
 	}
-	
-	public void setStrength(int strength) throws Exception {
+
+	public void setStrength(int strength)  {
 		update( "strength", (strength));
 		this.strength = strength;
-		
+
 	}
-	
+
 	public int getMagic() {
-		
+
 		return magic;
 	}
-	
-	public void setMagic(int magic) throws Exception {
+
+	public void setMagic(int magic)  {
 		update( "magic", (magic));
 		this.magic = magic;
-		
+
 	}
-	
+
 	public int getLuck() {
-		
+
 		return luck;
 	}
-	
-	public void setLuck(int luck) throws Exception {
+
+	public void setLuck(int luck)  {
 		update( "luck", (luck));
 		this.luck = luck;
-		
+
 	}
-	
+
 	public int getDexterity() {
-		
+
 		return dex;
 	}
-	
-	public void setDexterity(int dexterity) throws Exception {
+
+	public void setDexterity(int dexterity)  {
 		update( "dex", (dexterity));
 		this.dex = dexterity;
-		
+
 	}
-	
+
 	public int getPhysicalDefense() {
-		
+
 		return phys_def;
 	}
-	
-	public void setPhysicalDefense(int physicalDefense) throws Exception {
+
+	public void setPhysicalDefense(int physicalDefense)  {
 		update( "phys_def", (physicalDefense));
 		this.phys_def = physicalDefense;
-		
+
 	}
-	
+
 	public int getMagicalDefense() {
-		
+
 		return magi_def;
 	}
-	
-	public void setMagicalDefense(int magicalDefense) throws Exception {
+
+	public void setMagicalDefense(int magicalDefense)  {
 		update( "magi_def", (magicalDefense));
 		this.magi_def = magicalDefense;
-		
+
 	}
 
 	public int getHealth() {
 		return getHitpoints();
 	}
 
-	public void setHealth(int health) throws Exception {
+	public void setHealth(int health)  {
 		setHitpoints(health);
 	}
-	
+
 	public int getHitpoints() {
-		
+
 		return health;
 	}
-	
-	public void setHitpoints(int hitpoints) throws Exception {
+
+	public void setHitpoints(int hitpoints)  {
 		update( "health", (hitpoints));
 		this.health = hitpoints;
-		
+
 	}
-	
+
 	public int getMana() {
 		return mana;
 	}
-	
-	public void setMana(int mana) throws Exception {
+
+	public void setMana(int mana)  {
 		update("mana", mana);
 		this.mana = mana;
 	}
-	
+
 	public int getBuyValue() {
 		return buyvalue;
 	}
-	
-	public void setBuyValue(int buyvalue) throws Exception {
+
+	public void setBuyValue(int buyvalue)  {
 		update("buyvalue", buyvalue);
 		this.buyvalue = buyvalue;
 	}
-	
+
 	public int getSellValue() {
 		return sellvalue;
 	}
-	
-	public void setSellValue(int sellvalue) throws Exception {
+
+	public void setSellValue(int sellvalue)  {
 		update("sellvalue", sellvalue);
 		this.sellvalue = sellvalue;
 	}
-	
+
 	public boolean getSellable() {
 		return sellable;
 	}
-	
-	public void setSellable(boolean sellable) throws Exception{
+
+	public void setSellable(boolean sellable) {
 		update("sellable", sellable ? 1: 0);
 		this.sellable = sellable;
 	}
-	
+
 	public String getDescription () {
 		return description;
 	}
-	
-	public void setDescription(String description) throws Exception {
+
+	public void setDescription(String description)  {
 		update("description", description);
 		this.description = description;
 	}
-	
+
 	public int getType() {
-		
+
 		return type;
 	}
-	
-	public void setType(int type) throws Exception{
+
+	public void setType(int type) {
 		this.type = type;
 		update("type", type);
 	}

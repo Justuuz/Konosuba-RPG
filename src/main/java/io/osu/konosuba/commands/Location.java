@@ -24,7 +24,6 @@ public class Location extends Command{
 	@Override
 	protected void run(MessageReceivedEvent event, String[] args) {
 		// TODO Auto-generated method stub
-		try {
 			UserData player = new UserData(event.getAuthor().getIdLong());
 			if(player.getStartStatus()) {
 				if(args.length == 1) {
@@ -51,10 +50,7 @@ public class Location extends Command{
 				send(event.getGuild(), event.getChannel(), "You haven't started yet!", true);
 				return;
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
-	}
 	
 	
 	public void locationBuilder(UserData player, MessageReceivedEvent event) {

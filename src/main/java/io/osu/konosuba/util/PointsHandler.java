@@ -12,7 +12,7 @@ public class PointsHandler {
 	public PointsHandler() {
 	}
 
-	public void recalibratePoints(UserData player) throws Exception{
+	public void recalibratePoints(UserData player){
 		
 //		Object obj = new JsonParser().parse(new FileReader("Data/User.JSON"));
 //		JsonObject user = (JsonObject) obj; 
@@ -78,7 +78,7 @@ public class PointsHandler {
 		dex = (int)(dex + new ClassData(player.getClasses()).getDexterity());
 		luck =(int)(luck + new ClassData(player.getClasses()).getLuck());
 		health = (int)(health + new ClassData(player.getClasses()).getHealth());
-		mana = (int)(health + new ClassData(player.getClasses()).getMana());
+		mana = (int)(mana + new ClassData(player.getClasses()).getMana());
 		
 		
 		player.setStrength(strength);
