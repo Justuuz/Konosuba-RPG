@@ -82,7 +82,7 @@ public class Konosuba  {
 				.setToken(KOBOSUBA_TOKEN)
 				.addEventListeners(new CommandListener())
 				.addEventListeners(new StartupListener())
-				.addEventListeners(new ReactionListener())
+//				.addEventListeners(new ReactionListener())
 				.setBulkDeleteSplittingEnabled(false)
 				// .setShardsTotal(1) // XXX DO NOT USE THIS!
 				.build();
