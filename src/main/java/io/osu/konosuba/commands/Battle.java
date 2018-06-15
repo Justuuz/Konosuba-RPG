@@ -78,7 +78,7 @@ public class Battle extends Command implements ReactionCommand{
 
 			}
 
-		}
+		}	
 
 	@Override
 	public void run(MessageReactionAddEvent event) {

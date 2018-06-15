@@ -31,6 +31,7 @@ public class CommandListener extends ListenerAdapter {
 		new ItemToss_Admin(),
 		new Check(),
 		new Location(),
+		new Shop(),
 	};
 
 	@Override
