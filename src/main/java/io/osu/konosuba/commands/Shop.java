@@ -22,32 +22,49 @@ public class Shop extends Command implements ReactionCommand{
 		// TODO Auto-generated constructor stub
 	}
 	
-	long id;
+	private long GlobalId;
+	private LocationData globalShop;
 	
 
 	@Override
 	protected void run(MessageReceivedEvent event, String[] args) {
 		UserData player = new UserData(event.getAuthor().getIdLong());
 		if(player.getStartStatus()) {
+			player.getLocation();
 			LocationData shops = new LocationData(player.getLocation());
-			
+			globalShop = shops;
 			Consumer<Message> call = (m) -> {
-				id = m.getIdLong();
-				if(!shops.getItemShopName().isEmpty()) event.getTextChannel().addReactionById(id, event.getJDA().getEmoteById(456959750836584459L)).queue();
-				if(!shops.getWeaponShop().isEmpty()) event.getTextChannel().addReactionById(id, event.getJDA().getEmoteById(456959760877486090L)).queue();
-				if(!shops.getMagicShopName().isEmpty()) event.getTextChannel().addReactionById(id, event.getJDA().getEmoteById(456959916901662741L)).queue();
+				GlobalId = m.getIdLong();
+				if(!shops.getItemShopName().isEmpty() && event.getAuthor() != event.getJDA().getSelfUser()) event.getTextChannel().addReactionById(GlobalId, event.getJDA().getEmoteById(456959750836584459L)).queue();
+				if(!shops.getWeaponShop().isEmpty()&& event.getAuthor() != event.getJDA().getSelfUser()) event.getTextChannel().addReactionById(GlobalId, event.getJDA().getEmoteById(456959760877486090L)).queue();
+				if(!shops.getMagicShopName().isEmpty()&& event.getAuthor() != event.getJDA().getSelfUser()) event.getTextChannel().addReactionById(GlobalId, event.getJDA().getEmoteById(456959916901662741L)).queue();
 			};
 			
+			if(args.length == 1 && !shops.getItemShopName().isEmpty()) {
+				event.getChannel().sendMessage(shopHelper(1,shops, player).build()).queue(call);
+				return;
+			}else {
+				send(event.getGuild(), event.getChannel(), "A Item Shop doesn't exist here", true);
+			}
 			if(args[1].equalsIgnoreCase("1")) {
 				if(!shops.getItemShopName().isEmpty()) {
-					event.getChannel().sendMessage(shopHelper(1,shops).build()).queue(call);
+					event.getChannel().sendMessage(shopHelper(1,shops, player).build()).queue(call);
 				}else {
 					send(event.getGuild(), event.getChannel(), "A Item Shop doesn't exist here", true);
 				}
 			}
 			if(args[1].equalsIgnoreCase("2")) {
 				if(!shops.getWeaponShopName().isEmpty()) {
-					event.getChannel().sendMessage(shopHelper(2,shops).build()).queue(call);
+					event.getChannel().sendMessage(shopHelper(2,shops, player).build()).queue(call);
+				}
+			}else {
+				send(event.getGuild(), event.getChannel(), "A Weapon Shop doesn't exist here", true);
+			}
+			if(args[1].equalsIgnoreCase("3")) {
+				if(!shops.getMagicShopName().isEmpty()) {
+					event.getChannel().sendMessage(shopHelper(3,shops, player).build()).queue(call);
+				}else {
+					send(event.getGuild(), event.getChannel(), "A Magic Shop doesn't exist here", true);
 				}
 			}
 		}
@@ -55,48 +72,44 @@ public class Shop extends Command implements ReactionCommand{
 	
 	@Override
 	public void run(MessageReactionAddEvent event) {
-		
-		// TODO Auto-generated method stub
 		UserData player = new UserData(event.getUser().getIdLong());
-		LocationData  location = new LocationData(player.getLocation());
+		
 		Consumer<Message> m = (response) -> {
-			response.clearReactions();
-			if(!location.getItemShopName().isEmpty()) event.getTextChannel().addReactionById(id, event.getJDA().getEmoteById(456959750836584459L)).queue();
-			if(!location.getWeaponShop().isEmpty()) event.getTextChannel().addReactionById(id, event.getJDA().getEmoteById(456959760877486090L)).queue();
-			if(!location.getMagicShopName().isEmpty()) event.getTextChannel().addReactionById(id, event.getJDA().getEmoteById(456959916901662741L)).queue();
+			event.getReaction().removeReaction(event.getUser()).queue();
 		};
-		System.out.println(event.getReactionEmote().getName());
-		if(event.getReactionEmote().getName().equalsIgnoreCase("1_")) {
-			event.getTextChannel().editMessageById(id, shopHelper(1, location).build()).queue((m));
-		}else if(event.getReactionEmote().getName().equalsIgnoreCase("2_") && !location.getWeaponShopName().isEmpty()) {
-			event.getTextChannel().editMessageById(id, shopHelper(2, location).build()).queue((m));
+		if(event.getReactionEmote().getName().equalsIgnoreCase("1_") && event.getUser() != event.getJDA().getSelfUser()) {
+			event.getTextChannel().editMessageById(GlobalId, shopHelper(1, globalShop, player).build()).queue((m));
+		}else if(event.getReactionEmote().getName().equalsIgnoreCase("2_") && event.getUser() != event.getJDA().getSelfUser()) {
+			event.getTextChannel().editMessageById(GlobalId, shopHelper(2, globalShop, player).build()).queue((m));
+		}else if(event.getReactionEmote().getName().equalsIgnoreCase("3_") && event.getUser() != event.getJDA().getSelfUser()) {
+			event.getTextChannel().editMessageById(GlobalId, shopHelper(3, globalShop, player).build()).queue((m));
 		}
 		
 	};
 
-	private EmbedBuilder shopHelper(int shop,LocationData data) {
+	private EmbedBuilder shopHelper(int shop,LocationData data, UserData player) {
 		EmbedBuilder shopBuild = new EmbedBuilder();
 		if(shop == 1) {
-			shopBuild.setTitle(data.getItemShopName());
+			shopBuild.setTitle(data.getItemShopName() + " || Balance: " + player.getBalance() );
 			for(int items : data.getItemShop()) {
 				ItemData itemData = new ItemData(items);
-				shopBuild.addField("**" +itemData.getName() +"**", "**ID**: " + items + "\n**Cost**: " + itemData.getBuyValue() , true);
+				shopBuild.addField("**" +itemData.getName() +" (ID**: "  + items + ")", "**Cost**: " + itemData.getBuyValue() , true);
 			}
 		}
 
 		if(shop == 2) {
-			shopBuild.setTitle(data.getWeaponShopName());
+			shopBuild.setTitle(data.getWeaponShopName()+ " || Balance: " + player.getBalance());
 			for(int items : data.getWeaponShop()) {
 				ItemData itemData = new ItemData(items);
-				shopBuild.addField("**" +itemData.getName() +"**", "**ID**: " + items+ "\n**Cost**: " + itemData.getBuyValue(), true);
+				shopBuild.addField("**" +itemData.getName() +" (ID**: "  + items + ")", "**Cost**: " + itemData.getBuyValue(), true);
 			}
 		}
 
 		if(shop == 3) {
-			shopBuild.setTitle(data.getMagicShopName());
+			shopBuild.setTitle(data.getMagicShopName()+ " || Balance: " + player.getBalance());
 			for(int items : data.getMagicShop()) {
 				ItemData itemData = new ItemData(items);
-				shopBuild.addField("**" +itemData.getName() +"**", "**ID**: " + items+ "\n**Cost**: " + itemData.getBuyValue(), true);
+				shopBuild.addField("**" +itemData.getName() +" (ID**: "  + items + ")", "**Cost**: " + itemData.getBuyValue(), true);
 			}
 		}
 		shopBuild.setFooter("to buy or sell: *shop buy/sell [ID]", "https://cdn130.picsart.com/250247865001212.png");
