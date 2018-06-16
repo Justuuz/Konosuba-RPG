@@ -38,9 +38,13 @@ public class Start extends Command {
 				player.setRing(0);
 				player.setBalance(0);
 				player.setOnhand(0);
-				player.setHealth(10);
-				player.setMana(100);
-				player.setSpells(new ArrayList<Integer>());
+				player.setHealth(50);
+				player.setStrength(5);
+				player.setMagic(5);
+				player.setLuck(5);
+				player.setDexterity(5);
+				player.setPhysicalDefense(5);
+				player.setMagicalDefense(5);
 				List<List<Integer>> list = new ArrayList<List<Integer>>();
 				for(int i=0; i < 9; i++) {
 					list.add(new ArrayList<Integer>());
