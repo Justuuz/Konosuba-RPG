@@ -18,10 +18,8 @@ public class LocationData {
 	private String itemShopName;
 	private String weaponShopName;
 	private String blacksmithName;
-	private String magicShopName;
 	private List<Integer> itemShop = new ArrayList<>();
 	private List<Integer> weaponShop = new ArrayList<>();
-	private List<Integer> magicShop = new ArrayList<>();
 	private List<Integer> monsterList = new ArrayList<>();
 	private List<Integer> locationList = new ArrayList<>();
 
@@ -46,10 +44,8 @@ public class LocationData {
 								"itemshopname  TEXT NOT NULL," +
 								"weaponshopname TEXT NOT NULL," +
 								"blacksmithname TEXT NOT NULL," +
-								"magicshopname  TEXT NOT NULL," +
 								"itemshop      INT NOT NULL DEFAULT '[]'," +
 								"weaponshop    INT NOT NULL DEFAULT '[]'," +
-								"magicshop     INT NOT NULL DEFAULT '[]'," +
 								"monsterlist   INT NOT NULL DEFAULT '[]'," +
 								"locationlist  INT NOT NULL DEFAULT '[]'" +
 								");"
@@ -64,7 +60,6 @@ public class LocationData {
 			itemShopName    = hasResult ? result.getString("itemshopname") : null;
 			weaponShopName  = hasResult ? result.getString("weaponshopname") : null;
 			blacksmithName  = hasResult ? result.getString("blacksmithname") : null;
-			magicShopName   = hasResult ? result.getString("magicshopname") : null;
 
 			if(hasResult) {
 				for(Object item : new JSONArray(result.getString("itemshop"))) itemShop.add((int) item);
@@ -80,7 +75,6 @@ public class LocationData {
 				weaponShop = null;
 				monsterList = null;
 				locationList = null;
-				magicShop = null;
 			}
 
 			statement.close();
@@ -138,9 +132,6 @@ public class LocationData {
 		return blacksmithName;
 	}
 
-	public String getMagicShopName() {
-		return magicShopName;
-	}	
 
 	public List<Integer> getItemShop() {
 		return itemShop;
@@ -150,9 +141,6 @@ public class LocationData {
 		return weaponShop;
 	}
 
-	public List<Integer> getMagicShop() {
-		return magicShop;
-	}
 
 	public List<Integer> getLocationList() {
 		return locationList;

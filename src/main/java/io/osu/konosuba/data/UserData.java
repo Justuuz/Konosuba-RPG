@@ -53,8 +53,6 @@ public class UserData {
 	private int phys_def;
 	private int magi_def;
 	private int health;
-	private int mana;
-	private List<Integer> spells = new ArrayList<>();
 	private List<List<Integer>> invent  = new ArrayList<>();
 	private HashMap<Integer, Integer> item = new HashMap<>();
 	private int location;
@@ -94,10 +92,8 @@ public class UserData {
 								"phys_def INTEGER NOT NULL DEFAULT 0," +
 								"magi_def INTEGER NOT NULL DEFAULT 0," +
 								"health   INTEGER NOT NULL DEFAULT 0," +
-								"mana     INTEGER NOT NULL DEFAULT 0," +
 								"classtype INTEGER NOT NULL DEFAULT 0," +
 								"invent   INT NOT NULL DEFAULT '[]'," +
-								"spells   INT NOT NULL DEFAULT '[]'," +
 								"item     TEXT," +
 								"location INTEGER NOT NULL DEFAULT 0"  +
 								");"
@@ -120,14 +116,13 @@ public class UserData {
 			neck     = hasResult ? result.getInt("neck") : 0;
 			on_hand  = hasResult ? result.getInt("on_hand") : 0;
 			off_hand = hasResult ? result.getInt("off_hand") : 0;
-			strength = hasResult ? result.getInt("strength") : 0;
+			strength = hasResult ? result.getInt("strength") : 5;
 			magic    = hasResult ? result.getInt("magic") : 0;
 			luck     = hasResult ? result.getInt("luck") : 0;
 			dex      = hasResult ? result.getInt("dex") : 0;
 			phys_def = hasResult ? result.getInt("phys_def") : 0;
 			magi_def = hasResult ? result.getInt("magi_def") : 0;
 			health   = hasResult ? result.getInt("health") : 0;
-			mana     = hasResult ? result.getInt("mana") : 0;
 			location = hasResult ? result.getInt("location") : 0;
 
 			if(hasResult) {
@@ -143,11 +138,6 @@ public class UserData {
 				}
 				invent  = stringListList;
 				stringList.clear();
-				raw = new JSONArray(result.getString("spells"));
-				for(Object obj : raw) {
-					stringList.add((int) obj);
-				}
-				spells = stringList;
 				stringList.clear();
 
 				JSONObject raw2 = new JSONObject(result.getInt("item"));
@@ -159,7 +149,6 @@ public class UserData {
 			}else {
 				invent = null;
 				item = null;
-				spells = null;
 			}
 
 			statement.close();
@@ -414,33 +403,7 @@ public class UserData {
 
 	}
 
-	public int getMana() {
-		return mana;
-	}
 
-	public void setMana(int mana)  {
-		update("mana", mana);
-		this.mana = mana;
-	}
-
-	public List<Integer> getSpells() {
-		return spells;
-	}
-
-	public void setSpells(List<Integer> spells) {
-		update("spells", spells);
-		this.spells = spells;
-	}
-
-	public void addSpells(int spell)  {
-		this.spells.add(spell);
-		update("spells", this.spells);
-	}
-
-	public void removeSpells(int spell)  {
-		this.spells.remove(spell);
-		update("spells", this.spells);
-	}
 
 	public List<List<Integer>> getInventory() {
 		return invent;

@@ -32,12 +32,14 @@ public class Money extends Command{
 		
 		if(args[1].equalsIgnoreCase("give")) {
 			List<User> user = event.getMessage().getMentionedUsers();
+			String built = "";
 			for(User players : user) {
+				built += event.getAuthor().getName() + " ";
 				UserData player = new UserData(players.getIdLong());
-				int money = Integer.parseInt(args[3]);
+				int money = Integer.parseInt(args[2]);
 				player.setBalance(player.getBalance() + money);
-				event.getChannel().sendMessage("Money added").queue();
 			}
+			event.getChannel().sendMessage("Money added for " + built).queue();
 		}
 		
 	}

@@ -38,7 +38,6 @@ public class Shop extends Command implements ReactionCommand{
 				GlobalId = m.getIdLong();
 				if(!shops.getItemShopName().isEmpty() && event.getAuthor() != event.getJDA().getSelfUser()) event.getTextChannel().addReactionById(GlobalId, event.getJDA().getEmoteById(456959750836584459L)).queue();
 				if(!shops.getWeaponShop().isEmpty()&& event.getAuthor() != event.getJDA().getSelfUser()) event.getTextChannel().addReactionById(GlobalId, event.getJDA().getEmoteById(456959760877486090L)).queue();
-				if(!shops.getMagicShopName().isEmpty()&& event.getAuthor() != event.getJDA().getSelfUser()) event.getTextChannel().addReactionById(GlobalId, event.getJDA().getEmoteById(456959916901662741L)).queue();
 			};
 			if(args.length == 1 && !hasArgument(args, 1)) {
 				if(!shops.getItemShopName().isEmpty()) {
@@ -66,15 +65,6 @@ public class Shop extends Command implements ReactionCommand{
 					return;
 				}
 			}
-			if(hasArgument(args, 1) && args[1].equalsIgnoreCase("3")  && !hasArgument(args, 2)) {
-				if(!shops.getMagicShopName().isEmpty()) {
-					event.getChannel().sendMessage(shopHelper(3,shops, player).build()).queue(call);
-					return;
-				}else {
-					send(event.getGuild(), event.getChannel(), "A Magic Shop doesn't exist here", true);
-					return;
-				}
-			}
 			if(hasArgument(args, 1) && args[1].equalsIgnoreCase("buy")) {
 				if(!args[2].matches("\\d+")) {
 					send(event.getGuild(), event.getChannel(), "Remember! : *shop buy/sell [ID] [Amount]", true);
@@ -82,7 +72,7 @@ public class Shop extends Command implements ReactionCommand{
 				}
 				int id = Integer.parseInt(args[2]);
 				ItemData item = new ItemData(id);
-				if(globalShop.getItemShop().contains(id) || globalShop.getWeaponShop().contains(id) || globalShop.getMagicShop().contains(id)) {
+				if(globalShop.getItemShop().contains(id) || globalShop.getWeaponShop().contains(id)) {
 					if(!args[3].matches("\\d+")) {
 						send(event.getGuild(), event.getChannel(), "Remember! : *shop buy/sell [ID] [Amount]", true);
 						return;
@@ -100,8 +90,6 @@ public class Shop extends Command implements ReactionCommand{
 						for(int i = 0; i < amount; i++) {
 							if(globalShop.getWeaponShop().contains(id)) {
 								player.addInventory(item.getType(), id);
-							}else if(globalShop.getMagicShop().contains(id)) {
-								
 							}
 						}
 					}
@@ -124,8 +112,6 @@ public class Shop extends Command implements ReactionCommand{
 			event.getTextChannel().editMessageById(GlobalId, shopHelper(1, globalShop, player).build()).queue((m));
 		}else if(event.getReactionEmote().getName().equalsIgnoreCase("2_") && event.getUser() != event.getJDA().getSelfUser()) {
 			event.getTextChannel().editMessageById(GlobalId, shopHelper(2, globalShop, player).build()).queue((m));
-		}else if(event.getReactionEmote().getName().equalsIgnoreCase("3_") && event.getUser() != event.getJDA().getSelfUser()) {
-			event.getTextChannel().editMessageById(GlobalId, shopHelper(3, globalShop, player).build()).queue((m));
 		}
 		
 	};
@@ -148,13 +134,6 @@ public class Shop extends Command implements ReactionCommand{
 			}
 		}
 
-		if(shop == 3) {
-			shopBuild.setTitle(data.getMagicShopName()+ " || Balance: " + player.getBalance());
-			for(int items : data.getMagicShop()) {
-				ItemData itemData = new ItemData(items);
-				shopBuild.addField("**" +itemData.getName() +" (ID**: "  + items + ")", "**Cost**: " + itemData.getBuyValue(), true);
-			}
-		}
 		shopBuild.setFooter("to buy or sell: *shop buy/sell [ID] [Amount]", "https://cdn130.picsart.com/250247865001212.png");
 		return(shopBuild);
 	}

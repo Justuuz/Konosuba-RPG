@@ -29,7 +29,6 @@ public class Profile extends Command {
 				profile.addField("__Location__", new LocationData(player.getLocation()).getMainLocation()  +": "+ new LocationData(player.getLocation()).getSubLocation(), true);
 				profile.addField("__Stats__",
 						"\n**Health:** " + player.getHealth()
-						+"\n**Mana:** " + player.getMana()
 						+ "\n**Strength:** " + player.getStrength()
 						+ "\n**Physical Defense:** " + player.getPhysicalDefense()
 						+ "\n**Magical Defense:** " + player.getMagicalDefense()

@@ -12,8 +12,6 @@ public class BattleData {
 	private int monsterid;
 	private int userhealth;
 	private int monsterhealth;
-	private int usermana;
-	private int monstermana;
 	private long messageid;
 	private long channelid;
 	private long guildid;
@@ -36,9 +34,7 @@ public class BattleData {
 								"userid     INTEGER PRIMARY KEY NOT NULL," +
 								"monsterid  INTEGER NOT NULL," +
 								"userhealth INTEGER NOT NULL DEFAULT 0," +
-								"usermana   INTEGER NOT NULL DEFAULT 0," +
 								"monsterhealth INTEGER NOT NULL DEFAULT 0," +
-								"monstermana INTEGER NOT NULL DEFAULT 0," +
 								"messageid  INTEGER NOT NULL DEFAULT 0," +
 								"channelid  INTEGER NOT NULL DEFAULT 0,"+
 								"guildid    INTEGER NOT NULL DEFAULT 0" +
@@ -51,9 +47,7 @@ public class BattleData {
 
 			monsterid     = hasResult ? result.getInt("monsterid") : 0;
 			userhealth    = hasResult ? result.getInt("userhealth") : 0;
-			usermana      = hasResult ? result.getInt("usermana") : 0;
 			monsterhealth = hasResult ? result.getInt("monsterhealth") : 0;
-			monstermana   = hasResult ? result.getInt("monstermana") : 0;
 			messageid     = hasResult ? result.getLong("messageid") : 0;
 			channelid     = hasResult ? result.getLong("channelid") : 0;
 			guildid       = hasResult ? result.getLong("guildid") : 0;
@@ -115,28 +109,12 @@ public class BattleData {
 		return monsterhealth;
 	}
 
-	public int getUserMana() {
-		return usermana;
-	}
-
-	public void setUserMana(int usermana)  {
-		update("usermana", usermana);
-		this.usermana = usermana;
-	}
 
 	public void setMonsterHealth(int monsterhealth) {
 		update("monsterhealth", monsterhealth);
 		this.monsterhealth = monsterhealth;
 	}
 
-	public int getMonsterMana() {
-		return monstermana;
-	}
-
-	public void setMonsterMana(int monstermana) {
-		update("monstermana", monstermana);
-		this.monstermana = monstermana;
-	}
 
 	public long getMessageId() {
 		return messageid;

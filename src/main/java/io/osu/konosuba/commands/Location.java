@@ -64,9 +64,6 @@ public class Location extends Command{
 		if(!locationInfo.getWeaponShopName().isEmpty()) {
 			location.addField("**"+locationInfo.getWeaponShopName() +"**", "*shop 2", true);
 		}
-		if(!locationInfo.getMagicShopName().isEmpty()) {
-			location.addField("**"+locationInfo.getMagicShopName() + "**", "*shop 3", true);
-		}
 		if(!locationInfo.getBlacksmithName().isEmpty()) {
 			location.addField("**" +locationInfo.getBlacksmithName() + "**", "*blacksmith", true);	
 		}
