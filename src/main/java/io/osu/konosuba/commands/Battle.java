@@ -112,6 +112,7 @@ public class Battle extends Command implements ReactionCommand{
 					if(battle.getUserHealth() <= 0) {
 						EmbedBuilder end = new EmbedBuilder();
 						end.setDescription((event.getMember() != null ? event.getMember().getEffectiveName() : event.getUser().getName()) + " has been slained by a " + monster.getName());
+						event.getTextChannel().editMessageById(battle.getMessageId(), end.build()).queue();
 						player.setBattleStatus(false);
 						battle.endSession(event.getUser().getIdLong());
 						return;
@@ -129,6 +130,7 @@ public class Battle extends Command implements ReactionCommand{
 					if(battle.getUserHealth() <= 0) {
 						EmbedBuilder end = new EmbedBuilder();
 						end.setDescription((event.getMember() != null ? event.getMember().getEffectiveName() : event.getUser().getName()) + " has been slained by a " + monster.getName());
+						event.getTextChannel().editMessageById(battle.getMessageId(), end.build()).queue();
 						player.setBattleStatus(false);
 						battle.endSession(event.getUser().getIdLong());
 						return;
@@ -176,6 +178,7 @@ public class Battle extends Command implements ReactionCommand{
 					if(battle.getUserHealth() <= 0) {
 						EmbedBuilder end = new EmbedBuilder();
 						end.setDescription((event.getMember() != null ? event.getMember().getEffectiveName() : event.getUser().getName()) + " has been slained by a " + monster.getName());
+						event.getTextChannel().editMessageById(battle.getMessageId(), end.build()).queue();
 						player.setBattleStatus(false);
 						battle.endSession(event.getUser().getIdLong());
 						return;
@@ -193,6 +196,7 @@ public class Battle extends Command implements ReactionCommand{
 					if(battle.getUserHealth() <= 0) {
 						EmbedBuilder end = new EmbedBuilder();
 						end.setDescription((event.getMember() != null ? event.getMember().getEffectiveName() : event.getUser().getName()) + " has been slained by a " + monster.getName());
+						event.getTextChannel().editMessageById(battle.getMessageId(), end.build()).queue();
 						player.setBattleStatus(false);
 						battle.endSession(event.getUser().getIdLong());
 						return;
@@ -273,7 +277,7 @@ public class Battle extends Command implements ReactionCommand{
 		battleMessage.addField("__" +  event.getMember() != null ? event.getMember().getEffectiveName() : event.getUser().getName() +"'s Stats__" , "**Health**: "+battle.getUserHealth() , true);
 		battleMessage.addField("__" + monster.getName() + "'s Stats__", "**Health**: "+battle.getMonsterHealth(), true);
 		if(!log1.isEmpty()) {
-			battleMessage.addField("**Logs**:", log1 + "\n" + log2, true);
+			battleMessage.addField("**__Logs__**:", log1 + "\n" + log2, false);
 		}
 		if(battle.getGuildId() == event.getGuild().getIdLong()) {
 			if(battle.getChannelId() == event.getChannel().getIdLong()) {

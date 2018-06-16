@@ -74,7 +74,7 @@ public class Location extends Command{
 				String name2 = new MonsterData(name).getName();
 				list.append("**" + name2 + "**|");
 			}
-			location.addField("**Monsters Nearby**", list.toString(), true);
+			location.addField("**Monsters Nearby**", list.toString(), false);
 		}
 		if(!locationInfo.getLocationList().isEmpty()) {
 			StringBuilder list = new StringBuilder();
@@ -83,7 +83,7 @@ public class Location extends Command{
 				String name2 = new LocationData(name).getSubLocation();
 				list.append("**" + name2 + "**|");
 			}
-			location.addField("**Surrounding Areas**", list.toString(), true);
+			location.addField("**Surrounding Areas**", list.toString(), false);
 		}
 		
 		location.setFooter("To move locations: *location move [place]","https://cdn130.picsart.com/250247865001212.png");
