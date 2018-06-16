@@ -62,7 +62,7 @@ public class Equip extends Command {
 
 				if(args[1].equalsIgnoreCase("chest")) {	
 					String item = StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
-					Statement statement = Konosuba.CONNECTION1.createStatement();
+					Statement statement = Konosuba.CONNECTION2.createStatement();
 					ResultSet result = statement.executeQuery("SELECT * FROM 'items' WHERE name LIKE '" + item + "';");
 					if(result.next()) {			
 						player.setChest(result.getInt("itemid"));

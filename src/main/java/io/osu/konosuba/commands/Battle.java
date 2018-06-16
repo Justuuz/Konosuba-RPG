@@ -49,7 +49,7 @@ public class Battle extends Command implements ReactionCommand{
 					}
 
 				}
-				if(args[1].equalsIgnoreCase("search")) {
+				if(hasArgument(args, 1) && args[1].equalsIgnoreCase("search") && !hasArgument(args, 2)) {
 
 					if(!player.getBattleStatus()) {
 
@@ -63,7 +63,9 @@ public class Battle extends Command implements ReactionCommand{
 							BattleData battle = new BattleData(event.getAuthor().getIdLong());
 							battle.setMonsterId(monsterid);
 							battle.setMonsterHealth(monster.getHealth());
+							battle.setMonsterMana(monster.getMana());
 							battle.setUserHealth(player.getHealth());
+							battle.setUserMana(player.getMana());
 							battleMessage(battle, event);
 							//							battle.endSession(event.getAuthor().getIdLong());
 							return;

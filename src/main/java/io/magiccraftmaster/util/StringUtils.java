@@ -213,4 +213,6 @@ public final class StringUtils {
 	public static String formatNumber(double d) {
 		return numberFormat.format(d);
 	}
+	
+	
 }

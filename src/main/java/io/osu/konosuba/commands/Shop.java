@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
+import io.magiccraftmaster.util.StringUtils;
 import io.osu.konosuba.Command;
 import io.osu.konosuba.Konosuba;
 import io.osu.konosuba.ReactionCommand;
@@ -39,32 +40,74 @@ public class Shop extends Command implements ReactionCommand{
 				if(!shops.getWeaponShop().isEmpty()&& event.getAuthor() != event.getJDA().getSelfUser()) event.getTextChannel().addReactionById(GlobalId, event.getJDA().getEmoteById(456959760877486090L)).queue();
 				if(!shops.getMagicShopName().isEmpty()&& event.getAuthor() != event.getJDA().getSelfUser()) event.getTextChannel().addReactionById(GlobalId, event.getJDA().getEmoteById(456959916901662741L)).queue();
 			};
-			
-			if(args.length == 1 && !shops.getItemShopName().isEmpty()) {
-				event.getChannel().sendMessage(shopHelper(1,shops, player).build()).queue(call);
-				return;
-			}else {
-				send(event.getGuild(), event.getChannel(), "A Item Shop doesn't exist here", true);
+			if(args.length == 1 && !hasArgument(args, 1)) {
+				if(!shops.getItemShopName().isEmpty()) {
+					event.getChannel().sendMessage(shopHelper(1,shops, player).build()).queue(call);
+					return;
+				}else {
+					send(event.getGuild(), event.getChannel(), "A Item Shop doesn't exist here", true);
+					return;
+				}	
 			}
-			if(args[1].equalsIgnoreCase("1")) {
+			if(hasArgument(args, 1) && args[1].equalsIgnoreCase("1")  && !hasArgument(args, 2)) {
 				if(!shops.getItemShopName().isEmpty()) {
 					event.getChannel().sendMessage(shopHelper(1,shops, player).build()).queue(call);
 				}else {
 					send(event.getGuild(), event.getChannel(), "A Item Shop doesn't exist here", true);
+					return;
 				}
 			}
-			if(args[1].equalsIgnoreCase("2")) {
+			if(hasArgument(args, 1) && args[1].equalsIgnoreCase("2")  &&!hasArgument(args, 2)) {
 				if(!shops.getWeaponShopName().isEmpty()) {
 					event.getChannel().sendMessage(shopHelper(2,shops, player).build()).queue(call);
+					return;
+				}else {
+					send(event.getGuild(), event.getChannel(), "A Weapon Shop doesn't exist here", true);
+					return;
 				}
-			}else {
-				send(event.getGuild(), event.getChannel(), "A Weapon Shop doesn't exist here", true);
 			}
-			if(args[1].equalsIgnoreCase("3")) {
+			if(hasArgument(args, 1) && args[1].equalsIgnoreCase("3")  && !hasArgument(args, 2)) {
 				if(!shops.getMagicShopName().isEmpty()) {
 					event.getChannel().sendMessage(shopHelper(3,shops, player).build()).queue(call);
+					return;
 				}else {
 					send(event.getGuild(), event.getChannel(), "A Magic Shop doesn't exist here", true);
+					return;
+				}
+			}
+			if(hasArgument(args, 1) && args[1].equalsIgnoreCase("buy")) {
+				if(!args[2].matches("\\d+")) {
+					send(event.getGuild(), event.getChannel(), "Remember! : *shop buy/sell [ID] [Amount]", true);
+					return;
+				}
+				int id = Integer.parseInt(args[2]);
+				ItemData item = new ItemData(id);
+				if(globalShop.getItemShop().contains(id) || globalShop.getWeaponShop().contains(id) || globalShop.getMagicShop().contains(id)) {
+					if(!args[3].matches("\\d+")) {
+						send(event.getGuild(), event.getChannel(), "Remember! : *shop buy/sell [ID] [Amount]", true);
+						return;
+					}
+					int amount = Integer.parseInt(args[3]);
+					if(item.getBuyValue() * amount > player.getBalance()) {
+						send(event.getGuild(), event.getChannel(), "Insufficient Funds", true);
+						return;
+					}
+						if(globalShop.getItemShop().contains(id)) {
+							player.addItems(id, amount);
+							player.setBalance(player.getBalance() - (item.getBuyValue() * amount));
+					}else {
+						player.setBalance(player.getBalance() - (item.getBuyValue() * amount));
+						for(int i = 0; i < amount; i++) {
+							if(globalShop.getWeaponShop().contains(id)) {
+								player.addInventory(item.getType(), id);
+							}else if(globalShop.getMagicShop().contains(id)) {
+								
+							}
+						}
+					}
+					send(event.getGuild(), event.getChannel(), "You bought " + amount  + " " + item.getName(), true);
+				}else {
+					send(event.getGuild(), event.getChannel(), "The item you are looking for is currently not in that shop!", true);
 				}
 			}
 		}
@@ -112,7 +155,7 @@ public class Shop extends Command implements ReactionCommand{
 				shopBuild.addField("**" +itemData.getName() +" (ID**: "  + items + ")", "**Cost**: " + itemData.getBuyValue(), true);
 			}
 		}
-		shopBuild.setFooter("to buy or sell: *shop buy/sell [ID]", "https://cdn130.picsart.com/250247865001212.png");
+		shopBuild.setFooter("to buy or sell: *shop buy/sell [ID] [Amount]", "https://cdn130.picsart.com/250247865001212.png");
 		return(shopBuild);
 	}
 

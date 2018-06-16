@@ -133,7 +133,7 @@ public class BattleData {
 		return monstermana;
 	}
 
-	public void setMana(int monstermana) {
+	public void setMonsterMana(int monstermana) {
 		update("monstermana", monstermana);
 		this.monstermana = monstermana;
 	}

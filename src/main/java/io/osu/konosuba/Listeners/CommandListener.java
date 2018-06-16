@@ -9,6 +9,7 @@ import io.osu.konosuba.test.Check;
 import io.osu.konosuba.test.Creator;
 import io.osu.konosuba.test.ItemToss_Admin;
 import io.osu.konosuba.test.Item_admin;
+import io.osu.konosuba.test.Money;
 import io.osu.konosuba.test.Start2;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.events.message.react.MessageReactionAddEvent;
@@ -32,6 +33,7 @@ public class CommandListener extends ListenerAdapter {
 		new Check(),
 		new Location(),
 		new Shop(),
+		new Money(),
 	};
 
 	@Override
