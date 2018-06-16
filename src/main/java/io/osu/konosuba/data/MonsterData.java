@@ -21,10 +21,8 @@ public class MonsterData {
 	private int phys_def;
 	private int magi_def;
 	private int health;
-	private int mana;
 	private int mincash;
 	private int maxcash;
-	private List<Integer> spells;
 	private List<Integer> drop;
 	private List<Integer> location;
 
@@ -54,7 +52,6 @@ public class MonsterData {
 								"health    INTEGER NOT NULL DEFAULT 0," +
 								"mincash   INTEGER NOT NULL DEFAULT 0," +
 								"maxcash   INTEGER NOT NULL DEFAULT 0," +
-								"spells    INT NOT NULL DEFAULT '[]'," +
 								"drops     INT NOT NULL DEFAULT '[]'," +
 								"location  INT NOT NULL DEFAULT '[]'" +
 								");"
@@ -73,7 +70,8 @@ public class MonsterData {
 			phys_def = hasResult ? result.getInt("phys_def") : 0;
 			magi_def = hasResult ? result.getInt("magi_def") : 0;
 			health   = hasResult ? result.getInt("health") : 0;
-			mana     = hasResult ? result.getInt("mana") : 0;
+			mincash  = hasResult ? result.getInt("mincash") : 0;
+			maxcash  = hasResult? result.getInt("maxcash") : 0;
 
 			if(hasResult) {
 				JSONArray raw = new JSONArray(result.getString("drops"));
@@ -91,16 +89,9 @@ public class MonsterData {
 				location = stringList;
 				stringList.clear();
 
-				raw = new JSONArray(result.getString("spells"));
-				for(Object obj :  raw) {
-					stringList.add((int) obj);
-				}
-				spells = stringList;
-				stringList.clear();
 			}else {
 				drop = null;
 				location = null;
-				spells = null;
 			}
 
 			statement.close();
@@ -216,14 +207,6 @@ public class MonsterData {
 
 	}
 
-	public int getMana() {
-		return mana;
-	}
-
-	public void setMana(int mana)  {
-		update("mana", mana);
-		this.mana = mana;
-	}
 
 	public int getMinCash() {
 		return mincash;
@@ -233,24 +216,6 @@ public class MonsterData {
 		return maxcash;
 	}
 
-	public List<Integer> getSpells() {
-		return spells;
-	}
-
-	public void setSpells(List<Integer> spells) {
-		update("spells", spells);
-		this.spells = spells;
-	}
-
-	public void addSpells(int spell)  {
-		this.spells.add(spell);
-		update("spells", this.spells);
-	}
-
-	public void removeSpells(int spell)  {
-		this.spells.remove(spell);
-		update("spells", this.spells);
-	}
 
 	public List<Integer> getLocation() {
 		return location;
