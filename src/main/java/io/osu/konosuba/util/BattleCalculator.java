@@ -4,16 +4,14 @@ import io.magiccraftmaster.util.Calculator;
 
 public class BattleCalculator {
 	
-	public static int physicalCalculation(int Strength, int PhyDef) {
-		int value  = (int) ((int) Math.log((Strength/Math.sqrt(PhyDef))) * Math.pow(Strength, .33));
-		value = value + (int)(value * Calculator.randomIn( -.10, .10, false));
-		return value;
+	public static double physicalCalculation(int strength, int phyDef) {
+		 double randomN = (Math.random()*(0.2) + 0.9); //random number from 0.9 to 1.1
+	     return Math.log(strength/Math.pow(phyDef,0.5)) * Math.pow(strength, 0.667) * randomN;
 	}
 	
-	public static int magicalCalculation(int magic, int magDef) {
-		int value = (int) ((int) Math.log((magic/Math.sqrt(magDef)))* Math.pow(magic, .33));
-		value  = value + (int)(value*Calculator.randomIn(-.10, .10, false));
-		return value;
+	public static double magicalCalculation(int magic, int magDef) {
+		double randomN = (Math.random()*(0.2) + 0.9); //random number from 0.9 to 1.1
+        return Math.log(magic/Math.pow(magDef,0.5)) * Math.pow(magic, 0.667) * randomN;
 	}
 
 	public static double physicalHitChance(int strength, int dex) {
@@ -26,6 +24,10 @@ public class BattleCalculator {
 	}
 	
 	public static double evadeChance(int evadeDex, int otherDex) {
-		return (int) ((80/71) * Math.atan(evadeDex/otherDex));
+		return  ((80/Math.PI) * Math.atan(evadeDex/otherDex));
 	}
+	
+	public static double Luck(int luck, int otherLuck) {
+        return (150/Math.PI) * Math.atan(luck / otherLuck);
+    }
 }
