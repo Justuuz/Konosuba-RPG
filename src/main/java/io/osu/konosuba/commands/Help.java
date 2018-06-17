@@ -10,7 +10,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 public class Help extends Command{
 
 	protected Help() {
-		super(Konosuba.COLOR, Konosuba.PREFIX, "help", "List all commands", 0, rnull);
+		super(Konosuba.COLOR, Konosuba.PREFIX, "help", "List all commands", null, 0);
 		// TODO Auto-generated constructor stub
 	}
 
