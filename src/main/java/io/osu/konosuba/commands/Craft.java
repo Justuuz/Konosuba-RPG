@@ -9,10 +9,11 @@ import io.osu.konosuba.data.UserData;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.core.events.message.react.MessageReactionAddEvent;
 
 import java.util.function.Consumer;
 
-public class Craft extends Command {
+public class Craft extends Command implements ReactionCommand{
 
     public Craft() {
         super(Konosuba.COLOR, Konosuba.PREFIX, "craft", "all related crafting commands", null, 0);
@@ -120,4 +121,10 @@ public class Craft extends Command {
         craftBuild.setFooter("to craft: *craft make [ID] [Amount]", "https://i.imgur.com/9yE07dd.png");
         return(craftBuild);
     }
+
+	@Override
+	public void run(MessageReactionAddEvent event) {
+		// TODO Auto-generated method stub
+		
+	}
 }
