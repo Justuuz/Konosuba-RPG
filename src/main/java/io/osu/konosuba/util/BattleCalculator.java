@@ -6,12 +6,12 @@ public class BattleCalculator {
 	
 	public static double physicalCalculation(int strength, int phyDef) {
 		 double randomN = (Math.random()*(0.2) + 0.9); //random number from 0.9 to 1.1
-	     return Math.log(strength/Math.pow(phyDef,0.5)) * Math.pow(strength, 0.667) * randomN;
+	     return Math.log(strength) / Math.log(Math.pow(phyDef,0.8)) * Math.pow(strength, 0.667) * randomN;
 	}
 	
 	public static double magicalCalculation(int magic, int magDef) {
 		double randomN = (Math.random()*(0.2) + 0.9); //random number from 0.9 to 1.1
-        return Math.log(magic/Math.pow(magDef,0.5)) * Math.pow(magic, 0.667) * randomN;
+        return Math.log(magic) / Math.log(Math.pow(magDef,0.8)) * Math.pow(magic, 0.667) * randomN;
 	}
 
 	public static double physicalHitChance(int strength, int dex) {
