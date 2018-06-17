@@ -3,6 +3,10 @@ package io.osu.konosuba.data;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.json.JSONArray;
 
 import io.magiccraftmaster.util.StringUtils;
 import io.osu.konosuba.Konosuba;
@@ -24,12 +28,14 @@ public class ItemData {
 	private int phys_def;
 	private int magi_def;
 	private int health;
-	private int mana;
 	private int buyvalue;
 	private int sellvalue;
 	private boolean sellable;
 	private String description;
 	private int type;
+	private List<Integer> craft1 = new ArrayList<>();
+	private List<Integer> craft2 = new ArrayList<>();
+	private List<Integer> craft3 = new ArrayList<>();
 	// ===============================================
 
 	private boolean first = true;
@@ -56,12 +62,14 @@ public class ItemData {
 								"  phys_def INTEGER NOT NULL DEFAULT 0," + 
 								"  magi_def INTEGER NOT NULL DEFAULT 0," + 
 								"  health   INTEGER NOT NULL DEFAULT 0," + 
-								"  mana     INTEGER NOT NULL DEFAULT 0," +
 								"  buyvalue INTEGER NOT NULL DEFAULT 0," +
 								"  sellvalue INTEGER NOT NULL DEFAULT 0," +
 								"  sellable  INTEGER NOT NULL DEFAULT 0," +
 								" description TEXT NOT NULL," +
 								"  type    INTEGER NOT NULL" + 
+								"craft1        TEXT NOT NULL DEFAULT '[]'," +
+								"craft2        TEXT NOT NULL DEFAULT '[]'," +
+								"craft3        TEXT NOT NULL DEFAULT '[]'," +
 								");"
 						);
 				first = false;
@@ -77,12 +85,23 @@ public class ItemData {
 			phys_def = hasResult ? result.getInt("phys_def") : 0;
 			magi_def = hasResult ? result.getInt("magi_def") : 0;
 			health   = hasResult ? result.getInt("health") : 0;
-			mana     = hasResult ?  result.getInt("mana") : 0;
 			buyvalue = hasResult ? result.getInt("buyvalue") : 0;
 			sellvalue = hasResult ? result.getInt("sellvalue") : 0;
 			sellable = hasResult && result.getInt("sellable") == 1;
 			description = hasResult ? result.getString("description") : null;
 			type     = hasResult ? result.getInt("type") : null;
+			
+			if(hasResult) {
+				for(Object c1 : new JSONArray(result.getString("craft1"))) craft1.add((int) c1);
+				
+				for(Object c2 : new JSONArray(result.getString("craft2"))) craft2.add((int) c2);
+				
+				for(Object c3 : new JSONArray(result.getString("craft3"))) craft3.add((int) c3);
+			}else {
+				craft1 = null;
+				craft2 = null;
+				craft3 = null;
+			}
 			statement.close();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -217,14 +236,6 @@ public class ItemData {
 
 	}
 
-	public int getMana() {
-		return mana;
-	}
-
-	public void setMana(int mana)  {
-		update("mana", mana);
-		this.mana = mana;
-	}
 
 	public int getBuyValue() {
 		return buyvalue;
@@ -270,5 +281,17 @@ public class ItemData {
 	public void setType(int type) {
 		this.type = type;
 		update("type", type);
+	}
+	
+	public List<Integer> getCraft1() {
+		return craft1;
+	}
+	
+	public List<Integer> getCraft2() {
+		return craft2;
+	}
+	
+	public List<Integer> getCraft3() {
+		return craft2;
 	}
 }
