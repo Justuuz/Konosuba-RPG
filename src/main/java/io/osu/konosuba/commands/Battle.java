@@ -274,7 +274,7 @@ public class Battle extends Command implements ReactionCommand{
 		EmbedBuilder battleMessage = new EmbedBuilder();
 		MonsterData monster = new MonsterData(battle.getMonsterId());
 		battleMessage.setTitle("** " + (event.getMember() != null ? event.getMember().getEffectiveName() : event.getUser().getName()) + " ** vs ** " + monster.getName() + " **");
-		battleMessage.addField("__" +  event.getMember() != null ? event.getMember().getEffectiveName() : event.getUser().getName() +"'s Stats__" , "**Health**: "+battle.getUserHealth() , true);
+		battleMessage.addField("__" +  (event.getMember() != null ? event.getMember().getEffectiveName() : event.getUser().getName()) +"'s Stats__" , "**Health**: "+battle.getUserHealth() , true);
 		battleMessage.addField("__" + monster.getName() + "'s Stats__", "**Health**: "+battle.getMonsterHealth(), true);
 		if(!log1.isEmpty()) {
 			battleMessage.addField("**__Logs__**:", log1 + "\n" + log2, false);

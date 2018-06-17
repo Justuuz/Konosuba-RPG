@@ -20,6 +20,7 @@ public class LocationData {
 	private String blacksmithName;
 	private List<Integer> itemShop = new ArrayList<>();
 	private List<Integer> weaponShop = new ArrayList<>();
+	private List<List<Integer>> blacksmith = new ArrayList<>();
 	private List<Integer> monsterList = new ArrayList<>();
 	private List<Integer> locationList = new ArrayList<>();
 
@@ -44,10 +45,11 @@ public class LocationData {
 								"itemshopname  TEXT NOT NULL," +
 								"weaponshopname TEXT NOT NULL," +
 								"blacksmithname TEXT NOT NULL," +
-								"itemshop      INT NOT NULL DEFAULT '[]'," +
-								"weaponshop    INT NOT NULL DEFAULT '[]'," +
-								"monsterlist   INT NOT NULL DEFAULT '[]'," +
-								"locationlist  INT NOT NULL DEFAULT '[]'" +
+								"itemshop      TEXT NOT NULL DEFAULT '[]'," +
+								"weaponshop    TEXT NOT NULL DEFAULT '[]'," +
+								"blacksmithshop TEXT NOT NULL DEFAULT '[]," +
+								"monsterlist   TEXT NOT NULL DEFAULT '[]'," +
+								"locationlist  TEXT NOT NULL DEFAULT '[]'" +
 								");"
 						);
 				first = false;
@@ -70,11 +72,24 @@ public class LocationData {
 
 				for(Object loc : new JSONArray(result.getString("locationlist"))) locationList.add((int) loc);
 
+				JSONArray raw = new JSONArray(result.getString("blacksmith"));
+				List<List<Integer>> stringListList = new ArrayList<>();
+				List<Integer> stringList = new ArrayList<>();
+				for (Object obj : raw) {
+					for (Object obj2 : ((JSONArray) obj)) {
+						stringList.add((int) obj2);
+					}
+					stringListList.add(new ArrayList<>(stringList)); // Fixes clearing
+					stringList.clear();  
+				}
+				blacksmith  = stringListList;
+				stringList.clear();
 			}else {
 				itemShop = null;
 				weaponShop = null;
 				monsterList = null;
 				locationList = null;
+				blacksmith = null;
 			}
 
 			statement.close();
@@ -150,5 +165,8 @@ public class LocationData {
 		return monsterList;
 	}
 
+	public List<List<Integer>> getBlackSmith() {
+		return blacksmith;
+	}
 
 }
