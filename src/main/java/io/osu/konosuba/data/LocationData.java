@@ -20,7 +20,10 @@ public class LocationData {
 	private String blacksmithName;
 	private List<Integer> itemShop = new ArrayList<>();
 	private List<Integer> weaponShop = new ArrayList<>();
-	private List<List<Integer>> blacksmith = new ArrayList<>();
+	private List<Integer> blacksmith = new ArrayList<>();
+	private List<Integer> craft1 = new ArrayList<>();
+	private List<Integer> craft2 = new ArrayList<>();
+	private List<Integer> craft3 = new ArrayList<>();
 	private List<Integer> monsterList = new ArrayList<>();
 	private List<Integer> locationList = new ArrayList<>();
 
@@ -49,7 +52,10 @@ public class LocationData {
 								"weaponshop    TEXT NOT NULL DEFAULT '[]'," +
 								"blacksmithshop TEXT NOT NULL DEFAULT '[]," +
 								"monsterlist   TEXT NOT NULL DEFAULT '[]'," +
-								"locationlist  TEXT NOT NULL DEFAULT '[]'" +
+								"locationlist  TEXT NOT NULL DEFAULT '[],'" +
+								"craft1        TEXT NOT NULL DEFAULT '[]'`" +
+								"craft2        TEXT NOT NULL DEFAULT '[]'," +
+								"craft3        TEXT NOT NULL DEFAULT '[]'," +
 								");"
 						);
 				first = false;
@@ -72,24 +78,22 @@ public class LocationData {
 
 				for(Object loc : new JSONArray(result.getString("locationlist"))) locationList.add((int) loc);
 
-				JSONArray raw = new JSONArray(result.getString("blacksmith"));
-				List<List<Integer>> stringListList = new ArrayList<>();
-				List<Integer> stringList = new ArrayList<>();
-				for (Object obj : raw) {
-					for (Object obj2 : ((JSONArray) obj)) {
-						stringList.add((int) obj2);
-					}
-					stringListList.add(new ArrayList<>(stringList)); // Fixes clearing
-					stringList.clear();  
-				}
-				blacksmith  = stringListList;
-				stringList.clear();
+				for(Object bla : new JSONArray(result.getString("blacksmith"))) blacksmith.add((int) bla);
+				
+				for(Object c1 : new JSONArray(result.getString("craft1"))) craft1.add((int) c1);
+				
+				for(Object c2 : new JSONArray(result.getString("craft2"))) craft2.add((int) c2);
+				
+				for(Object c3 : new JSONArray(result.getString("craft3"))) craft3.add((int) c3);
 			}else {
 				itemShop = null;
 				weaponShop = null;
 				monsterList = null;
 				locationList = null;
 				blacksmith = null;
+				craft1 = null;
+				craft2 = null;
+				craft3 = null;
 			}
 
 			statement.close();
@@ -165,8 +169,20 @@ public class LocationData {
 		return monsterList;
 	}
 
-	public List<List<Integer>> getBlackSmith() {
+	public List<Integer> getBlackSmith() {
 		return blacksmith;
+	}
+	
+	public List<Integer> getCraft1() {
+		return craft1;
+	}
+	
+	public List<Integer> getCraft2() {
+		return craft2;
+	}
+	
+	public List<Integer> getCraft3() {
+		return craft2;
 	}
 
 }

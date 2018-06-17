@@ -140,7 +140,7 @@ public class UserData {
 				stringList.clear();
 				stringList.clear();
 
-				JSONObject raw2 = new JSONObject(result.getInt("item"));
+				JSONObject raw2 = new JSONObject(result.getString("item"));
 				HashMap<Integer, Integer> stringMap = new HashMap<>();
 				raw2.toMap().forEach((k,v) -> stringMap.put(Integer.parseInt(k), (int)v));
 				item = stringMap;
