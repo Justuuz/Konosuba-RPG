@@ -277,7 +277,7 @@ public class Battle extends Command implements ReactionCommand{
 		battleMessage.addField("__" +  (event.getMember() != null ? event.getMember().getEffectiveName() : event.getUser().getName()) +"'s Stats__" , "**Health**: "+battle.getUserHealth() , true);
 		battleMessage.addField("__" + monster.getName() + "'s Stats__", "**Health**: "+battle.getMonsterHealth(), true);
 		if(!log1.isEmpty()) {
-			battleMessage.addField("**__Logs__**:", log1 + "\n" + log2, false);
+			battleMessage.addField("**__Message Logs__**:", log1 + "\n" + log2, false);
 		}
 		if(battle.getGuildId() == event.getGuild().getIdLong()) {
 			if(battle.getChannelId() == event.getChannel().getIdLong()) {
@@ -308,9 +308,11 @@ public class Battle extends Command implements ReactionCommand{
 						double damage = BattleCalculator.physicalCalculation(player.getStrength(), monster.getPhysicalDefense());
 						if(Calculator.randomIn(0, 100, false) <= BattleCalculator.Luck(player.getLuck(), monster.getLuck())) { // Double Damage
 							damage *= 2;
+							log1 = (event.getMember() != null ? event.getMember().getEffectiveName() : event.getUser().getName()) + " dealt " + (int)damage + " damage! Critical Hit!";  
+						}else {
+						log1 = (event.getMember() != null ? event.getMember().getEffectiveName() : event.getUser().getName()) + " dealt " + (int)damage + " damage!";
 						}
 						battle.setMonsterHealth(battle.getMonsterHealth() - (int)damage);
-						log1 = (event.getMember() != null ? event.getMember().getEffectiveName() : event.getUser().getName()) + " dealt " + (int)damage + " damage!";  
 					}
 				}else { // Player missed. 
 					log1 = (event.getMember() != null ? event.getMember().getEffectiveName() : event.getUser().getName()) + " Missed!";
@@ -323,9 +325,11 @@ public class Battle extends Command implements ReactionCommand{
 						double damage = BattleCalculator.magicalCalculation(player.getMagic(), monster.getMagicalDefense());
 						if(Calculator.randomIn(0, 100, false) <= BattleCalculator.Luck(player.getLuck(), monster.getLuck())) { // Double Damage
 							damage *= 2;
+							log1 = (event.getMember() != null ? event.getMember().getEffectiveName() : event.getUser().getName()) + " dealt " + (int)damage + " damage! Critical Hit!";  
+						}else {
+						log1 = (event.getMember() != null ? event.getMember().getEffectiveName() : event.getUser().getName()) + " dealt " + (int)damage + " damage!";  
 						}
 						battle.setMonsterHealth(battle.getMonsterHealth() - (int)damage);
-						log1 = (event.getMember() != null ? event.getMember().getEffectiveName() : event.getUser().getName()) + " dealt " + (int)damage + " damage!";  
 					}
 				}else { // Player missed. 
 					log1 = (event.getMember() != null ? event.getMember().getEffectiveName() : event.getUser().getName()) + " Missed!";
@@ -340,9 +344,11 @@ public class Battle extends Command implements ReactionCommand{
 						double damage = BattleCalculator.physicalCalculation(monster.getStrength(), player.getPhysicalDefense());
 						if(Calculator.randomIn(0, 100, false) <= BattleCalculator.Luck(monster.getLuck(), player.getLuck())) { // Double Damage
 							damage *= 2;
+							log1 = monster.getName() + " dealt " + (int)damage + " damage! Critical Hit!";  
+						}else {
+						log1 = monster.getName() + " dealt " + (int)damage + " damage!";  
 						}
 						battle.setUserHealth(battle.getUserHealth() - (int)damage);
-						log1 = monster.getName() + " dealt " + (int)damage + " damage!";  
 					}
 				}else { // Player missed. 
 					log1 = monster.getName() + " Missed!";
@@ -355,9 +361,11 @@ public class Battle extends Command implements ReactionCommand{
 						double damage = BattleCalculator.physicalCalculation(monster.getStrength(), player.getPhysicalDefense());
 						if(Calculator.randomIn(0, 100, false) <= BattleCalculator.Luck(monster.getLuck(), player.getLuck())) { // Double Damage
 							damage *= 2;
+							log1 = monster.getName() + " dealt " + (int)damage + " damage! Critical Hit";  
+						}else {
+						log1 = monster.getName() + " dealt " + (int)damage + " damage!";  
 						}
 						battle.setUserHealth(battle.getUserHealth() - (int)damage);
-						log1 = monster.getName() + " dealt " + (int)damage + " damage!";  
 					}
 				}else { // Player missed. 
 					log1 = monster.getName() + " Missed!";
