@@ -47,7 +47,7 @@ public class LocationData {
 								"blacksmithname TEXT NOT NULL," +
 								"itemshop      TEXT NOT NULL DEFAULT '[]'," +
 								"weaponshop    TEXT NOT NULL DEFAULT '[]'," +
-								"blacksmithshop TEXT NOT NULL DEFAULT '[]," +
+								"blacksmith    TEXT NOT NULL DEFAULT '[]'," +
 								"monsterlist   TEXT NOT NULL DEFAULT '[]'," +
 								"locationlist  TEXT NOT NULL DEFAULT '[]'" +
 								");"

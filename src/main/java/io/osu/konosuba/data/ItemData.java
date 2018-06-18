@@ -66,10 +66,10 @@ public class ItemData {
 								"  sellvalue INTEGER NOT NULL DEFAULT 0," +
 								"  sellable  INTEGER NOT NULL DEFAULT 0," +
 								" description TEXT NOT NULL," +
-								"  type    INTEGER NOT NULL" + 
-								"craft1        TEXT NOT NULL DEFAULT '[]'," +
-								"craft2        TEXT NOT NULL DEFAULT '[]'," +
-								"craft3        TEXT NOT NULL DEFAULT '[]'," +
+								" type    INTEGER NOT NULL," + 
+								"craft1 TEXT NOT NULL  DEFAULT '[]'," +
+								"craft2 TEXT NOT NULL DEFAULT '[]' ," +
+								"craft3 TEXT NOT NULL DEFAULT '[]'" +
 								");"
 						);
 				first = false;
