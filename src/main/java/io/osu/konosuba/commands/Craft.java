@@ -13,7 +13,7 @@ import net.dv8tion.jda.core.events.message.react.MessageReactionAddEvent;
 
 import java.util.function.Consumer;
 
-public class Craft extends Command implements ReactionCommand{
+public class Craft extends Command{
 
     public Craft() {
         super(Konosuba.COLOR, Konosuba.PREFIX, "craft", "all related crafting commands", null, 0);
@@ -95,36 +95,39 @@ public class Craft extends Command implements ReactionCommand{
 
             for(int items : data.getBlackSmith()) {
                 StringBuilder Cost = new StringBuilder("Cost:\n");
+
                 ItemData itemData = new ItemData(items);
-                Cost.append(itemData.getCraft1().indexOf(1));
-                Cost.append(itemData.getName());
+                ItemData itemDataCraft1 = new ItemData(itemData.getCraft1().get(0));
+                		
+                Cost.append(itemData.getCraft1().get(1) + " ");
+                Cost.append(itemDataCraft1.getName());
                 Cost.append("\n");
+
                 if(!itemData.getCraft2().isEmpty()){
-                    Cost.append(itemData.getCraft2().indexOf(1));
-                    Cost.append(itemData.getName());
+
+                	ItemData itemDataCraft2 = new ItemData(itemData.getCraft2().get(0));
+                    Cost.append(itemData.getCraft2().get(1) + " ");
+                    Cost.append(itemDataCraft2.getName());
                     Cost.append("\n");
                     if(!itemData.getCraft3().isEmpty()){
-                        Cost.append(itemData.getCraft3().indexOf(1));
-                        Cost.append(itemData.getName());
+
+                    	ItemData itemDataCraft3 = new ItemData(itemData.getCraft3().get(0));
+                        Cost.append(itemData.getCraft3().get(1) + " ");
+                        Cost.append(itemDataCraft3.getName());
 
                     }
 
                 }
-                craftBuild.addField("**" +itemData.getName() +" (ID**: "  + items + ")", Cost.toString() , true);
-
-
+                
+                craftBuild.addField("**" + itemData.getName() +" (ID**: "  + items + ")", Cost.toString() , true);
 
             }
         }
 
 
-        craftBuild.setFooter("to craft: *craft make [ID] [Amount]", "https://i.imgur.com/9yE07dd.png");
+        craftBuild.setFooter("to craft: *craft make [ID] [Amount]" , "https://i.imgur.com/9yE07dd.png");
         return(craftBuild);
     }
 
-	@Override
-	public void run(MessageReactionAddEvent event) {
-		// TODO Auto-generated method stub
-		
-	}
+
 }

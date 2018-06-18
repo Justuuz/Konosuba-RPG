@@ -292,6 +292,6 @@ public class ItemData {
 	}
 	
 	public List<Integer> getCraft3() {
-		return craft2;
+		return craft3;
 	}
 }
