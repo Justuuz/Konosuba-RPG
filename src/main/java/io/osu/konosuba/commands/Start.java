@@ -60,8 +60,7 @@ public class Start extends Command {
 						"**-----------------------------Classes-----------------------------**\n" + 
 						"Arch Wizard\n" + 
 						"Crusader\n" + 
-						"Adventurer\n" + 
-						"Cleric\n" + 
+						"Adventurer\n" +  
 						"Thief\n" + 
 						"Priest\n" + 
 						"Knight\n" + 
@@ -84,7 +83,6 @@ public class Start extends Command {
 						+ "Arch Wizard\n" + 
 						"Crusader\n" + 
 						"Adventurer\n" + 
-						"Cleric\n" + 
 						"Thief\n" + 
 						"Priest\n" + 
 						"Knight\n" + 
