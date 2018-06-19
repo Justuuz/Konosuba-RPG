@@ -17,7 +17,7 @@ public class Help extends Command{
 	@Override
 	protected void run(MessageReceivedEvent event, String[] args) {
 		// TODO Auto-generated method stub
-		
+		 
 	}
 
 }
