@@ -34,7 +34,8 @@ public class CommandListener extends ListenerAdapter {
 		new Location(),
 		new Shop(),
 		new Money(),
-            new Craft(),
+        new Craft(),
+        new Help(),
 	};
 
 	@Override
