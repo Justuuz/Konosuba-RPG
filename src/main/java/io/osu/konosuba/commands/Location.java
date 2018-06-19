@@ -8,6 +8,7 @@ import io.osu.konosuba.Konosuba;
 import io.osu.konosuba.data.LocationData;
 import io.osu.konosuba.data.MonsterData;
 import io.osu.konosuba.data.UserData;
+import io.osu.konosuba.util.KonosubaUtils;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.ChannelType;
@@ -34,10 +35,7 @@ public class Location extends Command{
 				if(args[1].equalsIgnoreCase("move")) {
 					String movement =  StringUtils.toString(StringUtils.clip(args, StringUtils.ClipType.LEFT, 2), " ");
 					LocationData location = new LocationData(player.getLocation());
-					String fix  = Character.toString(movement.charAt(0));
-					fix = fix.toUpperCase();
-					String two = movement.substring(1, movement.length());
-					fix += two;
+					String fix  = KonosubaUtils.UpperCaseSentence(movement);
 					int locationid = location.getLocationId(fix);
 					if(location.getLocationList().contains(locationid)) {
 						player.setLocation(locationid);
