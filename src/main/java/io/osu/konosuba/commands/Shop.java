@@ -38,6 +38,7 @@ public class Shop extends Command implements ReactionCommand{
 				GlobalId = m.getIdLong();
 				if(!shops.getItemShopName().isEmpty() && event.getAuthor() != event.getJDA().getSelfUser()) event.getTextChannel().addReactionById(GlobalId, event.getJDA().getEmoteById(456959750836584459L)).queue();
 				if(!shops.getWeaponShop().isEmpty()&& event.getAuthor() != event.getJDA().getSelfUser()) event.getTextChannel().addReactionById(GlobalId, event.getJDA().getEmoteById(456959760877486090L)).queue();
+				if(!shops.getBlacksmithName().isEmpty() && event.getAuthor() != event.getJDA().getSelfUser()) event.getTextChannel().addReactionById(GlobalId, event.getJDA().getEmoteById(456959916901662741L)).queue();
 			};
 			if(args.length == 1 && !hasArgument(args, 1)) {
 				if(!shops.getItemShopName().isEmpty()) {
@@ -104,6 +105,7 @@ public class Shop extends Command implements ReactionCommand{
 	@Override
 	public void run(MessageReactionAddEvent event) {
 		UserData player = new UserData(event.getUser().getIdLong());
+		LocationData location = new LocationData(player.getLocation());
 		
 		Consumer<Message> m = (response) -> {
 			event.getReaction().removeReaction(event.getUser()).queue();
@@ -112,14 +114,16 @@ public class Shop extends Command implements ReactionCommand{
 			event.getTextChannel().editMessageById(GlobalId, shopHelper(1, globalShop, player).build()).queue((m));
 		}else if(event.getReactionEmote().getName().equalsIgnoreCase("2_") && event.getUser() != event.getJDA().getSelfUser()) {
 			event.getTextChannel().editMessageById(GlobalId, shopHelper(2, globalShop, player).build()).queue((m));
+		}else if(event.getReactionEmote().getName().equalsIgnoreCase("3_") && event.getUser() != event.getJDA().getSelfUser()) {
+			event.getTextChannel().editMessageById(GlobalId, Craft.craftHelper(location.getBlacksmithName(), location, player).build()).queue(m);
 		}
 		
 	};
 
-	private EmbedBuilder shopHelper(int shop,LocationData data, UserData player) {
+	public static EmbedBuilder shopHelper(int shop,LocationData data, UserData player) {
 		EmbedBuilder shopBuild = new EmbedBuilder();
 		if(shop == 1) {
-			shopBuild.setTitle(data.getItemShopName() + " || Balance: " + player.getBalance() );
+			shopBuild.setTitle(data.getItemShopName() + " || Balance: " + player.getBalance());
 			for(int items : data.getItemShop()) {
 				ItemData itemData = new ItemData(items);
 				shopBuild.addField("**" +itemData.getName() +" (ID**: "  + items + ")", "**Cost**: " + itemData.getBuyValue() , true);

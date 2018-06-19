@@ -13,7 +13,7 @@ import net.dv8tion.jda.core.events.message.react.MessageReactionAddEvent;
 
 import java.util.function.Consumer;
 
-public class Craft extends Command{
+public class Craft extends Command implements ReactionCommand{
 
     public Craft() {
         super(Konosuba.COLOR, Konosuba.PREFIX, "craft", "all related crafting commands", null, 0);
@@ -24,7 +24,6 @@ public class Craft extends Command{
      * framework
      */
     private long GlobalId;
-    MessageReceivedEvent event;
     private LocationData globalShop;
 
 
@@ -37,10 +36,12 @@ public class Craft extends Command{
         if (player.getStartStatus()) {
 
             LocationData crafts = new LocationData(player.getLocation());
+            globalShop = crafts;
             Consumer<Message> call = (m) -> {
                 GlobalId = m.getIdLong();
                 if(!crafts.getItemShopName().isEmpty() && event.getAuthor() != event.getJDA().getSelfUser()) event.getTextChannel().addReactionById(GlobalId, event.getJDA().getEmoteById(456959750836584459L)).queue();
-                if(!crafts.getWeaponShop().isEmpty()&& event.getAuthor() != event.getJDA().getSelfUser()) event.getTextChannel().addReactionById(GlobalId, event.getJDA().getEmoteById(456959760877486090L)).queue();
+                if(!crafts.getWeaponShop().isEmpty() && event.getAuthor() != event.getJDA().getSelfUser()) event.getTextChannel().addReactionById(GlobalId, event.getJDA().getEmoteById(456959760877486090L)).queue();
+                if(!crafts.getBlacksmithName().isEmpty() && event.getAuthor() != event.getJDA().getSelfUser()) event.getTextChannel().addReactionById(GlobalId, event.getJDA().getEmoteById(456959916901662741L)).queue();
             };
 
 
@@ -88,7 +89,7 @@ public class Craft extends Command{
         }
     }
 
-    private EmbedBuilder craftHelper(String blacksmith,LocationData data, UserData player) {
+    public static EmbedBuilder craftHelper(String blacksmith,LocationData data, UserData player) {
         EmbedBuilder craftBuild = new EmbedBuilder();
         if(blacksmith.equalsIgnoreCase("blacksmith")) {
             craftBuild.setTitle(data.getBlacksmithName());
@@ -128,6 +129,24 @@ public class Craft extends Command{
         craftBuild.setFooter("to craft: *craft make [ID] [Amount]" , "https://i.imgur.com/9yE07dd.png");
         return(craftBuild);
     }
+
+	@Override
+	public void run(MessageReactionAddEvent event) {
+		UserData player = new UserData(event.getUser().getIdLong());
+		LocationData location = new LocationData(player.getLocation());
+		
+		Consumer<Message> m = (response) -> {
+			event.getReaction().removeReaction(event.getUser()).queue();
+		};
+		if(event.getReactionEmote().getName().equalsIgnoreCase("1_") && event.getUser() != event.getJDA().getSelfUser()) {
+			event.getTextChannel().editMessageById(GlobalId, Shop.shopHelper(1, globalShop, player).build()).queue((m));
+		}else if(event.getReactionEmote().getName().equalsIgnoreCase("2_") && event.getUser() != event.getJDA().getSelfUser()) {
+			event.getTextChannel().editMessageById(GlobalId, Shop.shopHelper(2, globalShop, player).build()).queue((m));
+		}else if(event.getReactionEmote().getName().equalsIgnoreCase("3_") && event.getUser() != event.getJDA().getSelfUser()) {
+			event.getTextChannel().editMessageById(GlobalId, Craft.craftHelper(location.getBlacksmithName(), globalShop, player).build()).queue(m);
+		}
+		
+	}
 
 
 }
