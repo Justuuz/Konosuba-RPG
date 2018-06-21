@@ -95,7 +95,7 @@ public class Craft extends Command implements ReactionCommand{
             craftBuild.setTitle(data.getBlacksmithName());
 
             for(int items : data.getBlackSmith()) {
-                StringBuilder Cost = new StringBuilder("Cost:\n");
+                StringBuilder Cost = new StringBuilder("**Cost**:\n");
 
                 ItemData itemData = new ItemData(items);
                 ItemData itemDataCraft1 = new ItemData(itemData.getCraft1().get(0));
