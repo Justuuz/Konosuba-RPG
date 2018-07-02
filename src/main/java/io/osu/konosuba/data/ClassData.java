@@ -1,6 +1,5 @@
 package io.osu.konosuba.data;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -36,7 +35,7 @@ public class ClassData {
 	private void update(int classid)  {
 		try {
 			this.classid = classid;
-			Statement statement = Konosuba.CONNECTION2.createStatement();
+			Statement statement = Konosuba.REGISTRY.createStatement();
 			if(first) {
 				statement.execute(
 						"CREATE TABLE IF NOT EXISTS 'classes' ("+
@@ -74,7 +73,7 @@ public class ClassData {
 
 	private void update(String key, Object value)  {
 		try {
-			Statement statement = Konosuba.CONNECTION2.createStatement();
+			Statement statement = Konosuba.REGISTRY.createStatement();
 			statement.execute("INSERT OR IGNORE REALO 'classes' (classid, "+key+") VALUES ("+classid+","+value+");"+
 					"UPDATE 'classes' SET "+key+"="+value+" WHERE classid="+classid+";");
 			statement.close();

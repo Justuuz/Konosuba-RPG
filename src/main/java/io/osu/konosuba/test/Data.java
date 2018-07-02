@@ -15,15 +15,14 @@ public final class Data {
 	 *
 	 */
 
-	private boolean first = true;
-
 	// ====================
 	private long id;
 	private int  balance;
 	// ====================
 
 	Data(long id) throws SQLException {
-		Statement statement = Konosuba.CONNECTION1.createStatement();
+		Statement statement = Konosuba.DATABASE.createStatement();
+		boolean first = true;
 		if (first) {
 			statement.execute("CREATE TABLE IF NOT EXISTS 'test' (id INT PRIMARY KEY NOT NULL, balance INT NOT NULL DEFAULT 0);");
 			first = false;
@@ -40,7 +39,7 @@ public final class Data {
 
 	private void update(String key, Object value) {
 		try {
-			Statement statement = Konosuba.CONNECTION1.createStatement();
+			Statement statement = Konosuba.DATABASE.createStatement();
 
 			statement.addBatch("INSERT OR IGNORE INTO 'test' (id,"+key+") VALUES ("+id+","+value+");");
 			statement.addBatch("UPDATE 'test' SET "+key+"="+value+" WHERE id="+id+";");

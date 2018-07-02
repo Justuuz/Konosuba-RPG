@@ -1,12 +1,10 @@
 package io.osu.konosuba.test;
 
-import java.awt.Color;
 import java.util.List;
 
 import io.osu.konosuba.Command;
 import io.osu.konosuba.Konosuba;
 import io.osu.konosuba.data.UserData;
-import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 

@@ -28,14 +28,14 @@ public class LocationData {
 
 	private boolean first = true;
 
-	public LocationData(int locationid) {
-		update(locationid);
+	public LocationData(int location_id) {
+		update(location_id);
 	}
 
-	private void update(int locationid) {
-		this.locationid = locationid;
+	private void update(int location_id) {
+		this.locationid = location_id;
 		try {
-			Statement statement = Konosuba.CONNECTION2.createStatement();
+			Statement statement = Konosuba.REGISTRY.createStatement();
 			if(first) {
 				statement.execute(
 						"CREATE TABLE IF NOT EXISTS 'locations' (" +
@@ -54,7 +54,7 @@ public class LocationData {
 						);
 				first = false;
 			}
-			ResultSet result = statement.executeQuery("SELECT * FROM 'locations' WHERE locationid=" + locationid + ";");
+			ResultSet result = statement.executeQuery("SELECT * FROM 'locations' WHERE locationid=" + location_id + ";");
 			boolean hasResult =  result.next();
 
 			mainLocation    = hasResult ? result.getString("mainlocation") : null;
@@ -91,7 +91,7 @@ public class LocationData {
 	}
 	//	private void update(String key, Object value) {
 	//		try {
-	//			Statement statement = Konosuba.CONNECTION2.createStatement();
+	//			Statement statement = Konosuba.REGISTRY.createStatement();
 	//			statement.addBatch("INSERT OR IGNORE INTO 'locations' (locationid,"+key+") VALUES ("+locationid+",'"+value+"');");
 	//			statement.addBatch("UPDATE 'location' SET "+key+"='"+value+"' WHERE locationid="+locationid+";");
 	//			statement.executeBatch();
@@ -106,7 +106,7 @@ public class LocationData {
 	public int getLocationId(String locationName) {
 		int value = -1;
 		try {
-			Statement statement = Konosuba.CONNECTION2.createStatement();
+			Statement statement = Konosuba.REGISTRY.createStatement();
 			ResultSet result = statement.executeQuery("SELECT * FROM 'locations' WHERE sublocation='" +locationName+ "';");
 			boolean hasResult = result.next();
 			value = hasResult ? result.getInt("locationid") : -1;

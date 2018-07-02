@@ -45,9 +45,9 @@ public class Start extends Command {
 				player.setDexterity(5);
 				player.setPhysicalDefense(5);
 				player.setMagicalDefense(5);
-				List<List<Integer>> list = new ArrayList<List<Integer>>();
+				List<List<Integer>> list = new ArrayList<>();
 				for(int i=0; i < 9; i++) {
-					list.add(new ArrayList<Integer>());
+					list.add(new ArrayList<>());
 				}
 				player.setInventory(list);
 				player.setItems(new HashMap<>());

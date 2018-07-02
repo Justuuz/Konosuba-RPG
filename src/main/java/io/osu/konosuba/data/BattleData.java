@@ -27,7 +27,7 @@ public class BattleData {
 	private void update(long userid) {
 		this.userid = userid;
 		try {
-			Statement statement = Konosuba.CONNECTION1.createStatement();
+			Statement statement = Konosuba.DATABASE.createStatement();
 			if(first) {
 				statement.execute(
 						"CREATE TABLE IF NOT EXISTS 'battles' (" +
@@ -60,7 +60,7 @@ public class BattleData {
 
 	private void update(String key, Object value) {
 		try {
-			Statement statement = Konosuba.CONNECTION1.createStatement();
+			Statement statement = Konosuba.DATABASE.createStatement();
 			statement.addBatch("INSERT OR IGNORE INTO 'battles' (userid,"+key+") VALUES ("+userid+",'"+value+"');");
 			statement.addBatch("UPDATE 'battles' SET "+key+"='"+value+"' WHERE userid="+userid+";");
 			statement.executeBatch();
@@ -72,7 +72,7 @@ public class BattleData {
 
 	public void delete(long userid) {
 		try {
-			Statement statement = Konosuba.CONNECTION1.createStatement();
+			Statement statement = Konosuba.DATABASE.createStatement();
 			statement.execute("DELETE FROM 'battles' WHERE userid=" +userid + ";");
 			statement.close();
 		} catch(Exception e) {

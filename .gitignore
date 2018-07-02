@@ -3,8 +3,12 @@
 .settings
 Outside Libraries
 konosuba.db-journal
-/bin/
+bin/
 _config.yml
 .classpath
 .project
 data.yaml
+.classpath
+.project
+Data/
+SQLite/

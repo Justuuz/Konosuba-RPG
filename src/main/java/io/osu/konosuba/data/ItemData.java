@@ -1,15 +1,12 @@
 package io.osu.konosuba.data;
 
-import java.sql.Connection;
+import io.osu.konosuba.Konosuba;
+import org.json.JSONArray;
+
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.json.JSONArray;
-
-import io.magiccraftmaster.util.StringUtils;
-import io.osu.konosuba.Konosuba;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 public class ItemData {
@@ -49,7 +46,7 @@ public class ItemData {
 	private void update(int itemid) {
 		try {
 			this.itemid = itemid;
-			Statement statement = Konosuba.CONNECTION2.createStatement();
+			Statement statement = Konosuba.REGISTRY.createStatement();
 			if(first) {
 				statement.execute(
 						"CREATE TABLE IF NOT EXISTS 'items' ("+
@@ -111,7 +108,7 @@ public class ItemData {
 
 	private void update(String key, Object value) {
 		try {
-			Statement statement = Konosuba.CONNECTION2.createStatement();
+			Statement statement = Konosuba.REGISTRY.createStatement();
 			statement.execute("INSERT OR IGNORE INTO 'items' (itemid, "+key+") VALUES ("+itemid+","+value+");"+
 					"UPDATE 'items' SET "+key+"="+value+" WHERE itemid="+itemid+";");
 			statement.close();
@@ -122,7 +119,7 @@ public class ItemData {
 
 	public int search(String item){
 		try {
-			Statement statement = Konosuba.CONNECTION2.createStatement();
+			Statement statement = Konosuba.REGISTRY.createStatement();
 			ResultSet result = statement.executeQuery("SELECT * FROM 'items' WHERE name LIKE '" + item + "';");
 			if(result.next()) {
 				return result.getInt(item);

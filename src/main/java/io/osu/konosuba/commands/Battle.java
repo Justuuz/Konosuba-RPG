@@ -267,9 +267,7 @@ public class Battle extends Command implements ReactionCommand{
 
 	private void battleMessage(BattleData battle, MessageReactionAddEvent event,String log1, String log2) {
 
-		Consumer<Message> call = (response) -> {
-			event.getReaction().removeReaction(event.getUser()).queue();
-		};
+		Consumer<Message> call = (response) -> event.getReaction().removeReaction(event.getUser()).queue();
 
 		EmbedBuilder battleMessage = new EmbedBuilder();
 		MonsterData monster = new MonsterData(battle.getMonsterId());

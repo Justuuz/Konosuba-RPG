@@ -1,7 +1,5 @@
 package io.osu.konosuba.commands;
 
-import java.awt.Color;
-
 import io.magiccraftmaster.util.StringUtils;
 import io.osu.konosuba.Command;
 import io.osu.konosuba.Konosuba;

@@ -135,9 +135,7 @@ public class Craft extends Command implements ReactionCommand{
 		UserData player = new UserData(event.getUser().getIdLong());
 		LocationData location = new LocationData(player.getLocation());
 		
-		Consumer<Message> m = (response) -> {
-			event.getReaction().removeReaction(event.getUser()).queue();
-		};
+		Consumer<Message> m = (response) -> event.getReaction().removeReaction(event.getUser()).queue();
 		if(event.getReactionEmote().getName().equalsIgnoreCase("1_") && event.getUser() != event.getJDA().getSelfUser()) {
 			event.getTextChannel().editMessageById(GlobalId, Shop.shopHelper(1, globalShop, player).build()).queue((m));
 		}else if(event.getReactionEmote().getName().equalsIgnoreCase("2_") && event.getUser() != event.getJDA().getSelfUser()) {

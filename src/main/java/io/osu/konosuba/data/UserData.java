@@ -1,8 +1,6 @@
 
 package io.osu.konosuba.data;
 
-import java.sql.Connection;
-
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -13,16 +11,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import io.osu.konosuba.Konosuba;
-import io.osu.konosuba.Konosuba;
 
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 @SuppressWarnings({"unused"})
 public class UserData {
 
@@ -68,7 +57,7 @@ public class UserData {
 	private void update(long userid)  {
 		this.userid = userid;
 		try {
-			Statement statement = Konosuba.CONNECTION1.createStatement();
+			Statement statement = Konosuba.DATABASE.createStatement();
 			if(first) {
 				statement.execute(
 						"CREATE TABLE IF NOT EXISTS 'clients' ("+
@@ -159,7 +148,7 @@ public class UserData {
 
 	private void update(String key, Object value) {
 		try {
-			Statement statement = Konosuba.CONNECTION1.createStatement();
+			Statement statement = Konosuba.DATABASE.createStatement();
 			statement.addBatch("INSERT OR IGNORE INTO 'clients' (userid,"+key+") VALUES ("+userid+",'"+value+"');");
 			statement.addBatch("UPDATE 'clients' SET "+key+"='"+value+"' WHERE userid="+userid+";");
 			statement.executeBatch();

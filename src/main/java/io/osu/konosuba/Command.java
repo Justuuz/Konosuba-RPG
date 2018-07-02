@@ -12,7 +12,6 @@ import net.dv8tion.jda.core.entities.MessageChannel;
 import net.dv8tion.jda.core.entities.MessageEmbed;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 //import com.raichu.discord.data.*;
-import net.dv8tion.jda.core.events.message.react.MessageReactionAddEvent;
 
 import java.awt.*;
 
@@ -119,8 +118,21 @@ public abstract class Command {
 	 * @param index the argument index
 	 * @return a boolean
 	 */
-	public boolean hasArgument(String[] args, int index) {
+	protected boolean hasArgument(String[] args, int index) {
 		return args.length > index;
+	}
+
+	protected static EmbedBuilder getEmbedBuilder(MessageReceivedEvent event) {
+		return new EmbedBuilder().setFooter(event.getJDA().getSelfUser().getName(), event.getJDA().getSelfUser().getEffectiveAvatarUrl()).setColor(Konosuba.COLOR);
+	}
+
+	protected static void send(MessageReceivedEvent event, MessageEmbed embed) {
+		if (event.isFromType(ChannelType.TEXT) && !event.getGuild().getSelfMember().hasPermission(event.getTextChannel(), Permission.MESSAGE_EMBED_LINKS)) {
+			StringBuilder stringBuilder = new StringBuilder("**").append(embed.getTitle()).append("**\n").append(embed.getDescription());
+			for (MessageEmbed.Field field : embed.getFields()) stringBuilder.append("\n\n**").append(field.getName()).append("**\n").append(field.getValue());
+			event.getChannel().sendMessage(stringBuilder.toString()).queue();
+
+		} else event.getChannel().sendMessage(embed).queue();
 	}
 
 	/**

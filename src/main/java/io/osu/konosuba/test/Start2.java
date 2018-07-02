@@ -5,9 +5,7 @@ import io.osu.konosuba.Command;
 import io.osu.konosuba.Konosuba;
 import io.osu.konosuba.data.UserData;
 import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.ChannelType;
-import net.dv8tion.jda.core.entities.MessageEmbed;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 import java.util.ArrayList;
@@ -30,14 +28,14 @@ public final class Start2 extends Command {
 			if (!hasArgument(args, 1) && !userData.getStartStatus()) {
 				EmbedBuilder embedBuilder = getEmbedBuilder(event);
 				embedBuilder.setDescription("Welcome " + (event.isFromType(ChannelType.TEXT) ? event.getMember().getEffectiveName() : event.getAuthor().getName()) + "!  Today is the day you start your adventure! Before we can start, I must ask traveler, what class are? Do `*start class <class>` to begin!");
-				embedBuilder.addField("Classes", StringUtils.toString(caseClasses(), "\n"), false);
+				embedBuilder.addField("Classes", StringUtils.toListString(caseClasses()), false);
 				send(event, embedBuilder.build());
 
 			}if (!hasArgument(args, 1) && userData.getStartStatus()) {
 				event.getChannel().sendMessage("You're a " + userData.getClasses()).queue();
 
 			} else if (hasArgument(args, 1) && args[1].equalsIgnoreCase("class") && !hasArgument(args, 2)) {
-				send(event, getEmbedBuilder(event).setTitle("Classes").setDescription(StringUtils.toString(caseClasses(), "\n")).build());
+				send(event, getEmbedBuilder(event).setTitle("Classes").setDescription(StringUtils.toListString(caseClasses())).build());
 
 			} else if (hasArgument(args, 1) && args[1].equalsIgnoreCase("class") && hasArgument(args, 2) && userData.getStartStatus()) {
 				event.getChannel().sendMessage("You're already a " + userData.getClasses() + "!").queue();
@@ -58,22 +56,9 @@ public final class Start2 extends Command {
 		}
 	}
 
-	private static EmbedBuilder getEmbedBuilder(MessageReceivedEvent event) {
-		return new EmbedBuilder().setFooter(event.getJDA().getSelfUser().getName(), event.getJDA().getSelfUser().getEffectiveAvatarUrl()).setColor(Konosuba.COLOR);
-	}
-
 	private static String[] caseClasses() {
 		List<String> classNames = new ArrayList<>();
 		for (String className : classes) classNames.add(StringUtils.fixCase(className));
 		return classNames.toArray(new String[classNames.size()]);
-	}
-
-	private static void send(MessageReceivedEvent event, MessageEmbed embed) {
-		if (event.isFromType(ChannelType.TEXT) && !event.getGuild().getSelfMember().hasPermission(event.getTextChannel(), Permission.MESSAGE_EMBED_LINKS)) {
-			StringBuilder stringBuilder = new StringBuilder("**").append(embed.getTitle()).append("**\n").append(embed.getDescription());
-			for (MessageEmbed.Field field : embed.getFields()) stringBuilder.append("\n\n**").append(field.getName()).append("**\n").append(field.getValue());
-			event.getChannel().sendMessage(stringBuilder.toString()).queue();
-
-		} else event.getChannel().sendMessage(embed).queue();
 	}
 }

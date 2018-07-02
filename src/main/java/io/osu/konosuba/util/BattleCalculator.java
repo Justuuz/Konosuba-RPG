@@ -1,7 +1,5 @@
 package io.osu.konosuba.util;
 
-import io.magiccraftmaster.util.Calculator;
-
 public class BattleCalculator {
 	
 	public static double physicalCalculation(int strength, int phyDef) {

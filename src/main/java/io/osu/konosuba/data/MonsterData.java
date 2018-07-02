@@ -37,7 +37,7 @@ public class MonsterData {
 	private void update(int monsterid) {
 		this.monsterid = monsterid;
 		try {
-			Statement statement = Konosuba.CONNECTION2.createStatement();
+			Statement statement = Konosuba.REGISTRY.createStatement();
 			if(first) {
 				statement.execute(
 						"CREATE TABLE IF NOT EXISTS 'monster' (" +
@@ -103,7 +103,7 @@ public class MonsterData {
 
 	private void update(String key, Object value) {
 		try {
-			Statement statement = Konosuba.CONNECTION2.createStatement();
+			Statement statement = Konosuba.REGISTRY.createStatement();
 			statement.addBatch("INSERT OR IGNORE INTO 'monsters' (monsterid,"+key+") VALUES ("+monsterid+",'"+value+"');");
 			statement.addBatch("UPDATE 'monsters' SET "+key+"='"+value+"' WHERE monsterid="+monsterid+";");
 			statement.executeBatch();
