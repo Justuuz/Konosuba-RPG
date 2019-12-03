@@ -5,6 +5,8 @@
 
 Konosuba is an upcoming discord rpg bot that is based off the anime "Konosuba"
 
+Edit of 12/3/2019: This bot is discontinued until further notice. The core concept the game is there, as in you can move around in the map as well as fight mobs. 
+
 # Features
 
 - Players able to equip different types of armor
