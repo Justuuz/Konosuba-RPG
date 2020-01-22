@@ -15,6 +15,9 @@ Edit of 12/3/2019: This bot is discontinued until further notice. The core conce
 - Dungeons
 - Players traveling and exploring on a map.	
 
+# Examples
+![Image of Map and Shop](https://i.imgur.com/EDw2RmE.png)
+
 # Progress
 
 - Framework of Bot - 50%
