@@ -16,7 +16,10 @@ Edit of 12/3/2019: This bot is discontinued until further notice. The core conce
 - Players traveling and exploring on a map.	
 
 # Examples
+![Image of Start](https://i.imgur.com/BIB3npR.png)
 ![Image of Map and Shop](https://i.imgur.com/EDw2RmE.png)
+![Image of battle search](https://i.imgur.com/AqAz0Ia.png)
+![Image of profile](https://i.imgur.com/778yj9o.png)
 
 # Progress
 
